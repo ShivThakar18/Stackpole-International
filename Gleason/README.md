@@ -11,7 +11,7 @@ This project was designed tp run along side the Gleason CMM Machine at Stackpole
 2. main() is called
     * Uses an infinite while loop. This program is running in the background at all times
     * Searches DEFAULT_PATH for any csv files using glob
-        * Iterate through each file found
+         * Iterate through each file found
 
 3. Within main(), the data from the csv file is read using pandas function read_csv() and transposes the data. 
 
@@ -32,11 +32,7 @@ This project was designed tp run along side the Gleason CMM Machine at Stackpole
 ### Execution
 Update the batch file with the directory of the python executable and python script using the following format:
 
-@echo off
-
-<python.exe location on PC> <location of Gleason.py>
-
-pause
+![image](https://user-images.githubusercontent.com/94186009/213496436-4b0e0fd5-b09d-4812-99a9-2f641fed12f4.png)
 
 * Make sure to put double quotations for each individual path
 * Put a space between each address
