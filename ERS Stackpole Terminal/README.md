@@ -4,3 +4,12 @@ This project was designed to allow the Quality Manager and Quality Engineers to 
 <p align="center">
   <img src ="https://user-images.githubusercontent.com/94186009/213518166-5ea449bc-cd0b-4207-885a-7dcccb6dcb7f.png" alt="ERS Terminal UI"/>
 </p>
+
+## How It Works
+### Terminal
+### Setup
+
+## Setup 
+### Setup Executable
+### Python Libraries
+### Execution
