@@ -1,0 +1,99 @@
+N:\Quality\ERS Part Reports\35.0080_10R140Gear;35.0080;10R140 Gear
+N:\Quality\ERS Part Reports\35.1080_10R140Gear(Nitrided);35.1080;10R140 Gear (Nitrided)
+N:\Quality\ERS Part Reports\35.1742_GRxPumpDriveGear;35.1742;GRx Pump Drive Gear
+N:\Quality\ERS Part Reports\35.1840_GF9Hub;35.1840;GF9 Hub
+N:\Quality\ERS Part Reports\35.3929_10R60Gear;35.3929;10R60 Gear
+N:\Quality\ERS Part Reports\35.4683_X7615TDriveGear;35.4683;X7615T Drive Gear
+N:\Quality\ERS Part Reports\35.4684_X7617TDriveGear;35.4684;X7617T Drive Gear
+N:\Quality\ERS Part Reports\35.4685_X7715TDriveGear;35.4685;X7715T Drive Gear
+N:\Quality\ERS Part Reports\35.4686_X7715TDriveGear;35.4686;X7715T Drive Gear
+N:\Quality\ERS Part Reports\35.7074_BearingSupportPlate;35.7074;Bearing Support Plate
+N:\Quality\ERS Part Reports\35.7080_10R80DriveGear;35.7080;10R80 Drive Gear
+N:\Quality\ERS Part Reports\35.7371_GRxHelicalGear;35.7371;GRx Helical Gear
+N:\Quality\ERS Part Reports\35.8663_NanoPulley;35.8663;Nano Pulley
+N:\Quality\ERS Part Reports\58.0406_0406ClutchPlate(10R140);58.0406;0406 Clutch Plate (10R140)
+N:\Quality\ERS Part Reports\58.0437_0437ClutchPlate;58.0437;0437 Clutch Plate
+N:\Quality\ERS Part Reports\58.0497_0497ClutchPlate;58.0497;0497 Clutch Plate
+N:\Quality\ERS Part Reports\58.0755_0755ClutchPlate;58.0755;0755 Clutch Plate
+N:\Quality\ERS Part Reports\58.0760_0760ClutchPlate;58.0760;0760 Clutch Plate
+N:\Quality\ERS Part Reports\58.1856_62TEReactionPlate;58.1856;62TE Reaction Plate
+N:\Quality\ERS Part Reports\58.1956_1956ClutchPlate;58.1956;1956 Clutch Plate
+N:\Quality\ERS Part Reports\58.2956_2956ClutchPlate;58.2956;2956 Clutch Plate
+N:\Quality\ERS Part Reports\58.2960_2960ClutchPlate;58.2960;2960 Clutch Plate
+N:\Quality\ERS Part Reports\58.5652_5652ClutchPlate;58.5652;5652 Clutch Plate
+N:\Quality\ERS Part Reports\58.5653_5653ClutchPlate;58.5653;5653 Clutch Plate
+N:\Quality\ERS Part Reports\58.5654_5654ClutchPlate;58.5654;5654 Clutch Plate
+N:\Quality\ERS Part Reports\58.5656_5656ClutchPlate;58.5656;5656 Clutch Plate
+N:\Quality\ERS Part Reports\58.7194_7194ClutchHub;58.7194;7194 Clutch Hub
+N:\Quality\ERS Part Reports\58.7406_7406ClutchPlate;58.7406;7406 Clutch Plate
+N:\Quality\ERS Part Reports\58.7437_7437ClutchPlate;58.7437;7437 Clutch Plate
+N:\Quality\ERS Part Reports\58.7450_7450ClutchPlate;58.7450;7450 Clutch Plate
+N:\Quality\ERS Part Reports\58.7680_7680ClutchPlate;58.7680;7680 Clutch Plate
+N:\Quality\ERS Part Reports\58.8887_8887ClutchPlate;58.8887;8887 Clutch Plate
+N:\Quality\ERS Part Reports\58.9116_9116ClutchPlate;58.9116;9116 Clutch Plate
+N:\Quality\ERS Part Reports\58.9121_9121ClutchPlate;58.9121;9121 Clutch Plate
+N:\Quality\ERS Part Reports\58.9533_9533ClutchPlate;58.9533;9533 Clutch Plate
+N:\Quality\ERS Part Reports\58.9691_9691ClutchPlate;58.9691;9691 Clutch Plate
+N:\Quality\ERS Part Reports\58.9903_9903ClutchPlate;58.9903;9903 Clutch Plate
+N:\Quality\ERS Part Reports\58.9933_9930ClutchPlate;58.9933;9930 Clutch Plate
+N:\Quality\ERS Part Reports\70.0536_DV6.2Slide;70.0536;DV6.2 Slide
+N:\Quality\ERS Part Reports\70.1005_PentastarRotor;70.1005;Pentastar Rotor
+N:\Quality\ERS Part Reports\70.1006_PentastarSlide;70.1006;Pentastar Slide
+N:\Quality\ERS Part Reports\70.1501_DV6Rotor;70.1501;DV6 Rotor
+N:\Quality\ERS Part Reports\70.1502_DV6Slide;70.1502;DV6 Slide
+N:\Quality\ERS Part Reports\70.1508_CSS45TRotor;70.1508;CSS45T Rotor
+N:\Quality\ERS Part Reports\70.1845_NanoSlide;70.1845;Nano Slide
+N:\Quality\ERS Part Reports\70.1905_NanoRotor;70.1905;Nano Rotor
+N:\Quality\ERS Part Reports\70.2129_CSS45TSlide;70.2129;CSS45T Slide
+N:\Quality\ERS Part Reports\70.2458_EB2LSlide;70.2458;EB2L Slide
+N:\Quality\ERS Part Reports\70.2661_SGERotor;70.2661;SGE Rotor
+N:\Quality\ERS Part Reports\70.2662_SGESlide;70.2662;SGE Slide
+N:\Quality\ERS Part Reports\70.2826_CSS45TBody;70.2826;CSS45T Body
+N:\Quality\ERS Part Reports\70.2899_2018NanoSlide;70.2899;2018 Nano Slide
+N:\Quality\ERS Part Reports\70.3161_SnowTigerSlide;70.3161;Snow Tiger Slide
+N:\Quality\ERS Part Reports\70.3698_EB2LRotor;70.3698;EB2L Rotor
+N:\Quality\ERS Part Reports\70.5153_DV6.1Rotor;70.5153;DV6.1 Rotor
+N:\Quality\ERS Part Reports\70.5318_DV6.1Slide;70.5318;DV6.1 Slide
+N:\Quality\ERS Part Reports\70.5600_ScorpionRotor;70.5600;Scorpion Rotor
+N:\Quality\ERS Part Reports\70.5747_ScorpionSlide;70.5747;Scorpion Slide
+N:\Quality\ERS Part Reports\70.6557_U3Rotor;70.6557;U3 Rotor
+N:\Quality\ERS Part Reports\70.7031_DV6.2Rotor;70.7031;DV6.2 Rotor
+N:\Quality\ERS Part Reports\70.8237_U3Slide;70.8237;U3 Slide
+N:\Quality\ERS Part Reports\70.9545_SnowTigerRotor;70.9545;Snow Tiger Rotor
+N:\Quality\ERS Part Reports\72.0049_HFV6Outer;72.0049;HFV6 Outer
+N:\Quality\ERS Part Reports\72.0050_HFV6Inner;72.0050;HFV6 Inner
+N:\Quality\ERS Part Reports\72.1077_ZFBody;72.1077;ZF Body
+N:\Quality\ERS Part Reports\72.1805_HF35InnerGear;72.1805;HF35 Inner Gear
+N:\Quality\ERS Part Reports\72.1807_HF35OuterGear;72.1807;HF35 Outer Gear
+N:\Quality\ERS Part Reports\72.7018_ZFOuter;72.7018;ZF Outer
+N:\Quality\ERS Part Reports\72.9623_ZFInner;72.9623;ZF Inner
+N:\Quality\ERS Part Reports\74.4355_L850IntakeSprocket;74.4355;L850 Intake Sprocket
+N:\Quality\ERS Part Reports\74.4356_UniversalSprocket;74.4356;Universal Sprocket
+N:\Quality\ERS Part Reports\74.4360_L850Stator;74.4360;L850 Stator
+N:\Quality\ERS Part Reports\74.5120_L850Rotor;74.5120;L850 Rotor
+N:\Quality\ERS Part Reports\74.5363_LGEExhaustSprocket;74.5363;LGE Exhaust Sprocket
+N:\Quality\ERS Part Reports\74.5366_LGEIntakeSprocket;74.5366;LGE Intake Sprocket
+N:\Quality\ERS Part Reports\74.5453_GMET4Stator;74.5453;GMET4 Stator
+N:\Quality\ERS Part Reports\81.0011_6ROuter;81.0011;6R Outer
+N:\Quality\ERS Part Reports\81.4010_6RInner;81.4010;6R Inner
+N:\Quality\ERS Part Reports\82.0001_68RFEDrive;82.0001;68RFE Drive
+N:\Quality\ERS Part Reports\82.0002_68RFEDriven;82.0002;68RFE Driven
+N:\Quality\ERS Part Reports\82.0003_T70Body;82.0003;T70 Body
+N:\Quality\ERS Part Reports\82.0008_10R80Rotor;82.0008;10R80 Rotor
+N:\Quality\ERS Part Reports\82.0010_10R80Slide;82.0010;10R80 Slide
+N:\Quality\ERS Part Reports\82.0105_10R140Body;82.0105;10R140 Body
+N:\Quality\ERS Part Reports\82.0146_10R140Rotor;82.0146;10R140 Rotor
+N:\Quality\ERS Part Reports\82.0194_10R140Slide;82.0194;10R140 Slide
+N:\Quality\ERS Part Reports\82.2345_8F24Body;82.2345;8F24 Body
+N:\Quality\ERS Part Reports\82.2435_8F24Slide;82.2435;8F24 Slide
+N:\Quality\ERS Part Reports\82.4070_8F24Rotor;82.4070;8F24 Rotor
+N:\Quality\ERS Part Reports\82.4232_10R60Rotor;82.4232;10R60 Rotor
+N:\Quality\ERS Part Reports\82.4248_10R60Slide;82.4248;10R60 Slide
+N:\Quality\ERS Part Reports\82.4256_10R60Body;82.4256;10R60 Body
+N:\Quality\ERS Part Reports\82.4679_10R80Body;82.4679;10R80 Body
+N:\Quality\ERS Part Reports\82.4886_6LSlide;82.4886;6L Slide
+N:\Quality\ERS Part Reports\82.4887_6LRotor;82.4887;6L Rotor
+N:\Quality\ERS Part Reports\82.82AA_62TEInner;82.82AA;62 TEInner
+N:\Quality\ERS Part Reports\82.84AA_62TEOuter;82.84AA;62 TEOuter
+N:\Quality\ERS Part Reports\82.9153_MHTSlide;82.9153;MHT Slide
+N:\Quality\ERS Part Reports\82.9156_MHTBody;82.9156;MHT Body
