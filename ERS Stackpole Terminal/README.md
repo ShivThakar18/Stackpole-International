@@ -1,5 +1,5 @@
-#Enterprise Report Schedular - Stackpole Quality Terminal
-
+Enterprise Report Schedular - Stackpole Quality Terminal
+=========================================================================================================================================================================
 This project was designed to allow the Quality Manager and Quality Engineers to navigate ERS Reports more efficiently. This python program uses the TKinter Python library to create a user interface where QEs can review the history of the ERS Schedular. The main purpose is to be able to easily search for specific parts and view their Cpk Reports, Raw Data Export and Histogram (if applicable). 
 
 <p align="center">
