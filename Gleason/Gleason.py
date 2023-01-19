@@ -1,3 +1,8 @@
+'''
+' Shiv Thakar - Quality Engineer Intern
+' Stackpole International
+' Gleason
+'''
 #---IMPORT LIBRARIES---
 import glob
 import os
