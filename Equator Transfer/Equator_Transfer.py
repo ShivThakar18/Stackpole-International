@@ -8,27 +8,16 @@ from time import sleep
 # ----------------------------- Define Variables ----------------------------- #
 OUT = "C:\\EQUATOR"
 EQ9879_IN = "P:\\*.RES"
-EQ9879_OUT = "C:\\EQUATOR\\EQ_9879 (EQUATOR-2827N0Renishaw)"
 EQ9875_IN = "T:\\*.RES"
-EQ9875_OUT = "C:\\EQUATOR\\eq_9875 (Equator-2104n1)"
 EQ9877_IN = "W:\\*.RES"
-EQ9877_OUT = "C:\\EQUATOR\\Equator_QCCALC (EQUATOR-2970R9)"
 # ----------------------------- Transfer Function ---------------------------- #
 def transfer(files):
-
     for f in files:
-        #if('P:' in f):
-        try:
+        try: 
             move(f,OUT)
             print("FILE MOVED - ",f)
         except:
             print("ERROR RAISED AND EXCEPTED")
-            continue
-            
-        #if('T:' in f):
-            #move(f,OUT)
-        #if('W:' in f):
-            #move(f,OUT)
         sleep(1)
     return 0
 # ------------------------- End of Transfer Function ------------------------- #
