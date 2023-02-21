@@ -22,21 +22,19 @@ def equator_copyPDF():
 
         for pdf in pdf_files: #iterate through all files in source folder
 
-            
-
             new_name = SRC + "\\" + path.basename(pdf)[0:-4] + "_" + datetime.fromtimestamp(path.getmtime(pdf)).strftime('%Y_%m_%d') +'.pdf'
-            print(new_name)
-
-            rename(pdf, new_name)
+            rename(pdf, new_name) #rename pdf to new_name
             
-            copy(new_name,GF9_PATH) #if it doesn't exists, copy the file
+            copy(new_name,GF9_PATH) 
             print("COPIED - "+path.basename(pdf))
-
-            move(new_name,ARCHIVE)
-
+            
             '''
             move files to an archive right away
             ''' 
+
+            move(new_name,ARCHIVE)
+
+
 #!Main Function Call---------------------------------------------------------------------------------------------------------------------------------------------------------------
 equator_copyPDF()
 #!End of Python Script-------------------------------------------------------------------------------------------------------------------------------------------------------------
