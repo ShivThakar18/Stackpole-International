@@ -14,7 +14,7 @@ GF9_PATH = "C:\\Users\\vrerecich\\Documents\\GF9 Clutch Hub\\Flatness Scans" #? 
 ARCHIVE = "C:\\Users\\vrerecich\\Documents\\Flatness Archive" """
 #!Code Body------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 def equator_copyPDF():
-    global SRC
+    global SRC, GF9_PATH, ARCHIVE
     while(True):  #to ensure it always runs in the background
         
         pdf_files = glob(SRC + "\\*.pdf") #get all PDF files from the source folder
