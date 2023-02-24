@@ -21,18 +21,8 @@ def equator_copyPDF():
         pdf_files.sort(key=path.getmtime, reverse=True)
 
         for pdf in pdf_files: #iterate through all files in source folder
-
-            new_name = SRC + "\\" + path.basename(pdf)[0:-4] + "_" + datetime.fromtimestamp(path.getmtime(pdf)).strftime('%Y_%m_%d') +'.pdf'
-            rename(pdf, new_name) #rename pdf to new_name
-            
-            copy(new_name,GF9_PATH) 
-            print("COPIED - "+path.basename(pdf))
-            
-            '''
-            move files to an archive right away
-            ''' 
-
-            move(new_name,ARCHIVE)
+            copy(pdf,GF9_PATH) #copy to N:\ Folder           
+            move(pdf,ARCHIVE) #move pdf to ARCHIVE, leaves SRC folder empty
 
 
 #!Main Function Call---------------------------------------------------------------------------------------------------------------------------------------------------------------
