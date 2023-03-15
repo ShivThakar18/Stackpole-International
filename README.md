@@ -11,5 +11,8 @@ This project was designed to allow the Quality Manager and Quality Engineers to 
   <img src ="https://user-images.githubusercontent.com/94186009/213518166-5ea449bc-cd0b-4207-885a-7dcccb6dcb7f.png" alt="ERS Terminal UI"/>
 </p>
 
-## Automatic File Copier
-This is a simple program that copies PDF files from one folder to another. The program gathers a list of the PDF files within a defined source folder and copies it into a destination folder. Each file is checked if it already exists in the destination folder.
+## CMM Programs
+- Clutch Hub Copier
+- Duramax Excel Exports
+- Gear From Printer
+- Gleason
