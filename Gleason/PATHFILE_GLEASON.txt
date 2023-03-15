@@ -1,4 +1,0 @@
-DEFAULT_FILE
-C:\Users\Gleason\Desktop\Gleason Data
-SCRAP_FILE
-C:\Users\Gleason\Downloads\Gleason_Python\Scrap
