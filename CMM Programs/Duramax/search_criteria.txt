@@ -1,0 +1,14 @@
+35.4683_Compact*_chr*.txt
+35.4683_Machining*_chr*.txt
+35.4684_Gear*_chr*.txt
+35.4684_Machining*_chr*.txt
+35.4684_Gear_Pro_Sinter*_chr*.txt
+35.4685_Compact*_chr*.txt
+35.4685_Final*_chr*.txt
+35.4685_Machining*_chr*.txt
+35.4685_Sinter*_chr*.txt
+35.4686_Compact*_chr*.txt
+35.4686_Final*_chr*.txt
+35.4686_Machining*_chr*.txt
+35.4686_Sinter*_chr*.txt
+35.7371_Grinding_*_chr*.txt
