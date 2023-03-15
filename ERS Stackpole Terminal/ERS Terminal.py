@@ -1,9 +1,9 @@
-'''
-' Shiv Thakar - Quality Engineer Intern
-' Stackpole International
-' ERS Terminal
-'''
-#!Import Modules--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# *-------------------------------------- Shiv Thakar - Quality Engineer Intern -------------------------------------- #
+# *--------------------------------------------- Stackpole International --------------------------------------------- #
+# *-------------------------------------------------- ERS Terminal --------------------------------------------------- #
+
+# !------------------------------------------------- Import Modules -------------------------------------------------- #
 from os import path,stat,startfile,remove
 from glob import glob
 from tkinter import *
@@ -13,7 +13,7 @@ import subprocess
 from functools import partial 
 from shutil import copy
 
-#!CONSTANT VARIABLES---------------------------------------------------------------------------------------------------------------------------------------------------------------
+# !------------------------------------------------ Define Variables ------------------------------------------------- #
 REPORT_PATH = 'N:\\Quality\\ERS Part Reports\\'             # HARDCODED LOCATION, THIS IS THE PERMANANT LOCATION OF THIS FILE
 SETUP_PATH = 'C:\\Users\\Public\\ERS Stackpole\\setup\\'    # SETUP FOLDER WILL ALWAYS GET CREATED AT THIS LOCATION
 
@@ -28,7 +28,7 @@ SCH_FILE = "N:\\Quality\\Personal Folders for Quality Staff\\Shiv\\ERS_Report_Da
 counter = 0 #* global counter 
 BKGND = "#252525" #dark grey ; better color for UI
 
-#!INITALIZE TK WINDOW---------------------------------------------------------------------------------------------------------------------------------------------------------------
+# !----------------------------------------------- Initalize TK Window ----------------------------------------------- #
 limit_file = open(SETTING_FILE,'r') #open setting file
 read_file = limit_file.read().splitlines()
 VERSION_NUM = read_file[0]        
@@ -43,7 +43,24 @@ WINDOW.resizable(False,False) #lock the size of the window
 
 CURRENT = '' #current time 
 
-#!FUNCTIONS-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# !---------------------------------------------------- Functions ---------------------------------------------------- #
+def update_ersNames():
+
+    file = open(NAME_PATH,'w')
+    
+    folder = glob(REPORT_PATH + "**\\")
+
+    for f in folder:
+        path = f
+        part_info = f.split("\\")[3]
+
+        part_num = part_info.split("_")[0]
+        part_name = part_info.split("_")[1]
+        
+        file.write(path+";"+part_num+";"+part_name+"\n")
+
+    file.close()
+
 def open_folder(folder): #displays the folder using file explorer
     subprocess.Popen(r'explorer /open,'+folder)   
 
@@ -77,7 +94,7 @@ def blankSpace(string,max):
 
     return space
 
-#?Settings Menu---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# ?-------------------------------------------------- Setting Menu --------------------------------------------------- #
 def save_settings(set,w): #saves settings set by user
 
     global history_limit,VERSION_NUM
@@ -117,7 +134,7 @@ def setting_menu(): #settings menu UI
 
     setting_win.mainloop()
 
-#?Search Menu-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# ?--------------------------------------------------- Search Menu --------------------------------------------------- #
 def raw_data_viewer(folder):
     files = glob(folder+"\\*.txt")
     for f in files:
@@ -253,7 +270,7 @@ def search_menu():
 
     w.mainloop()    
 
-#?History Menu----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# ?-------------------------------------------------- History Menu --------------------------------------------------- #
 def getHistory(): #kind of like a refresh button
 
     history_qe = open(HISTORY_PATH,'w')
@@ -517,8 +534,8 @@ def history_menu(): #history menu UI
 
     return 0
 
-#!Main User Interface---------------------------------------------------------------------------------------------------------------------------------------------------------------
-#* Main Menu TKinter Components
+# !----------------------------------------------- Main User Interface ----------------------------------------------- #
+update_ersNames()
 welcome_label = Label(WINDOW,text="Welcome to Enterprise Report Scheduler Quality Dashboard",fg = 'white', background= BKGND, font = 'Arial 14').pack()
 
 ers_cmd = partial(open_folder,REPORT_PATH)
