@@ -41,10 +41,10 @@ def getFile(): #* checks file source for new files; returns filename
         return ""                                               # return blank string
     
     print(file) 
-    time = datetime.timestamp(datetime.now())                   # get the current timestamp
-    rename(file,LITMUS_DRIVE+"FollowUp_"+str(time)+".txt")      # rename the file with the timestamp at the end
+    #time = datetime.timestamp(datetime.now())                   # get the current timestamp
+    #rename(file,LITMUS_DRIVE+"FollowUp.txt")                    # rename the file with the timestamp at the end
 
-    return LITMUS_DRIVE+"FollowUp_"+str(time)+".txt"            # return this new file now
+    return LITMUS_DRIVE+"FollowUp.txt"                          # return this new file now
 # ?------------------------------------------------- Parse Timestamp ------------------------------------------------- #
 def parseTime(file): #* filename parser; returns the timestamp for given file
     
@@ -73,11 +73,11 @@ def movefile(new): #* moves the file to the data folder
     MASTER_time = parseTime(MASTER)                             # get the timestamp for the MASTER file, call parseTime() function
 
     new_file = DATA_FOLDER + path.basename(new)                 # new file needs a new path since it will be moved 
-    move(new,DATA_FOLDER)                                       # move the new file to the data folder
+    copy(new,DATA_FOLDER)                                       # move the new file to the data folder
     copyData(new_file,MASTER)                                   # copy data to master, call copyData() function
     remove(new_file)                                            # remove the file from the directory
 # ?------------------------------------------------- Refresh Master -------------------------------------------------- #
-def refresh(): #* clears the MASTER file every 2 days
+def refresh(): #! UNUSED - clears the MASTER file every 2 days
 
     global MASTER                                               # global MASTER variable
     MASTER = glob(DATA_FOLDER + "MASTER_*.txt")[0]              # use glob to find the text files with the following criteria
@@ -119,39 +119,56 @@ def parseFile():
 
     global MASTER                                                   # call global variable into scope
 
-    MASTER = glob(DATA_FOLDER + "MASTER_*.txt")[0]                  # get the master file
+    #MASTER = glob(DATA_FOLDER + "MASTER_*.txt")[0]                  # get the master file
 
-    m_file = open(MASTER,'r')                                       #
+    FILE = glob(DATA_FOLDER + "FollowUp.txt")
+    m_file = open(FILE[0],'r')                                       #
     m_data = m_file.read().splitlines()
     m_file.close()
 
-
     for i in range(len(m_data)):
-        m_data[i] = m_data[i][1:-2]
+        m_data[i] = m_data[i][1:-1]
+    
 
     data = []
     temp = []
-    actual = []
 
     for m in m_data:
-        temp = m.split(",")
-        
-        actual.append(temp[0].split(":")[1][1:-1])          # report number
-        actual.append(temp[1].split(":")[1][1:-1])          # section
-        actual.append(temp[12].split(":")[1][1:-1])         # person
-        actual.append(temp[4].split(":")[1][1:-1])          # qt
-        actual.append(temp[5].split(":")[1][1:-1])          # description
-        actual.append(temp[8].split(":")[1][1:-1])          # action comments
-        actual.append(temp[10].split(":")[1][1:-1])         # comments
+        temp = m.replace(",\"","|\"")
+        temp = temp.split("|")
+
+        actual = []
+        if("Specific Requests" in temp[1] or "Critical Calls" in temp[1]):
+            actual.append(temp[0].split(":")[1][1:-1])          # report number
+            actual.append(temp[1].split(":")[1][1:-1])          # section
+            actual.append(temp[11].split(":")[1][1:-1])         # person
+            actual.append(temp[4].split(":")[1][1:-1])          # qt
+            actual.append(temp[5].split(":")[1][1:-1])          # description
+            actual.append(temp[8].split(":")[1][1:-1])          # action comments
+            actual.append(temp[10].split(":")[1][1:-1])         # comments
+        elif("Bypass List" in temp[1]):
+            actual.append(temp[0].split(":")[1][1:-1])          # report number
+            actual.append(temp[1].split(":")[1][1:-1])          # section
+            actual.append(temp[11].split(":")[1][1:-1])         # person
+            actual.append(temp[4].split(":")[1][1:-1])          # qt
+
+            process = temp[6].split(":")[1][1:-1]
+            part = temp[8].split(":")[1][1:-1]
+
+            if("\"" in temp[6].split(":")[1][1:-1]):
+                process_format = process.replace("\"","")
+                actual.append(process_format + " - " + part)
+
+            actual.append(temp[9].split(":")[1][1:-1])          
+            actual.append(temp[10].split(":")[1][1:-1])         # comments
 
         data.append(actual)
-
+        
     write_excel(data)    
 # ?------------------------------------------------ Write Excel File ------------------------------------------------- #
 def write_excel(data):
-
     global DATA_FOLDER, XLSX_FILE
-
+    print("writing excel")
     while(True):
         try:
             read_template = pd.read_excel(DATA_FOLDER + XLSX_FILE, engine='openpyxl')
@@ -187,10 +204,10 @@ def write_excel(data):
                 pass
     
     for row in ws.iter_rows():
+
         for cell in row:
             cell.alignment = cell.alignment.copy(wrapText=True)
             cell.alignment = cell.alignment.copy(vertical='center')
-
 
     while(True):
         try:
@@ -202,12 +219,20 @@ def write_excel(data):
 # !                                                   Function Call                                                    #
 # !------------------------------------------------------------------------------------------------------------------- #
 while(True): #* run infinitely
-    refresh()                                                    # refresh  the file if need be
-    file = getFile()                                             # check for new files
-
+    #file = getFile()                                             # check for new files
+    file = DATA_FOLDER + "FollowUp.txt"
     if(file == ""):                                              # if no files found; continue
         continue                                                 # skip to next iteration
     else:                                                        # if new file is found
-        movefile(file)                                           # call movefile function
+        print("File Found - "+file)
+        #movefile(file)                                           # call movefile function
+        #move(file,DATA_FOLDER)
+        print("parsing file")
+        parseFile()
+        #remove(DATA_FOLDER + "FollowUp.txt")
+        break
+        """ new_file = open(LITMUS_DRIVE + "FollowUp.txt","w")
+        new_file.close() """
+        
 
-    parseFile()
+    

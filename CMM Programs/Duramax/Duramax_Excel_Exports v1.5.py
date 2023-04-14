@@ -172,7 +172,7 @@ def reportGenerator(source_file, template_file): #* Awesome Gear Pro function
     print("REPORT ARCHIVED TO ArchivedReports Folder")
 
     printFlag = 0
-    return
+
 
     return
 # ?--------------------------------------------------- Set Process --------------------------------------------------- #
