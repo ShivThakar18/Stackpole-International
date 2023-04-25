@@ -6,7 +6,7 @@
 # !------------------------------------------------------------------------------------------------------------------- #
 # !                                               Import Python Modules                                                #
 # !------------------------------------------------------------------------------------------------------------------- #
-from os import path, rename
+from os import path, rename,stat
 from glob import glob
 from tkinter import *
 import tkinter.messagebox
@@ -34,7 +34,12 @@ def parseFile(FILE):
 
     m_file = open(FILE,'r')                                       #
     m_data = m_file.read().splitlines()
+    length = len(m_data)
     m_file.close()
+
+    if(stat(FILE).st_size == 0):
+        print("File Empty")
+        return
 
     for i in range(len(m_data)):
         m_data[i] = m_data[i][1:-1]
@@ -73,8 +78,9 @@ def parseFile(FILE):
 
             if("\"" in temp[6].split(":")[1][1:-1]):
                 process_format = process.replace("\",\""," \\ ")
-                process_format = process.replace("\"","")
-                process_format = process.replace("]","")
+                process_format = process_format.replace("\"\"",", ")
+                process_format = process_format.replace("\"","")
+                process_format = process_format.replace("]","")
                 actual.append(process_format + " - " + part)
 
             actual.append(temp[9 + x].split(":")[1][1:-1])          
@@ -82,7 +88,9 @@ def parseFile(FILE):
 
         data.append(actual)
         
-    write_excel(data)    
+    write_excel(data)  
+    txt = open(FILE_LOC + "FollowUp.txt",'w')
+    txt.close() 
 # ?------------------------------------------------ Write Excel File ------------------------------------------------- #
 def write_excel(data):
     global DATA_FOLDER, XLSX_FILE
@@ -143,17 +151,16 @@ while(True):
         print("File Found - "+file)             
         print("Parsing File")
         parseFile(file)                                            # call parsefile function
-        txt = open(FILE_LOC + "FollowUp.txt",'w')
-        txt.close()
+
         print("Done Update")
         break
     except:
         print(Exception)
-        sleep(5)
+        sleep(10)
 
         timeout = timeout + 1
 
-        if(timeout == 5):
+        if(timeout == 6):
             print("Error - Timed Out")
             break
         else:
