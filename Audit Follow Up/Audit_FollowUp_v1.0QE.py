@@ -99,52 +99,50 @@ def parseFile(FILE):
 # ?------------------------------------------------ Write Excel File ------------------------------------------------- #
 def write_excel(data):
     global DATA_FOLDER, XLSX_FILE
-    print("writing excel")
+    print("# ----------------------------------------- Writing Excel ---------------------------------------- #")
     while(True):
         try:
-            read_template = pd.read_excel(DATA_FOLDER + XLSX_FILE, engine='openpyxl')
-            wb = load_workbook(DATA_FOLDER + XLSX_FILE)
-            ws = wb.active
-            next_row = ws.max_row + 1
-            break
+            read_template = pd.read_excel(DATA_FOLDER + XLSX_FILE, engine='openpyxl') # open the template as pandas dataframe
+            wb = load_workbook(DATA_FOLDER + XLSX_FILE)                               # load the workbook
+            ws = wb.active                                                            # get the last active row
+            next_row = ws.max_row + 1                                                 # get the next blank row after active row
+            break                                                                     # break to rest of program once workbook is available
         except PermissionError:
-            print("Permission Error")
-            continue       
-            sleep(10)
+            print("# --- Permission Error: Waiting for file to be accessible")
+            continue                                                                  # keep trying to open workbook until available
 
-    for d in data: 
-
-        read_template.at[next_row,'Unnamed: 0'] = d[0]
-        read_template.at[next_row,'Unnamed: 1'] = d[1]
-        read_template.at[next_row,'Unnamed: 2'] = d[2]
-        read_template.at[next_row,'Daily Quality Audit Follow Up List'] = d[3]
-        read_template.at[next_row,'Unnamed: 4'] = d[4]
-        read_template.at[next_row,'Unnamed: 5'] = d[5]
+    for d in data:      # iterate through data list (list of lists)
+        read_template.at[next_row,'Unnamed: 0'] = d[0]                          # Report Num
+        read_template.at[next_row,'Unnamed: 1'] = d[1]                          # Section
+        read_template.at[next_row,'Unnamed: 2'] = d[2]                          # Follow Up Person
+        read_template.at[next_row,'Daily Quality Audit Follow Up List'] = d[3]  # Quality Tech
+        read_template.at[next_row,'Unnamed: 4'] = d[4]                          # Description
+        read_template.at[next_row,'Unnamed: 5'] = d[5]                          # Action Taken
         read_template.at[next_row,'http://pmdadashboard/d/DluY5Ph4z/daily-shift-quality-audit-report?orgId=1&var-QA_ReportNo=All&from=now%2Fy&to=now%2Fy'] = d[6]
-        read_template.at[next_row,'Unnamed: 7'] = 'N'
+                                                                                # Follow Up Comments
+        read_template.at[next_row,'Unnamed: 7'] = 'N'                           # Completed? 
         
-        next_row = next_row + 1
+        next_row = next_row + 1                                                 # increment row, to write on next row
     
-    df_columns = read_template.shape[1]
+    df_columns = read_template.shape[1]                                         # get columns                                                                               
 
-    for r, row in enumerate(dataframe_to_rows(read_template,index=False, header=False),2):
+    for r, row in enumerate(dataframe_to_rows(read_template,index=False, header=False),2):     # write to each points from dataframe to cells in excel
         for c in range(0,df_columns):
             try:
                 ws.cell(row = r, column= c + 1).value = row[c]
             except AttributeError:
                 pass
     
-    for row in ws.iter_rows():
-
+    for row in ws.iter_rows():         # apply formatting to each cell                                     
         for cell in row:
-            cell.alignment = cell.alignment.copy(wrapText=True)
-            cell.alignment = cell.alignment.copy(vertical='center')
+            cell.alignment = cell.alignment.copy(wrapText=True)         # apply text wrapping
+            cell.alignment = cell.alignment.copy(vertical='center')     # apply vertical center
 
     while(True):
         try:
-            wb.save(DATA_FOLDER + XLSX_FILE)
+            wb.save(DATA_FOLDER + XLSX_FILE)                            # save the file
             break
-        except PermissionError:
+        except PermissionError:                                         # keep trying until saving is possible
             continue
 # !------------------------------------------------------------------------------------------------------------------- #
 # !                                                   Function Call                                                    #
@@ -153,20 +151,17 @@ timeout = 0
 while(True):
     try:    
         file = glob(FILE_LOC + "*.txt")[0]                         # search for file
-        print("File Found - "+file)             
-        print("Parsing File")
+        print("# ------------------------------------------ File Found ------------------------------------------ #")         
+        print("# --- Parsing File")
         parseFile(file)                                            # call parsefile function
-
-        print("Done Update")
-        break
-    except:
-        print(Exception)
+        print("# --- Update Complete")
+        break                                                      # if excel file was done and saved
+    except:                     
+        print("# ---" + str(Exception))
         sleep(10)
-
         timeout = timeout + 1
-
         if(timeout == 6):
-            print("Error - Timed Out")
-            break
+            print("# ---------------------------------------- Time Out Error ---------------------------------------- #")
+            break                                                  # program will timeout after 60 
         else:
             pass 
