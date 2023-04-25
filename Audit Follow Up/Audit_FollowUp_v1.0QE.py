@@ -32,69 +32,66 @@ XLSX_FILE = "Audit Follow Up List.xlsx"
 # ?------------------------------------------------ Parse and Extract ------------------------------------------------ #
 def parseFile(FILE):
 
-    m_file = open(FILE,'r')                                       #
-    m_data = m_file.read().splitlines()
-    length = len(m_data)
-    m_file.close()
+    m_file = open(FILE,'r')                                       # open FollowUp.txt file for reading
+    m_data = m_file.read().splitlines()                           # read file
+    m_file.close()                                                # close file
 
-    if(stat(FILE).st_size == 0):
-        print("File Empty")
-        return
+    if(stat(FILE).st_size == 0):                                  # check if file is empty
+        print("# --- File Empty")
+        return                                                    # return and end the program
 
-    for i in range(len(m_data)):
-        m_data[i] = m_data[i][1:-1]
+    for i in range(len(m_data)):                                  # iterate through each line
+        m_data[i] = m_data[i][1:-1]                               # remove {} from string
     
     data = []
     temp = []
 
-    for m in m_data:
-        temp = m.replace(",\"","|\"")
-        temp = temp.split("|")
+    for m in m_data:                                              # iterate through m_data
+        temp = m.replace(",\"","|\"")                             # replace all ," with |"
+        temp = temp.split("|")                                    # split using |
 
-        i = 0
-        for t in temp:
-            print(str(i)+"  "+t)
-            i = i + 1
+        actual = []                                 
+        x = 0                                                       
 
-        actual = []
-        x = 0
-        if("Specific Requests" in temp[1] or "Critical Calls" in temp[1]):
-            actual.append(temp[0].split(":")[1][1:-1])          # report number
-            actual.append(temp[1].split(":")[1][1:-1])          # section
-            actual.append(temp[11].split(":")[1][1:-1])         # person
-            actual.append(temp[4].split(":")[1][1:-1])          # qt
-            actual.append(temp[5].split(":")[1][1:-1])          # description
-            actual.append(temp[8].split(":")[1][1:-1])          # action comments
-            actual.append(temp[10].split(":")[1][1:-1])         # comments
-        elif("Bypass List" in temp[1]):
-            actual.append(temp[0].split(":")[1][1:-1])          # report number
-            actual.append(temp[1].split(":")[1][1:-1])          # section
+        if("Specific Requests" in temp[1] or "Critical Calls" in temp[1]):  # if the section is SR or CC
+            actual.append(temp[0].split(":")[1][1:-1])          # Report Number
+            actual.append(temp[1].split(":")[1][1:-1])          # Section
+            actual.append(temp[11].split(":")[1][1:-1])         # Person
+            actual.append(temp[4].split(":")[1][1:-1])          # Quality Tech
+            actual.append(temp[5].split(":")[1][1:-1])          # Description
+            actual.append(temp[8].split(":")[1][1:-1])          # Action Comments
+            actual.append(temp[10].split(":")[1][1:-1])         # Comments
+
+        elif("Bypass List" in temp[1]):                         # if the section is BL or Other NDT Cells
+            actual.append(temp[0].split(":")[1][1:-1])          # Report Number
+            actual.append(temp[1].split(":")[1][1:-1])          # Section
             
-            process = temp[6].split(":")[1][1:-1]
+            process = temp[6].split(":")[1][1:-1]               # extract process
 
-            for t in temp: 
-                if(':' not in t):
-                    x = x + 1
-                    process = process + t 
+            for t in temp:                                      # iterate through all the elements
+                if(':' not in t):                               # find rows without ":"
+                    x = x + 1                                   # increment index variable x
+                    process = process + t                       # concatenate string
             
-            actual.append(temp[11 + x].split(":")[1][1:-1])         # person
-            actual.append(temp[4].split(":")[1][1:-1])          # qt
+            actual.append(temp[11 + x].split(":")[1][1:-1])         # Person
+            actual.append(temp[4].split(":")[1][1:-1])              # Quality Tech
 
-            part = temp[8 + x].split(":")[1][1:-1]               
-            if("\"" in temp[6].split(":")[1][1:-1]):
-                process_format = process.replace("\",\""," \\ ")
-                process_format = process_format.replace("\"\"",", ")
-                process_format = process_format.replace("\""," ")
-                process_format = process_format.replace("]","")
-                process_format = process_format.replace(" ", "",1)
-                actual.append(process_format + " - " + part)        # description
-            actual.append(temp[9 + x].split(":")[1][1:-1])          
-            actual.append(temp[10 + x].split(":")[1][1:-1])         # comments
+            part = temp[8 + x].split(":")[1][1:-1]                  # extract part
 
-        data.append(actual)
+            if("\"" in temp[6].split(":")[1][1:-1]):                    # if " is in the process string
+                process_format = process.replace("\",\""," \\ ")        # replace "," with \
+                process_format = process_format.replace("\"\"",", ")    # replace "" with space
+                process_format = process_format.replace("\""," ")       # replace " with space
+                process_format = process_format.replace("]","")         # replace ] with blank
+                process_format = process_format.replace(" ", "",1)      # replace the first space with blank
+                actual.append(process_format + " - " + part)        # Description
+            actual.append(temp[9 + x].split(":")[1][1:-1])          # Action
+            actual.append(temp[10 + x].split(":")[1][1:-1])         # Comments
+
+        data.append(actual)                                         # append to list
         
-    write_excel(data)  
-    txt = open(FILE_LOC + "FollowUp.txt",'w')
+    write_excel(data)                                               # call write excel
+    txt = open(FILE_LOC + "FollowUp.txt",'w')                       # rewrite as blank file
     txt.close() 
 # ?------------------------------------------------ Write Excel File ------------------------------------------------- #
 def write_excel(data):
