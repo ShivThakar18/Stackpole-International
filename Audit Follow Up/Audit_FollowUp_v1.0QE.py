@@ -51,6 +51,11 @@ def parseFile(FILE):
         temp = m.replace(",\"","|\"")
         temp = temp.split("|")
 
+        i = 0
+        for t in temp:
+            print(str(i)+"  "+t)
+            i = i + 1
+
         actual = []
         x = 0
         if("Specific Requests" in temp[1] or "Critical Calls" in temp[1]):
@@ -62,27 +67,27 @@ def parseFile(FILE):
             actual.append(temp[8].split(":")[1][1:-1])          # action comments
             actual.append(temp[10].split(":")[1][1:-1])         # comments
         elif("Bypass List" in temp[1]):
-            
             actual.append(temp[0].split(":")[1][1:-1])          # report number
             actual.append(temp[1].split(":")[1][1:-1])          # section
-            actual.append(temp[11].split(":")[1][1:-1])         # person
-            actual.append(temp[4].split(":")[1][1:-1])          # qt
+            
             process = temp[6].split(":")[1][1:-1]
 
             for t in temp: 
                 if(':' not in t):
                     x = x + 1
                     process = process + t 
+            
+            actual.append(temp[11 + x].split(":")[1][1:-1])         # person
+            actual.append(temp[4].split(":")[1][1:-1])          # qt
 
             part = temp[8 + x].split(":")[1][1:-1]               
-
             if("\"" in temp[6].split(":")[1][1:-1]):
                 process_format = process.replace("\",\""," \\ ")
                 process_format = process_format.replace("\"\"",", ")
-                process_format = process_format.replace("\"","")
+                process_format = process_format.replace("\""," ")
                 process_format = process_format.replace("]","")
-                actual.append(process_format + " - " + part)
-
+                process_format = process_format.replace(" ", "",1)
+                actual.append(process_format + " - " + part)        # description
             actual.append(temp[9 + x].split(":")[1][1:-1])          
             actual.append(temp[10 + x].split(":")[1][1:-1])         # comments
 
@@ -115,7 +120,7 @@ def write_excel(data):
         read_template.at[next_row,'Daily Quality Audit Follow Up List'] = d[3]
         read_template.at[next_row,'Unnamed: 4'] = d[4]
         read_template.at[next_row,'Unnamed: 5'] = d[5]
-        read_template.at[next_row,'Unnamed: 6'] = d[6]
+        read_template.at[next_row,'http://pmdadashboard/d/DluY5Ph4z/daily-shift-quality-audit-report?orgId=1&var-QA_ReportNo=All&from=now%2Fy&to=now%2Fy'] = d[6]
         read_template.at[next_row,'Unnamed: 7'] = 'N'
         
         next_row = next_row + 1
