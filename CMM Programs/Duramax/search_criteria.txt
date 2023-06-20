@@ -1,5 +1,6 @@
 35.4683_Compact*_chr*.txt
 35.4683_Machining*_chr*.txt
+35.4683_Sinter_Gear_Form*_chr*.txt
 35.4684_Gear*_chr*.txt
 35.4684_Machining*_chr*.txt
 35.4684_Gear_Pro_Sinter*_chr*.txt

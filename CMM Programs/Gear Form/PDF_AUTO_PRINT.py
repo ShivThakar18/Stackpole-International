@@ -4,6 +4,8 @@ from os import path,system
 from datetime import datetime
 from time import sleep
 from subprocess import Popen
+from printfactory import *
+import pathlib
 #Configuration-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 PDF_LOCATION = "C:\\Program Files (x86)\\Zeiss\\GearNT\\PDF" #set as location of pdf 
 PDF_VIEWER = 'C:\\Program Files\\Adobe\\Acrobat DC\\Acrobat\\Acrobat.exe'
@@ -35,15 +37,21 @@ while(True):
         print("\nLATEST FILE FOUND ---- "+newest_file)
         print("----DATE MODIFIED ---- "+date_modified)
       
-        # {0} Acrobat Location {1} File Location. Last "" means it will print to default printer  
-        cmd = '{0} /N /T "{1}" ""'.format(PDF_VIEWER,newest_file)
+        printer = Printer()
+        print_tool = AdobeAcrobat(printer,pathlib.Path("C:\\Program Files\\Adobe\\Acrobat DC\\Acrobat\\Acrobat.exe"))
+
         print("\n----PRINTING IN PROGRESS")
         
-        Popen(cmd) # run subprocess
-        
-        sleep(10) # sleep 
-        system("TASKKILL /F /IM Acrobat.exe") # END Acrobat from Task Manager
-        
+
+
+        try:
+            sleep(5)
+            print_tool.print_file(pathlib.Path(newest_file))
+            sleep(10) # sleep 
+            system("TASKKILL /F /IM Acrobat.exe") # END Acrobat from Task Manager
+        except:
+            pass
+
         print("----REPORT PRINTED")
         print("\n------------------------------------------------------------------------")
         

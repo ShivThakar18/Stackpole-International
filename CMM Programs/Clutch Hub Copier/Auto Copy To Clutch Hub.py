@@ -1,11 +1,11 @@
 #Import Required Python Modules----------------------------------------------------------------------------------------------------------------------------------------------------
 from glob import glob 
-from shutil import copy,move
-from os import path,rename
-from time import localtime, strftime
+from shutil import copy
+from os import path
 #!File Paths-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 SRC = "C:\\Users\\PRISMO1\\Downloads" #? Prismo1 PC Directory - All Equator Reports saved here
 GF9_PATH = "N:\\GF9 Clutch Hub\\Flatness Scans" #? Copy these files to network drive for easy access 
+
 #!Exists Function------------------------------------------------------------------------------------------------------------------------------------------------------------------
 def exists(filepath): #* functions checks if the file already exists in the destination folder ~ GF9_PATH
     global GF9_PATH
@@ -28,8 +28,8 @@ def equator_copyPDF():
         for pdf in pdf_files: #iterate through all files in source folder
 
             check = exists(pdf)
-
-            if(check == 0): #call exists() function to check if the file has already been copied    
+            
+            if(check == 0): #call exists() function to check if the file has already been copied
                 continue #if it exists, go to next file
             
             else:

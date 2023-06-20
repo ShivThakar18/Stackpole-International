@@ -1,0 +1,5 @@
+ZEISS
+C:\Users\Public\Documents\Zeiss\CALYPSO\workarea\results\
+QCCALC
+C:\Program Files (x86)\Zeiss\GearNT\Reporting\
+

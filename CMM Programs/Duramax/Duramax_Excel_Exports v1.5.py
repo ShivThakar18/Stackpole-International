@@ -28,89 +28,90 @@ TEMPLATE_PATH = DEFAULT_PATH + "Templates\\"                                # Te
 
 ARCHIVE_PATH = DEFAULT_PATH+ "Archived Excel Exports\\"                     # Archived Path
 
-# ------------------------------------------ Temporary Variables for TESTING ----------------------------------------- #
+
 """ DEFAULT_PATH = "C:\\Users\\vrerecich\\Desktop\\Duramax_Files\\"
 ZEISS_PATH = DEFAULT_PATH + "Dropbox\\"
 QCCALC_PATH = DEFAULT_PATH + "Dropbox\\"
 TEMPLATE_PATH = DEFAULT_PATH + "Templates\\"
 ARCHIVE_PATH = DEFAULT_PATH + "Excel_Export\\" """
-# -------------------------------------------------------------------------------------------------------------------- #
-LITMUS_PATH = "L:\\ShivDataOutput\\Duramax\\"                               # node red data folder
-EMAIL_PATH = "C:\\Job\\Python\\Email Archive\\"                             # email text file location
+
+LITMUS_PATH = "L:\\ShivDataOutput\\Duramax\\"
+EMAIL_PATH = "C:\\Job\\Python\\Email Archive\\"
 printFlag = 0                                                               # While loop print flag
 # !------------------------------------------------------------------------------------------------------------------- #
 # !                                                     Functions                                                      #
 # !------------------------------------------------------------------------------------------------------------------- #
 # ?------------------------------------------------ Report Generator ------------------------------------------------- #
 def reportGenerator(source_file, template_file): #* Awesome Gear Pro function 
-    
-    global printFlag                                                        # global printFlag variable
+    global printFlag
 
-    SOURCE = read_table(source_file, sep='\t')                              # SOURCE pandas dataframe from a table
-                                                                            # used to parse source/chr file, 
-                                                                            # use tabspace as delimiter
-
-    PARTNB = SOURCE.get("partnb")[1]                                        # get second ([1]) element in "partnb" column
-    PROGRAM_NAME = SOURCE.get("planid")[1]                                  # get second ([1]) element in "planid" column
+    SOURCE = read_table(source_file, sep='\t')
+    PARTNB = SOURCE.get("partnb")[1]
+    PROGRAM_NAME = SOURCE.get("planid")[1]
 
     print(PARTNB)
     print(PROGRAM_NAME)
 
-    TEMPLATE = read_csv(template_file)                                      # TEMPLATE pandas dataframe from a csv
-    NUM_OF_ROW = TEMPLATE.shape[0]                                          # get the number of rows from the template
+    TEMPLATE = read_csv(template_file)
+    NUM_OF_ROW = TEMPLATE.shape[0]
     
-    def cal_value(func_name, arg_list): # reads the actual value from the SOURCE text file at each of the line numbers given
-                                        # by the arg_list, calculate and return the result based on func_name
+    def cal_value(func_name, arg_list):
+        """
+        cal_value reads the actual value from the SOURCE text file at each of the line numbers
+        given by arg_list, calculate and return the calculated result based on the func_name;
+        """
         result = 0
-        arg_val = [SOURCE.at[i, 'actual'] for i in arg_list]                # get the actual values from the source file using the arg_list indicies
-                                                                            # for example; [3,6,9], get actual values from rows 3,6,9 and save as list
+        arg_val = [SOURCE.at[i, 'actual'] for i in arg_list]
+        if func_name == "AVERAGE":
+            result = sum(arg_val) / len(arg_val)
+        if func_name == "EQUAL":
+            result = sum(arg_val)
+        if func_name == "MIN":
+            result = min(arg_val)
+        if func_name == "MAX":
+            result = max(arg_val)
 
-        if func_name == "AVERAGE":                                          # if the function is AVERAGE
-            result = sum(arg_val) / len(arg_val)                            # take the sum of the value list divided by the length
+        return round(result, 4)
 
-        if func_name == "EQUAL":                                            # if the function is EQUAL
-            result = sum(arg_val)                                           # sum the values in the list
-
-        if func_name == "MIN":                                              # if the function is MIN
-            result = min(arg_val)                                           # get the min value of the list
-
-        if func_name == "MAX":                                              # if the function is MAX
-            result = max(arg_val)                                           # get the max value from the list
-
-        return round(result, 4)                                             # round result to 4 decimal places
-
-    def cal_status(actual_value, usl=100, lsl=-100): # return "NOT OK" if actual value is out of the limits (USL,LSL)
+    def cal_status(actual_value, usl=100, lsl=-100):
+        """
+        cal_status return "NOT OK" if actual_value is out side of usl and lsl;
+        """
         status = ""
-        if actual_value > usl or actual_value < lsl:                        # if the value is outside of the limits
-            status = "NOT OK"                                               # return NOT OK, if not return blank 
-        return status                                   
+        if actual_value > usl or actual_value < lsl:
+            status = "NOT OK"
+        return status   
 
     Dimension = make_dataclass("Dimension",
                             [("Label", str), ("Description", str), ("USL", str), ("LSL", str), ("Actual", float),
-                                ("Status", str)])                           # create a datackass
+                                ("Status", str)])
     dim_list = []
     out_of_tolerance_list=[]
 
-    for r in range(NUM_OF_ROW):                                             # iterate through all row of the template
-        argument = TEMPLATE.loc[r, 'Argument']                              # extract arguments
-        upper_limit = TEMPLATE.loc[r, 'USL']                                # extract upper-sided limit
-        lower_limit = TEMPLATE.loc[r, 'LSL']                                # extract lower-sided limit
-        function_name = TEMPLATE.loc[r, 'Function']                         # extract function
-        argument_list = list(map(int, argument.split("-")))                 # split the arguments, cast to int, and make a list
-        value = cal_value(function_name, argument_list)                     # get the calculated value
-        status = cal_status(value, upper_limit, lower_limit)                # OK\NOT OK
+
+    if('7371' in source_file and NUM_OF_ROW != 50):
+        NUM_OF_ROW = 50
+
+    for r in range(NUM_OF_ROW):
+        argument = TEMPLATE.loc[r, 'Argument']
+        upper_limit = TEMPLATE.loc[r, 'USL']
+        lower_limit = TEMPLATE.loc[r, 'LSL']
+        function_name = TEMPLATE.loc[r, 'Function']
+        argument_list = list(map(int, argument.split("-")))
+        value = cal_value(function_name, argument_list)
+        status = cal_status(value, upper_limit, lower_limit)
         
         # build a dimension class
-        Label = TEMPLATE.loc[r, 'Label']                                    # place extracted values into the template
+        Label = TEMPLATE.loc[r, 'Label']
         Description = TEMPLATE.loc[r, 'Description']
         USL = TEMPLATE.loc[r, 'USL']
         LSL = TEMPLATE.loc[r, 'LSL']
         Actual = value
         Status = status
-        d = Dimension(Label, Description, USL, LSL, Actual, Status)         # make dimension class
-        dim_list.append(d)  
+        d = Dimension(Label, Description, USL, LSL, Actual, Status)
+        dim_list.append(d)
 
-        if Status=="NOT OK":                                                # if the status is not OK
+        if Status=="NOT OK":
             out_of_tolerance_list.append(r)
         
     result = DataFrame(dim_list)
@@ -172,7 +173,7 @@ def reportGenerator(source_file, template_file): #* Awesome Gear Pro function
     print("REPORT ARCHIVED TO ArchivedReports Folder")
 
     printFlag = 0
-
+    return
 
     return
 # ?--------------------------------------------------- Set Process --------------------------------------------------- #
@@ -198,7 +199,7 @@ def setTemplate(name): #* sets the process from basename
         p[1] = 'Final'
     elif('Sinter' in name):
         p[1] = 'Sinter'
-    elif('Grinding' in name):
+    elif('Grinding' in name and 'NCR' not in name):
         p[1] = 'Grinding'
     elif('NCR' in name):
         p[1] = 'NCR'
@@ -255,21 +256,8 @@ def getFiles(): #* will save the template file location and the chr file
 
     try:
         reportGenerator(SOURCE_FILE,TEMPLATE_FILE)                          # pass source and template to the reportGenerator
-
     except:
-        time = (datetime.now()).strftime("%m-%d-%Y_%H_%M_%S")
-        subject = "Duramax Exception Raised - "+time
-        message = "Exception raised at Duramax Excel Exporting Program\nSource File - "+SOURCE_FILE+"\nTemplate File - "+TEMPLATE_FILE
-        
-        text = open(EMAIL_PATH+'email_exception_'+time+'.txt','w')
-        text.write(subject+"\n"+message)
-        text.close()
-        sleep(5)
-        copy(EMAIL_PATH+'email_exception_'+time+'.txt',LITMUS_PATH)
-
-        print(subject)
-        print(message)
-        printFlag = 0
+        return
 
     #*write chr file to cache text file
     cache_file = open(DEFAULT_PATH+"cache.txt","w")                         # open cache file for writing
