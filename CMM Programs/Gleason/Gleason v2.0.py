@@ -1,15 +1,17 @@
 
 #! ------------------------------------------------- Import Libraries ------------------------------------------------- #
 from glob import glob
-from shutil import move
-from os import path, startfile
+from shutil import move,copy
+from os import path, startfile,rename
 import pandas as pd
 import pandas.io.formats.excel
 from time import sleep
+from datetime import datetime
 pandas.io.formats.excel.ExcelFormatter.header_style = None
 
 #! ------------------------------------------------- Global Variables ------------------------------------------------- #
 PATHFILE = open("C:\\Users\\Gleason\\Downloads\\Gleason_Python\\PATHFILE_GLEASON.txt","r")      # read file that contains filepaths
+ARCHIVE = "C:\\Users\\Gleason\\Documents\\Gleason Archive\\"
 DIRECTORY = PATHFILE.read().splitlines()                                                        # save each line from the text file to variable
 
 DEFAULT_PATH = DIRECTORY[1]         # default directory 
@@ -21,6 +23,8 @@ def csv2xlsx(file):
     
     data_new = data.iloc[[3,4,6,9,15,21,26,42]]         # extract specific rows from
                 # RowNums 4,5,7,10,16,22,27,43
+    partNum = data.iloc[7]
+
     data_new.index.values[0] = 'Date'                                                       # Row 04 of CSV, Row 1 of XLSX
     data_new.index.values[1] = 'Time'                                                       # Row 05 of CSV, Row 2 of XLSX
     data_new.index.values[2] = 'Part Number'                                                # Row 07 of CSV, Row 3 of XLSX
@@ -44,8 +48,13 @@ def csv2xlsx(file):
     worksheet.set_column(1,1,25,data_format)
 
     writer.save() # save file
+
+    name = partNum + datetime.now().strftime("%m_%d_%Y_%H_%M_%S") + ".xlsx"
+
     sleep(2)
-    startfile(XLSX_DIR, "print") # print to default printer
+    rename(XLSX_DIR,SCRAP_PATH+"\\"+name)
+    startfile(SCRAP_PATH+"\\"+name, "print") # print to default printer
+    move(SCRAP_PATH+"\\"+name,ARCHIVE)
     sleep(5)
 #! --------------------------------------------------- Function Call -------------------------------------------------- #
 while(True):
