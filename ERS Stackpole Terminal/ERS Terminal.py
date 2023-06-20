@@ -37,7 +37,7 @@ limit_file.close()
 
 WINDOW = Tk() #main tk window
 WINDOW.title("Enterprise Report Scheduler - Stackpole Terminal "+VERSION_NUM) #window title
-WINDOW.geometry("550x300") #set dimensions in pixels
+WINDOW.geometry("550x350") #set dimensions in pixels
 WINDOW.configure(bg = BKGND) #background black 
 WINDOW.resizable(False,False) #lock the size of the window
 
