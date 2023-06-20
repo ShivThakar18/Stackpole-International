@@ -49,11 +49,26 @@ def parseFile(FILE):
     for m in m_data:                                              # iterate through m_data
         temp = m.replace(",\"","|\"")                             # replace all ," with |"
         temp = temp.split("|")                                    # split using |
-
+        print(temp)
         actual = []                                 
         x = 0                                                       
 
         if("Specific Requests" in temp[1] or "Critical Calls" in temp[1]):  # if the section is SR or CC
+            date = temp[3].split(":")[1]
+            date_time = datetime.fromtimestamp(date/1000)
+            date_str = date_time.strftime("%d-%m-%Y")
+
+            actual.append(date_str)                             # date
+
+            shift = temp[2].split(":")[1]
+            if(temp == '1'):
+                shift = 'Day'
+            elif(temp == '2'):
+                shift = 'Afternoon'
+            elif(temp == '3'):
+                shift = 'Night'
+            actual.append(shift)                                # Shift
+
             actual.append(temp[0].split(":")[1][1:-1])          # Report Number
             actual.append(temp[1].split(":")[1][1:-1])          # Section
             actual.append(temp[11].split(":")[1][1:-1])         # Person
@@ -63,6 +78,24 @@ def parseFile(FILE):
             actual.append(temp[10].split(":")[1][1:-1])         # Comments
 
         elif("Bypass List" in temp[1]):                         # if the section is BL or Other NDT Cells
+            
+            date = temp[3].split(":")[1]
+            date_time = datetime.fromtimestamp(float(date)/1000)
+            date_str = date_time.strftime("%d-%m-%Y")
+
+            actual.append(date_str)                             # date
+
+            shift = temp[2].split(":")[1]
+
+            if(shift == '1'):
+                shift = 'Day'
+            elif(shift == '2'):
+                shift = 'Afternoon'
+            elif(shift == '3'):
+                shift = 'Night'
+            
+            actual.append(shift)                                # Shift
+
             actual.append(temp[0].split(":")[1][1:-1])          # Report Number
             actual.append(temp[1].split(":")[1][1:-1])          # Section
             
@@ -91,8 +124,8 @@ def parseFile(FILE):
         data.append(actual)                                         # append to list
         
     write_excel(data)                                               # call write excel
-    txt = open(FILE_LOC + "FollowUp.txt",'w')                       # rewrite as blank file
-    txt.close() 
+    """ txt = open(FILE_LOC + "FollowUp.txt",'w')                       # rewrite as blank file
+    txt.close()  """
 # ?------------------------------------------------ Write Excel File ------------------------------------------------- #
 def write_excel(data):
     global DATA_FOLDER, XLSX_FILE
@@ -109,15 +142,17 @@ def write_excel(data):
             continue                                                                  # keep trying to open workbook until available
 
     for d in data:      # iterate through data list (list of lists)
-        read_template.at[next_row,'Unnamed: 0'] = d[0]                          # Report Num
-        read_template.at[next_row,'Unnamed: 1'] = d[1]                          # Section
-        read_template.at[next_row,'Unnamed: 2'] = d[2]                          # Follow Up Person
-        read_template.at[next_row,'Daily Quality Audit Follow Up List'] = d[3]  # Quality Tech
-        read_template.at[next_row,'Unnamed: 4'] = d[4]                          # Description
-        read_template.at[next_row,'Unnamed: 5'] = d[5]                          # Action Taken
-        read_template.at[next_row,'http://pmdadashboard/d/DluY5Ph4z/daily-shift-quality-audit-report?orgId=1&var-QA_ReportNo=All&from=now%2Fy&to=now%2Fy'] = d[6]
+        read_template.at[next_row,'Unnamed: 0'] = d[0]                          # Date
+        read_template.at[next_row,'Unnamed: 1'] = d[1]                          # Shift
+        read_template.at[next_row,'Unnamed: 2'] = d[2]                          # Report Num
+        read_template.at[next_row,'Unnamed: 3'] = d[3]                          # Section
+        read_template.at[next_row,'Unnamed: 4'] = d[4]                          # Follow Up Person
+        read_template.at[next_row,'Daily Quality Audit Follow Up List'] = d[5]  # Quality Tech
+        read_template.at[next_row,'Unnamed: 6'] = d[6]                          # Description
+        read_template.at[next_row,'Unnamed: 7'] = d[7]                          # Action Taken
+        read_template.at[next_row,'http://pmdadashboard/d/DluY5Ph4z/daily-shift-quality-audit-report?orgId=1&var-QA_ReportNo=All&from=now%2Fy&to=now%2Fy'] = d[8]
                                                                                 # Follow Up Comments
-        read_template.at[next_row,'Unnamed: 7'] = 'N'                           # Completed? 
+        read_template.at[next_row,'Unnamed: 9'] = 'N'                           # Completed? 
         
         next_row = next_row + 1                                                 # increment row, to write on next row
     
@@ -144,7 +179,6 @@ def write_excel(data):
 # !------------------------------------------------------------------------------------------------------------------- #
 # !                                                   Function Call                                                    #
 # !------------------------------------------------------------------------------------------------------------------- #
-timeout = 0
 while(True):
     try:    
         file = glob(FILE_LOC + "*.txt")[0]                         # search for file
@@ -155,10 +189,5 @@ while(True):
         break                                                      # if excel file was done and saved
     except:                     
         print("# ---" + str(Exception))
-        sleep(10)
-        timeout = timeout + 1
-        if(timeout == 6):
-            print("# ---------------------------------------- Time Out Error ---------------------------------------- #")
-            break                                                  # program will timeout after 60 
-        else:
-            pass 
+        sleep(5)
+        pass 
