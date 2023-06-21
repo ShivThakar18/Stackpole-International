@@ -1,7 +1,7 @@
 from glob import glob
 
-files = glob("C:\\Users\\vrerecich\\Desktop\\Jomesa 4 Testing\\Jomesa Data\\ZF\\*.txt")
-file = open("C:\\Users\\vrerecich\\Desktop\\Jomesa 4 Testing\\MASTER_ZF.txt",'w')
+files = glob("C:\\Users\\vrerecich\\Desktop\\Jomesa 5.0\\Jomesa Data\\10R140 Slide\\*.txt")
+file = open("C:\\Users\\vrerecich\\Desktop\\Jomesa 5.0\\Jomesa Data\\10R140 Slide\\MASTER.txt",'w')
 
 for f in files:
 

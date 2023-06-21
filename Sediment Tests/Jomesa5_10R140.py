@@ -11,16 +11,19 @@ from shutil import copy
 from glob import glob
 from pdfminer.high_level import extract_text
 import pdfplumber
-from time import time                   
+from time import time       
+from pprint import pprint            
 from Jomesa5_Settings import DIRECTORY, LE_DIR, LOCALDATA_ARCHIVE,YEAR,ARCHIVE_FILE          #? import variables from Jomesa5_Settings
 #! ---------------------------------------------- Define Global Variables --------------------------------------------- #
 DIR_10R140 = DIRECTORY + "10R140 Components\\"
 PARTS = ['10R140 Body', '10R140 Slide', '10R140 Rotor']
+PARTS = ['10R140 Slide']
 ARCHIVE_FILE = ARCHIVE_FILE + "Archived_10R140_"+YEAR+".txt"
+LOCALDATA_ARCHIVE = "C:\\Users\\vrerecich\\Desktop\\Jomesa 5.0\\Jomesa Data\\10R140 Slide"
 #? ---------------------------------------------------- 10R140 Data --------------------------------------------------- #
 def get10R140Data(report):
     
-    global PARTS,ARCHIVE_FILE
+    global PARTS,ARCHIVE_FILE, LOCALDATA_ARCHIVE
 
     if('Point of Ship' in report):              # check file path to check the location of sample
         LOCATION = 'Point of Ship'              # set location to "Point of Ship"
@@ -111,8 +114,7 @@ def get10R140Data(report):
 
         if ('Total length of fibers' in content[i] and i == [idx for idx, s in enumerate(content) if 'Total length of fibers' in s][0]):                    # find string in list, but make sure it is the first occurance of the substring
             TOTAL_FIBERS = content[i+2]         # save total length of fibers
-            if(any(not c.isdigit() for c in TOTAL_FIBERS)):
-                TOTAL_FIBERS = ''
+            
 
         if('Passes Specification' in content):
             RESULT = 'PASS'
@@ -136,7 +138,7 @@ def get10R140Data(report):
     
     # save all extracted points in a list
     DATALIST = [DATE,REPORT_NO,LOCATION,PART_NAME,JK,HI,FG,CE,WEIGHT,OCCUPANCY,METALLIC_LEN,METALLIC_WIDTH,NON_METALLIC_LEN,NON_METALLIC_WIDTH,FIBER_LEN,TOTAL_FIBERS,RESULT]
-    
+    print(DATALIST)
     # write file path to archive list
     ARCHIVE_LIST = open(ARCHIVE_FILE,'a+')       # open current year archive list for reading
     ARCHIVE_LIST.write(report+"\n")
@@ -208,3 +210,22 @@ def search10R140():
 
     print("MSG: New File Found - "+str(filesList))
     return filesList                                        # else, there is new files and the files list and a flag is passed
+
+def findAll():
+
+    global PARTS
+
+    YEARS = ['2021','2022','2023']
+
+    files = []
+    for p in PARTS:
+
+        for y in YEARS:
+            files.extend(glob(DIR_10R140+p+"\\"+y+"\\**\\*.pdf")) # get the files using glob operation
+
+
+    return files
+
+for f in findAll():
+
+    get10R140Data(f)
