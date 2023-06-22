@@ -1,12 +1,10 @@
 import pandas as pd
 
-
-
 FILE_IN = "C:\\Users\\vrerecich\\Desktop\\Jomesa Data 10R140.xlsx"
-FILE_OUT = "C:\\Users\\vrerecich\\Desktop\\OUT\\ZF Outer\\"
+FILE_OUT = "C:\\Users\\vrerecich\\Desktop\\OUT\\ZF Body\\"
 COUNTER = 0
 
-dataFrame = pd.read_excel(FILE_IN, sheet_name="ZF Outer")
+dataFrame = pd.read_excel(FILE_IN, sheet_name="ZF Body",header=None)
 for i in range(len(dataFrame.index)):
     string = ""
     report = dataFrame.iloc[i,1]
@@ -22,8 +20,10 @@ for i in range(len(dataFrame.index)):
 
         if(j == 0):
             string  = string + str(dataFrame.iloc[i,j])[0:10] + ","
-        elif(j == len(dataFrame.columns) - 1):
+        elif(j == len(dataFrame.columns) - 1 and 'ZF' in FILE_OUT):
             string  = string + str(dataFrame.iloc[i,j]) + ","
+        elif(j == len(dataFrame.columns) - 1 and '10R140' in FILE_OUT):
+            string  = string + str(dataFrame.iloc[i,j]) 
         else:
             string  = string + str(dataFrame.iloc[i,j]) + ","   
 
