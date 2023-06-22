@@ -83,7 +83,7 @@ def getZFData(report):
                         break
             
             date_mod =  DATE.split("/")
-            DATE = date_mod[1] + "/" + date_mod[0] + "/" + date_mod[2]      # change format
+            DATE = date_mod[2] + "-" + date_mod[1] + "-" + date_mod[0]      # change format YYYY-MM-DD
 
         if(content[i] == 'Weight [mg]:'):
             WEIGHT = content[i+varadd]

@@ -17,7 +17,6 @@ from Jomesa5_Settings import DIRECTORY, LE_DIR, LOCALDATA_ARCHIVE,YEAR,ARCHIVE_F
 #! ---------------------------------------------- Define Global Variables --------------------------------------------- #
 DIR_10R140 = DIRECTORY + "10R140 Components\\"
 PARTS = ['10R140 Body', '10R140 Slide', '10R140 Rotor']
-PARTS = ['10R140 Slide']
 ARCHIVE_FILE = ARCHIVE_FILE + "Archived_10R140_"+YEAR+".txt"
 LOCALDATA_ARCHIVE = "C:\\Users\\vrerecich\\Desktop\\Jomesa 5.0\\Jomesa Data\\10R140 Slide"
 #? ---------------------------------------------------- 10R140 Data --------------------------------------------------- #
@@ -85,11 +84,11 @@ def get10R140Data(report):
                     DATE =content[i+varadd-1]
                 if(time() >= timeout):
                     print("TIMEOUT, NO DATE FOUND")
-                    DATE = "//"
+                    DATE = "-"
                     break
             
-            date_mod =  DATE.split("/")
-            DATE = date_mod[1] + "/" + date_mod[0] + "/" + date_mod[2]      # change format
+            date_mod =  DATE.split("/")                                 # DD/MM/YYYY
+            DATE = date_mod[2] + "-" + date_mod[1] + "-" + date_mod[0]      # change format YYYY-MM-DD
             
         if (content[i] == 'Weight [mg]:'):      
             WEIGHT = content[i+varadd]                                      # save weight
@@ -138,7 +137,6 @@ def get10R140Data(report):
     
     # save all extracted points in a list
     DATALIST = [DATE,REPORT_NO,LOCATION,PART_NAME,JK,HI,FG,CE,WEIGHT,OCCUPANCY,METALLIC_LEN,METALLIC_WIDTH,NON_METALLIC_LEN,NON_METALLIC_WIDTH,FIBER_LEN,TOTAL_FIBERS,RESULT]
-    print(DATALIST)
     # write file path to archive list
     ARCHIVE_LIST = open(ARCHIVE_FILE,'a+')       # open current year archive list for reading
     ARCHIVE_LIST.write(report+"\n")
@@ -211,7 +209,7 @@ def search10R140():
     print("MSG: New File Found - "+str(filesList))
     return filesList                                        # else, there is new files and the files list and a flag is passed
 
-def findAll():
+""" def findAll():
 
     global PARTS
 
@@ -228,4 +226,6 @@ def findAll():
 
 for f in findAll():
 
-    get10R140Data(f)
+    get10R140Data(f) """
+
+get10R140Data(search10R140()[0])

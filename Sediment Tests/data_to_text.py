@@ -15,6 +15,11 @@ for i in range(len(dataFrame.index)):
     name = FILE_OUT + str(COUNTER) + "_" + report + "_" + part + ".txt"
 
     for j in range(len(dataFrame.columns)):
+
+        if(str(dataFrame.iloc[i,j]) == "nan"):
+            string = string + ","
+            continue
+
         if(j == 0):
             string  = string + str(dataFrame.iloc[i,j])[0:10] + ","
         elif(j == len(dataFrame.columns) - 1):
