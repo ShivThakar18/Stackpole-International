@@ -13,7 +13,7 @@ DIRECTORY = "N:\\Quality\\Metlab\\Met Lab Reports\\Sediment Tests\\Jomesa result
 LE_DIR = "L:\\ShivDataOutput\\Jomesa\\"
 
 #* Local Archive Folder - archive of all data files
-LOCALDATA_ARCHIVE = "C:\\Users\\vrerecich\\Desktop\\Jomesa 4 Testing\\Jomesa Data\\"
+LOCALDATA_ARCHIVE = "C:\\Users\\vrerecich\\Desktop\\Jomesa 5.0\\Jomesa Data\\"
             #? "C:\\Users\\Administrator\\Documents\\Jomesa Data Archive\\"
 
 #* Picture Directory - saves reaction limit pictures

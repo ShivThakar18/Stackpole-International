@@ -17,6 +17,7 @@ from Jomesa5_Settings import DIRECTORY, LE_DIR, LOCALDATA_ARCHIVE,YEAR,ARCHIVE_F
 #! ---------------------------------------------- Define Global Variables --------------------------------------------- #
 DIR_ZF = DIRECTORY + "ZF\\"                                     # ZF Parent Directory
 PARTS = ['ZF BODY','ZF OUTER','ZF INNER']                       # list of parts to navigate folders
+
 ARCHIVE_FILE = ARCHIVE_FILE + "Archived_ZF_"+YEAR+".txt"        # separate archive file for each part group
 LOCALDATA_ARCHIVE = LOCALDATA_ARCHIVE + "ZF\\"                  # directory for local data archive
 #? ------------------------------------------------------ ZF Data ----------------------------------------------------- #
@@ -104,8 +105,6 @@ def getZFData(report):
         if ('Total length of fibers' in content[i] and i == [idx for idx, s in enumerate(content) if 'Total length of fibers' in s][0]):                    # find string in list, but make sure it is the first occurance of the substring
             TOTAL_FIBERS = content[i+2]         # save total length of fibers
             
-
-
     K = ""
     J = ""
     I = ""
@@ -150,8 +149,8 @@ def getZFData(report):
     DATA_FILE.write(",".join(DATALIST))
     DATA_FILE.close()
 
-    copy(dataFilename,LE_DIR)                   # copy data file to LE drive
-    copy(report,LE_DIR)                         # copy report to LE drive
+    """ copy(dataFilename,LE_DIR)                   # copy data file to LE drive
+    copy(report,LE_DIR)                         # copy report to LE drive """
 #? ------------------------------------------------- Search ZF Folders ------------------------------------------------ #
 def searchZF():
 
@@ -188,7 +187,7 @@ def searchZF():
     if(len(filesList) == 0):
         return []
     
-    #print("MSG: New File Found - "+str(filesList))
+    print("MSG: New File Found - "+str(filesList))
     return filesList 
 
 def allFiles():

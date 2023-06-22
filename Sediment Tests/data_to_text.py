@@ -3,10 +3,10 @@ import pandas as pd
 
 
 FILE_IN = "C:\\Users\\vrerecich\\Desktop\\Jomesa Data 10R140.xlsx"
-FILE_OUT = "C:\\Users\\vrerecich\\Desktop\\OUT\\10R140 Slide\\"
+FILE_OUT = "C:\\Users\\vrerecich\\Desktop\\OUT\\ZF Outer\\"
 COUNTER = 0
 
-dataFrame = pd.read_excel(FILE_IN, sheet_name="Slide Data")
+dataFrame = pd.read_excel(FILE_IN, sheet_name="ZF Outer")
 for i in range(len(dataFrame.index)):
     string = ""
     report = dataFrame.iloc[i,1]
@@ -23,7 +23,7 @@ for i in range(len(dataFrame.index)):
         if(j == 0):
             string  = string + str(dataFrame.iloc[i,j])[0:10] + ","
         elif(j == len(dataFrame.columns) - 1):
-            string  = string + str(dataFrame.iloc[i,j]) 
+            string  = string + str(dataFrame.iloc[i,j]) + ","
         else:
             string  = string + str(dataFrame.iloc[i,j]) + ","   
 
