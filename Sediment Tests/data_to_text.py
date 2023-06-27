@@ -1,10 +1,10 @@
 import pandas as pd
 
-FILE_IN = "C:\\Users\\vrerecich\\Desktop\\Jomesa Data 10R140.xlsx"
-FILE_OUT = "C:\\Users\\vrerecich\\Desktop\\OUT\\ZF Body\\"
+FILE_IN = "C:\\Users\\vrerecich\\Desktop\\Jomesa Data (1).xlsx"
+FILE_OUT = "C:\\Users\\vrerecich\\Desktop\\OUT\\ZF Outer\\"
 COUNTER = 0
 
-dataFrame = pd.read_excel(FILE_IN, sheet_name="ZF Body",header=None)
+dataFrame = pd.read_excel(FILE_IN, sheet_name="ZF Outer",header=None)
 # test 123
 for i in range(len(dataFrame.index)):
     string = ""

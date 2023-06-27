@@ -17,9 +17,9 @@ from Jomesa5_Settings import DIRECTORY, LE_DIR, LOCALDATA_ARCHIVE,YEAR,ARCHIVE_F
 #! ---------------------------------------------- Define Global Variables --------------------------------------------- #
 DIR_ZF = DIRECTORY + "ZF\\"                                     # ZF Parent Directory
 PARTS = ['ZF BODY','ZF OUTER','ZF INNER']                       # list of parts to navigate folders
-
+PARTS = ['ZF INNER']     
 ARCHIVE_FILE = ARCHIVE_FILE + "Archived_ZF_"+YEAR+".txt"        # separate archive file for each part group
-LOCALDATA_ARCHIVE = LOCALDATA_ARCHIVE + "ZF\\"                  # directory for local data archive
+LOCALDATA_ARCHIVE = LOCALDATA_ARCHIVE + "ZF Inner\\"                  # directory for local data archive
 #? ------------------------------------------------------ ZF Data ----------------------------------------------------- #
 def getZFData(report):
 
@@ -90,6 +90,10 @@ def getZFData(report):
             WEIGHT = content[i+varadd]
             if(any(c.isalpha() for c in WEIGHT.replace(".",""))):
                     WEIGHT = ""
+
+        if(content[i] =='Components on filter:'):
+            NUM_COMPONENTS = content[i+varadd-1]
+
         if ('Largest metallic particle' in content[i] and i == [idx for idx, s in enumerate(content) if 'Largest metallic particle' in s][0]):              # find string in list, but make sure it is the first occurance of the substring
                 METALLIC_LEN = content[content.index('Length [µm]:') + 3]      # save largest metallic length
                 METALLIC_WIDTH = content[content.index('Width [µm]:') + 3]            # save largest metallic width
@@ -122,7 +126,7 @@ def getZFData(report):
     
     RESULT = ""
             #   0   ,    1    ,   2    ,    3    ,4,5,6,7,  8   ,     9      ,      10      ,      11        ,        12        ,   13    ,     14     ,   15
-    DATALIST = [DATE,REPORT_NO,LOCATION,PART_NAME,K,J,I,H,WEIGHT,METALLIC_LEN,METALLIC_WIDTH,NON_METALLIC_LEN,NON_METALLIC_WIDTH,FIBER_LEN,TOTAL_FIBERS,RESULT]
+    DATALIST = [DATE,REPORT_NO,LOCATION,PART_NAME,K,J,I,H,WEIGHT,NUM_COMPONENTS,METALLIC_LEN,METALLIC_WIDTH,NON_METALLIC_LEN,NON_METALLIC_WIDTH,FIBER_LEN,TOTAL_FIBERS,RESULT]
     print(DATALIST)
     # write file path to archive list
     ARCHIVE_LIST = open(ARCHIVE_FILE,'a+')       # open current year archive list for reading
@@ -200,12 +204,12 @@ def allFiles():
 
     return files
 
-""" files = allFiles()
+files = allFiles()
 
 count = 1
 for f in files:
     print(str(count)+"/"+str(len(files))+" - "+f)
     getZFData(f)
-    count=count+1 """
+    count=count+1
 
 #getZFData('C:\\Users\\vrerecich\\Desktop\\Jomesa 4 Testing\\ZF\\ZF Test\\ST21-0507.pdf')

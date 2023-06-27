@@ -17,8 +17,9 @@ from Jomesa5_Settings import DIRECTORY, LE_DIR, LOCALDATA_ARCHIVE,YEAR,ARCHIVE_F
 #! ---------------------------------------------- Define Global Variables --------------------------------------------- #
 DIR_10R140 = DIRECTORY + "10R140 Components\\"
 PARTS = ['10R140 Body', '10R140 Slide', '10R140 Rotor']
+PARTS = [ '10R140 Rotor']
 ARCHIVE_FILE = ARCHIVE_FILE + "Archived_10R140_"+YEAR+".txt"
-LOCALDATA_ARCHIVE = LOCALDATA_ARCHIVE + "10R140\\"                  # directory for local data archive
+LOCALDATA_ARCHIVE = LOCALDATA_ARCHIVE + "10R140 Rotor\\"                  # directory for local data archive
 #? ---------------------------------------------------- 10R140 Data --------------------------------------------------- #
 def get10R140Data(report):
     
@@ -45,7 +46,6 @@ def get10R140Data(report):
     
     varadd = 5                                  # predefined incrementer that helps to find the actual value we are looking for 
     content = str(text).split("\n")             # split extracted text at each line
-    #pprint(content)
 
     for i in range(len(content)):               # iterate through content using length operation
 
@@ -84,7 +84,7 @@ def get10R140Data(report):
                     DATE =content[i+varadd-1]
                 if(time() >= timeout):
                     print("TIMEOUT, NO DATE FOUND")
-                    DATE = "-"
+                    DATE = "//"
                     break
             
             date_mod =  DATE.split("/")                                 # DD/MM/YYYY
@@ -94,6 +94,9 @@ def get10R140Data(report):
             WEIGHT = content[i+varadd]                                      # save weight
             if(any(c.isalpha() for c in WEIGHT)):
                 WEIGHT = ""
+                
+        if(content[i] =='Components on filter:'):
+            NUM_COMPONENTS = content[i+varadd-1]
 
         if ('Occupancy[%]:' in content[i] and 'Allowed' not in content[i]):
             OCCUPANCY = content[i].split(": ")[1]                           # save occupancy
@@ -136,7 +139,7 @@ def get10R140Data(report):
                 CE = block[i+5]         # save CE spec from report
     
     # save all extracted points in a list
-    DATALIST = [DATE,REPORT_NO,LOCATION,PART_NAME,JK,HI,FG,CE,WEIGHT,OCCUPANCY,METALLIC_LEN,METALLIC_WIDTH,NON_METALLIC_LEN,NON_METALLIC_WIDTH,FIBER_LEN,TOTAL_FIBERS,RESULT]
+    DATALIST = [DATE,REPORT_NO,LOCATION,PART_NAME,JK,HI,FG,CE,WEIGHT,NUM_COMPONENTS,OCCUPANCY,METALLIC_LEN,METALLIC_WIDTH,NON_METALLIC_LEN,NON_METALLIC_WIDTH,FIBER_LEN,TOTAL_FIBERS,RESULT]
     # write file path to archive list
     ARCHIVE_LIST = open(ARCHIVE_FILE,'a+')       # open current year archive list for reading
     ARCHIVE_LIST.write(report+"\n")
@@ -159,8 +162,8 @@ def get10R140Data(report):
     DATA_FILE.write(",".join(DATALIST))
     DATA_FILE.close()
 
-    copy(dataFilename,LE_DIR)                   # copy data file to LE drive
-    copy(report,LE_DIR)                         # copy report to LE drive
+    """ copy(dataFilename,LE_DIR)                   # copy data file to LE drive
+    copy(report,LE_DIR)                         # copy report to LE drive """
 #? ----------------------------------------------- Search 10R140 Folders ---------------------------------------------- #
 def search10R140():
     global PARTS,ARCHIVE_FILE           # bring global variables into scope
@@ -220,6 +223,12 @@ def findAll():
 
         for y in YEARS:
             files.extend(glob(DIR_10R140+p+"\\"+y+"\\**\\*.pdf")) # get the files using glob operation
-
+            
 
     return files
+
+files = findAll()
+
+for f in files:
+    print(path.basename(f))
+    get10R140Data(f)
