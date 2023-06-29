@@ -15,8 +15,8 @@ from time import time
 from pprint import pprint            
 from Jomesa5_Settings import DIRECTORY, LE_DIR, LOCALDATA_ARCHIVE,YEAR,ARCHIVE_FILE          #? import variables from Jomesa5_Settings
 #! ---------------------------------------------- Define Global Variables --------------------------------------------- #
-DIR_10R140 = DIRECTORY + "10R140 Components\\"
-PARTS = ['10R140 Body', '10R140 Slide', '10R140 Rotor']
+DIR_10R140Gear = DIRECTORY + "10R140 Components\\"
+PARTS = ['10R140 Gear', '10R140 Gear Nitride']
 ARCHIVE_FILE = ARCHIVE_FILE + "Archived_10R140_"+YEAR+".txt"
 LOCALDATA_ARCHIVE = LOCALDATA_ARCHIVE + "10R140\\"                  # directory for local data archive
 #? ---------------------------------------------------- 10R140 Data --------------------------------------------------- #

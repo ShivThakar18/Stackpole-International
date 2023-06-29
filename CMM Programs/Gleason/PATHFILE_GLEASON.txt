@@ -2,3 +2,5 @@ DEFAULT_FILE
 C:\Users\Gleason\Desktop\Gleason Data
 SCRAP_FILE
 C:\Users\Gleason\Downloads\Gleason_Python\Scrap
+ARCHIVE_FOLDER
+C:\Users\Gleason\Documents\Gleason Archive\
