@@ -9,7 +9,7 @@ This project was meant to update a pre-existing program, Jomesa 3.2. During the 
 
 ## Python 
 There are a number of Python files used in this project: 
-- Main.py - calls functions from other pyfiles
+- Main.py - calls functions from other PyFiles
 - Settings.py - holds file paths and folder locations that are globally used on all files
 - Pictures.py - saved pages in a new PDF that include pictures from the original report when a new file is added to the folder
 - One File per Part Group (ZF.py, 10R140.py, GME.py) - searches for files in the part group folder and parses data from pdf reports
@@ -33,3 +33,12 @@ These files contain specific 'search' and 'get' functions dependent on the group
 When a file with PIC_DIR+"**\\*_fullreport.pdf" appears in the pictures directory (this happens when Node-Red moves a pdf into this folder when Specs have been validated). Depending on the part group, certain pages are extracted and saved into the PIC_DIR.
 
 ## Jomesa 5 JSON (Node-Red)
+When a new data file (created by Python) and a copy of the report arrives in the LE_DIR. Node-Red picks up the text file and parses the file with all the data and saves it to flow variables. Once saved, the specs are checked depending on the part and returns the passed and failed specs. The flow will send the data to a SQL server and can be viewed on Grafana. If failed, an email notification is sent out to the Quality Manager and Quality Engineer.
+
+## Grafana Dashboards
+There are two visualization dashboards being used. The first is specifically used for Ford Sediment Tests. The second is used for all other parts. 
+
+![image](https://github.com/ShivThakar18/Stackpole-International/assets/94186009/8f16136d-a30b-4e5e-9f72-be8cd1d31f16)
+
+![image](https://github.com/ShivThakar18/Stackpole-International/assets/94186009/4a9fff4b-f56a-49cd-981c-2c7884b53505)
+
