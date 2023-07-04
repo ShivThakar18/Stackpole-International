@@ -3,6 +3,27 @@
 #* ----------------------------------------------------- Jomesa 5 ----------------------------------------------------- #
 #* ------------------------------------------ Stackpole International - PMDA ------------------------------------------ #
 #* -------------------------------------------- Quality Engineering Intern -------------------------------------------- #
+"""DATA LIST SUMMARY
+    DATALIST = 
+        [0] DATE
+        [1] REPORT_NO
+        [2] LOCATION
+        [3] PART_NAME
+        [4] JK
+        [5] HI
+        [6] FG
+        [7] CE
+        [8] WEIGHT
+        [9] NUM_COMPONENTS
+        [10] OCCUPANCY
+        [11] METALLIC_LEN
+        [12] METALLIC_WIDTH
+        [13] NON_METALLIC_LEN
+        [14] NON_METALLIC_WIDTH
+        [15] FIBER_LEN
+        [16] TOTAL_FIBERS
+        [17] RESULT
+"""
 #! -------------------------------------------------------------------------------------------------------------------- #
 #!                                                Import Python Libraries                                               #
 #! -------------------------------------------------------------------------------------------------------------------- #
@@ -22,7 +43,7 @@ LOCALDATA_ARCHIVE = LOCALDATA_ARCHIVE + "10R140\\"                  # directory 
 #? ---------------------------------------------------- 10R140 Data --------------------------------------------------- #
 def get10R140Data(report):
     
-    global PARTS,ARCHIVE_FILE, LOCALDATA_ARCHIVE
+    global PARTS,ARCHIVE_FILE, LOCALDATA_ARCHIVE,YEAR
 
     if('Point of Ship' in report):              # check file path to check the location of sample
         LOCATION = 'Point of Ship'              # set location to "Point of Ship"
@@ -146,16 +167,8 @@ def get10R140Data(report):
 
     # write DATALIST to text file with the report number
 
-    if('2023' in report):
-        y = "2023"
-    if('2022' in report):
-        y = "2022"
-    if('2021' in report):
-        y = "2021"
-    if('2020' in report):
-        y = "2020"
 
-    dataFilename = LOCALDATA_ARCHIVE+REPORT_NO+"_"+y+"_"+PART_NAME+"_DATA.txt"          # write to local data archive
+    dataFilename = LOCALDATA_ARCHIVE+REPORT_NO+"_"+YEAR+"_"+PART_NAME+"_DATA.txt"          # write to local data archive
 
     DATA_FILE = open(dataFilename,"w")
     DATA_FILE.write(",".join(DATALIST))
@@ -226,7 +239,8 @@ def findAll():
 
     return files
 
-""" files = findAll()
+"""FIND ALL HISTORIC REPORTS
+files = findAll()
 
 for f in files:
     print(path.basename(f))

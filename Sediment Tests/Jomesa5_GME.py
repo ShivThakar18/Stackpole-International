@@ -11,39 +11,32 @@ from shutil import copy
 from glob import glob
 from pdfminer.high_level import extract_text
 import pdfplumber
-from time import time   
-from pprint import pprint                
-from Jomesa5_Settings import DIRECTORY, LE_DIR, LOCALDATA_ARCHIVE,YEAR,ARCHIVE_FILE   #? import variables from Jomesa5_Settings
+from time import time       
+from pprint import pprint            
+from Jomesa5_Settings import DIRECTORY, LE_DIR, LOCALDATA_ARCHIVE,YEAR,ARCHIVE_FILE          #? import variables from Jomesa5_Settings
 #! ---------------------------------------------- Define Global Variables --------------------------------------------- #
-DIR_ZF = DIRECTORY + "ZF\\"                                     # ZF Parent Directory
-PARTS = ['ZF BODY','ZF OUTER','ZF INNER']                       # list of parts to navigate folders
-ARCHIVE_FILE = ARCHIVE_FILE + "Archived_ZF_"+YEAR+".txt"        # separate archive file for each part group
-LOCALDATA_ARCHIVE = LOCALDATA_ARCHIVE + "ZF Inner\\"                  # directory for local data archive
-#? ------------------------------------------------------ ZF Data ----------------------------------------------------- #
-def getZFData(report):
+DIR_GME = DIRECTORY + "GME T4 Stator\\"
+ARCHIVE_FILE = ARCHIVE_FILE + "Archived_GMET4_"+YEAR+".txt"
+LOCALDATA_ARCHIVE = LOCALDATA_ARCHIVE + "GME T4 Stator\\"                  # directory for local data archive
+#? ----------------------------------------------------- GME Data ----------------------------------------------------- #
+def getGMEData(report):
 
-    global PARTS, ARCHIVE_FILE                                          # bring global variables into scope
+    global ARCHIVE_FILE
 
-    LOCATION = ""                                                       # default location set to nothing, incase report is not saved in folder
-    if('Straight From Washer' in report):                               # determine sample location depending on file path
-        LOCATION = 'Straight From Washer'
-    if('EPC' in report):                                                # determine sample location depending on file path
-        LOCATION = 'EPC'
+    text = extract_text(report)
+    with pdfplumber.open(report) as pdf: 
+        page = pdf.pages[0]
+        table = page.extract_table()
     
-    text = extract_text(report)                                         # using pdfminer.high_level extract_text function, extract text from pdf report
-    with pdfplumber.open(report) as pdf:
-        page = pdf.pages[0]                                             # get all pages
-        table = page.extract_table()                                    # extract tables
+    content = str(text).split("\n")
 
-    content = str(text).split("\n")                                     # split the text by each line (as a list)
+    varadd = 5
 
-    varadd = 5                                                          # pre-defined value between label and actual value in the list
+    for i in range(len(content)):
 
-    for i in range(len(content)):                                       # iterate through each line of the file
+        if(content[i] == 'Component:'):
+            PART_NAME = content[i+varadd]
 
-        if (content[i] == 'Component:'):                                
-            PART_NAME = content[i+varadd]                               # save part name
-        
         if(content[i] == 'Sample No.:'):
             REPORT_NO = content[i+varadd]                               # save report name
         
@@ -54,16 +47,15 @@ def getZFData(report):
                         start = stripped.find('S')
                         length = 9
                         REPORT_NO = stripped[start:start+length]
-
+        
             if(len(REPORT_NO) > 9):
                 stripped = REPORT_NO.replace(" ","")
                 start = stripped.find('S')
                 length = 9
                 REPORT_NO = stripped[start:start+length]
-
+    
         if(content[i] == 'Date of Analysis:'):
             DATE = content[i+varadd]
-        
             timeout = time() + 60*0.2
 
             while(any(c.isalpha() for c in DATE.replace("/","")) or DATE == ''):
@@ -106,7 +98,7 @@ def getZFData(report):
                 FIBER_LEN = ''
         if ('Total length of fibers' in content[i] and i == [idx for idx, s in enumerate(content) if 'Total length of fibers' in s][0]):                    # find string in list, but make sure it is the first occurance of the substring
             TOTAL_FIBERS = content[i+2]         # save total length of fibers
-            
+        
     K = ""
     J = ""
     I = ""
@@ -122,16 +114,12 @@ def getZFData(report):
             if(block[i] == 'H'):
                 H = block[i+1]
     
-    RESULT = ""
-            #   0   ,    1    ,   2    ,    3    ,4,5,6,7,  8   ,     9      ,      10      ,      11        ,        12        ,   13    ,     14     ,   15
-    DATALIST = [DATE,REPORT_NO,LOCATION,PART_NAME,K,J,I,H,WEIGHT,NUM_COMPONENTS,METALLIC_LEN,METALLIC_WIDTH,NON_METALLIC_LEN,NON_METALLIC_WIDTH,FIBER_LEN,TOTAL_FIBERS,RESULT]
-    # write file path to archive list
-    ARCHIVE_LIST = open(ARCHIVE_FILE,'a+')       # open current year archive list for reading
-    ARCHIVE_LIST.write(report+"\n")
-    ARCHIVE_LIST.close()                                                 # close file, data already extracted on Line 98 
+    DATALIST = [DATE,REPORT_NO,PART_NAME,K,J,I,H,WEIGHT,NUM_COMPONENTS,METALLIC_LEN,METALLIC_WIDTH,NON_METALLIC_LEN,NON_METALLIC_WIDTH,FIBER_LEN,TOTAL_FIBERS]
 
-    # write DATALIST to text file with the report number
-    
+    ARCHIVE_LIST = open(ARCHIVE_FILE,'a+')
+    ARCHIVE_LIST.write(report+"\n")
+    ARCHIVE_LIST.close()
+
     dataFilename = LOCALDATA_ARCHIVE+REPORT_NO+"_"+YEAR+"_"+PART_NAME+"_DATA.txt"          # write to local data archive
 
     DATA_FILE = open(dataFilename,"w")
@@ -139,29 +127,27 @@ def getZFData(report):
     DATA_FILE.close()
 
     """ copy(dataFilename,LE_DIR)                   # copy data file to LE drive
-    copy(report,LE_DIR)                         # copy report to LE drive """
-#? ------------------------------------------------- Search ZF Folders ------------------------------------------------ #
-def searchZF():
+    copy(report,LE_DIR)                         # copy report to LE drive """   
+#? ------------------------------------------------- Search GME Folder ------------------------------------------------ #
+def searchGME():
 
-    global PARTS, ARCHIVE_FILE
+    global ARCHIVE_FILE
 
-    filesList = []
+    filesList = [] 
 
-    for P in PARTS:
+    f = glob(DIR_GME+"\\"+YEAR+"\\*.pdf")
 
-        f = glob(DIR_ZF+P+"\\"+YEAR+"\\*.pdf")
-        
-        try:
-            latest = max(f,key=path.getmtime)
-            filesList.append(latest)
-        except ValueError:
-            pass
-    
-    ARCHIVE_LIST = open(ARCHIVE_FILE, 'r')
+    try:
+        latest = max(f,key=path.getmtime)
+        filesList.append(latest)
+    except ValueError:
+        pass
+
+    ARCHIVE_LIST = open(ARCHIVE_FILE,'r')
     archived = ARCHIVE_LIST.read().splitlines()
     ARCHIVE_LIST.close()
 
-    remove_list = [] 
+    remove_list = []
     for f in filesList:
         for a in archived:
             if(f == a):
@@ -174,27 +160,22 @@ def searchZF():
     
     if(len(filesList) == 0):
         return []
-    
-    print("MSG: New File Found - "+str(filesList))
-    return filesList 
 
-def allFiles():
-
+    print("MSG: New File Found - "+ str(filesList))
+    return filesList
+#? ------------------------------------------------ Find All GME Files ------------------------------------------------ #
+def findAll():
     files = []
 
-    for p in PARTS:
-        f = glob(DIR_ZF+p+"\\**\\*.pdf")
-        files.extend(f)
+    f = glob(DIR_GME+"\\**\\*.pdf")
+    files.extend(f)
 
     return files
 
-""" FIND ALL HISTORIC REPORTS
-files = allFiles()
+""" #report = "N:\\Quality\\Metlab\\Met Lab Reports\\Sediment Tests\\Jomesa results\\GME T4 Stator\\2023\\ST23-0453.pdf"
+files = findAll()
 
-count = 1
-for f in files:
-    print(str(count)+"/"+str(len(files))+" - "+f)
-    getZFData(f)
-    count=count+1
+for f in files: 
 
-#getZFData('C:\\Users\\vrerecich\\Desktop\\Jomesa 4 Testing\\ZF\\ZF Test\\ST21-0507.pdf') """
+    getGMEData(f)
+    print(f) """

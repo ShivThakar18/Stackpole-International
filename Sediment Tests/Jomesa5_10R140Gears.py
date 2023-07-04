@@ -3,6 +3,26 @@
 #* ----------------------------------------------------- Jomesa 5 ----------------------------------------------------- #
 #* ------------------------------------------ Stackpole International - PMDA ------------------------------------------ #
 #* -------------------------------------------- Quality Engineering Intern -------------------------------------------- #
+"""DATA LIST SUMMARY
+    DATALIST = 
+        [0] DATE
+        [1] REPORT_NO
+        [2] LOCATION
+        [3] PART_NAME
+        [4] JK
+        [5] FI
+        [6] DE
+        [7] WEIGHT
+        [8] NUM_COMPONENTS
+        [9] OCCUPANCY
+        [10] METALLIC_LEN
+        [11] METALLIC_WIDTH
+        [12] NON_METALLIC_LEN
+        [13] NON_METALLIC_WIDTH
+        [14] FIBER_LEN
+        [15] TOTAL_FIBERS
+        [16] RESULT
+"""
 #! -------------------------------------------------------------------------------------------------------------------- #
 #!                                                Import Python Libraries                                               #
 #! -------------------------------------------------------------------------------------------------------------------- #
@@ -16,14 +36,16 @@ from pprint import pprint
 from Jomesa5_Settings import DIRECTORY, LE_DIR, LOCALDATA_ARCHIVE,YEAR,ARCHIVE_FILE          #? import variables from Jomesa5_Settings
 #! ---------------------------------------------- Define Global Variables --------------------------------------------- #
 DIR_10R140Gear = DIRECTORY + "10R140 Components\\"
-PARTS = ['10R140 Gear', '10R140 Gear Nitride']
-ARCHIVE_FILE = ARCHIVE_FILE + "Archived_10R140_"+YEAR+".txt"
-LOCALDATA_ARCHIVE = LOCALDATA_ARCHIVE + "10R140\\"                  # directory for local data archive
+PARTS = ['10R140 Gear','10R140 Gear Nitride'] 
+ARCHIVE_FILE = ARCHIVE_FILE + "Archived_10R140Gears_"+YEAR+".txt"
+LOCALDATA_ARCHIVE = LOCALDATA_ARCHIVE + "10R140 Gears\\"                  # directory for local data archive
 #? ---------------------------------------------------- 10R140 Data --------------------------------------------------- #
-def get10R140Data(report):
+def get10R140GearData(report):
     
     global PARTS,ARCHIVE_FILE, LOCALDATA_ARCHIVE
 
+    OCCUPANCY = ""
+    
     if('Point of Ship' in report):              # check file path to check the location of sample
         LOCATION = 'Point of Ship'              # set location to "Point of Ship"
     elif('Straight From Washer' in report):     
@@ -33,6 +55,7 @@ def get10R140Data(report):
     else:
         LOCATION = ''
 
+    RESULT = ""
     if('Pass' in report):                       # depending on what is stated in the file name
         RESULT = 'PASS'                         # set Pass
     elif('Fail' in report):
@@ -50,6 +73,10 @@ def get10R140Data(report):
 
         if (content[i] == 'Component:'):        
             PART_NAME = content[i+varadd]       # save Part Name
+
+            if('Nitride' in report):
+                PART_NAME = '10R140 Gear Nitride'
+
             if('-' in PART_NAME or '.' in PART_NAME):
                 PART_NAME = [p for p in PARTS if(p in report)][0]
                 
@@ -123,22 +150,23 @@ def get10R140Data(report):
         if ('Does Not Pass Specification' in content):
             RESULT = 'FAIL'
 
+    JK = ""
+    FI = ""
+    DE = ""
+
     for block in table:                 # iterate through table per block     
         for i in range(len(block)):     
             if(block[i] == 'J-K'):      
                 JK = block[i+5]         # save JK spec from report
 
-            if(block[i] == 'H-I'):
-                HI = block[i+5]         # save HI spec from report
+            if(block[i] == 'F-I'):
+                FI = block[i+5]         # save HI spec from report
 
-            if(block[i] == 'F-G'):
-                FG = block[i+5]         # save FG spec from report
-
-            if(block[i] == 'C-E'):
-                CE = block[i+5]         # save CE spec from report
+            if(block[i] == 'D-E'):
+                DE = block[i+5]         # save CE spec from report
     
     # save all extracted points in a list
-    DATALIST = [DATE,REPORT_NO,LOCATION,PART_NAME,JK,HI,FG,CE,WEIGHT,NUM_COMPONENTS,OCCUPANCY,METALLIC_LEN,METALLIC_WIDTH,NON_METALLIC_LEN,NON_METALLIC_WIDTH,FIBER_LEN,TOTAL_FIBERS,RESULT]
+    DATALIST = [DATE,REPORT_NO,LOCATION,PART_NAME,JK,FI,DE,WEIGHT,NUM_COMPONENTS,OCCUPANCY,METALLIC_LEN,METALLIC_WIDTH,NON_METALLIC_LEN,NON_METALLIC_WIDTH,FIBER_LEN,TOTAL_FIBERS,RESULT]
     # write file path to archive list
     ARCHIVE_LIST = open(ARCHIVE_FILE,'a+')       # open current year archive list for reading
     ARCHIVE_LIST.write(report+"\n")
@@ -146,16 +174,8 @@ def get10R140Data(report):
 
     # write DATALIST to text file with the report number
 
-    if('2023' in report):
-        y = "2023"
-    if('2022' in report):
-        y = "2022"
-    if('2021' in report):
-        y = "2021"
-    if('2020' in report):
-        y = "2020"
 
-    dataFilename = LOCALDATA_ARCHIVE+REPORT_NO+"_"+y+"_"+PART_NAME+"_DATA.txt"          # write to local data archive
+    dataFilename = LOCALDATA_ARCHIVE+REPORT_NO+"_"+YEAR+"_"+PART_NAME+"_DATA.txt"          # write to local data archive
 
     DATA_FILE = open(dataFilename,"w")
     DATA_FILE.write(",".join(DATALIST))
@@ -164,7 +184,7 @@ def get10R140Data(report):
     copy(dataFilename,LE_DIR)                   # copy data file to LE drive
     copy(report,LE_DIR)                         # copy report to LE drive
 #? ----------------------------------------------- Search 10R140 Folders ---------------------------------------------- #
-def search10R140():
+def search10R140Gear():
     global PARTS,ARCHIVE_FILE           # bring global variables into scope
 
     # N:\Quality\Metlab\Met Lab Reports\Sediment Tests\Jomesa results\10R140 Components
@@ -179,7 +199,7 @@ def search10R140():
 
     for p in PARTS:     # iterate through all parts
         
-        f = glob(DIR_10R140+p+"\\"+YEAR+"\\**\\*.pdf") # get the files using glob operation
+        f = glob(DIR_10R140Gear+p+"\\"+YEAR+"\\**\\*.pdf") # get the files using glob operation
 
         try:
             latest = max(f,key= path.getmtime)          # save the latest file from each part
@@ -221,13 +241,17 @@ def findAll():
     for p in PARTS:
 
         for y in YEARS:
-            files.extend(glob(DIR_10R140+p+"\\"+y+"\\**\\*.pdf")) # get the files using glob operation
-            
+            if(y == '2021'):
+                files.extend(glob(DIR_10R140Gear+p+"\\"+y+"\\*.pdf")) # get the files using glob operation
+            else:
+                files.extend(glob(DIR_10R140Gear+p+"\\"+y+"\\**\\*.pdf")) # get the files using glob operation
 
     return files
 
-""" files = findAll()
+""" FIND ALL HISTORIC REPORTS 
+files = findAll()
 
 for f in files:
     print(path.basename(f))
+    
     get10R140Data(f) """
