@@ -144,8 +144,8 @@ def getGMEData(report):
     DATA_FILE.write(",".join(DATALIST))
     DATA_FILE.close()
 
-    """ copy(dataFilename,LE_DIR)                   # copy data file to LE drive
-    copy(report,LE_DIR)                         # copy report to LE drive """   
+    copy(dataFilename,LE_DIR)                   # copy data file to LE drive
+    copy(report,LE_DIR)                         # copy report to LE drive   
 #? ------------------------------------------------- Search GME Folder ------------------------------------------------ #
 def searchGME():
 
@@ -190,10 +190,10 @@ def findAll():
 
     return files
 
-""" #report = "N:\\Quality\\Metlab\\Met Lab Reports\\Sediment Tests\\Jomesa results\\GME T4 Stator\\2023\\ST23-0453.pdf"
-files = findAll()
+""" report = "N:\\Quality\\Metlab\\Met Lab Reports\\Sediment Tests\\Jomesa results\\GME T4 Stator\\2023\\"
+files = ['ST23-459','ST23-466','ST23-468','ST23-473','ST23-474','ST23-476','ST23-477','ST23-485']
 
 for f in files: 
 
-    getGMEData(f)
+    getGMEData(report+f+".pdf")
     print(f) """

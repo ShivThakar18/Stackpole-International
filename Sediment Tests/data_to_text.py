@@ -1,15 +1,33 @@
 import pandas as pd
 
-FILE_IN = "C:\\Users\\vrerecich\\Desktop\\Jomesa Data (1).xlsx"
-FILE_OUT = "C:\\Users\\vrerecich\\Desktop\\OUT\\GME\\"
+FOLDERS = {
+    1 : "10R140 Body",
+    2 : "10R140 Gear",
+    3 : "10R140 Nitride",
+    4 : "10R140 Rotor",
+    5 : "10R140 Slide",
+    6 : "GME Stator",
+    7 : "ZF Body",
+    8 : "ZF Inner",
+    9 : "ZF Outer"
+}
+
+FILE_IN = "C:\\Users\\vrerecich\\Desktop\\Jomesa 5.0\\Jomesa Data.xlsx"
+FILE_OUT = "C:\\Users\\vrerecich\\Desktop\\Jomesa 5.0\\SEND TO DB\\"+FOLDERS[1]+"\\"
+
 COUNTER = 0
 
-dataFrame = pd.read_excel(FILE_IN, sheet_name="GME",header=None)
+dataFrame = pd.read_excel(FILE_IN, sheet_name=FOLDERS[1],header=None)
 # test 123
 for i in range(len(dataFrame.index)):
     string = ""
     report = dataFrame.iloc[i,1]
-    part = dataFrame.iloc[i,2]
+
+    if("GME" in FILE_OUT):
+        part = dataFrame.iloc[i,2]
+    else:
+        part = dataFrame.iloc[i,3]
+
     COUNTER = COUNTER + 1
     name = FILE_OUT + str(COUNTER) + "_" + str(report) + "_" + str(part) + ".txt"
 

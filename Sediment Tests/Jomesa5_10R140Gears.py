@@ -248,6 +248,7 @@ def findAll():
 
     return files
 
+
 """ FIND ALL HISTORIC REPORTS 
 files = findAll()
 

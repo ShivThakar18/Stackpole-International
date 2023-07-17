@@ -18,7 +18,7 @@ from Jomesa5_Settings import DIRECTORY, LE_DIR, LOCALDATA_ARCHIVE,YEAR,ARCHIVE_F
 DIR_ZF = DIRECTORY + "ZF\\"                                     # ZF Parent Directory
 PARTS = ['ZF BODY','ZF OUTER','ZF INNER']                       # list of parts to navigate folders
 ARCHIVE_FILE = ARCHIVE_FILE + "Archived_ZF_"+YEAR+".txt"        # separate archive file for each part group
-LOCALDATA_ARCHIVE = LOCALDATA_ARCHIVE + "ZF Inner\\"                  # directory for local data archive
+LOCALDATA_ARCHIVE = LOCALDATA_ARCHIVE + "ZF\\"                  # directory for local data archive
 #? ------------------------------------------------------ ZF Data ----------------------------------------------------- #
 def getZFData(report):
 
@@ -138,8 +138,8 @@ def getZFData(report):
     DATA_FILE.write(",".join(DATALIST))
     DATA_FILE.close()
 
-    """ copy(dataFilename,LE_DIR)                   # copy data file to LE drive
-    copy(report,LE_DIR)                         # copy report to LE drive """
+    copy(dataFilename,LE_DIR)                   # copy data file to LE drive
+    copy(report,LE_DIR)                         # copy report to LE drive
 #? ------------------------------------------------- Search ZF Folders ------------------------------------------------ #
 def searchZF():
 
@@ -177,7 +177,7 @@ def searchZF():
     
     print("MSG: New File Found - "+str(filesList))
     return filesList 
-
+#? ----------------------------------------------------- All Files ---------------------------------------------------- #
 def allFiles():
 
     files = []
