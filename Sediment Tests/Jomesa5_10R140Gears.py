@@ -182,7 +182,7 @@ def get10R140GearData(report):
     DATA_FILE.close()
 
     copy(dataFilename,LE_DIR)                   # copy data file to LE drive
-    copy(report,LE_DIR)                         # copy report to LE drive
+    #copy(report,LE_DIR)                         # copy report to LE drive
 #? ----------------------------------------------- Search 10R140 Folders ---------------------------------------------- #
 def search10R140Gear():
     global PARTS,ARCHIVE_FILE           # bring global variables into scope
@@ -248,6 +248,8 @@ def findAll():
 
     return files
 
+
+get10R140GearData(DIR_10R140Gear + "10R140 Gear Nitride\\2023\\2023 Straight From Washer\\ST23-0492 - Pass.pdf")
 
 """ FIND ALL HISTORIC REPORTS 
 files = findAll()

@@ -175,7 +175,7 @@ def get10R140Data(report):
     DATA_FILE.close()
 
     copy(dataFilename,LE_DIR)                   # copy data file to LE drive
-    copy(report,LE_DIR)                         # copy report to LE drive
+    #copy(report,LE_DIR)                         # copy report to LE drive
 #? ----------------------------------------------- Search 10R140 Folders ---------------------------------------------- #
 def search10R140():
     global PARTS,ARCHIVE_FILE           # bring global variables into scope

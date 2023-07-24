@@ -139,7 +139,7 @@ def getZFData(report):
     DATA_FILE.close()
 
     copy(dataFilename,LE_DIR)                   # copy data file to LE drive
-    copy(report,LE_DIR)                         # copy report to LE drive
+    #copy(report,LE_DIR)                         # copy report to LE drive
 #? ------------------------------------------------- Search ZF Folders ------------------------------------------------ #
 def searchZF():
 
