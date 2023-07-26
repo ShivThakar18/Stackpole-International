@@ -1,1 +1,2232 @@
-[{"id":"447205f9c52006b9","type":"tab","label":"Jomesa Prototype","disabled":false,"info":"","env":[]},{"id":"5c5d043f856bb4d8","type":"group","z":"447205f9c52006b9","name":"Startup","style":{"label":true,"stroke":"#000000","fill":"#e3f3d3","color":"#000000","fill-opacity":"0.75"},"nodes":["86540153f952f639","701b659a306582d7","36f1ea3b13f16076","e166aa090e237780","bcf1a922381d0267","fa500cb657a3cc27","af0da7a50fe51b8a","4d754f5336bb43da","e0790188ce8ed145","b81cbefcc962fa45","09bf451b4fc05185","83dc02a19903b103","8ee6f4fcb9a62ac0"],"x":34,"y":14,"w":1212,"h":287,"info":"This group is the startup sequence for the flow\n\nThis is where the text file with the email message and data will be extracted from the folder and the filename will be saved as a flow variable\n\nThis is also where the last flow.email and flow.data get reset and cleared"},{"id":"6f521e616a23443f","type":"group","z":"447205f9c52006b9","name":"Parsing","style":{"stroke":"#000000","fill":"#bfdbef","label":true,"color":"#000000","fill-opacity":"0.75"},"nodes":["5ff72081e0b5097c","2b7ef198c36965e8","e52cdea3b765b409","9ae136c26f4e49cc","1a88d7c4b651590e","792ebb43bc5ec7e6","6b798b18f95ee992","0280c34e3cc0ca4f","95e36d9bb52ba14a","8d96daaa8bcd8c9e","41b1a15f69a39a63","339536fc9011b422","ae830e4f56a1ddae","3c20f2ed5c9c5b81","4d267486fb2873b5","293470f827897582","1b3f74f7a5e3ae5b","b449aa149caa3403","a387917380784a65","e7cf363f94d08f24","3e6aaa9196819e8c"],"x":34,"y":319,"w":1912,"h":382},{"id":"d3e4db5647dfdd51","type":"group","z":"447205f9c52006b9","name":"Email","style":{"stroke":"#000000","fill":"#ffefbf","label":true,"color":"#000000","fill-opacity":"0.75"},"nodes":["3bd354bf6fde0a8c","3b7d882b8662f018","c694bb98e43ba553","7362256baae046d7"],"x":3074,"y":459,"w":472,"h":162},{"id":"29e81cdb7824f270","type":"group","z":"447205f9c52006b9","name":"FinalDataObject and DB Communication","style":{"stroke":"#000000","fill":"#dbcbe7","label":true,"color":"#000000","fill-opacity":"0.75"},"nodes":["7e1d0a0fb1e9dcc5","da778d0b71964aa6","7e1b7ef539b7bb48","874541026c738320","c0fc229720484997","efb7bb97a951721b","87f6d54a02c85e57"],"x":2574,"y":199,"w":1172,"h":202},{"id":"fda705b472ca9152","type":"group","z":"447205f9c52006b9","name":"End Procedure","style":{"label":true,"stroke":"#000000","fill":"#ffbfbf","fill-opacity":"0.75","color":"#000000"},"nodes":["5a9832005bd656de","5e20ea2364fe3ce7","23bed88a08754614","704b4b9a9eeb632f","7880f98da2e28532","96bfc5789db92671","aed8326e583eb95e","185c8573a46f1835","bb022f79a52ab9bd","d138778d33f51fe9","59107ea88172eb22","943f978f5a698562","61c3448a13a22691","d20f3c952c676ba3","eec992541ece946a","7f0b5b914b2ebd22","20546b3d37210c71","5458709a7401e5fa","7663624e9cbdbb0c","cb2e26201328631d","1c3fc634512b7312","67c9b75d72316284"],"x":374,"y":739,"w":1572,"h":307},{"id":"4620efd84ef6704a","type":"group","z":"447205f9c52006b9","name":"Spec Validation","style":{"stroke":"#000000","label":true,"fill":"#bfdbef","fill-opacity":"0.75","color":"#000000"},"nodes":["1ee17dc2391de76c","0d9d43c82e5fbe89","0bc4bcad21a144d4","df5d5f05d4bf4ab7","19fbcf7f5755dee9","9d65f37d3f9ca919","686e66926bd9328a","3d86ad0d182834b8","f40815f478b4f0fb","2ec848e40c55cef0","b8f0d8c65ab33195"],"x":1974,"y":419,"w":1052,"h":207},{"id":"86540153f952f639","type":"fs-ops-dir","z":"447205f9c52006b9","g":"5c5d043f856bb4d8","name":"text files","path":"/data/ShivDataOutput/Jomesa","pathType":"str","filter":"*.txt","filterType":"str","dir":"text_files","dirType":"flow","x":340,"y":60,"wires":[["af0da7a50fe51b8a"]]},{"id":"701b659a306582d7","type":"switch","z":"447205f9c52006b9","g":"5c5d043f856bb4d8","name":"if text_files empty","property":"text_files","propertyType":"flow","rules":[{"t":"nempty"},{"t":"else"}],"checkall":"true","repair":false,"outputs":2,"x":370,"y":140,"wires":[["4d754f5336bb43da"],["86540153f952f639"]]},{"id":"36f1ea3b13f16076","type":"function","z":"447205f9c52006b9","g":"5c5d043f856bb4d8","name":"get the filename","func":"var path = flow.get(\"files\")\n\nmsg.filename = '/data/ShivDataOutput/Jomesa/'+path[0];\n\nreturn msg;","outputs":1,"noerr":0,"initialize":"","finalize":"","libs":[],"x":1080,"y":100,"wires":[["bcf1a922381d0267"]]},{"id":"5ff72081e0b5097c","type":"file in","z":"447205f9c52006b9","g":"6f521e616a23443f","name":"","filename":"","format":"lines","chunk":false,"sendError":false,"encoding":"none","allProps":false,"x":220,"y":380,"wires":[["2b7ef198c36965e8"]]},{"id":"2b7ef198c36965e8","type":"change","z":"447205f9c52006b9","g":"6f521e616a23443f","name":"","rules":[{"t":"set","p":"data","pt":"flow","to":"payload","tot":"msg"}],"action":"","property":"","from":"","to":"","reg":false,"x":170,"y":520,"wires":[["41b1a15f69a39a63"]]},{"id":"e166aa090e237780","type":"function","z":"447205f9c52006b9","g":"5c5d043f856bb4d8","name":"clear flow variables","func":"flow.set(\"dateOfAnalysis\",\"\");\nflow.set(\"reportNum\",\"\");\nflow.set(\"location\",\"\");\nflow.set(\"partName\",\"\");\nflow.set(\"JK\",0.0);\nflow.set(\"HI\",0.0);\nflow.set(\"FG\",0.0);\nflow.set(\"CE\",0.0);\nflow.set(\"weight\",0.0);\nflow.set(\"occupancy\",0.0);\nflow.set(\"met_len\",0);\nflow.set(\"met_width\",0);\nflow.set(\"non_met_len\",0);\nflow.set(\"non_met_width\",0);\nflow.set(\"fiber_len\",0);\nflow.set(\"total_fibers\",0.0);\nflow.set(\"result\",\"\");\nflow.set(\"reaction_values\",[]);\nreturn msg;","outputs":1,"noerr":0,"initialize":"","finalize":"","libs":[],"x":390,"y":180,"wires":[[]]},{"id":"e52cdea3b765b409","type":"function","z":"447205f9c52006b9","g":"6f521e616a23443f","name":"parse 10R140 data","func":"/* DATALIST =\n * [2] LOCATION\n * [4] JK\n * [5] HI\n * [6] FG\n * [7] CE\n * [8] WEIGHT\n * [9] OCCUPANCY\n * [10] METALLIC_LEN\n * [11] METALLIC_WIDTH\n * [12] NON_METALLIC_LEN\n * [13] NON_METALLIC_WIDTH\n * [14] FIBER_LEN\n * [15] TOTAL_FIBERS\n * [16] RESULT              */\n\nvar data = flow.get(\"data\");\nvar myData = data.split(\",\");\n\nvar location = myData[2];\nvar JK = parseFloat(myData[4]);\nvar HI = parseFloat(myData[5]);\nvar FG = parseFloat(myData[6]);\nvar CE = parseFloat(myData[7]);\nvar weight = parseFloat(myData[8]);\nvar occupy = parseFloat(myData[9]);\nvar metallic_len = parseFloat([10]);\nvar metallic_width = parseFloat([11]);\nvar non_metallic_len = parseFloat([12]);\nvar non_metallic_width = parseFloat([13]);\nvar fiber_len = parseFloat([14]);\nvar total_fibers = parseFloat([15]);\nvar result = myData[16];\n\nflow.set(\"location\",location);\nflow.set(\"JK\",JK);\nflow.set(\"HI\",HI);\nflow.set(\"FG\",FG);\nflow.set(\"CE\",CE);\nflow.set(\"weight\",weight);\nflow.set(\"occupancy\",occupy);\nflow.set(\"met_len\",metallic_len);\nflow.set(\"met_width\",metallic_width);\nflow.set(\"non_met_len\",non_metallic_len);\nflow.set(\"non_met_width\",non_metallic_width);\nflow.set(\"fiber_len\",fiber_len);\nflow.set(\"total_fibers\",total_fibers);\nflow.set(\"result\",result);\n\nreturn msg;","outputs":1,"noerr":0,"initialize":"","finalize":"","libs":[],"x":910,"y":400,"wires":[["ae830e4f56a1ddae"]]},{"id":"bcf1a922381d0267","type":"link out","z":"447205f9c52006b9","g":"5c5d043f856bb4d8","name":"out_startup","mode":"link","links":["9ae136c26f4e49cc"],"x":1200,"y":100,"wires":[]},{"id":"9ae136c26f4e49cc","type":"link in","z":"447205f9c52006b9","g":"6f521e616a23443f","name":"in_parsing","links":["bcf1a922381d0267"],"x":80,"y":380,"wires":[["5ff72081e0b5097c"]]},{"id":"3bd354bf6fde0a8c","type":"function","z":"447205f9c52006b9","g":"d3e4db5647dfdd51","name":"configure email","func":"var body = flow.get(\"email_body\");\nvar pdf = flow.get(\"pdf_files\");    \nvar measured = flow.get(\"reaction_values\");\nvar reaction = flow.get(\"out_of_reaction\");\nvar part = flow.get(\"partName\");\nvar report = flow.get(\"reportNum\");\n\n//Set 10R140 -------------------------------------------------------------------\nif(part === \"10R140 Body\"){\n    var limits = flow.get(\"body_reaction\");\n}else if(part === \"10R140 Slide\"){\n    var limits = flow.get(\"slide_reaction\");\n}else if(part === \"10R140 Rotor\"){\n    var limits = flow.get(\"rotor_reaction\");\n\n//Set ZF -----------------------------------------------------------------------\n}else if(part === 'ZF Body'){\n    var limits = flow.get(\"ctrl_ZF\");\n}else if(part === 'ZF Outer'){\n    var limits = flow.get(\"ctrl_ZF\");\n}else if(part === 'ZF Inner'){\n    var limits = flow.get(\"ctrl_ZF\");\n\n}\n\n//Sender --------------------------------------------------------\nmsg.from = ['PM-A Quality <notification-noreply@stackpole.com>'];\n\n//Receiver ------------------------------------------------------\nmsg.to = ['sthakar@stackpole.com']//,'meechaute@stackpole.com',flow.get(\"QE\"),'fbaguma@stackpole.com','cleroux@stackpole.com'];\n\n//Subject -------------------------------------------------------\n\nif(part.includes(\"10R140\") === true){\n    msg.topic = \"Reaction Limit Exceeded - Sediment Test #\"+report+\" for \"+part; // subject\n    var r = \"Reaction Limit\";\n}else{\n    msg.topic = \"Failed Sediment Test - \"+report+\" for \"+part; // subject\n    var r = \"Control Limit\";\n}\n\n\n\n//Attachments ---------------------------------------------------   to be implemented\nmsg.attachments = [\n    \n    {filename:pdf[0],path:'/data/ShivDataOutput/Jomesa/'+ pdf[0]}\n    \n    ];\n\n//Body ----------------------------------------------------------\nif(part.includes(\"10R140\") === true){\n    body = \"The reaction limit has been exceeded for \"+part+\" (Report Number: \"+report+\")\\n\\nThe following categories are out of the reaction limit:\\n\\n\";\n}else{\n    body = \"Sediment Test #\"+report+\" has failed for \"+part+\". The following categories are out of the control limits:\\n\\n\";\n}\n\n\nfor(let i = 0; i < reaction.length; i++){\n    \n    /*\n     * THIS MAY NEED TO CHANGE, SINCE DIFFERENT PARTS MAY HAVE MORE OR LESS THAN THIS\n     * THIS IMPLEMENTATION IS ONLY FOR 10R140 COMPONENTS [BODY,SLIDE,ROTOR]\n     */\n    \n    if(reaction[i] === \"JK\" || reaction[i] === \"Weight\"){\n        x = limits[0];\n    }else if(reaction[i] === \"HI\" || reaction[i] === \"Largest Fiber\"){\n        x = limits[1];\n    }else if(reaction[i] === \"FG\" || reaction[i] === \"K\"){\n        x = limits[2];\n    }else if(reaction[i] === \"CE\" || reaction [i] === \"J\"){\n        x = limits[3];\n    }else if(reaction[i] === \"I\"){\n        x = limits[4]\n    }\n    \n    \n    body = body + reaction[i]+\"= \"+measured[i]+\" [\"+r+\" = \"+x+\"]\\n\";\n    \n}\n\nbody = body + \"\\nJomesa Data: [LINK]\\n\\nPictures Saved To:\\nN:\\\\Quality\\\\Metlab\\\\Met Lab Reports\\\\Sediment Tests\\\\Jomesa results\\\\Reaction Limit Sediment Tests Pictures\\\\\"+part+\"\\\\\"+report+\"_Pictures\\n\\n\";\n\nmsg.payload = body;\nmsg.reaction = reaction;\nreturn msg;\n\n","outputs":1,"noerr":0,"initialize":"","finalize":"","libs":[],"x":3260,"y":540,"wires":[["3b7d882b8662f018","7362256baae046d7"]]},{"id":"3b7d882b8662f018","type":"e-mail","z":"447205f9c52006b9","g":"d3e4db5647dfdd51","server":"smtp01.stackpole.com","port":"25","secure":false,"tls":false,"name":"","dname":"send email","x":3450,"y":500,"wires":[]},{"id":"c694bb98e43ba553","type":"link in","z":"447205f9c52006b9","g":"d3e4db5647dfdd51","name":"in_sendEmail","links":["19fbcf7f5755dee9"],"x":3120,"y":540,"wires":[["3bd354bf6fde0a8c"]]},{"id":"7e1d0a0fb1e9dcc5","type":"function","z":"447205f9c52006b9","g":"29e81cdb7824f270","name":"create FinalDataObject","func":"var myObj = {};\n\nvar timestamp = flow.get(\"timestamp\")||\"\"; //need to add\nvar reportNum = flow.get(\"reportNum\")||\"\";\nvar loc = flow.get(\"location\")||\"\";\nvar part = flow.get(\"partName\"||\"\");\nvar JK = flow.get(\"JK\")||\"\";\nvar HI = flow.get(\"HI\")||\"\";\nvar FG = flow.get(\"FG\")||\"\";\nvar CE = flow.get(\"CE\")||\"\";\nvar K = flow.get(\"K\")||\"\";\nvar J = flow.get(\"J\")||\"\";\nvar I = flow.get(\"I\")||\"\";\nvar H = flow.get(\"H\")||\"\";\nvar weight = flow.get(\"weight\")||\"\";\nvar occupancy = flow.get(\"occupancy\")||\"\";\nvar met_len = flow.get(\"met_len\")||\"\";\nvar met_width = flow.get(\"met_width\")||\"\";\nvar nonMet_len = flow.get(\"non_met_len\")||\"\";\nvar nonMet_wid = flow.get(\"non_met_width\")||\"\";\nvar fiber_len = flow.get(\"fiber_len\")||\"\";\nvar total_fib = flow.get(\"total_fibers\")||\"\";\nvar ctrl = flow.get(\"out_of_control\").join(\",\")||\"\";      \nvar react = flow.get(\"out_of_reaction\").join(\",\")||\"\";     \nvar result = flow.get(\"result\")||\"\";\n\nmyObj.timestamp = timestamp;            // int\nmyObj.loc = loc;                        // varchar(50)\nmyObj.reportNum = reportNum;            // varchar(10)\nmyObj.partName = part;                  // varchar(100)\nmyObj.JK = JK;                          // float (1 decimal)\nmyObj.HI = HI;                          // float (1 decimal)\nmyObj.FG = FG;                          // float (1 decimal)\nmyObj.CE = CE;                          // float (1 decimal)\nmyObj.K = K;                            // int \nmyObj.J = J;                            // int\nmyObj.I = I;                            // int\nmyObj.H = H;                            // int\nmyObj.weight = weight;                  // float (1 decimal)\nmyObj.occ = occupancy;                  // float (1 decimal)\nmyObj.met_len = met_len;                // int\nmyObj.met_width = met_width;            // int\nmyObj.nonMet_len = nonMet_len;          // int\nmyObj.nonMet_wid = nonMet_wid;          // int\nmyObj.fiber_len = fiber_len;            // int\nmyObj.total_fibers = total_fib;         // float (2-3 decimals)\nmyObj.ctrl = ctrl;                      // varchar(100)\nmyObj.reaction = react;                 // varchar(100)\nmyObj.result = result;                  // varchar(50)\n\nflow.set(\"JOMESA_FINALDATASET\", myObj);\n\nreturn msg;","outputs":1,"noerr":0,"initialize":"","finalize":"","libs":[],"x":2800,"y":300,"wires":[["7e1b7ef539b7bb48","87f6d54a02c85e57"]]},{"id":"da778d0b71964aa6","type":"link in","z":"447205f9c52006b9","g":"29e81cdb7824f270","name":"in_finalDataObj","links":["0bc4bcad21a144d4","b8f0d8c65ab33195"],"x":2620,"y":300,"wires":[["7e1d0a0fb1e9dcc5"]]},{"id":"fa500cb657a3cc27","type":"change","z":"447205f9c52006b9","g":"5c5d043f856bb4d8","name":"","rules":[{"t":"set","p":"timestamp","pt":"flow","to":"payload","tot":"msg"}],"action":"","property":"","from":"","to":"","reg":false,"x":390,"y":220,"wires":[[]]},{"id":"af0da7a50fe51b8a","type":"fs-ops-dir","z":"447205f9c52006b9","g":"5c5d043f856bb4d8","name":"pdf files","path":"/data/ShivDataOutput/Jomesa","pathType":"str","filter":"*.pdf","filterType":"str","dir":"pdf_files","dirType":"flow","x":580,"y":60,"wires":[["701b659a306582d7"]]},{"id":"4d754f5336bb43da","type":"switch","z":"447205f9c52006b9","g":"5c5d043f856bb4d8","name":"if pdf_files empty","property":"pdf_files","propertyType":"flow","rules":[{"t":"nempty"},{"t":"else"}],"checkall":"true","repair":false,"outputs":2,"x":610,"y":140,"wires":[["b81cbefcc962fa45"],["86540153f952f639"]]},{"id":"e0790188ce8ed145","type":"inject","z":"447205f9c52006b9","g":"5c5d043f856bb4d8","name":"","props":[{"p":"payload"},{"p":"topic","vt":"str"}],"repeat":"","crontab":"","once":false,"onceDelay":0.1,"topic":"","payload":"","payloadType":"date","x":140,"y":160,"wires":[["86540153f952f639","e166aa090e237780","fa500cb657a3cc27","8ee6f4fcb9a62ac0"]]},{"id":"7e1b7ef539b7bb48","type":"function","z":"447205f9c52006b9","d":true,"g":"29e81cdb7824f270","name":"OnChange trigger - JSON string for MSSQL Integration - Jomesa Datapoints","func":"//\n//++++++++++++ VARIABLE DEFINITION ++++++++++++\n//--------------Custom VARI DEF----------------\n//\nvar TriggerTag      = \"timestamp\";                  //Define the Tag to be monitored as Trigger\nvar DeviceName      = \"Jomesa_PDF\";            // \"deviceID\" in the Integration data stream; equivalent to Level's in the EAV database\n                        // location  , report num  , part name    ,  JK   , HI    , FG    , CE    ,  K  ,  J    ,  I   , H   , weight, occu  , met len, met wid, non met len, non let wid, fib len, total fib , ctrl         , react    \nvar DataTypes       =  [\"varchar(50)\",\"varchar(10)\",\"varchar(100)\",\"float\",\"float\",\"float\",\"float\",\"int\", \"int\", \"int\", \"int\",\"float\",\"float\",\"int\", \"int\", \"int\", \"int\", \"int\",\"float\",\"varchar(100)\",\"varchar(100)\"];                          \nvar UserTopic       = \"Send_To_MSSQL\";              // Make sure to use the SQL Integration topic for the intended database [Transaction] table\nvar MSSQLTable      = \"Jomesa_SedimentTest_Quality\";               // \"registerId\" in the Integration data stream\nvar OnChange_Type   = 1;                        // 1 = Simple OnChange condition, \n                                                // 2 = OnChnage by defined increment (i.e. \"Trigger_Incre\"), \n                                                // 3 = OnChanValEq, when value changes, not zero and eq to \"TriggerValueToMonitor\"\n//var TriggerValueToMonitor   =   \"1\";             // Define the value to monitor if TriggerCondition equals #3: OnChanValEq\n//var Trigger_Incre   = 10;                       // 1 = triggers every part, 2 = triggers every two parts, etc. etc. \n//\n//+++++++++++++++ END VARI DEF ++++++++++++++++\n//\n//############### Prog varibles ###############   \n//\nvar FinalDataObj = msg.FinalDataObj;                    // Enable this line if input is already the final data object\nvar timestamp = Date.now();\nvar success = true;\n//\n//############# END Prog varibles #############\n//\n//**************** EXECUTE MAIN ****************\n//\nflow.set(\"TriggerTag\",TriggerTag);                                 \nflow.set(\"TriggerValue\",String(eval(FinalDataObj)[TriggerTag]));       // Enable this line if input is already the final data object\n//flow.set(\"TriggerValue\",String(msg.payload.value));                 // Enable this line if input is the trigger tag only\nvar newvalue = String(flow.get(\"TriggerValue\"));\n\n\n//-------------------------------------------\n// OnChange Type 1 and 2\n//-------------------------------------------\nif(OnChange_Type === 1 || OnChange_Type === 2){\n    // Check Trigger condition\n    if (String(flow.get(\"OldValue1\")).toLowerCase() === String(newvalue).toLowerCase())  // Each part type uses its own unique \"OldValue\" to compare for triggering\n         {\n            // Trigger Tag value has not changed, do nothing\n            return [null];\n         }  \n         \n    flow.set(\"OldValue1\", newvalue);\n    \n    \n    //-------------------------------------------------------\n    // 1 - Simple OnChange condition (Trigger by value change) \n    //-------------------------------------------------------\n    if (OnChange_Type === 1){\n        \n        delete FinalDataObj.timestamp;\n        \n        var keyNames    = Object.keys(FinalDataObj);         //create the key array\n        var keyValues   = Object.values(FinalDataObj);       //create the value array\n        \n//        node.warn (keyNames)\n//        node.warn (keyNames.length)\n//        node.warn (keyValues)\n//        node.warn (keyValues.length)\n        \n        // Create the DATATYPES as a \";\" separated values string\n        for (var k = 0; k < keyNames.length; k++){\n//            if(keyNames[k] === \"addnotes\" || keyNames[k] === \"notes\"){\n                keyValues[k] = keyValues[k].toString().replace(/[=,]/g, '~|').replace(/[=\"]|[=']/g, '@|')       // Replace \",\" with \".\" from the Operator added notes to avoid misinterpreting as comma forseperating the key names\n//            }\n            if(k===0)\n            {\n                DATATYPES = DataTypes[k];          \n            }\n            else\n            {\n               DATATYPES = DATATYPES + \";\" + DataTypes[k];              // Construct \";\" separated data type value string\n            }\n        }\n        \n        //node.warn(keyValues)\n        \n        var newstr = \"{\" \n            + \"\\\"timestamp\\\": \" + timestamp  \n            + \", \\\"deviceID\\\": \\\"\" + DeviceName + \"\\\"\" \n            + \", \\\"registerId\\\": \\\"\" + MSSQLTable + \"\\\"\" \n            + \", \\\"tagName\\\": \\\"\" + keyNames + \"\\\"\" \n            + \", \\\"datatype\\\": \\\"\" + DATATYPES + \"\\\"\" \n            + \", \\\"value\\\": \\\"\" + keyValues + \"\\\"\" \n            + \", \\\"success\\\": \" + success   \n            + \"}\";\n        \n        msg.Log = \"INFO,\"+new Date(Date.now())+\" , finalDataset JSON strings streamed to MSSQL Integration\";\n        \n        return [{subjectInput:UserTopic+\".\"+DeviceName+\".\"+MSSQLTable, payload:newstr}];\n    }\n\n}\n\n//************** END EXECUTE MAIN **************","outputs":1,"noerr":0,"initialize":"","finalize":"","libs":[],"x":2970,"y":360,"wires":[["874541026c738320","87f6d54a02c85e57"]]},{"id":"b81cbefcc962fa45","type":"function","z":"447205f9c52006b9","g":"5c5d043f856bb4d8","name":"match report numbers","func":"var msg2;\nvar txt = flow.get(\"text_files\");\nvar pdf = flow.get(\"pdf_files\");\n\nvar text_num = \"\";\nvar pdf_num = \"\";\nvar flag = 0;\n\nvar files = []; \n\nfor(let i = 0; i < txt.length; i++){\n    \n    flag = 0;\n    text_num = txt[i].split(\"_\")[0];\n    \n    for (let j = 0; j < pdf.length; i++){\n        \n        if(pdf[j].includes(text_num)){\n            flag = 1;\n            files.push(txt[i]);\n            files.push(pdf[j]);\n            break;\n        }\n    }\n    if(flag === 1){\n        flow.set(\"files\",files);\n        break;\n    }\n}\n\nif (flag === 0){\n    return [,msg2];\n}\n\n\nreturn msg; \n","outputs":2,"noerr":0,"initialize":"","finalize":"","libs":[],"x":860,"y":140,"wires":[["36f1ea3b13f16076"],["09bf451b4fc05185"]]},{"id":"09bf451b4fc05185","type":"link out","z":"447205f9c52006b9","g":"5c5d043f856bb4d8","name":"out_loopStartup","mode":"link","links":["83dc02a19903b103"],"x":1020,"y":160,"wires":[]},{"id":"83dc02a19903b103","type":"link in","z":"447205f9c52006b9","g":"5c5d043f856bb4d8","name":"in_startup","links":["09bf451b4fc05185","d138778d33f51fe9"],"x":100,"y":60,"wires":[["86540153f952f639"]]},{"id":"686e66926bd9328a","type":"switch","z":"447205f9c52006b9","g":"4620efd84ef6704a","name":"if out_of_reaction not empty","property":"out_of_reaction","propertyType":"flow","rules":[{"t":"nempty"}],"checkall":"true","repair":false,"outputs":1,"x":2600,"y":540,"wires":[["19fbcf7f5755dee9"]]},{"id":"8ee6f4fcb9a62ac0","type":"function","z":"447205f9c52006b9","g":"5c5d043f856bb4d8","name":"set reaction and ctrl limits","func":"// 10R140 Components -----------------------------------------------------------\nflow.set(\"ctrl_10R140\",[4,64,500,16000]);\nflow.set(\"react_10R140Body\",[2.5155,31.17,184.2,3804]);\nflow.set(\"react_10R140Slide\",[2.6736,36.18,178.32,3735]);\nflow.set(\"react_10R140Rotor\",[3.302,38.67,198.96,4488]);\n\n// ZF Components ---------------------------------------------------------------\n// Weight, Largest Length of Fiber, K, J, I\nflow.set(\"ctrl_ZF\",[0.4,4000,1,1,1]);\n\n// GME T4 Stator ---------------------------------------------------------------\nflow.set(\"ctrl_GME\",[]);\n\nreturn msg;","outputs":1,"noerr":0,"initialize":"","finalize":"","libs":[],"x":410,"y":260,"wires":[[]]},{"id":"7362256baae046d7","type":"debug","z":"447205f9c52006b9","g":"d3e4db5647dfdd51","name":"","active":true,"tosidebar":true,"console":false,"tostatus":false,"complete":"true","targetType":"full","statusVal":"","statusType":"auto","x":3430,"y":580,"wires":[]},{"id":"1a88d7c4b651590e","type":"switch","z":"447205f9c52006b9","g":"6f521e616a23443f","name":"check partName","property":"partName","propertyType":"flow","rules":[{"t":"cont","v":"10R140","vt":"str"},{"t":"cont","v":"ZF","vt":"str"},{"t":"cont","v":"GME","vt":"str"}],"checkall":"true","repair":false,"outputs":3,"x":640,"y":520,"wires":[["e52cdea3b765b409","3c20f2ed5c9c5b81"],["339536fc9011b422","4d267486fb2873b5"],["b449aa149caa3403","a387917380784a65"]]},{"id":"792ebb43bc5ec7e6","type":"change","z":"447205f9c52006b9","g":"6f521e616a23443f","name":"set 10R140 Body Specs","rules":[{"t":"set","p":"ctrl","pt":"msg","to":"ctrl_10R140","tot":"flow"},{"t":"set","p":"react","pt":"msg","to":"react_10R140Body","tot":"flow"}],"action":"","property":"","from":"","to":"","reg":false,"x":1450,"y":360,"wires":[["95e36d9bb52ba14a"]]},{"id":"6b798b18f95ee992","type":"change","z":"447205f9c52006b9","g":"6f521e616a23443f","name":"set 10R140 Slide Specs","rules":[{"t":"set","p":"ctrl","pt":"msg","to":"ctrl_10R140","tot":"flow"},{"t":"set","p":"react","pt":"msg","to":"react_10R140Slide","tot":"flow"}],"action":"","property":"","from":"","to":"","reg":false,"x":1450,"y":400,"wires":[["95e36d9bb52ba14a"]]},{"id":"0280c34e3cc0ca4f","type":"change","z":"447205f9c52006b9","g":"6f521e616a23443f","name":"set 10R140 Rotor Specs","rules":[{"t":"set","p":"ctrl","pt":"msg","to":"ctrl_10R140","tot":"flow"},{"t":"set","p":"react","pt":"msg","to":"react_10R140Rotor","tot":"flow"}],"action":"","property":"","from":"","to":"","reg":false,"x":1450,"y":440,"wires":[["95e36d9bb52ba14a"]]},{"id":"95e36d9bb52ba14a","type":"function","z":"447205f9c52006b9","g":"6f521e616a23443f","name":"save 10R140 measured","func":"var jk = flow.get(\"JK\");            // get JK\nvar hi = flow.get(\"HI\");            // get HI\nvar fg = flow.get(\"FG\");            // get FG\nvar ce = flow.get(\"CE\");            // get CE\n\nvar measured = []; \n\nmeasured.push(jk);          // add all characteristics to measured array\nmeasured.push(hi);\nmeasured.push(fg);          // [JK, HI, FG, CE]\nmeasured.push(ce);\n\nvar out_ctrl = [\"JK\",\"HI\",\"FG\",\"CE\"];       // list of all characters, if out of ctrl/reaction, it is removed from array\nvar out_react = [\"JK\",\"HI\",\"FG\",\"CE\"];\n\nmsg.measured = measured; \nmsg.out_ctrl = out_ctrl;\nmsg.out_react = out_react;\n\nreturn msg;","outputs":1,"noerr":0,"initialize":"","finalize":"","libs":[],"x":1710,"y":400,"wires":[["8d96daaa8bcd8c9e"]]},{"id":"1ee17dc2391de76c","type":"link in","z":"447205f9c52006b9","g":"4620efd84ef6704a","name":"in_specValidation","links":["8d96daaa8bcd8c9e"],"x":2020,"y":540,"wires":[["f40815f478b4f0fb"]]},{"id":"8d96daaa8bcd8c9e","type":"link out","z":"447205f9c52006b9","g":"6f521e616a23443f","name":"out_parsing","mode":"link","links":["1ee17dc2391de76c"],"x":1900,"y":540,"wires":[]},{"id":"0d9d43c82e5fbe89","type":"function","z":"447205f9c52006b9","g":"4620efd84ef6704a","name":"Check Ford Reaction Limits","func":"var measured = msg.measured;                        // array of all measured values from data file\nvar ctrl = msg.ctrl;                                // get the ctrl values\nvar react = msg.react;                              // get the react values\nvar out_ctrl = msg.out_ctrl;                        // get the list of characteristics; by default (dependent on part) - [\"JK\",\"HI\",\"FG\",\"CE\"]\nvar out_react = msg.out_react;                      // get the list of characteristics; by default (dependent on part) - [\"JK\",\"HI\",\"FG\",\"CE\"]\n                                                    // any characteristics that is within spec, it will be removed from array\nvar reaction_values = [];                           // to save the actual measured value when out of reaction\n\n// check ctrl limits ---------------------------------------------------------------------------------------------------------------------------\nfor(let i = 0; i < measured.length; i++){\n    if(measured[i] < ctrl[i]){                      // measured less than control\n        delete out_ctrl[i];                         // delete if within spec\n    }\n}\nout_ctrl = out_ctrl.filter(function(element){\n    return element !== undefined;                   // remove undefined values from array\n});\n// check reaction limits -------------------------------------------------------------------------------------------------------------------------\nfor(let i = 0; i < measured.length; i++){\n    if(measured[i] < react[i]){                     // measured less than reaction\n        delete out_react[i];                        // delete if within reaction limit\n    }else{\n        reaction_values.push(measured[i]);          // save the out of reaction values to another list for email notification\n    }\n}\nout_react = out_react.filter(function(element){\n    return element !== undefined;                   // remove undefined values\n});\n\nflow.set(\"out_of_control\",out_ctrl);                // save to flow variable\nflow.set(\"out_of_reaction\",out_react);              // save to flow variable\nflow.set(\"reaction_values\",reaction_values);        // save out of reaction values for email notification\n\nreturn msg;","outputs":1,"noerr":0,"initialize":"","finalize":"","libs":[],"x":2320,"y":500,"wires":[["686e66926bd9328a","0bc4bcad21a144d4"]]},{"id":"9d65f37d3f9ca919","type":"comment","z":"447205f9c52006b9","g":"4620efd84ef6704a","name":"if not empty, there are some specs out of reaction, notification must be sent","info":"","x":2740,"y":460,"wires":[]},{"id":"19fbcf7f5755dee9","type":"link out","z":"447205f9c52006b9","g":"4620efd84ef6704a","name":"out_SpecValidation","mode":"link","links":["c694bb98e43ba553"],"x":2800,"y":540,"wires":[]},{"id":"0bc4bcad21a144d4","type":"link out","z":"447205f9c52006b9","g":"4620efd84ef6704a","name":"out_specValidation","mode":"link","links":["da778d0b71964aa6"],"x":2520,"y":500,"wires":[]},{"id":"df5d5f05d4bf4ab7","type":"comment","z":"447205f9c52006b9","g":"4620efd84ef6704a","name":"go to FinalDataObj","info":"","x":2650,"y":500,"wires":[]},{"id":"5a9832005bd656de","type":"complete","z":"447205f9c52006b9","d":true,"g":"fda705b472ca9152","name":"trigger after parsing","scope":["8d96daaa8bcd8c9e"],"uncaught":false,"x":490,"y":820,"wires":[["5e20ea2364fe3ce7"]]},{"id":"5e20ea2364fe3ce7","type":"delay","z":"447205f9c52006b9","g":"fda705b472ca9152","name":"","pauseType":"delay","timeout":"5","timeoutUnits":"seconds","rate":"1","nbRateUnits":"1","rateUnits":"second","randomFirst":"1","randomLast":"5","randomUnits":"seconds","drop":false,"allowrate":false,"outputs":1,"x":680,"y":820,"wires":[["704b4b9a9eeb632f"]]},{"id":"23bed88a08754614","type":"delay","z":"447205f9c52006b9","g":"fda705b472ca9152","name":"","pauseType":"delay","timeout":"5","timeoutUnits":"seconds","rate":"1","nbRateUnits":"1","rateUnits":"second","randomFirst":"1","randomLast":"5","randomUnits":"seconds","drop":false,"allowrate":false,"outputs":1,"x":700,"y":940,"wires":[[]]},{"id":"704b4b9a9eeb632f","type":"fs-ops-delete","z":"447205f9c52006b9","g":"fda705b472ca9152","name":"delete text file","path":"/data/ShivDataOutput/Jomesa/","pathType":"str","filename":"text_files","filenameType":"flow","x":700,"y":880,"wires":[["23bed88a08754614"]]},{"id":"7880f98da2e28532","type":"complete","z":"447205f9c52006b9","d":true,"g":"fda705b472ca9152","name":"trigger after email","scope":["3b7d882b8662f018"],"uncaught":false,"x":940,"y":820,"wires":[["67c9b75d72316284"]]},{"id":"96bfc5789db92671","type":"function","z":"447205f9c52006b9","g":"fda705b472ca9152","name":"set pdf move paths","func":"var part = flow.get('partName');\nvar report = flow.get('reportNum');\n\nmsg.srcPath = '/data/ShivDataOutput/Jomesa/';\nmsg.srcFile = flow.get('files')[1]; \n\nmsg.destPath = '/data/Jomesa_SedimentTest/'+part+'/';\nmsg.destFile = report + '_fullreport.pdf';\n\n\n\nreturn msg;","outputs":1,"noerr":0,"initialize":"","finalize":"","libs":[],"x":970,"y":880,"wires":[["185c8573a46f1835"]]},{"id":"aed8326e583eb95e","type":"catch","z":"447205f9c52006b9","g":"fda705b472ca9152","name":"catch fs-ops error","scope":["704b4b9a9eeb632f","185c8573a46f1835","5458709a7401e5fa"],"uncaught":false,"x":480,"y":1000,"wires":[["bb022f79a52ab9bd"]]},{"id":"bb022f79a52ab9bd","type":"function","z":"447205f9c52006b9","g":"fda705b472ca9152","name":"do nothing","func":"\nreturn msg;","outputs":1,"noerr":0,"initialize":"","finalize":"","libs":[],"x":650,"y":1000,"wires":[[]]},{"id":"185c8573a46f1835","type":"fs-ops-move","z":"447205f9c52006b9","g":"fda705b472ca9152","name":"move pdf file","sourcePath":"srcPath","sourcePathType":"msg","sourceFilename":"srcFile","sourceFilenameType":"msg","destPath":"destPath","destPathType":"msg","destFilename":"destFile","destFilenameType":"msg","link":false,"x":1150,"y":880,"wires":[["59107ea88172eb22"]]},{"id":"d138778d33f51fe9","type":"link out","z":"447205f9c52006b9","g":"fda705b472ca9152","name":"out_endProcedure","mode":"link","links":["83dc02a19903b103"],"x":1260,"y":1000,"wires":[]},{"id":"59107ea88172eb22","type":"delay","z":"447205f9c52006b9","g":"fda705b472ca9152","name":"","pauseType":"delay","timeout":"5","timeoutUnits":"seconds","rate":"1","nbRateUnits":"1","rateUnits":"second","randomFirst":"1","randomLast":"5","randomUnits":"seconds","drop":false,"allowrate":false,"outputs":1,"x":1140,"y":940,"wires":[["d138778d33f51fe9"]]},{"id":"943f978f5a698562","type":"delay","z":"447205f9c52006b9","g":"fda705b472ca9152","name":"","pauseType":"delay","timeout":"5","timeoutUnits":"seconds","rate":"1","nbRateUnits":"1","rateUnits":"second","randomFirst":"1","randomLast":"5","randomUnits":"seconds","drop":false,"allowrate":false,"outputs":1,"x":1340,"y":820,"wires":[["96bfc5789db92671"]]},{"id":"61c3448a13a22691","type":"comment","z":"447205f9c52006b9","g":"fda705b472ca9152","name":"remove text file from /data/ShivDataOutput/Jomesa","info":"","x":590,"y":780,"wires":[]},{"id":"d20f3c952c676ba3","type":"comment","z":"447205f9c52006b9","g":"fda705b472ca9152","name":"move pdf file from /data/Jomesa_SedimentTest","info":"","x":1040,"y":780,"wires":[]},{"id":"eec992541ece946a","type":"comment","z":"447205f9c52006b9","g":"fda705b472ca9152","name":"return to STARTUP to find new files","info":"","x":1060,"y":1000,"wires":[]},{"id":"874541026c738320","type":"Datahub Publish","z":"447205f9c52006b9","d":true,"g":"29e81cdb7824f270","name":"To MSSQL Integration via topic \"Send_To_MSSQL.>\"","natc":"","topicname":"","x":3520,"y":360,"wires":[]},{"id":"c0fc229720484997","type":"Datahub Subscribe","z":"447205f9c52006b9","d":true,"g":"29e81cdb7824f270","name":"","natc":"","topicname":"Send_To_MSSQL.>","x":2710,"y":240,"wires":[["efb7bb97a951721b"]]},{"id":"efb7bb97a951721b","type":"debug","z":"447205f9c52006b9","g":"29e81cdb7824f270","name":"","active":true,"tosidebar":true,"console":false,"tostatus":false,"complete":"false","statusVal":"","statusType":"auto","x":2950,"y":240,"wires":[]},{"id":"87f6d54a02c85e57","type":"debug","z":"447205f9c52006b9","g":"29e81cdb7824f270","name":"","active":true,"tosidebar":true,"console":false,"tostatus":false,"complete":"true","targetType":"full","statusVal":"","statusType":"auto","x":3370,"y":300,"wires":[]},{"id":"41b1a15f69a39a63","type":"function","z":"447205f9c52006b9","g":"6f521e616a23443f","name":"parse data","func":"/* DATALIST =\n * [0] DATE\n * [1] REPORT_NO\n * [3] PART_NAME  */\n\nvar data = flow.get(\"data\");\nvar myData = data.split(\",\");\n\nvar analysis = myData[0];\nvar reportNum = myData[1];\nvar part = myData[3];\n\n\nflow.set(\"dateOfAnalysis\",analysis);\nflow.set(\"reportNum\",reportNum);\nflow.set(\"partName\",part);\n\nmsg.payload = myData;\n\nreturn msg;","outputs":1,"noerr":0,"initialize":"","finalize":"","libs":[],"x":370,"y":520,"wires":[["1a88d7c4b651590e"]]},{"id":"339536fc9011b422","type":"function","z":"447205f9c52006b9","g":"6f521e616a23443f","name":"parse ZF data","func":"/* DATALIST =\n * [2] LOCATION\n * [4] K\n * [5] J\n * [6] I\n * [7] H\n * [8] WEIGHT\n * [9] METALLIC_LEN\n * [10] METALLIC_WIDTH\n * [11] NON_METALLIC_LEN\n * [12] NON_METALLIC_WIDTH\n * [13] FIBER_LEN\n * [14] TOTAL_FIBERS\n * [15] RESULT              */\n\nvar data = flow.get(\"data\");\nvar myData = data.split(\",\");\n\nvar location = myData[2]\nvar K = parseFloat(myData[4]);\nvar J = parseFloat(myData[5]);\nvar I = parseFloat(myData[6]);\nvar H = parseFloat(myData[7]);\nvar weight = parseFloat(myData[8]);\nvar metallic_len = parseFloat(myData[9]);\nvar metallic_width = parseFloat(myData[10]);\nvar non_metallic_len = parseFloat(myData[11]);\nvar non_metallic_width = parseFloat(myData[12]);\nvar fiber_len = parseFloat(myData[13]);\nvar total_fibers = parseFloat(myData[14]);\n\nflow.set(\"location\",location);\nflow.set(\"K\",K);\nflow.set(\"J\",J);\nflow.set(\"I\",I);\nflow.set(\"H\",H);\nflow.set(\"weight\",weight);\nflow.set(\"met_len\",metallic_len);\nflow.set(\"met_width\",metallic_width);\nflow.set(\"non_met_len\",non_metallic_len);\nflow.set(\"non_met_width\",non_metallic_width);\nflow.set(\"fiber_len\",fiber_len);\nflow.set(\"total_fibers\",total_fibers);\n\nmsg.payload = [flow.get(\"partName\")];\n\nreturn msg;","outputs":1,"noerr":0,"initialize":"","finalize":"","libs":[],"x":900,"y":540,"wires":[["293470f827897582"]]},{"id":"ae830e4f56a1ddae","type":"switch","z":"447205f9c52006b9","g":"6f521e616a23443f","name":"check partname","property":"partName","propertyType":"flow","rules":[{"t":"cont","v":"10R140 Body","vt":"str"},{"t":"cont","v":"10R140 Slide","vt":"str"},{"t":"cont","v":"10R140 Rotor","vt":"str"}],"checkall":"true","repair":false,"outputs":3,"x":1140,"y":400,"wires":[["792ebb43bc5ec7e6"],["6b798b18f95ee992"],["0280c34e3cc0ca4f"]]},{"id":"3c20f2ed5c9c5b81","type":"change","z":"447205f9c52006b9","g":"6f521e616a23443f","name":"set QE to Ken S. ","rules":[{"t":"set","p":"QE","pt":"msg","to":"kservos@stackpole.com","tot":"str"}],"action":"","property":"","from":"","to":"","reg":false,"x":910,"y":360,"wires":[[]]},{"id":"4d267486fb2873b5","type":"change","z":"447205f9c52006b9","g":"6f521e616a23443f","name":"set QE to Virginia A. ","rules":[{"t":"set","p":"QE","pt":"msg","to":"vavery@stackpole.com","tot":"str"}],"action":"","property":"","from":"","to":"","reg":false,"x":920,"y":500,"wires":[[]]},{"id":"293470f827897582","type":"change","z":"447205f9c52006b9","g":"6f521e616a23443f","name":"set ZF Specs","rules":[{"t":"set","p":"ctrl","pt":"msg","to":"ctrl_ZF","tot":"flow"}],"action":"","property":"","from":"","to":"","reg":false,"x":1410,"y":540,"wires":[["1b3f74f7a5e3ae5b"]]},{"id":"1b3f74f7a5e3ae5b","type":"function","z":"447205f9c52006b9","g":"6f521e616a23443f","name":"save ZF measured","func":"var weight = flow.get(\"weight\");\nvar fiber_len = flow.get(\"fiber_len\");\nvar K = flow.get(\"K\");            // get K\nvar J = flow.get(\"J\");            // get J\nvar I = flow.get(\"I\");            // get I\nvar measured = []; \n\nmeasured.push(weight);\nmeasured.push(fiber_len);\nmeasured.push(K);          // add all characteristics to measured array\nmeasured.push(J);\nmeasured.push(I);          // [K, J, I, H]\n\nvar out_ctrl = [\"Weight\",\"Largest Fiber\",\"K\",\"J\",\"I\"];       // list of all characters, if out of ctrl/reaction, it is removed from array\n\nmsg.measured = measured; \nmsg.out_ctrl = out_ctrl;\n\nreturn msg;","outputs":1,"noerr":0,"initialize":"","finalize":"","libs":[],"x":1730,"y":540,"wires":[["8d96daaa8bcd8c9e"]]},{"id":"b449aa149caa3403","type":"change","z":"447205f9c52006b9","g":"6f521e616a23443f","name":"set QE to Virginia A. ","rules":[{"t":"set","p":"QE","pt":"msg","to":"vavery@stackpole.com","tot":"str"}],"action":"","property":"","from":"","to":"","reg":false,"x":920,"y":620,"wires":[[]]},{"id":"e7cf363f94d08f24","type":"function","z":"447205f9c52006b9","g":"6f521e616a23443f","name":"save GME measured","func":"var K = flow.get(\"K\");            // get JK\nvar J = flow.get(\"J\");            // get HI\nvar I = flow.get(\"I\");            // get FG\nvar H = flow.get(\"H\");\nvar measured = []; \n\nmeasured.push(K);          // add all characteristics to measured array\nmeasured.push(J);\nmeasured.push(I);          // [JK, HI, FG, CE]\nmeasured.push(H);\n\nvar out_ctrl = [\"K\",\"J\",\"I\",\"H\"];       // list of all characters, if out of ctrl/reaction, it is removed from array\nvar out_react =  [\"K\",\"J\",\"I\",\"H\"];\n\nmsg.measured = measured; \nmsg.out_ctrl = out_ctrl;\nmsg.out_react = out_react;\n\nreturn msg;","outputs":1,"noerr":0,"initialize":"","finalize":"","libs":[],"x":1720,"y":660,"wires":[["8d96daaa8bcd8c9e"]]},{"id":"a387917380784a65","type":"function","z":"447205f9c52006b9","g":"6f521e616a23443f","name":"parse GME data","func":"/* DATALIST =\n * [2] LOCATION\n * [4] K\n * [5] J\n * [6] I\n * [7] H\n * [8] WEIGHT\n * [9] METALLIC_LEN\n * [10] METALLIC_WIDTH\n * [11] NON_METALLIC_LEN\n * [12] NON_METALLIC_WIDTH\n * [13] FIBER_LEN\n * [14] TOTAL_FIBERS\n * [15] RESULT              */\n\nvar data = flow.get(\"data\");\nvar myData = data.split(\",\");\n\nvar location = myData[2]\nvar K = parseFloat(myData[4]);\nvar J = parseFloat(myData[5]);\nvar I = parseFloat(myData[6]);\nvar H = parseFloat(myData[7]);\nvar weight = parseFloat(myData[8]);\nvar metallic_len = parseFloat(myData[9]);\nvar metallic_width = parseFloat(myData[10]);\nvar non_metallic_len = parseFloat(myData[11]);\nvar non_metallic_width = parseFloat(myData[12]);\nvar fiber_len = parseFloat(myData[13]);\nvar total_fibers = parseFloat(myData[14]);\n//var result = myData[15];\n\nflow.set(\"location\",location);\nflow.set(\"K\",K);\nflow.set(\"J\",J);\nflow.set(\"I\",I);\nflow.set(\"H\",H);\nflow.set(\"weight\",weight);\nflow.set(\"met_len\",metallic_len);\nflow.set(\"met_width\",metallic_width);\nflow.set(\"non_met_len\",non_metallic_len);\nflow.set(\"non_met_width\",non_metallic_width);\nflow.set(\"fiber_len\",fiber_len);\nflow.set(\"total_fibers\",total_fibers);\n//flow.set(\"result\",result);\n\nreturn msg;","outputs":1,"noerr":0,"initialize":"","finalize":"","libs":[],"x":900,"y":660,"wires":[["3e6aaa9196819e8c"]]},{"id":"3e6aaa9196819e8c","type":"change","z":"447205f9c52006b9","g":"6f521e616a23443f","name":"set GME Specs","rules":[{"t":"set","p":"ctrl","pt":"msg","to":"ctrl_GME","tot":"flow"}],"action":"","property":"","from":"","to":"","reg":false,"x":1420,"y":660,"wires":[["e7cf363f94d08f24"]]},{"id":"7f0b5b914b2ebd22","type":"switch","z":"447205f9c52006b9","g":"fda705b472ca9152","name":"none out of reaction","property":"out_of_reaction","propertyType":"flow","rules":[{"t":"empty"}],"checkall":"true","repair":false,"outputs":1,"x":1820,"y":820,"wires":[["20546b3d37210c71"]]},{"id":"5458709a7401e5fa","type":"fs-ops-delete","z":"447205f9c52006b9","g":"fda705b472ca9152","name":"delete pdf file","path":"/data/ShivDataOutput/Jomesa/","pathType":"str","filename":"pdf_files","filenameType":"flow","x":1810,"y":880,"wires":[["7663624e9cbdbb0c"]]},{"id":"20546b3d37210c71","type":"delay","z":"447205f9c52006b9","g":"fda705b472ca9152","name":"","pauseType":"delay","timeout":"5","timeoutUnits":"seconds","rate":"1","nbRateUnits":"1","rateUnits":"second","randomFirst":"1","randomLast":"5","randomUnits":"seconds","drop":false,"allowrate":false,"outputs":1,"x":1640,"y":880,"wires":[["5458709a7401e5fa"]]},{"id":"7663624e9cbdbb0c","type":"delay","z":"447205f9c52006b9","g":"fda705b472ca9152","name":"","pauseType":"delay","timeout":"5","timeoutUnits":"seconds","rate":"1","nbRateUnits":"1","rateUnits":"second","randomFirst":"1","randomLast":"5","randomUnits":"seconds","drop":false,"allowrate":false,"outputs":1,"x":1740,"y":940,"wires":[["d138778d33f51fe9"]]},{"id":"cb2e26201328631d","type":"complete","z":"447205f9c52006b9","d":true,"g":"fda705b472ca9152","name":"trigger after FinalDataObject","scope":["7e1d0a0fb1e9dcc5"],"uncaught":false,"x":1580,"y":820,"wires":[["7f0b5b914b2ebd22"]]},{"id":"1c3fc634512b7312","type":"comment","z":"447205f9c52006b9","g":"fda705b472ca9152","name":"delete pdf file when specs are valid","info":"","x":1600,"y":780,"wires":[]},{"id":"67c9b75d72316284","type":"switch","z":"447205f9c52006b9","g":"fda705b472ca9152","name":"out of reaction not empty","property":"out_of_reaction","propertyType":"flow","rules":[{"t":"nempty"}],"checkall":"true","repair":false,"outputs":1,"x":1150,"y":820,"wires":[["943f978f5a698562"]]},{"id":"3d86ad0d182834b8","type":"function","z":"447205f9c52006b9","g":"4620efd84ef6704a","name":"Check Pass/Fail Report","func":"var result = \"\";\nvar ctrl = msg.ctrl;\nvar measured = msg.measured;\nvar out_ctrl = msg.out_ctrl;\nvar ctrl_values = [];\n\n\nfor(let i = 0; i < measured.length; i++){\n    if(measured[i] < ctrl[i]){\n        delete out_ctrl[i];\n    }else{\n        ctrl_values.push(measured[i]);\n    }\n}\n\nout_ctrl = out_ctrl.filter(function(element){\n    return element !== undefined;\n});\n\nif(ctrl_values.length < 0){\n    result = \"Fail\";\n}else{\n    result = \"Pass\";\n}\n\nflow.set(\"out_of_reaction\",out_ctrl);              // save to flow variable\nflow.set(\"reaction_values\",ctrl_values);        // save out of reaction values for email notification\nflow.set(\"result\",result);\nreturn msg;","outputs":1,"noerr":0,"initialize":"","finalize":"","libs":[],"x":2330,"y":580,"wires":[["686e66926bd9328a","b8f0d8c65ab33195"]]},{"id":"f40815f478b4f0fb","type":"switch","z":"447205f9c52006b9","g":"4620efd84ef6704a","name":"","property":"partName","propertyType":"flow","rules":[{"t":"cont","v":"10R140","vt":"str"},{"t":"cont","v":"ZF","vt":"str"}],"checkall":"true","repair":false,"outputs":2,"x":2110,"y":540,"wires":[["0d9d43c82e5fbe89"],["3d86ad0d182834b8"]]},{"id":"2ec848e40c55cef0","type":"comment","z":"447205f9c52006b9","g":"4620efd84ef6704a","name":"specific for 10R140 components","info":"","x":2330,"y":460,"wires":[]},{"id":"b8f0d8c65ab33195","type":"link out","z":"447205f9c52006b9","g":"4620efd84ef6704a","name":"out_specValidation","mode":"link","links":["da778d0b71964aa6"],"x":2520,"y":580,"wires":[]},{"id":"b141b427651f3486","type":"inject","z":"447205f9c52006b9","name":"","props":[{"p":"payload"},{"p":"topic","vt":"str"}],"repeat":"","crontab":"","once":false,"onceDelay":0.1,"topic":"","payload":"","payloadType":"date","x":2480,"y":360,"wires":[["7e1d0a0fb1e9dcc5"]]}]
+[
+    {
+        "id": "447205f9c52006b9",
+        "type": "tab",
+        "label": "Jomesa",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "5c5d043f856bb4d8",
+        "type": "group",
+        "z": "447205f9c52006b9",
+        "name": "Startup",
+        "style": {
+            "label": true,
+            "stroke": "#000000",
+            "fill": "#e3f3d3",
+            "color": "#000000",
+            "fill-opacity": "0.75"
+        },
+        "nodes": [
+            "86540153f952f639",
+            "701b659a306582d7",
+            "36f1ea3b13f16076",
+            "e166aa090e237780",
+            "bcf1a922381d0267",
+            "fa500cb657a3cc27",
+            "e0790188ce8ed145",
+            "8ee6f4fcb9a62ac0",
+            "e1f1cfc078ef7628",
+            "ad28bddee7143b4a",
+            "b20ead1ceef1dbb5",
+            "ab9bd41f690a5a78"
+        ],
+        "x": 34,
+        "y": 14,
+        "w": 1052,
+        "h": 292,
+        "info": "This group is the startup sequence for the flow\n\nThis is where the text file with the email message and data will be extracted from the folder and the filename will be saved as a flow variable\n\nThis is also where the last flow.email and flow.data get reset and cleared"
+    },
+    {
+        "id": "d3e4db5647dfdd51",
+        "type": "group",
+        "z": "447205f9c52006b9",
+        "name": "Email",
+        "style": {
+            "stroke": "#000000",
+            "fill": "#ffefbf",
+            "label": true,
+            "color": "#000000",
+            "fill-opacity": "0.75"
+        },
+        "nodes": [
+            "3bd354bf6fde0a8c",
+            "c694bb98e43ba553",
+            "7362256baae046d7",
+            "74cc681ba396071e",
+            "f39d79a41406433f",
+            "5ce3a7eae6884efb",
+            "d6128f9c22a2fdba"
+        ],
+        "x": 3254,
+        "y": 494,
+        "w": 832,
+        "h": 187
+    },
+    {
+        "id": "29e81cdb7824f270",
+        "type": "group",
+        "z": "447205f9c52006b9",
+        "name": "FinalDataObject and DB Communication",
+        "style": {
+            "stroke": "#000000",
+            "fill": "#dbcbe7",
+            "label": true,
+            "color": "#000000",
+            "fill-opacity": "0.75"
+        },
+        "nodes": [
+            "7e1d0a0fb1e9dcc5",
+            "da778d0b71964aa6",
+            "7e1b7ef539b7bb48",
+            "874541026c738320",
+            "87f6d54a02c85e57",
+            "803142b71f17ad41",
+            "c35895435742d365",
+            "ce26beabda1549a7",
+            "62a3c8d02737a30f",
+            "a6046a35fb022ad4",
+            "d158d9ae00fd0145",
+            "a34fa0c82a787120",
+            "96a2037cab89bec4",
+            "9a71b476084c8d1e",
+            "b732c62f767cb07b",
+            "edea15cc78009b95"
+        ],
+        "x": 2934,
+        "y": 59,
+        "w": 1392,
+        "h": 342
+    },
+    {
+        "id": "fda705b472ca9152",
+        "type": "group",
+        "z": "447205f9c52006b9",
+        "name": "End Procedure",
+        "style": {
+            "label": true,
+            "stroke": "#000000",
+            "fill": "#ffbfbf",
+            "fill-opacity": "0.75",
+            "color": "#000000"
+        },
+        "nodes": [
+            "23bed88a08754614",
+            "704b4b9a9eeb632f",
+            "aed8326e583eb95e",
+            "bb022f79a52ab9bd",
+            "61c3448a13a22691",
+            "f817a26c1544e8b0"
+        ],
+        "x": 514,
+        "y": 794,
+        "w": 852,
+        "h": 147
+    },
+    {
+        "id": "4620efd84ef6704a",
+        "type": "group",
+        "z": "447205f9c52006b9",
+        "name": "Spec Validation",
+        "style": {
+            "stroke": "#000000",
+            "label": true,
+            "fill": "#bfdbef",
+            "fill-opacity": "0.75",
+            "color": "#000000"
+        },
+        "nodes": [
+            "1ee17dc2391de76c",
+            "0d9d43c82e5fbe89",
+            "0bc4bcad21a144d4",
+            "df5d5f05d4bf4ab7",
+            "19fbcf7f5755dee9",
+            "9d65f37d3f9ca919",
+            "686e66926bd9328a",
+            "3d86ad0d182834b8",
+            "f40815f478b4f0fb",
+            "2ec848e40c55cef0",
+            "b8f0d8c65ab33195",
+            "404f7d0b7fae9f80",
+            "a3b3b87d47bf4d8c",
+            "9257cdfeb34d0869"
+        ],
+        "x": 2174,
+        "y": 419,
+        "w": 1052,
+        "h": 342
+    },
+    {
+        "id": "152094e3fb79aab8",
+        "type": "group",
+        "z": "447205f9c52006b9",
+        "name": "archived",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "2de2b5e375ad1c55",
+            "0756b7f50689630a",
+            "3203dbeabb515c02",
+            "fd4e9ff8312577b0"
+        ],
+        "x": 34,
+        "y": 1579,
+        "w": 552,
+        "h": 142
+    },
+    {
+        "id": "6f521e616a23443f",
+        "type": "group",
+        "z": "447205f9c52006b9",
+        "name": "Parsing",
+        "style": {
+            "stroke": "#000000",
+            "fill": "#bfdbef",
+            "label": true,
+            "color": "#000000",
+            "fill-opacity": "0.75"
+        },
+        "nodes": [
+            "2b7ef198c36965e8",
+            "e52cdea3b765b409",
+            "9ae136c26f4e49cc",
+            "1a88d7c4b651590e",
+            "792ebb43bc5ec7e6",
+            "6b798b18f95ee992",
+            "0280c34e3cc0ca4f",
+            "95e36d9bb52ba14a",
+            "8d96daaa8bcd8c9e",
+            "41b1a15f69a39a63",
+            "339536fc9011b422",
+            "ae830e4f56a1ddae",
+            "3c20f2ed5c9c5b81",
+            "4d267486fb2873b5",
+            "293470f827897582",
+            "1b3f74f7a5e3ae5b",
+            "b449aa149caa3403",
+            "a387917380784a65",
+            "e7cf363f94d08f24",
+            "3e6aaa9196819e8c",
+            "c0c01ed632b14b97",
+            "2adad4d42cb933dc",
+            "60cb7d3b4f107d4e",
+            "5c2fb5e25c1c5bd6",
+            "eca333b1852557db",
+            "1c4f992fc1c8fdec",
+            "1691142b32de0d05",
+            "552e4f0ff055aec4",
+            "321f7051ab2cd2cd",
+            "8e8bca3709058c0a",
+            "360ff2d45d2290c8",
+            "32b46a700415c58b",
+            "a73dd1c61b5fc712",
+            "f033922a65b63604",
+            "b697ace66e016d72",
+            "19e37a2f69de3e13"
+        ],
+        "x": 34,
+        "y": 339,
+        "w": 2112,
+        "h": 422
+    },
+    {
+        "id": "86540153f952f639",
+        "type": "fs-ops-dir",
+        "z": "447205f9c52006b9",
+        "g": "5c5d043f856bb4d8",
+        "name": "text files",
+        "path": "/data/ShivDataOutput/Jomesa",
+        "pathType": "str",
+        "filter": "*.txt",
+        "filterType": "str",
+        "dir": "text_files",
+        "dirType": "flow",
+        "x": 340,
+        "y": 60,
+        "wires": [
+            [
+                "701b659a306582d7"
+            ]
+        ]
+    },
+    {
+        "id": "701b659a306582d7",
+        "type": "switch",
+        "z": "447205f9c52006b9",
+        "g": "5c5d043f856bb4d8",
+        "name": "if text_files empty",
+        "property": "text_files",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "nempty"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 490,
+        "y": 120,
+        "wires": [
+            [
+                "36f1ea3b13f16076"
+            ],
+            [
+                "86540153f952f639"
+            ]
+        ]
+    },
+    {
+        "id": "36f1ea3b13f16076",
+        "type": "function",
+        "z": "447205f9c52006b9",
+        "g": "5c5d043f856bb4d8",
+        "name": "get the filename",
+        "func": "var path = flow.get(\"text_files\")\n\nmsg.filename = '/data/ShivDataOutput/Jomesa/'+path[0];\n\n\nflow.set(\"delete\",path[0]);\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 120,
+        "wires": [
+            [
+                "bcf1a922381d0267"
+            ]
+        ]
+    },
+    {
+        "id": "e166aa090e237780",
+        "type": "function",
+        "z": "447205f9c52006b9",
+        "g": "5c5d043f856bb4d8",
+        "name": "clear flow variables",
+        "func": "flow.set(\"dateOfAnalysis\",0);                           // int\nflow.set(\"reportNum\",\"\");                          // varchar(50)\nflow.set(\"location\",\"\");                                 // varchar(10)\nflow.set(\"partName\",\"\");                                // varchar(100)\nflow.set(\"JK\",0.0);                                       // decimal(8,3)\nflow.set(\"HI\",0.0);                                       // decimal(8,3)\nflow.set(\"FG\",0.0);                                       // decimal(8,3)\nflow.set(\"CE\",0.0);                                       // decimal(8,3)\nflow.set(\"FI\",0.0);                                       // decimal(8,3)\nflow.set(\"DE\",0.0);                                       // decimal(8,3)\nflow.set(\"K\",0);                                           // int\nflow.set(\"J\",0);                                           // int\nflow.set(\"I\",0);                                           // int\nflow.set(\"H\",0);                                           // int\nflow.set(\"weight\",0.0);                               // decimal(8,3)\nflow.set(\"occupancy\",0.0);                         // decimal(8,3)\nflow.set(\"met_len\",0);                               // int\nflow.set(\"met_width\",0);                           // int\nflow.set(\"non_met_len\",0);                        // int\nflow.set(\"non_met_width\",0);                      // int\nflow.set(\"fiber_len\",0);                           // int\nflow.set(\"total_fibers\",0.0);                      // decimal(8,3)\nflow.set(\"out_of_control\",[]);                // varchar(100)\nflow.set(\"out_of_reaction\",[]);              // varchar(100)\nflow.set(\"result\",\"\");                                // varchar(50)\nflow.set(\"numOfComponents\",0);               // int\nflow.set(\"partWeight\",0.0);                       // decimal(8,3)\n\nflow.set(\"text_files\",[]);\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bcf1a922381d0267",
+        "type": "link out",
+        "z": "447205f9c52006b9",
+        "g": "5c5d043f856bb4d8",
+        "name": "out_startup",
+        "mode": "link",
+        "links": [
+            "9ae136c26f4e49cc"
+        ],
+        "x": 860,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "3bd354bf6fde0a8c",
+        "type": "function",
+        "z": "447205f9c52006b9",
+        "g": "d3e4db5647dfdd51",
+        "name": "configure email",
+        "func": "var body = flow.get(\"email_body\");\nvar pdf = flow.get(\"pdf_files\");    \nvar measured = flow.get(\"reaction_values\");\nvar reaction = flow.get(\"out_of_reaction\");\nvar part = flow.get(\"partName\");\nvar report = flow.get(\"reportNum\");\n\n//Set 10R140 -------------------------------------------------------------------\nif(part === \"10R140 Body\"){\n    var limits = flow.get(\"body_reaction\");\n}else if(part === \"10R140 Slide\"){\n    var limits = flow.get(\"slide_reaction\");\n}else if(part === \"10R140 Rotor\"){\n    var limits = flow.get(\"rotor_reaction\");\n\n//Set ZF -----------------------------------------------------------------------\n}else if(part === 'ZF Body'){\n    var limits = flow.get(\"ctrl_ZF\");\n}else if(part === 'ZF Outer'){\n    var limits = flow.get(\"ctrl_ZF\");\n}else if(part === 'ZF Inner'){\n    var limits = flow.get(\"ctrl_ZF\");\n//Set GME ----------------------------------------------------------------------\n}else if(part === 'GME T4 Stator'){\n    var limits = flow.get(\"ctrl_GME\");\n}\n\n\n//Sender --------------------------------------------------------\nmsg.from = ['PM-A Quality <notification-noreply@stackpole.com>'];\n\n//Receiver ------------------------------------------------------\nmsg.to = ['sthakar@stackpole.com']//,flow.get(\"QE\"),'fbaguma@stackpole.com','gmartin2@stackpole.com','akhan@stackpole.com','skumar@stackpole.com'];\n//msg.to = ['jcfung@stackpole.com']\n\n//Subject -------------------------------------------------------\n\nif(part.includes('10R140') === true){\n    msg.topic = \"Reaction Limit Exceeded - Sediment Test #\"+report+\" for \"+part; // subject\n    var r = \"Reaction Limit\";\n}else{\n    msg.topic = \"Failed Sediment Test - \"+report+\" for \"+part; // subject\n    var r = \"Control Limit\";\n}\n\n//Attachments ---------------------------------------------------   to be implemented\nmsg.attachments = [\n    \n    {filename:msg.pdf_name, path:msg.filepath+ msg.pdf_name}\n    \n    ];\n\n//Body ----------------------------------------------------------\nif(part.includes('10R140') === true){\n    body = \"The reaction limit has been exceeded for \"+part+\" (Report Number: \"+report+\")\\n\\nThe following categories are out of the reaction limit:\\n\\n\";\n}else{\n    body = \"Sediment Test #\"+report+\" has failed for \"+part+\". The following categories are out of the control limits:\\n\\n\";\n}\n\nvar units = \"\" ; \n\nfor(let i = 0; i < reaction.length; i++){\n    \n    /*\n     * THIS MAY NEED TO CHANGE, SINCE DIFFERENT PARTS MAY HAVE MORE OR LESS THAN THIS\n     * THIS IMPLEMENTATION IS ONLY FOR 10R140 COMPONENTS [BODY,SLIDE,ROTOR]\n     */\n    \n    if(reaction[i] === \"JK\" || reaction[i] === \"Weight/Part\"){\n        x = limits[0];\n        units = \"\";\n\n        if(reaction[i] === \"Weight/Part\"){\n            x = x - 0.0001;\n            units = \"mg\";\n        }\n        \n    }else if(reaction[i] === \"HI\" || reaction[i] === \"Largest Fiber\"){\n        x = limits[1];\n        units = \"\";\n\n    }else if(reaction[i] === \"FG\" || reaction[i] === \"K\"){\n        x = limits[2];\n        units = \"\";\n\n    }else if(reaction[i] === \"CE\" || reaction [i] === \"J\"){\n        x = limits[3];\n        units = \"\";\n\n    }else if(reaction[i] === \"I\"){\n        x = limits[4]\n        units = \"\";\n\n    }else if(reaction[i] === \"H\"){\n        x = limits[5];\n        units = \"\";\n    }\n    \n    body = body + reaction[i]+\" = \"+measured[i]+\" \"+units+\" [\"+r+\" = \"+x+\" \"+units+\"]\\n\";\n    \n    \n}\nFORDLINK = \"http://pmdadashboard/d/tmVF-1XVz/ford-sediment-tests-10r140-components?orgId=1&from=now-90d&to=now&var-PartName=\"+part.replace(\" \",\"%20\")+\"&var-ReportNum=\"+report+\"&var-Location=All&var-body=10R140%20Body&var-slide=10R140%20Slide&var-rotor=10R140%20Rotor&var-gear=10R140%20Gear&var-nitride=10R140%20Gear%20Nitride\";\nZFLINK = \"http://pmdadashboard/d/5NIQmsu4z/jomesa-sediment-tests?orgId=1&from=now-7d&to=now&var-ZFComponent=All&var-PartName=\"+part.replaceAll(\" \",\"%20\")+\"&var-gme=GME%20T4%20Stator&var-ReportNum=\"+report;\nGMELINK = \"http://pmdadashboard/d/5NIQmsu4z/jomesa-sediment-tests?orgId=1&from=now-7d&to=now&var-ZFComponent=All&var-PartName=All&var-gme=GME%20T4%20Stator&var-ReportNum=\"+report;\n\nif(part.includes('10R140') === true){\n    link =FORDLINK;\n}else if(part === 'GME T4 Stator'){\n    link = GMELINK;\n}else{\n    link = ZFLINK;\n}\n\nbody = body + \"\\nSediment Test Dashboard: \"+link+\"\\n\\nNote: Data may take up to 15 minutes to appear on the dashboard.\\n\\nPictures Saved To:\\nN:\\\\Quality\\\\Metlab\\\\Met Lab Reports\\\\Sediment Tests\\\\Jomesa results\\\\Reaction Limit Sediment Tests Pictures\\\\\"+part+\"\\\\\"+report+\"_Pictures\\n\\n\";\n\nmsg.payload = body;\nmsg.reaction = reaction;\nreturn msg;\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 3800,
+        "y": 600,
+        "wires": [
+            [
+                "7362256baae046d7",
+                "74cc681ba396071e"
+            ]
+        ]
+    },
+    {
+        "id": "c694bb98e43ba553",
+        "type": "link in",
+        "z": "447205f9c52006b9",
+        "g": "d3e4db5647dfdd51",
+        "name": "in_sendEmail",
+        "links": [
+            "19fbcf7f5755dee9"
+        ],
+        "x": 3300,
+        "y": 540,
+        "wires": [
+            [
+                "f39d79a41406433f"
+            ]
+        ]
+    },
+    {
+        "id": "7e1d0a0fb1e9dcc5",
+        "type": "function",
+        "z": "447205f9c52006b9",
+        "g": "29e81cdb7824f270",
+        "name": "create FinalDataObject",
+        "func": "var myObj = {};\n\nvar date = flow.get(\"dateOfAnalysis\")||0;                           // int\nvar reportNum = flow.get(\"reportNum\")||\"\";                          // varchar(50)\nvar loc = flow.get(\"location\")||\"\";                                 // varchar(10)\nvar part = flow.get(\"partName\")||\"\";                                // varchar(100)\nvar JK = flow.get(\"JK\")||0.0;                                       // decimal(8,3)\nvar HI = flow.get(\"HI\")||0.0;                                       // decimal(8,3)\nvar FG = flow.get(\"FG\")||0.0;                                       // decimal(8,3)\nvar CE = flow.get(\"CE\")||0.0;                                       // decimal(8,3)\n// add in order\nvar FI = flow.get(\"FI\")||0.0;                                       // decimal(8,3)\nvar DE = flow.get(\"DE\")||0.0;                                       // decimal(8,3)\nvar K = flow.get(\"K\")||0;                                           // int\nvar J = flow.get(\"J\")||0;                                           // int\nvar I = flow.get(\"I\")||0;                                           // int\nvar H = flow.get(\"H\")||0;                                           // int\nvar weight = flow.get(\"weight\")||0.0;                               // decimal(8,3)\nvar occupancy = flow.get(\"occupancy\")||0.0;                         // decimal(8,3)\nvar met_len = flow.get(\"met_len\")||0;                               // int\nvar met_width = flow.get(\"met_width\")||0;                           // int\nvar nonMet_len = flow.get(\"non_met_len\")||0;                        // int\nvar nonMet_wid = flow.get(\"non_met_width\")||0;                      // int\nvar fiber_len = flow.get(\"fiber_len\")||0;                           // int\nvar total_fib = flow.get(\"total_fibers\")||0.0;                      // decimal(8,3)\nvar ctrl = flow.get(\"out_of_control\").join(\",\")||\"\";                // varchar(100)\nvar react = flow.get(\"out_of_reaction\").join(\",\")||\"\";              // varchar(100)\nvar result = flow.get(\"result\")||\"\";                                // varchar(50)\n\nvar numOfComponents = flow.get(\"numOfComponents\")||0;               // int\nvar partWeight = flow.get(\"partWeight\")||0.0;                       // decimal(8,3)\n\n\nmyObj.timestamp = Date.now();           // int\nmyObj.dateOfAnalysis = date;            // bigint\nmyObj.loc = loc;                        // varchar(50)\nmyObj.reportNum = reportNum;            // varchar(10)\nmyObj.partName = part;                  // varchar(100)\nmyObj.JK = JK;                          // decimal(8,3)\nmyObj.HI = HI;                          // decimal(8,3)\nmyObj.FG = FG;                          // decimal(8,3)\nmyObj.CE = CE;                          // decimal(8,3)\nmyObj.FI = FI;                          // decimal(8,3)\nmyObj.DE = DE;                          // decimal(8,3)\nmyObj.K = K;                            // int \nmyObj.J = J;                            // int\nmyObj.I = I;                            // int\nmyObj.H = H;                            // int\nmyObj.weight = weight;                  // decimal(8,3)\nmyObj.occ = occupancy;                  // decimal(8,3)\nmyObj.met_len = met_len;                // int\nmyObj.met_width = met_width;            // int\nmyObj.nonMet_len = nonMet_len;          // int\nmyObj.nonMet_wid = nonMet_wid;          // int\nmyObj.fiber_len = fiber_len;            // int\nmyObj.total_fibers = total_fib;         // float (2-3 decimals)\nmyObj.ctrl = ctrl;                      // varchar(100)\nmyObj.reaction = react;                 // varchar(100)\nmyObj.result = result;                  // varchar(50)\nmyObj.numOfComponents = numOfComponents;// int\nmyObj.partWeight = partWeight;          // decimal (8,3)\n\n\n\nflow.set(\"JOMESA_FINALDATASET\", myObj);\n\nmsg.FinalDataObj = myObj;\nmsg.payload = myObj;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 3160,
+        "y": 160,
+        "wires": [
+            [
+                "87f6d54a02c85e57",
+                "7e1b7ef539b7bb48",
+                "9a71b476084c8d1e"
+            ]
+        ]
+    },
+    {
+        "id": "da778d0b71964aa6",
+        "type": "link in",
+        "z": "447205f9c52006b9",
+        "g": "29e81cdb7824f270",
+        "name": "in_finalDataObj",
+        "links": [
+            "0bc4bcad21a144d4",
+            "5c2fb5e25c1c5bd6",
+            "b8f0d8c65ab33195"
+        ],
+        "x": 3020,
+        "y": 160,
+        "wires": [
+            [
+                "7e1d0a0fb1e9dcc5"
+            ]
+        ]
+    },
+    {
+        "id": "fa500cb657a3cc27",
+        "type": "change",
+        "z": "447205f9c52006b9",
+        "g": "5c5d043f856bb4d8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "timestamp",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 370,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e0790188ce8ed145",
+        "type": "inject",
+        "z": "447205f9c52006b9",
+        "g": "5c5d043f856bb4d8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1800",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 160,
+        "wires": [
+            [
+                "86540153f952f639",
+                "e166aa090e237780",
+                "fa500cb657a3cc27",
+                "8ee6f4fcb9a62ac0"
+            ]
+        ]
+    },
+    {
+        "id": "7e1b7ef539b7bb48",
+        "type": "function",
+        "z": "447205f9c52006b9",
+        "g": "29e81cdb7824f270",
+        "name": "OnChange trigger - JSON string for MSSQL Integration - Jomesa Datapoints",
+        "func": "//\n//++++++++++++ VARIABLE DEFINITION ++++++++++++\n//--------------Custom VARI DEF----------------\n//\nvar TriggerTag      = \"timestamp\";                  //Define the Tag to be monitored as Trigger\nvar DeviceName      = \"Jomesa_TXT\";            // \"deviceID\" in the Integration data stream; equivalent to Level's in the EAV database\n                        // date, location  ,   report num  ,  part name    ,    JK         , HI           , FG          , CE           ,   FI          ,    DE       , K,    J  ,  I   , H   ,    weight      , occu      , met len, met wid, non met len, non let wid, fib len, total fib , ctrl, react,        result ,    components,partWeight       ,FI,            DE  \nvar DataTypes       =  [\"bigint\",\"varchar(50)\",\"varchar(10)\",\"varchar(100)\",\"decimal(8,3)\",\"decimal(8,3)\",\"decimal(8,3)\",\"decimal(8,3)\",\"decimal(8,3)\",\"decimal(8,3)\",\"int\", \"int\", \"int\", \"int\",\"decimal(8,3)\",\"decimal(8,3)\",\"int\", \"int\", \"int\", \"int\", \"int\",\"decimal(8,3)\",\"varchar(100)\",\"varchar(100)\", \"varchar(50)\",\"int\",\"decimal(8,3)\"];//                         \nvar UserTopic       = \"Send_To_MSSQL\";              // Make sure to use the SQL Integration topic for the intended database [Transaction] table\nvar MSSQLTable      = \"RecJomesa_SedimentTest\";               // \"registerId\" in the Integration data stream\nvar OnChange_Type   = 1;                        // 1 = Simple OnChange condition, \n                                                // 2 = OnChnage by defined increment (i.e. \"Trigger_Incre\"), \n                                                // 3 = OnChanValEq, when value changes, not zero and eq to \"TriggerValueToMonitor\"\n//var TriggerValueToMonitor   =   \"1\";             // Define the value to monitor if TriggerCondition equals #3: OnChanValEq\n//var Trigger_Incre   = 10;                       // 1 = triggers every part, 2 = triggers every two parts, etc. etc. \n//\n//+++++++++++++++ END VARI DEF ++++++++++++++++\n//\n//############### Prog varibles ###############   \n//\nvar FinalDataObj = msg.FinalDataObj;                    // Enable this line if input is already the final data object\n//var date = flow.get(\"dateOfAnalysis\")||0;                          // Date.parse() - int\n//var timestamp = date;\nvar timestamp = Date.now();\nvar success = true;\n//\n//############# END Prog varibles #############\n//\n//**************** EXECUTE MAIN ****************\n//\nflow.set(\"TriggerTag\",TriggerTag);                                 \nflow.set(\"TriggerValue\",String(eval(FinalDataObj)[TriggerTag]));       // Enable this line if input is already the final data object\n//flow.set(\"TriggerValue\",String(msg.payload.value));                 // Enable this line if input is the trigger tag only\nvar newvalue = String(flow.get(\"TriggerValue\"));\n\n\n//-------------------------------------------\n// OnChange Type 1 and 2\n//-------------------------------------------\nif(OnChange_Type === 1 || OnChange_Type === 2){\n    // Check Trigger condition\n    if (String(flow.get(\"OldValue1\")).toLowerCase() === String(newvalue).toLowerCase())  // Each part type uses its own unique \"OldValue\" to compare for triggering\n         {\n            // Trigger Tag value has not changed, do nothing\n            return [null];\n         }  \n         \n    flow.set(\"OldValue1\", newvalue);\n    \n    \n    //-------------------------------------------------------\n    // 1 - Simple OnChange condition (Trigger by value change) \n    //-------------------------------------------------------\n    if (OnChange_Type === 1){\n        \n        delete FinalDataObj.timestamp;\n        \n        var keyNames    = Object.keys(FinalDataObj);         //create the key array\n        var keyValues   = Object.values(FinalDataObj);       //create the value array\n        \n//        node.warn (keyNames)\n//        node.warn (keyNames.length)\n//        node.warn (keyValues)\n//        node.warn (keyValues.length)\n        \n        // Create the DATATYPES as a \";\" separated values string\n        for (var k = 0; k < keyNames.length; k++){\n//            if(keyNames[k] === \"addnotes\" || keyNames[k] === \"notes\"){\n                keyValues[k] = keyValues[k].toString().replace(/[=,]/g, '~|').replace(/[=\"]|[=']/g, '@|')       // Replace \",\" with \".\" from the Operator added notes to avoid misinterpreting as comma forseperating the key names\n//            }\n            if(k===0)\n            {\n                DATATYPES = DataTypes[k];          \n            }\n            else\n            {\n               DATATYPES = DATATYPES + \";\" + DataTypes[k];              // Construct \";\" separated data type value string\n            }\n        }\n        \n        //node.warn(keyValues)\n        \n        var newstr = \"{\" \n            + \"\\\"timestamp\\\": \" + timestamp  \n            + \", \\\"deviceID\\\": \\\"\" + DeviceName + \"\\\"\" \n            + \", \\\"registerId\\\": \\\"\" + MSSQLTable + \"\\\"\" \n            + \", \\\"tagName\\\": \\\"\" + keyNames + \"\\\"\" \n            + \", \\\"datatype\\\": \\\"\" + DATATYPES + \"\\\"\" \n            + \", \\\"value\\\": \\\"\" + keyValues + \"\\\"\" \n            + \", \\\"success\\\": \" + success   \n            + \"}\";\n        \n        msg.Log = \"INFO,\"+new Date(Date.now())+\" , finalDataset JSON strings streamed to MSSQL Integration\";\n        \n        return [{subjectInput:UserTopic+\".\"+DeviceName+\".\"+MSSQLTable, payload:newstr}];\n    }\n\n}\n\n//************** END EXECUTE MAIN **************",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 3590,
+        "y": 160,
+        "wires": [
+            [
+                "874541026c738320",
+                "c35895435742d365",
+                "803142b71f17ad41"
+            ]
+        ]
+    },
+    {
+        "id": "686e66926bd9328a",
+        "type": "switch",
+        "z": "447205f9c52006b9",
+        "g": "4620efd84ef6704a",
+        "name": "if out_of_reaction not empty",
+        "property": "out_of_reaction",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "nempty"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 2800,
+        "y": 540,
+        "wires": [
+            [
+                "19fbcf7f5755dee9",
+                "404f7d0b7fae9f80"
+            ]
+        ]
+    },
+    {
+        "id": "8ee6f4fcb9a62ac0",
+        "type": "function",
+        "z": "447205f9c52006b9",
+        "g": "5c5d043f856bb4d8",
+        "name": "set reaction and ctrl limits",
+        "func": "// 10R140 Components -----------------------------------------------------------\nflow.set(\"ctrl_10R140\",[4,64,500,16000]);\nflow.set(\"react_10R140Body\",[2.5155,31.17,184.2,3804]);\nflow.set(\"react_10R140Slide\",[2.6736,36.18,178.32,3735]);\nflow.set(\"react_10R140Rotor\",[3.302,38.67,198.96,4488]);\n\n// ZF Components ---------------------------------------------------------------\n// Weight, Largest Length of Fiber, K, J, I\nflow.set(\"ctrl_ZF\",[0.4001,4000,1,1,1]);\n\n// GME T4 Stator ---------------------------------------------------------------\nflow.set(\"ctrl_GME\",[0.5001,1,1,2,2]);\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7362256baae046d7",
+        "type": "debug",
+        "z": "447205f9c52006b9",
+        "g": "d3e4db5647dfdd51",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 3990,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "1ee17dc2391de76c",
+        "type": "link in",
+        "z": "447205f9c52006b9",
+        "g": "4620efd84ef6704a",
+        "name": "in_specValidation",
+        "links": [
+            "8d96daaa8bcd8c9e"
+        ],
+        "x": 2220,
+        "y": 540,
+        "wires": [
+            [
+                "f40815f478b4f0fb"
+            ]
+        ]
+    },
+    {
+        "id": "0d9d43c82e5fbe89",
+        "type": "function",
+        "z": "447205f9c52006b9",
+        "g": "4620efd84ef6704a",
+        "name": "Check Ford Reaction Limits",
+        "func": "var measured = msg.measured;                        // array of all measured values from data file\nvar ctrl = msg.ctrl;                                // get the ctrl values\nvar react = msg.react;                              // get the react values\nvar out_ctrl = msg.out_ctrl;                        // get the list of characteristics; by default (dependent on part) - [\"JK\",\"HI\",\"FG\",\"CE\"]\nvar out_react = msg.out_react;                      // get the list of characteristics; by default (dependent on part) - [\"JK\",\"HI\",\"FG\",\"CE\"]\n                                                    // any characteristics that is within spec, it will be removed from array\nvar reaction_values = [];                           // to save the actual measured value when out of reaction\n\n// check ctrl limits ---------------------------------------------------------------------------------------------------------------------------\nfor(let i = 0; i < measured.length; i++){\n    if(measured[i] < ctrl[i]){                      // measured less than control\n        delete out_ctrl[i];                         // delete if within spec\n    }\n}\nout_ctrl = out_ctrl.filter(function(element){\n    return element !== undefined;                   // remove undefined values from array\n});\n// check reaction limits -------------------------------------------------------------------------------------------------------------------------\nfor(let i = 0; i < measured.length; i++){\n    if(measured[i] < react[i]){                     // measured less than reaction\n        delete out_react[i];                        // delete if within reaction limit\n    }else{\n        reaction_values.push(measured[i]);          // save the out of reaction values to another list for email notification\n    }\n}\nout_react = out_react.filter(function(element){\n    return element !== undefined;                   // remove undefined values\n});\n\nflow.set(\"out_of_control\",out_ctrl);                // save to flow variable\nflow.set(\"out_of_reaction\",out_react);              // save to flow variable\nflow.set(\"reaction_values\",reaction_values);        // save out of reaction values for email notification\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2520,
+        "y": 500,
+        "wires": [
+            [
+                "686e66926bd9328a",
+                "0bc4bcad21a144d4"
+            ]
+        ]
+    },
+    {
+        "id": "9d65f37d3f9ca919",
+        "type": "comment",
+        "z": "447205f9c52006b9",
+        "g": "4620efd84ef6704a",
+        "name": "if not empty, there are some specs out of reaction, notification must be sent",
+        "info": "",
+        "x": 2940,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "19fbcf7f5755dee9",
+        "type": "link out",
+        "z": "447205f9c52006b9",
+        "g": "4620efd84ef6704a",
+        "name": "out_SpecValidation",
+        "mode": "link",
+        "links": [
+            "c694bb98e43ba553",
+            "f817a26c1544e8b0"
+        ],
+        "x": 3000,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "0bc4bcad21a144d4",
+        "type": "link out",
+        "z": "447205f9c52006b9",
+        "g": "4620efd84ef6704a",
+        "name": "out_specValidation",
+        "mode": "link",
+        "links": [
+            "da778d0b71964aa6",
+            "720bfaf3c6b83afa"
+        ],
+        "x": 2720,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "df5d5f05d4bf4ab7",
+        "type": "comment",
+        "z": "447205f9c52006b9",
+        "g": "4620efd84ef6704a",
+        "name": "go to FinalDataObj",
+        "info": "",
+        "x": 2850,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "23bed88a08754614",
+        "type": "delay",
+        "z": "447205f9c52006b9",
+        "g": "fda705b472ca9152",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 880,
+        "y": 840,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "704b4b9a9eeb632f",
+        "type": "fs-ops-delete",
+        "z": "447205f9c52006b9",
+        "g": "fda705b472ca9152",
+        "name": "delete text file",
+        "path": "/data/ShivDataOutput/Jomesa/",
+        "pathType": "str",
+        "filename": "delete",
+        "filenameType": "flow",
+        "x": 700,
+        "y": 840,
+        "wires": [
+            [
+                "23bed88a08754614"
+            ]
+        ]
+    },
+    {
+        "id": "bb022f79a52ab9bd",
+        "type": "function",
+        "z": "447205f9c52006b9",
+        "g": "fda705b472ca9152",
+        "name": "do nothing",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 790,
+        "y": 900,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "61c3448a13a22691",
+        "type": "comment",
+        "z": "447205f9c52006b9",
+        "g": "fda705b472ca9152",
+        "name": "remove text file from /data/ShivDataOutput/Jomesa",
+        "info": "",
+        "x": 1150,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "874541026c738320",
+        "type": "Datahub Publish",
+        "z": "447205f9c52006b9",
+        "g": "29e81cdb7824f270",
+        "name": "To MSSQL Integration via topic \"Send_To_MSSQL.>\"",
+        "natc": "b74ec520e8d02a85",
+        "topicname": "",
+        "x": 4100,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "87f6d54a02c85e57",
+        "type": "debug",
+        "z": "447205f9c52006b9",
+        "g": "29e81cdb7824f270",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "FinalDataObj",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 3410,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "3d86ad0d182834b8",
+        "type": "function",
+        "z": "447205f9c52006b9",
+        "g": "4620efd84ef6704a",
+        "name": "Check Pass/Fail Report",
+        "func": "var result = \"\";\nvar ctrl = msg.ctrl;\nvar measured = msg.measured;\nvar out_ctrl = msg.out_ctrl;\nvar ctrl_values = [];\n\n\nfor(let i = 0; i < measured.length; i++){\n    if(measured[i] < ctrl[i] || isNaN(measured[i])){\n        delete out_ctrl[i];\n    }else{\n        ctrl_values.push(measured[i]);\n    }\n}\n\nout_ctrl = out_ctrl.filter(function(element){\n    return element !== undefined;\n});\n\nif(ctrl_values.length > 0){\n    result = \"FAIL\";\n}else{\n    result = \"PASS\";\n}\n\nflow.set(\"out_of_reaction\",out_ctrl);              // save to flow variable\nflow.set(\"reaction_values\",ctrl_values);        // save out of reaction values for email notification\nflow.set(\"result\",result);\nmsg.payload = result;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2530,
+        "y": 580,
+        "wires": [
+            [
+                "686e66926bd9328a",
+                "b8f0d8c65ab33195"
+            ]
+        ]
+    },
+    {
+        "id": "f40815f478b4f0fb",
+        "type": "switch",
+        "z": "447205f9c52006b9",
+        "g": "4620efd84ef6704a",
+        "name": "",
+        "property": "partName",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "10R140",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": "ZF",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": "GME",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 2310,
+        "y": 540,
+        "wires": [
+            [
+                "0d9d43c82e5fbe89"
+            ],
+            [
+                "3d86ad0d182834b8"
+            ],
+            [
+                "3d86ad0d182834b8"
+            ]
+        ]
+    },
+    {
+        "id": "2ec848e40c55cef0",
+        "type": "comment",
+        "z": "447205f9c52006b9",
+        "g": "4620efd84ef6704a",
+        "name": "specific for 10R140 components",
+        "info": "",
+        "x": 2530,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "b8f0d8c65ab33195",
+        "type": "link out",
+        "z": "447205f9c52006b9",
+        "g": "4620efd84ef6704a",
+        "name": "out_specValidation",
+        "mode": "link",
+        "links": [
+            "da778d0b71964aa6"
+        ],
+        "x": 2720,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "e1f1cfc078ef7628",
+        "type": "catch",
+        "z": "447205f9c52006b9",
+        "g": "5c5d043f856bb4d8",
+        "name": "",
+        "scope": [
+            "86540153f952f639",
+            "af0da7a50fe51b8a"
+        ],
+        "uncaught": false,
+        "x": 770,
+        "y": 60,
+        "wires": [
+            [
+                "ad28bddee7143b4a"
+            ]
+        ]
+    },
+    {
+        "id": "ad28bddee7143b4a",
+        "type": "function",
+        "z": "447205f9c52006b9",
+        "g": "5c5d043f856bb4d8",
+        "name": "do nothing",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 910,
+        "y": 60,
+        "wires": [
+            [
+                "ab9bd41f690a5a78"
+            ]
+        ]
+    },
+    {
+        "id": "803142b71f17ad41",
+        "type": "file",
+        "z": "447205f9c52006b9",
+        "g": "29e81cdb7824f270",
+        "name": "write to log",
+        "filename": "/data/ShivDataOutput/Jomesa Log/Jomesa_Log.txt",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 3970,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2de2b5e375ad1c55",
+        "type": "function",
+        "z": "447205f9c52006b9",
+        "d": true,
+        "g": "152094e3fb79aab8",
+        "name": "round function",
+        "func": "Number.prototype.round = function(n){\n    const d = Math.pow(10,n);\n    return Math.round((this + Number.EPSILON) *d) / d;\n}\n\n\nmsg.payload = x.round(3);\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 140,
+        "y": 1620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2b7ef198c36965e8",
+        "type": "change",
+        "z": "447205f9c52006b9",
+        "g": "6f521e616a23443f",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "data",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 150,
+        "y": 480,
+        "wires": [
+            [
+                "41b1a15f69a39a63"
+            ]
+        ]
+    },
+    {
+        "id": "e52cdea3b765b409",
+        "type": "function",
+        "z": "447205f9c52006b9",
+        "g": "6f521e616a23443f",
+        "name": "parse 10R140 data",
+        "func": "/* DATALIST =\n * [2] LOCATION\n * [4] JK\n * [5] HI\n * [6] FG\n * [7] CE\n * [8] WEIGHT\n * [9] COMPONENTS\n * [10] OCCUPANCY\n * [11] METALLIC_LEN\n * [12] METALLIC_WIDTH\n * [13] NON_METALLIC_LEN\n * [14] NON_METALLIC_WIDTH\n * [15] FIBER_LEN\n * [16] TOTAL_FIBERS\n * [17] RESULT              */\n \nNumber.prototype.round = function(n){\n    const d = Math.pow(10,n);\n    return Math.round((this + Number.EPSILON) * d) / d;\n}\n\nvar data = flow.get(\"data\");\nvar myData = data.split(\",\");\n\nvar location = myData[2];\nvar JK = parseFloat(myData[4]);\nvar HI = parseFloat(myData[5]);\nvar FG = parseFloat(myData[6]);\nvar CE = parseFloat(myData[7]);\nvar weight = parseFloat(myData[8]);\nvar numOfComponents = parseFloat(myData[9]);\nvar partWeight = 0.0;\n\nif(isNaN(weight)){\n    weight = 0;\n    partWeight = 0.0;\n}else{\n    var x = weight/numOfComponents;\n    partWeight = x.round(3);\n}\n\nvar occupy = parseFloat(myData[10]);\nvar metallic_len = parseFloat(myData[11]);\nvar metallic_width = parseFloat(myData[12]);\nvar non_metallic_len = parseFloat(myData[13]);\nvar non_metallic_width = parseFloat(myData[14]);\nvar fiber_len = parseFloat(myData[15]);\nvar total_fibers = parseFloat(myData[16]);\nvar result = myData[17];\n\nflow.set(\"location\",location);\nflow.set(\"JK\",JK);\nflow.set(\"HI\",HI);\nflow.set(\"FG\",FG);\nflow.set(\"CE\",CE);\nflow.set(\"weight\",weight);\nflow.set(\"occupancy\",occupy);\nflow.set(\"met_len\",metallic_len);\nflow.set(\"met_width\",metallic_width);\nflow.set(\"non_met_len\",non_metallic_len);\nflow.set(\"non_met_width\",non_metallic_width);\nflow.set(\"fiber_len\",fiber_len);\nflow.set(\"total_fibers\",total_fibers);\nflow.set(\"result\",result);\nflow.set(\"numOfComponents\",numOfComponents);\nflow.set(\"partWeight\",partWeight);\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1150,
+        "y": 500,
+        "wires": [
+            [
+                "ae830e4f56a1ddae"
+            ]
+        ]
+    },
+    {
+        "id": "9ae136c26f4e49cc",
+        "type": "link in",
+        "z": "447205f9c52006b9",
+        "g": "6f521e616a23443f",
+        "name": "in_parsing",
+        "links": [
+            "bcf1a922381d0267"
+        ],
+        "x": 80,
+        "y": 420,
+        "wires": [
+            [
+                "c0c01ed632b14b97"
+            ]
+        ]
+    },
+    {
+        "id": "1a88d7c4b651590e",
+        "type": "switch",
+        "z": "447205f9c52006b9",
+        "g": "6f521e616a23443f",
+        "name": "check partName",
+        "property": "partName",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "10R140",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": "ZF",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": "GME",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 640,
+        "y": 560,
+        "wires": [
+            [
+                "3c20f2ed5c9c5b81",
+                "1c4f992fc1c8fdec"
+            ],
+            [
+                "339536fc9011b422",
+                "4d267486fb2873b5"
+            ],
+            [
+                "b449aa149caa3403",
+                "a387917380784a65"
+            ]
+        ]
+    },
+    {
+        "id": "792ebb43bc5ec7e6",
+        "type": "change",
+        "z": "447205f9c52006b9",
+        "g": "6f521e616a23443f",
+        "name": "set 10R140 Body Specs",
+        "rules": [
+            {
+                "t": "set",
+                "p": "ctrl",
+                "pt": "msg",
+                "to": "ctrl_10R140",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "react",
+                "pt": "msg",
+                "to": "react_10R140Body",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1610,
+        "y": 460,
+        "wires": [
+            [
+                "95e36d9bb52ba14a"
+            ]
+        ]
+    },
+    {
+        "id": "6b798b18f95ee992",
+        "type": "change",
+        "z": "447205f9c52006b9",
+        "g": "6f521e616a23443f",
+        "name": "set 10R140 Slide Specs",
+        "rules": [
+            {
+                "t": "set",
+                "p": "ctrl",
+                "pt": "msg",
+                "to": "ctrl_10R140",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "react",
+                "pt": "msg",
+                "to": "react_10R140Slide",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1610,
+        "y": 500,
+        "wires": [
+            [
+                "95e36d9bb52ba14a"
+            ]
+        ]
+    },
+    {
+        "id": "0280c34e3cc0ca4f",
+        "type": "change",
+        "z": "447205f9c52006b9",
+        "g": "6f521e616a23443f",
+        "name": "set 10R140 Rotor Specs",
+        "rules": [
+            {
+                "t": "set",
+                "p": "ctrl",
+                "pt": "msg",
+                "to": "ctrl_10R140",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "react",
+                "pt": "msg",
+                "to": "react_10R140Rotor",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1610,
+        "y": 540,
+        "wires": [
+            [
+                "95e36d9bb52ba14a"
+            ]
+        ]
+    },
+    {
+        "id": "95e36d9bb52ba14a",
+        "type": "function",
+        "z": "447205f9c52006b9",
+        "g": "6f521e616a23443f",
+        "name": "save 10R140 measured",
+        "func": "var jk = flow.get(\"JK\");            // get JK\nvar hi = flow.get(\"HI\");            // get HI\nvar fg = flow.get(\"FG\");            // get FG\nvar ce = flow.get(\"CE\");            // get CE\n\nvar measured = []; \n\nmeasured.push(jk);          // add all characteristics to measured array\nmeasured.push(hi);\nmeasured.push(fg);          // [JK, HI, FG, CE]\nmeasured.push(ce);\n\nvar out_ctrl = [\"JK\",\"HI\",\"FG\",\"CE\"];       // list of all characters, if out of ctrl/reaction, it is removed from array\nvar out_react = [\"JK\",\"HI\",\"FG\",\"CE\"];\n\nmsg.measured = measured; \nmsg.out_ctrl = out_ctrl;\nmsg.out_react = out_react;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1870,
+        "y": 500,
+        "wires": [
+            [
+                "8d96daaa8bcd8c9e"
+            ]
+        ]
+    },
+    {
+        "id": "8d96daaa8bcd8c9e",
+        "type": "link out",
+        "z": "447205f9c52006b9",
+        "g": "6f521e616a23443f",
+        "name": "out_parsing",
+        "mode": "link",
+        "links": [
+            "1ee17dc2391de76c"
+        ],
+        "x": 2100,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "41b1a15f69a39a63",
+        "type": "function",
+        "z": "447205f9c52006b9",
+        "g": "6f521e616a23443f",
+        "name": "parse data",
+        "func": "/* DATALIST =\n * [0] DATE\n * [1] REPORT_NO\n * [3] PART_NAME  \n    IF GME [2]*/\n\nfunction checkIfGME(part){\n    return part === \"GME T4 Stator\" \n}\n\nvar data = flow.get(\"data\");\nvar myData = data.split(\",\");\n\nvar analysis = Date.parse(myData[0]);\nvar reportNum = myData[1];\n\nif(myData.find(checkIfGME) === undefined){\n    var part = myData[3];\n}else{\n    var part = myData[2]\n}\n\nflow.set(\"dateOfAnalysis\",analysis);\nflow.set(\"reportNum\",reportNum);\nflow.set(\"partName\",part);\n\nmsg.payload = myData;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 480,
+        "wires": [
+            [
+                "f033922a65b63604"
+            ]
+        ]
+    },
+    {
+        "id": "339536fc9011b422",
+        "type": "function",
+        "z": "447205f9c52006b9",
+        "g": "6f521e616a23443f",
+        "name": "parse ZF data",
+        "func": "/* DATALIST =\n * [2] LOCATION\n * [4] K\n * [5] J\n * [6] I\n * [7] H\n * [8] WEIGHT\n * [9] COMPONENTS\n * [10] METALLIC_LEN\n * [11] METALLIC_WIDTH\n * [12] NON_METALLIC_LEN\n * [13] NON_METALLIC_WIDTH\n * [14] FIBER_LEN\n * [15] TOTAL_FIBERS */\n \nNumber.prototype.round = function(n){\n    const d = Math.pow(10,n);\n    return Math.round((this + Number.EPSILON) * d) / d;\n}\n\nvar data = flow.get(\"data\");\nvar myData = data.split(\",\");\n\nvar location = myData[2]\nvar K = parseFloat(myData[4]);\nvar J = parseFloat(myData[5]);\nvar I = parseFloat(myData[6]);\nvar H = parseFloat(myData[7]);\nvar weight = parseFloat(myData[8]);\nvar numOfComponents = parseFloat(myData[9]);\nvar partWeight = 0.0;\n\nif(isNaN(weight)){\n    weight = 0;\n    partWeight = 0.0;\n}else{\n    x = weight/numOfComponents;\n    partWeight = x.round(3);\n}\n\nvar metallic_len = parseFloat(myData[10]);\nvar metallic_width = parseFloat(myData[11]);\nvar non_metallic_len = parseFloat(myData[12]);\nvar non_metallic_width = parseFloat(myData[13]);\nvar fiber_len = parseFloat(myData[14]);\nvar total_fibers = parseFloat(myData[15]);\n\nflow.set(\"location\",location);\nflow.set(\"K\",K);\nflow.set(\"J\",J);\nflow.set(\"I\",I);\nflow.set(\"H\",H);\nflow.set(\"weight\",weight);\nflow.set(\"met_len\",metallic_len);\nflow.set(\"met_width\",metallic_width);\nflow.set(\"non_met_len\",non_metallic_len);\nflow.set(\"non_met_width\",non_metallic_width);\nflow.set(\"fiber_len\",fiber_len);\nflow.set(\"total_fibers\",total_fibers);\nflow.set(\"numOfComponents\",numOfComponents);\nflow.set(\"partWeight\",partWeight);\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 860,
+        "y": 580,
+        "wires": [
+            [
+                "293470f827897582"
+            ]
+        ]
+    },
+    {
+        "id": "ae830e4f56a1ddae",
+        "type": "switch",
+        "z": "447205f9c52006b9",
+        "g": "6f521e616a23443f",
+        "name": "check partname",
+        "property": "partName",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "10R140 Body",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": "10R140 Slide",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": "10R140 Rotor",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 1400,
+        "y": 500,
+        "wires": [
+            [
+                "792ebb43bc5ec7e6"
+            ],
+            [
+                "6b798b18f95ee992"
+            ],
+            [
+                "0280c34e3cc0ca4f"
+            ]
+        ]
+    },
+    {
+        "id": "3c20f2ed5c9c5b81",
+        "type": "change",
+        "z": "447205f9c52006b9",
+        "g": "6f521e616a23443f",
+        "name": "set QE to Ken S. ",
+        "rules": [
+            {
+                "t": "set",
+                "p": "QE",
+                "pt": "msg",
+                "to": "kservos@stackpole.com",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 890,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4d267486fb2873b5",
+        "type": "change",
+        "z": "447205f9c52006b9",
+        "g": "6f521e616a23443f",
+        "name": "set QE to Virginia A. ",
+        "rules": [
+            {
+                "t": "set",
+                "p": "QE",
+                "pt": "msg",
+                "to": "vavery@stackpole.com",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 880,
+        "y": 540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "293470f827897582",
+        "type": "change",
+        "z": "447205f9c52006b9",
+        "g": "6f521e616a23443f",
+        "name": "set ZF Specs",
+        "rules": [
+            {
+                "t": "set",
+                "p": "ctrl",
+                "pt": "msg",
+                "to": "ctrl_ZF",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1570,
+        "y": 580,
+        "wires": [
+            [
+                "1b3f74f7a5e3ae5b"
+            ]
+        ]
+    },
+    {
+        "id": "1b3f74f7a5e3ae5b",
+        "type": "function",
+        "z": "447205f9c52006b9",
+        "g": "6f521e616a23443f",
+        "name": "save ZF measured",
+        "func": "var weight = flow.get(\"partWeight\");\nvar fiber_len = flow.get(\"fiber_len\");\nvar K = flow.get(\"K\");            // get K\nvar J = flow.get(\"J\");            // get J\nvar I = flow.get(\"I\");            // get I\n\nvar measured = []; \n\nmeasured.push(weight);\nmeasured.push(fiber_len);\nmeasured.push(K);          // add all characteristics to measured array\nmeasured.push(J);\nmeasured.push(I);          // [K, J, I, H]\n\nvar out_ctrl = [\"Weight/Part\",\"Largest Fiber\",\"K\",\"J\",\"I\"];       // list of all characters, if out of ctrl/reaction, it is removed from array\n\nmsg.measured = measured; \nmsg.out_ctrl = out_ctrl;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1890,
+        "y": 580,
+        "wires": [
+            [
+                "8d96daaa8bcd8c9e"
+            ]
+        ]
+    },
+    {
+        "id": "b449aa149caa3403",
+        "type": "change",
+        "z": "447205f9c52006b9",
+        "g": "6f521e616a23443f",
+        "name": "set QE to Virginia A. ",
+        "rules": [
+            {
+                "t": "set",
+                "p": "QE",
+                "pt": "msg",
+                "to": "vavery@stackpole.com",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 880,
+        "y": 700,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a387917380784a65",
+        "type": "function",
+        "z": "447205f9c52006b9",
+        "g": "6f521e616a23443f",
+        "name": "parse GME data",
+        "func": "/* DATALIST =\n * [3] K\n * [4] J\n * [5] I\n * [6] H\n * [7] WEIGHT\n * [8] NUM_COMPONENTS\n * [9] METALLIC_LEN\n * [10] METALLIC_WIDTH\n * [11] NON_METALLIC_LEN\n * [12] NON_METALLIC_WIDTH\n * [13] FIBER_LEN\n * [14] TOTAL_FIBERS    */\nNumber.prototype.round = function(n){\n    const d = Math.pow(10,n);\n    return Math.round((this + Number.EPSILON) * d) / d;\n}\n\n\nvar data = flow.get(\"data\");\nvar myData = data.split(\",\");\n\nvar K = parseFloat(myData[3]);\nvar J = parseFloat(myData[4]);\nvar I = parseFloat(myData[5]);\nvar H = parseFloat(myData[6]);\nvar weight = parseFloat(myData[7]);\nvar numOfComponents = parseFloat(myData[8]);\nvar partWeight = 0.0;\n\nif(isNaN(weight)){\n    weight = 0;\n    partWeight = 0.0;\n}else{\n    x = weight/numOfComponents;\n    partWeight = x.round(3);\n}\n\nvar metallic_len = parseFloat(myData[9]);\nvar metallic_width = parseFloat(myData[10]);\nvar non_metallic_len = parseFloat(myData[11]);\nvar non_metallic_width = parseFloat(myData[12]);\nvar fiber_len = parseFloat(myData[13]);\nvar total_fibers = parseFloat(myData[14]);\n\nflow.set(\"K\",K);\nflow.set(\"J\",J);\nflow.set(\"I\",I);\nflow.set(\"H\",H);\nflow.set(\"weight\",weight);\nflow.set(\"met_len\",metallic_len);\nflow.set(\"met_width\",metallic_width);\nflow.set(\"non_met_len\",non_metallic_len);\nflow.set(\"non_met_width\",non_metallic_width);\nflow.set(\"fiber_len\",fiber_len);\nflow.set(\"total_fibers\",total_fibers);\n\nflow.set(\"numOfComponents\",numOfComponents);\nflow.set(\"partWeight\",partWeight);\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 860,
+        "y": 660,
+        "wires": [
+            [
+                "3e6aaa9196819e8c"
+            ]
+        ]
+    },
+    {
+        "id": "e7cf363f94d08f24",
+        "type": "function",
+        "z": "447205f9c52006b9",
+        "g": "6f521e616a23443f",
+        "name": "save GME measured",
+        "func": "var weight = flow.get(\"partWeight\");\nvar fiber = flow.get(\"fiber_len\")\nvar K = flow.get(\"K\");            // get JK\nvar J = flow.get(\"J\");            // get HI\nvar I = flow.get(\"I\");            // get FG\nvar H = flow.get(\"H\");\nvar measured = []; \n\nmeasured.push(weight);\nmeasured.push(K);          // add all characteristics to measured array\nmeasured.push(J);\nmeasured.push(I);          // [JK, HI, FG, CE]\nmeasured.push(H);\n\nvar out_ctrl = [\"Weight/Part\",\"K\",\"J\",\"I\",\"H\"];       // list of all characters, if out of ctrl/reaction, it is removed from array\n\nmsg.measured = measured; \nmsg.out_ctrl = out_ctrl;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1880,
+        "y": 660,
+        "wires": [
+            [
+                "8d96daaa8bcd8c9e"
+            ]
+        ]
+    },
+    {
+        "id": "3e6aaa9196819e8c",
+        "type": "change",
+        "z": "447205f9c52006b9",
+        "g": "6f521e616a23443f",
+        "name": "set GME Specs",
+        "rules": [
+            {
+                "t": "set",
+                "p": "ctrl",
+                "pt": "msg",
+                "to": "ctrl_GME",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1580,
+        "y": 660,
+        "wires": [
+            [
+                "e7cf363f94d08f24"
+            ]
+        ]
+    },
+    {
+        "id": "c0c01ed632b14b97",
+        "type": "file in",
+        "z": "447205f9c52006b9",
+        "g": "6f521e616a23443f",
+        "name": "",
+        "filename": "",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 240,
+        "y": 420,
+        "wires": [
+            [
+                "2b7ef198c36965e8",
+                "32b46a700415c58b"
+            ]
+        ]
+    },
+    {
+        "id": "2adad4d42cb933dc",
+        "type": "switch",
+        "z": "447205f9c52006b9",
+        "g": "6f521e616a23443f",
+        "name": "",
+        "property": "FLAG",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 470,
+        "y": 560,
+        "wires": [
+            [
+                "1a88d7c4b651590e"
+            ],
+            [
+                "60cb7d3b4f107d4e"
+            ]
+        ]
+    },
+    {
+        "id": "60cb7d3b4f107d4e",
+        "type": "function",
+        "z": "447205f9c52006b9",
+        "g": "6f521e616a23443f",
+        "name": "existing report number",
+        "func": "msg.payload = \"Duplicate\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 180,
+        "y": 680,
+        "wires": [
+            [
+                "321f7051ab2cd2cd",
+                "8e8bca3709058c0a"
+            ]
+        ]
+    },
+    {
+        "id": "5c2fb5e25c1c5bd6",
+        "type": "link out",
+        "z": "447205f9c52006b9",
+        "g": "6f521e616a23443f",
+        "name": "",
+        "mode": "link",
+        "links": [
+            "da778d0b71964aa6"
+        ],
+        "x": 1320,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "eca333b1852557db",
+        "type": "comment",
+        "z": "447205f9c52006b9",
+        "g": "6f521e616a23443f",
+        "name": "Gears get sent staright to DB; spec validation not required",
+        "info": "",
+        "x": 1570,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "1c4f992fc1c8fdec",
+        "type": "switch",
+        "z": "447205f9c52006b9",
+        "g": "6f521e616a23443f",
+        "name": "gear or body/slide/rotor",
+        "property": "partName",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "Gear",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 910,
+        "y": 460,
+        "wires": [
+            [
+                "1691142b32de0d05"
+            ],
+            [
+                "e52cdea3b765b409"
+            ]
+        ]
+    },
+    {
+        "id": "1691142b32de0d05",
+        "type": "function",
+        "z": "447205f9c52006b9",
+        "g": "6f521e616a23443f",
+        "name": "parse 10R140 Gear data",
+        "func": "/* DATALIST =\n * [2] LOCATION\n * [4] JK\n * [5] FI\n * [6] DE\n * [7] WEIGHT\n * [8] COMPONENTS\n * [9] OCCUPANCY\n * [10] METALLIC_LEN\n * [11] METALLIC_WIDTH\n * [12] NON_METALLIC_LEN\n * [13] NON_METALLIC_WIDTH\n * [14] FIBER_LEN\n * [15] TOTAL_FIBERS\n * [16] RESULT              */\n \nNumber.prototype.round = function(n){\n    const d = Math.pow(10,n);\n    return Math.round((this + Number.EPSILON) * d) / d;\n}\n\nvar data = flow.get(\"data\");\nvar myData = data.split(\",\");\n\nvar location = myData[2];\n\nvar JK = parseFloat(myData[4]);\nvar FI = parseFloat(myData[5]);\nvar DE = parseFloat(myData[6]);\n\nvar weight = parseFloat(myData[7]);\nvar numOfComponents = parseFloat(myData[8]);\nvar partWeight = 0.0;\n\nif(isNaN(weight)){\n    weight = 0;\n    partWeight = 0.0;\n}else{\n    var x = weight/numOfComponents;\n    partWeight = x.round(3);\n}\n\nvar occupy = parseFloat(myData[9]);\nvar metallic_len = parseFloat(myData[10]);\nvar metallic_width = parseFloat(myData[11]);\nvar non_metallic_len = parseFloat(myData[12]);\nvar non_metallic_width = parseFloat(myData[13]);\nvar fiber_len = parseFloat(myData[14]);\nvar total_fibers = parseFloat(myData[15]);\nvar result = myData[16];\n\n\nvar datal = [location,JK,FI,DE,weight,numOfComponents,partWeight,occupy,metallic_len,metallic_width,non_metallic_len,non_metallic_width,fiber_len,total_fibers,result];\n\n\nflow.set(\"location\",location);\nflow.set(\"JK\",JK);\nflow.set(\"FI\",FI);\nflow.set(\"DE\",DE);\nflow.set(\"weight\",weight);\nflow.set(\"occupancy\",occupy);\nflow.set(\"met_len\",metallic_len);\nflow.set(\"met_width\",metallic_width);\nflow.set(\"non_met_len\",non_metallic_len);\nflow.set(\"non_met_width\",non_metallic_width);\nflow.set(\"fiber_len\",fiber_len);\nflow.set(\"total_fibers\",total_fibers);\nflow.set(\"result\",result);\nflow.set(\"numOfComponents\",numOfComponents);\nflow.set(\"partWeight\",partWeight);\nmsg.payload = datal;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1170,
+        "y": 420,
+        "wires": [
+            [
+                "5c2fb5e25c1c5bd6"
+            ]
+        ]
+    },
+    {
+        "id": "552e4f0ff055aec4",
+        "type": "comment",
+        "z": "447205f9c52006b9",
+        "g": "6f521e616a23443f",
+        "name": "handling duplicate reports",
+        "info": "",
+        "x": 190,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "321f7051ab2cd2cd",
+        "type": "fs-ops-delete",
+        "z": "447205f9c52006b9",
+        "g": "6f521e616a23443f",
+        "name": "delete text file",
+        "path": "/data/ShivDataOutput/Jomesa/",
+        "pathType": "str",
+        "filename": "delete",
+        "filenameType": "flow",
+        "x": 420,
+        "y": 680,
+        "wires": [
+            [
+                "360ff2d45d2290c8"
+            ]
+        ]
+    },
+    {
+        "id": "8e8bca3709058c0a",
+        "type": "debug",
+        "z": "447205f9c52006b9",
+        "g": "6f521e616a23443f",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 410,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "62a3c8d02737a30f",
+        "type": "Datahub Subscribe",
+        "z": "447205f9c52006b9",
+        "d": true,
+        "g": "29e81cdb7824f270",
+        "name": "",
+        "natc": "b74ec520e8d02a85",
+        "topicname": "Send_To_MSSQL.>",
+        "x": 3110,
+        "y": 100,
+        "wires": [
+            [
+                "ce26beabda1549a7"
+            ]
+        ]
+    },
+    {
+        "id": "ce26beabda1549a7",
+        "type": "debug",
+        "z": "447205f9c52006b9",
+        "d": true,
+        "g": "29e81cdb7824f270",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 3390,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "c35895435742d365",
+        "type": "debug",
+        "z": "447205f9c52006b9",
+        "g": "29e81cdb7824f270",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 3990,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "f817a26c1544e8b0",
+        "type": "link in",
+        "z": "447205f9c52006b9",
+        "g": "fda705b472ca9152",
+        "name": "",
+        "links": [
+            "eacd32c20ea4b645",
+            "976d2ecdc0ea018b",
+            "19fbcf7f5755dee9",
+            "32b46a700415c58b"
+        ],
+        "x": 560,
+        "y": 840,
+        "wires": [
+            [
+                "704b4b9a9eeb632f"
+            ]
+        ]
+    },
+    {
+        "id": "aed8326e583eb95e",
+        "type": "catch",
+        "z": "447205f9c52006b9",
+        "g": "fda705b472ca9152",
+        "name": "catch fs-ops error",
+        "scope": [
+            "704b4b9a9eeb632f",
+            "185c8573a46f1835",
+            "321f7051ab2cd2cd",
+            "2448f71a586d4cc1",
+            "5458709a7401e5fa"
+        ],
+        "uncaught": false,
+        "x": 620,
+        "y": 900,
+        "wires": [
+            [
+                "bb022f79a52ab9bd"
+            ]
+        ]
+    },
+    {
+        "id": "360ff2d45d2290c8",
+        "type": "link out",
+        "z": "447205f9c52006b9",
+        "g": "6f521e616a23443f",
+        "name": "",
+        "mode": "link",
+        "links": [
+            "83dc02a19903b103"
+        ],
+        "x": 560,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "32b46a700415c58b",
+        "type": "link out",
+        "z": "447205f9c52006b9",
+        "g": "6f521e616a23443f",
+        "name": "",
+        "mode": "link",
+        "links": [
+            "10bc37c6d6e48b33",
+            "f817a26c1544e8b0"
+        ],
+        "x": 380,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "a73dd1c61b5fc712",
+        "type": "comment",
+        "z": "447205f9c52006b9",
+        "g": "6f521e616a23443f",
+        "name": "delete file after saving saving it as payload",
+        "info": "",
+        "x": 500,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "b697ace66e016d72",
+        "type": "MSSQL",
+        "z": "447205f9c52006b9",
+        "g": "6f521e616a23443f",
+        "mssqlCN": "c5739068.38b51",
+        "name": "GET",
+        "outField": "payload",
+        "returnType": 0,
+        "throwErrors": "0",
+        "query": "",
+        "modeOpt": "queryMode",
+        "modeOptType": "query",
+        "queryOpt": "query",
+        "queryOptType": "msg",
+        "paramsOpt": "queryParams",
+        "paramsOptType": "msg",
+        "rows": "rows",
+        "rowsType": "msg",
+        "params": [],
+        "x": 650,
+        "y": 480,
+        "wires": [
+            [
+                "19e37a2f69de3e13"
+            ]
+        ]
+    },
+    {
+        "id": "f033922a65b63604",
+        "type": "template",
+        "z": "447205f9c52006b9",
+        "g": "6f521e616a23443f",
+        "name": "get reportNumbers",
+        "field": "query",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "SELECT distinct reportNum \nFROM [PMDA-Litmus].[dbo].[RecJomesa_SedimentTest]",
+        "output": "str",
+        "x": 490,
+        "y": 480,
+        "wires": [
+            [
+                "b697ace66e016d72"
+            ]
+        ]
+    },
+    {
+        "id": "19e37a2f69de3e13",
+        "type": "function",
+        "z": "447205f9c52006b9",
+        "g": "6f521e616a23443f",
+        "name": "verify if the report has been saved",
+        "func": "var reportNumbers = msg.payload;\nvar currentReport = flow.get(\"reportNum\");\nvar FLAG = 0; \n\nfor(let i = 0; i < reportNumbers.length; i++){\n    if(reportNumbers[i].reportNum === currentReport){\n        FLAG = 1; \n        break;\n    }\n}\n\nmsg.FLAG = FLAG;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 240,
+        "y": 560,
+        "wires": [
+            [
+                "2adad4d42cb933dc"
+            ]
+        ]
+    },
+    {
+        "id": "0756b7f50689630a",
+        "type": "function",
+        "z": "447205f9c52006b9",
+        "d": true,
+        "g": "152094e3fb79aab8",
+        "name": "set flow.last_num",
+        "func": "var out = msg.output; \nvar last_reportnum = out[0].reportNum;\nflow.set(\"last_num\",last_reportnum);\nreturn msg; ",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 1680,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3203dbeabb515c02",
+        "type": "MSSQL",
+        "z": "447205f9c52006b9",
+        "d": true,
+        "g": "152094e3fb79aab8",
+        "mssqlCN": "c5739068.38b51",
+        "name": "GET",
+        "outField": "payload",
+        "returnType": 0,
+        "throwErrors": "0",
+        "query": "",
+        "modeOpt": "queryMode",
+        "modeOptType": "query",
+        "queryOpt": "query",
+        "queryOptType": "msg",
+        "paramsOpt": "queryParams",
+        "paramsOptType": "msg",
+        "rows": "rows",
+        "rowsType": "msg",
+        "params": [],
+        "x": 290,
+        "y": 1680,
+        "wires": [
+            [
+                "0756b7f50689630a"
+            ]
+        ]
+    },
+    {
+        "id": "fd4e9ff8312577b0",
+        "type": "template",
+        "z": "447205f9c52006b9",
+        "d": true,
+        "g": "152094e3fb79aab8",
+        "name": "get last rep",
+        "field": "query",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Select distinct top (1) reportNum\n  FROM [PMDA-Litmus].[dbo].[RecJomesa_SedimentTest]\n  order by id desc",
+        "output": "str",
+        "x": 130,
+        "y": 1680,
+        "wires": [
+            [
+                "3203dbeabb515c02"
+            ]
+        ]
+    },
+    {
+        "id": "74cc681ba396071e",
+        "type": "e-mail",
+        "z": "447205f9c52006b9",
+        "g": "d3e4db5647dfdd51",
+        "server": "smtp01.stackpole.com",
+        "port": "25",
+        "secure": false,
+        "tls": false,
+        "name": "",
+        "dname": "",
+        "x": 3990,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "a6046a35fb022ad4",
+        "type": "function",
+        "z": "447205f9c52006b9",
+        "g": "29e81cdb7824f270",
+        "name": "configure email",
+        "func": "var pdf = flow.get(\"pdf_files\");\nvar part = flow.get(\"partName\");\nvar report = flow.get(\"reportNum\");\n\n//Sender --------------------------------------------------------\nmsg.from = ['PM-A Quality <notification-noreply@stackpole.com>'];\n\n//Receiver ------------------------------------------------------\nmsg.to = ['sthakar@stackpole.com']\n\n//Subject -------------------------------------------------------\nmsg.topic = \"New Sediment Test #\"+report+\" for \"+part; // subject\n\n\n//Attachments ---------------------------------------------------   to be implemented\nmsg.attachments = [\n    \n    {filename:msg.pdf_name, path:msg.filepath+ msg.pdf_name}\n    \n    ];\n\n//Body ----------------------------------------------------------\nFORDLINK = \"http://pmdadashboard/d/tmVF-1XVz/ford-sediment-tests-10r140-components?orgId=1&from=now-90d&to=now&var-PartName=\"+part.replace(\" \",\"%20\")+\"&var-ReportNum=\"+report+\"&var-Location=All&var-body=10R140%20Body&var-slide=10R140%20Slide&var-rotor=10R140%20Rotor&var-gear=10R140%20Gear&var-nitride=10R140%20Gear%20Nitride\";\nZFLINK =\"http://pmdadashboard/d/5NIQmsu4z/jomesa-sediment-tests?orgId=1&from=now-7d&to=now&var-ZFComponent=All&var-PartName=\"+part.replaceAll(\" \",\"%20\")+\"&var-gme=GME%20T4%20Stator&var-ReportNum=\"+report;\nGMELINK = \"http://pmdadashboard/d/5NIQmsu4z/jomesa-sediment-tests?orgId=1&from=now-7d&to=now&var-ZFComponent=All&var-PartName=All&var-gme=GME%20T4%20Stator&var-ReportNum=\"+report;\nif(part.includes('10R140') === true){\n    link =FORDLINK;\n}else if(part === 'GME T4 Stator'){\n    link = GMELINK;\n}else{\n    link = ZFLINK;\n}\n\nbody = \"New Test Uploaded\\n\\nSediment Test Dashboard: \"+link+\"\\n\\nNote: Data may take up to 15 minutes to appear on the dashboard.\\n\\nPictures Saved To:\\nN:\\\\Quality\\\\Metlab\\\\Met Lab Reports\\\\Sediment Tests\\\\Jomesa results\\\\Reaction Limit Sediment Tests Pictures\\\\\"+part+\"\\\\\"+report+\"_Pictures\\n\\n\";\n\nmsg.payload = body;\nreturn msg;\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 3420,
+        "y": 360,
+        "wires": [
+            [
+                "d158d9ae00fd0145"
+            ]
+        ]
+    },
+    {
+        "id": "d158d9ae00fd0145",
+        "type": "e-mail",
+        "z": "447205f9c52006b9",
+        "g": "29e81cdb7824f270",
+        "server": "smtp01.stackpole.com",
+        "port": "25",
+        "secure": false,
+        "tls": false,
+        "name": "",
+        "dname": "",
+        "x": 3610,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "a34fa0c82a787120",
+        "type": "comment",
+        "z": "447205f9c52006b9",
+        "g": "29e81cdb7824f270",
+        "name": "notify dev when new report is saved",
+        "info": "",
+        "x": 3820,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "404f7d0b7fae9f80",
+        "type": "function",
+        "z": "447205f9c52006b9",
+        "g": "4620efd84ef6704a",
+        "name": "write to log",
+        "func": "var part = flow.get(\"partName\");\nvar report = flow.get(\"reportNum\");\nvar loc = flow.get(\"location\");\nvar date = new Date;\nvar year = date.getFullYear().toString();\n\nif(part.includes('10R140')){\n    msg.payload = \"10R140 Components\\\\\"+part+\"\\\\\"+year+\"\\\\\"+year+\" \"+loc+\"\\\\\"+report;\n}else if(part.includes('ZF')){\n    msg.payload = \"ZF\\\\\"+part.toUpperCase()+\"\\\\\"+year+\"\\\\\"+report;\n}else if(part === 'GME T4 Stator'){\n    msg.payload = \"GME T4 Stator\\\\\"+year+\"\\\\\"+report;\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2730,
+        "y": 660,
+        "wires": [
+            [
+                "a3b3b87d47bf4d8c"
+            ]
+        ]
+    },
+    {
+        "id": "a3b3b87d47bf4d8c",
+        "type": "file",
+        "z": "447205f9c52006b9",
+        "g": "4620efd84ef6704a",
+        "name": "",
+        "filename": "/data/Jomesa_SedimentTest/LOG.txt",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 2970,
+        "y": 660,
+        "wires": [
+            [
+                "9257cdfeb34d0869"
+            ]
+        ]
+    },
+    {
+        "id": "9257cdfeb34d0869",
+        "type": "debug",
+        "z": "447205f9c52006b9",
+        "g": "4620efd84ef6704a",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 3110,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "b20ead1ceef1dbb5",
+        "type": "link in",
+        "z": "447205f9c52006b9",
+        "g": "5c5d043f856bb4d8",
+        "name": "",
+        "links": [
+            "ab9bd41f690a5a78"
+        ],
+        "x": 140,
+        "y": 260,
+        "wires": [
+            [
+                "e166aa090e237780",
+                "fa500cb657a3cc27",
+                "8ee6f4fcb9a62ac0",
+                "86540153f952f639"
+            ]
+        ]
+    },
+    {
+        "id": "ab9bd41f690a5a78",
+        "type": "link out",
+        "z": "447205f9c52006b9",
+        "g": "5c5d043f856bb4d8",
+        "name": "out_startup",
+        "mode": "link",
+        "links": [
+            "b20ead1ceef1dbb5"
+        ],
+        "x": 1040,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "96a2037cab89bec4",
+        "type": "inject",
+        "z": "447205f9c52006b9",
+        "d": true,
+        "g": "29e81cdb7824f270",
+        "name": "Manually input missing FinalDataObj",
+        "props": [
+            {
+                "p": "FinalDataObj",
+                "v": "{\"timestamp\":1689953234703,\"dateOfAnalysis\":1689811200000,\"loc\":\"Straight From Washer\",\"reportNum\":\"ST23-0492\",\"partName\":\"10R140 Gear Nitride\",\"JK\":1.9,\"HI\":0,\"FG\":0,\"CE\":0,\"FI\":459.4,\"DE\":4744.5,\"K\":0,\"J\":0,\"I\":0,\"H\":0,\"weight\":1.2,\"occ\":0.61,\"met_len\":373,\"met_width\":39,\"nonMet_len\":1487,\"nonMet_wid\":259,\"fiber_len\":1358,\"total_fibers\":26.1,\"ctrl\":\"\",\"reaction\":\"\",\"result\":\"PASS\",\"numOfComponents\":4,\"partWeight\":0.3}",
+                "vt": "json"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 3120,
+        "y": 220,
+        "wires": [
+            [
+                "7e1b7ef539b7bb48"
+            ]
+        ]
+    },
+    {
+        "id": "5ce3a7eae6884efb",
+        "type": "fs-ops-dir",
+        "z": "447205f9c52006b9",
+        "g": "d3e4db5647dfdd51",
+        "name": "search directory",
+        "path": "filepath",
+        "pathType": "msg",
+        "filter": "filter",
+        "filterType": "msg",
+        "dir": "payload",
+        "dirType": "msg",
+        "x": 3580,
+        "y": 540,
+        "wires": [
+            [
+                "d6128f9c22a2fdba"
+            ]
+        ]
+    },
+    {
+        "id": "f39d79a41406433f",
+        "type": "function",
+        "z": "447205f9c52006b9",
+        "g": "d3e4db5647dfdd51",
+        "name": "find pdf",
+        "func": "var folder = '/data/Jomesa_Results_Folder/';\n\nvar partName =flow.get('partName');\nvar date = new Date;\nvar year = date.getFullYear().toString();\nvar reportnum = flow.get(\"reportNum\");\nvar loc = flow.get('location');\nvar path = folder;\n\nif(partName.includes('10R140')){\n    path = path+\"10R140 Components/\"+partName+\"/\"+year+\"/\"+year+\" \"+loc+\"/\";\n}else if(partName.includes('ZF')){\n    path = path+\"ZF/\"+partName.toUpperCase()+\"/\"+year+\"/\";\n}else if(partName.includes('GME')){\n    path = path+\"GME T4 Stator/\"+partName.toUpperCase()+\"/\"+year+\"/\";\n}\n\nmsg.filter = reportnum+\"*.pdf\";\n\nmsg.filepath = path;\n\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 3400,
+        "y": 540,
+        "wires": [
+            [
+                "5ce3a7eae6884efb"
+            ]
+        ]
+    },
+    {
+        "id": "d6128f9c22a2fdba",
+        "type": "function",
+        "z": "447205f9c52006b9",
+        "g": "d3e4db5647dfdd51",
+        "name": "set msg.pdf_name to payload",
+        "func": "msg.pdf_name = msg.payload[0];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 3530,
+        "y": 600,
+        "wires": [
+            [
+                "3bd354bf6fde0a8c"
+            ]
+        ]
+    },
+    {
+        "id": "9a71b476084c8d1e",
+        "type": "function",
+        "z": "447205f9c52006b9",
+        "g": "29e81cdb7824f270",
+        "name": "find pdf",
+        "func": "var folder = '/data/Jomesa_Results_Folder/';\n\nvar partName =flow.get('partName')||'10R140 Body';\nvar date = new Date;\nvar year = date.getFullYear().toString();\nvar reportnum = flow.get(\"reportNum\")||'ST23-0482';\nvar loc = flow.get('location')||'Point of Ship';\nvar path = folder;\n\nif(partName.includes('10R140')){\n    path = path+\"10R140 Components/\"+partName+\"/\"+year+\"/\"+year+\" \"+loc+\"/\";\n}else if(partName.includes('ZF')){\n    path = path+\"ZF/\"+partName.toUpperCase()+\"/\"+year+\"/\";\n}else if(partName.includes('GME')){\n    path = path+\"GME T4 Stator/\"+partName.toUpperCase()+\"/\"+year+\"/\";\n}\n\nmsg.filter = reportnum+\"*.pdf\";\n\nmsg.filepath = path;\n\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 3400,
+        "y": 300,
+        "wires": [
+            [
+                "b732c62f767cb07b"
+            ]
+        ]
+    },
+    {
+        "id": "b732c62f767cb07b",
+        "type": "fs-ops-dir",
+        "z": "447205f9c52006b9",
+        "g": "29e81cdb7824f270",
+        "name": "search directory",
+        "path": "filepath",
+        "pathType": "msg",
+        "filter": "filter",
+        "filterType": "msg",
+        "dir": "payload",
+        "dirType": "msg",
+        "x": 3560,
+        "y": 300,
+        "wires": [
+            [
+                "edea15cc78009b95"
+            ]
+        ]
+    },
+    {
+        "id": "edea15cc78009b95",
+        "type": "function",
+        "z": "447205f9c52006b9",
+        "g": "29e81cdb7824f270",
+        "name": "set msg.pdf_name to payload",
+        "func": "msg.pdf_name = msg.payload[0];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 3810,
+        "y": 300,
+        "wires": [
+            [
+                "a6046a35fb022ad4"
+            ]
+        ]
+    },
+    {
+        "id": "b74ec520e8d02a85",
+        "type": "Datahub Connect",
+        "ipadd": "127.0.0.1",
+        "port": "4999"
+    },
+    {
+        "id": "c5739068.38b51",
+        "type": "MSSQL-CN",
+        "tdsVersion": "7_4",
+        "name": "PMDA-Litmus",
+        "server": "10.4.65.223",
+        "port": "1433",
+        "encyption": true,
+        "trustServerCertificate": true,
+        "database": "PMDA-Litmus",
+        "useUTC": false,
+        "connectTimeout": "15000",
+        "requestTimeout": "40000",
+        "cancelTimeout": "60000",
+        "pool": "",
+        "parseJSON": false,
+        "enableArithAbort": true
+    }
+]

@@ -1,0 +1,4834 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 126,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "-nLcehCGz"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 4,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<p style=\"font-size:210%; font-weight:bold; color:#C8D200;text-align:center;\">Jomesa Sediment Tests</p>",
+        "mode": "html"
+      },
+      "pluginVersion": "9.4.7",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "mssql",
+        "uid": "5JEN17I7k"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "#111217",
+            "mode": "fixed"
+          },
+          "custom": {
+            "fillOpacity": 100,
+            "lineWidth": 0,
+            "spanNulls": false
+          },
+          "mappings": [
+            {
+              "options": {
+                "FAIL": {
+                  "color": "semi-dark-red",
+                  "index": 1,
+                  "text": "FAIL"
+                },
+                "PASS": {
+                  "color": "semi-dark-green",
+                  "index": 0,
+                  "text": "PASS"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Test No."
+            },
+            "properties": [
+              {
+                "id": "custom.fillOpacity",
+                "value": 80
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 24,
+        "x": 0,
+        "y": 2
+      },
+      "id": 87,
+      "options": {
+        "alignValue": "center",
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "mergeValues": false,
+        "rowHeight": 1,
+        "showValue": "auto",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.4.7",
+      "targets": [
+        {
+          "datasource": {
+            "type": "mssql",
+            "uid": "5JEN17I7k"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))\r\n      ,[partName] [Part]      \r\n      ,[reportNum] [Report]\r\n      ,[result] [Results]\r\nFROM [PMDA-Litmus].[dbo].[RecJomesa_SedimentTest]\r\n\r\nWHERE DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))\r\n      BETWEEN \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeFrom()) \r\n            AND \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeTo())\r\nAND [partName] in ($AllParts)\r\nORDER BY\r\n     DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "$AllParts - Report Results Overview",
+      "transformations": [
+        {
+          "id": "filterByValue",
+          "options": {
+            "filters": [
+              {
+                "config": {
+                  "id": "equal",
+                  "options": {
+                    "value": "10R140 Body"
+                  }
+                },
+                "fieldName": "Part"
+              },
+              {
+                "config": {
+                  "id": "equal",
+                  "options": {
+                    "value": "10R140 Slide"
+                  }
+                },
+                "fieldName": "Part"
+              },
+              {
+                "config": {
+                  "id": "equal",
+                  "options": {
+                    "value": "10R140 Rotor"
+                  }
+                },
+                "fieldName": "Part"
+              },
+              {
+                "config": {
+                  "id": "equal",
+                  "options": {
+                    "value": "10R140 Gear"
+                  }
+                },
+                "fieldName": "Part"
+              },
+              {
+                "config": {
+                  "id": "equal",
+                  "options": {
+                    "value": "10R140 Gear Nitride"
+                  }
+                },
+                "fieldName": "Part"
+              }
+            ],
+            "match": "any",
+            "type": "exclude"
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "state-timeline"
+    },
+    {
+      "datasource": {
+        "type": "mssql",
+        "uid": "5JEN17I7k"
+      },
+      "description": "Table used for download data for all parts or specific parts within a time range. \n\n1) Select The Part(s) in the top left corner\n2) Select The Time Range in the top right corner\n3) Click the arrow beside table header\n4) Click Inspect > Data > Download CSV",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "center",
+            "cellOptions": {
+              "type": "color-text"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Sample Location"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 156
+              },
+              {
+                "id": "custom.filterable",
+                "value": true
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Test No."
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 102
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Part Name"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 130
+              },
+              {
+                "id": "custom.filterable",
+                "value": true
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "K (>1000)"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 93
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "J (600-1000)"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 105
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "I (400-600)"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 100
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "H (200-400)"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 105
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Weight (mg)"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 130
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Weight Per Part (mg)"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 162
+              },
+              {
+                "id": "decimals",
+                "value": 3
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Largest Metallic Length (um)"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 216
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Largest Metallic Width (um)"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 212
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Largest Non-Metallic Length (um)"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 254
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Largest Non-Metallic Width (um)"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 245
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Largest Fiber Length (um)"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 192
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Total Length of Fibers (mm)"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 207
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Test Result"
+            },
+            "properties": [
+              {
+                "id": "custom.filterable",
+                "value": true
+              },
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "FAIL": {
+                        "color": "semi-dark-red",
+                        "index": 1
+                      },
+                      "PASS": {
+                        "color": "semi-dark-green",
+                        "index": 0
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 24,
+        "x": 0,
+        "y": 7
+      },
+      "id": 90,
+      "options": {
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "9.4.7",
+      "targets": [
+        {
+          "datasource": {
+            "type": "mssql",
+            "uid": "5JEN17I7k"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT DISTINCT DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))[Date of Analysis]\r\n      ,[reportNum] [Test No.]\r\n      ,[partName] [Part Name]\r\n      ,[loc] [Sample Location]\r\n      ,[K] [K (>1000)]\r\n      ,[J] [J (600-1000)]\r\n      ,[I] [I (400-600)]\r\n      ,[H] [H (200-400)]\r\n      ,[weight] [Weight (mg)]\r\n      ,[partWeight] [Weight Per Part (mg)]\r\n      ,[met_len] [Largest Metallic Length (um)]\r\n      ,[met_width] [Largest Metallic Width (um)]\r\n      ,[nonMet_len] [Largest Non-Metallic Length (um)]\r\n      ,[nonMet_wid] [Largest Non-Metallic Width (um)]\r\n      ,[fiber_len] [Largest Fiber Length (um)]\r\n      ,[total_fibers] [Total Length of Fibers (mm)]\r\n      ,[result] [Test Result]\r\nFROM [PMDA-Litmus].[dbo].[RecJomesa_SedimentTest]\r\n\r\nWHERE [partName] in ($AllParts)\r\nAND DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00')) \r\n      BETWEEN \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeFrom()) \r\n            AND \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeTo()) \r\nORDER BY\r\n      DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Sediment Test Data For $AllParts Parts",
+      "type": "table"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 19
+      },
+      "id": 27,
+      "panels": [
+        {
+          "datasource": {
+            "type": "mssql",
+            "uid": "5JEN17I7k"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "fixedColor": "#111217",
+                "mode": "fixed"
+              },
+              "custom": {
+                "fillOpacity": 100,
+                "lineWidth": 0,
+                "spanNulls": false
+              },
+              "mappings": [
+                {
+                  "options": {
+                    "FAIL": {
+                      "color": "semi-dark-red",
+                      "index": 1
+                    },
+                    "PASS": {
+                      "color": "semi-dark-green",
+                      "index": 0
+                    }
+                  },
+                  "type": "value"
+                }
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  }
+                ]
+              }
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Test No."
+                },
+                "properties": [
+                  {
+                    "id": "custom.fillOpacity",
+                    "value": 80
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 3,
+            "w": 24,
+            "x": 0,
+            "y": 20
+          },
+          "id": 6,
+          "options": {
+            "alignValue": "center",
+            "legend": {
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": false
+            },
+            "mergeValues": true,
+            "rowHeight": 1,
+            "showValue": "auto",
+            "tooltip": {
+              "mode": "none",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "9.4.7",
+          "targets": [
+            {
+              "datasource": {
+                "type": "mssql",
+                "uid": "5JEN17I7k"
+              },
+              "editorMode": "code",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT DISTINCT DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))\r\n      ,[result] [Results]\r\nFROM [PMDA-Litmus].[dbo].[RecJomesa_SedimentTest]\r\n\r\nWHERE DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))\r\n      BETWEEN \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeFrom()) \r\n            AND \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeTo())\r\nAND [partName] in ($PartName)\r\nAND [reportNum] in ($ReportNum)\r\nORDER BY\r\n      DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))",
+              "refId": "A",
+              "sql": {
+                "columns": [
+                  {
+                    "parameters": [],
+                    "type": "function"
+                  }
+                ],
+                "groupBy": [
+                  {
+                    "property": {
+                      "type": "string"
+                    },
+                    "type": "groupBy"
+                  }
+                ],
+                "limit": 50
+              }
+            }
+          ],
+          "title": "$PartName Summarized Report Results",
+          "transformations": [
+            {
+              "id": "filterByValue",
+              "options": {
+                "filters": [
+                  {
+                    "config": {
+                      "id": "greater",
+                      "options": {
+                        "value": 0
+                      }
+                    },
+                    "fieldName": "Results"
+                  }
+                ],
+                "match": "any",
+                "type": "exclude"
+              }
+            }
+          ],
+          "transparent": true,
+          "type": "state-timeline"
+        },
+        {
+          "datasource": {
+            "type": "mssql",
+            "uid": "5JEN17I7k"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "align": "center",
+                "cellOptions": {
+                  "type": "color-text"
+                },
+                "filterable": true,
+                "inspect": false
+              },
+              "mappings": [
+                {
+                  "options": {
+                    "FAIL": {
+                      "color": "semi-dark-red",
+                      "index": 1
+                    },
+                    "PASS": {
+                      "color": "semi-dark-green",
+                      "index": 0
+                    }
+                  },
+                  "type": "value"
+                }
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "text"
+                  }
+                ]
+              }
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Date of Analysis"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 169
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "K"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 52
+                  },
+                  {
+                    "id": "thresholds",
+                    "value": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "green"
+                        },
+                        {
+                          "color": "red",
+                          "value": 1
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "J"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 45
+                  },
+                  {
+                    "id": "thresholds",
+                    "value": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "green"
+                        },
+                        {
+                          "color": "red",
+                          "value": 1
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "I"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 45
+                  },
+                  {
+                    "id": "thresholds",
+                    "value": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "green"
+                        },
+                        {
+                          "color": "red",
+                          "value": 1
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "H"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 54
+                  },
+                  {
+                    "id": "thresholds",
+                    "value": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "green"
+                        },
+                        {
+                          "color": "text",
+                          "value": 0
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Test No."
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 122
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Part Name"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 110
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Sample Location"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 154
+                  },
+                  {
+                    "id": "noValue",
+                    "value": "N/A"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Record Time"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 176
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Total Weight (mg)"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 163
+                  },
+                  {
+                    "id": "decimals",
+                    "value": 2
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Weight Per Part (mg)"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 200
+                  },
+                  {
+                    "id": "decimals",
+                    "value": 3
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Upload Time"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 166
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Number of Components"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 213
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Components on Filter"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 181
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Weight Per Part (mg)"
+                },
+                "properties": [
+                  {
+                    "id": "thresholds",
+                    "value": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "green"
+                        },
+                        {
+                          "color": "red",
+                          "value": 0.4001
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Out Of Control"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 132
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "# of Components"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 161
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 11,
+            "w": 24,
+            "x": 0,
+            "y": 23
+          },
+          "id": 2,
+          "options": {
+            "footer": {
+              "countRows": false,
+              "fields": [
+                "K",
+                "I",
+                "J",
+                "H"
+              ],
+              "reducer": [
+                "count"
+              ],
+              "show": false
+            },
+            "showHeader": true,
+            "sortBy": []
+          },
+          "pluginVersion": "9.4.7",
+          "targets": [
+            {
+              "datasource": {
+                "type": "mssql",
+                "uid": "5JEN17I7k"
+              },
+              "editorMode": "code",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00')) [Date of Analysis]\r\n      ,[reportNum] [Test No.]\r\n      ,[partName] [Part Name]\r\n      ,[loc] [Sample Location]\r\n      ,[K] \r\n      ,[J]\r\n      ,[I]\r\n      ,[H]\r\n      ,[weight] [Total Weight (mg)]\r\n      ,[numOfComponents] [# of Components]\r\n      ,[partWeight] [Weight Per Part (mg)]\r\n      ,REPLACE([reaction],'~|',', ') [Out Of Control]\r\n      ,[result] [Test Result]\r\nFROM [PMDA-Litmus].[dbo].[RecJomesa_SedimentTest]\r\n\r\nWHERE [partName] in ($PartName)\r\nAND DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00')) \r\n      BETWEEN \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeFrom()) \r\n            AND \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeTo()) \r\nAND [reportNum] in ($ReportNum)\r\nORDER BY\r\n      DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00')) ",
+              "refId": "A",
+              "sql": {
+                "columns": [
+                  {
+                    "parameters": [],
+                    "type": "function"
+                  }
+                ],
+                "groupBy": [
+                  {
+                    "property": {
+                      "type": "string"
+                    },
+                    "type": "groupBy"
+                  }
+                ],
+                "limit": 50
+              }
+            }
+          ],
+          "title": "Microscopic Analysis",
+          "transformations": [],
+          "type": "table"
+        },
+        {
+          "datasource": {
+            "type": "mssql",
+            "uid": "5JEN17I7k"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineStyle": {
+                  "fill": "solid"
+                },
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "always",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "dashed+area"
+                }
+              },
+              "decimals": 0,
+              "mappings": [],
+              "max": 4,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 1
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 11,
+            "w": 12,
+            "x": 0,
+            "y": 34
+          },
+          "id": 8,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": false
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "mssql",
+                "uid": "5JEN17I7k"
+              },
+              "editorMode": "code",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT DISTINCT DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00')) [Date of Analysis]\r\n      ,[K]\r\n      ,[reportNum]\r\n      ,[partName]\r\nFROM [PMDA-Litmus].[dbo].[RecJomesa_SedimentTest]\r\n\r\nWHERE [partName] in ($PartName)\r\nAND DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))\r\n      BETWEEN \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeFrom()) \r\n            AND \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeTo())\r\nAND [reportNum] in ($ReportNum)\r\n\r\nORDER BY\r\n      DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))",
+              "refId": "A",
+              "sql": {
+                "columns": [
+                  {
+                    "parameters": [],
+                    "type": "function"
+                  }
+                ],
+                "groupBy": [
+                  {
+                    "property": {
+                      "type": "string"
+                    },
+                    "type": "groupBy"
+                  }
+                ],
+                "limit": 50
+              }
+            }
+          ],
+          "title": "K (> 1000)",
+          "transformations": [
+            {
+              "id": "filterByValue",
+              "options": {
+                "filters": [
+                  {
+                    "config": {
+                      "id": "equal",
+                      "options": {
+                        "value": "GME T4 Stator"
+                      }
+                    },
+                    "fieldName": "partName"
+                  }
+                ],
+                "match": "any",
+                "type": "exclude"
+              }
+            }
+          ],
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "mssql",
+            "uid": "5JEN17I7k"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "always",
+                "spanNulls": true,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "dashed+area"
+                }
+              },
+              "decimals": 0,
+              "mappings": [],
+              "max": 4,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 1
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 11,
+            "w": 12,
+            "x": 12,
+            "y": 34
+          },
+          "id": 9,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": false
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "mssql",
+                "uid": "5JEN17I7k"
+              },
+              "editorMode": "code",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT DISTINCT DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00')) [Date of Analysis]\r\n      ,[J]\r\n      ,[reportNum]\r\n      ,[partName]\r\nFROM [PMDA-Litmus].[dbo].[RecJomesa_SedimentTest]\r\n\r\nWHERE [partName] in ($PartName)\r\nAND DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))\r\n      BETWEEN \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeFrom()) \r\n            AND \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeTo())\r\nAND [reportNum] in ($ReportNum)\r\n\r\nORDER BY\r\n      DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))",
+              "refId": "A",
+              "sql": {
+                "columns": [
+                  {
+                    "parameters": [],
+                    "type": "function"
+                  }
+                ],
+                "groupBy": [
+                  {
+                    "property": {
+                      "type": "string"
+                    },
+                    "type": "groupBy"
+                  }
+                ],
+                "limit": 50
+              }
+            }
+          ],
+          "title": "J (600 - 1000)",
+          "transformations": [
+            {
+              "id": "filterByValue",
+              "options": {
+                "filters": [
+                  {
+                    "config": {
+                      "id": "equal",
+                      "options": {
+                        "value": "GME T4 Stator"
+                      }
+                    },
+                    "fieldName": "partName"
+                  }
+                ],
+                "match": "any",
+                "type": "exclude"
+              }
+            }
+          ],
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "mssql",
+            "uid": "5JEN17I7k"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineStyle": {
+                  "fill": "solid"
+                },
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "always",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "dashed+area"
+                }
+              },
+              "decimals": 0,
+              "mappings": [],
+              "max": 4,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 1
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 11,
+            "w": 12,
+            "x": 0,
+            "y": 45
+          },
+          "id": 10,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": false
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "mssql",
+                "uid": "5JEN17I7k"
+              },
+              "editorMode": "code",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT DISTINCT DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00')) [Date of Analysis]\r\n      ,[I]\r\n      ,[reportNum]\r\n      ,[partName]\r\nFROM [PMDA-Litmus].[dbo].[RecJomesa_SedimentTest]\r\n\r\nWHERE [partName] in ($PartName)\r\nAND DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))\r\n      BETWEEN \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeFrom()) \r\n            AND \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeTo())\r\nAND [reportNum] in ($ReportNum)\r\n\r\nORDER BY\r\n      DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))",
+              "refId": "A",
+              "sql": {
+                "columns": [
+                  {
+                    "parameters": [],
+                    "type": "function"
+                  }
+                ],
+                "groupBy": [
+                  {
+                    "property": {
+                      "type": "string"
+                    },
+                    "type": "groupBy"
+                  }
+                ],
+                "limit": 50
+              }
+            }
+          ],
+          "title": "I (400 - 600)",
+          "transformations": [
+            {
+              "id": "filterByValue",
+              "options": {
+                "filters": [
+                  {
+                    "config": {
+                      "id": "equal",
+                      "options": {
+                        "value": "GME T4 Stator"
+                      }
+                    },
+                    "fieldName": "partName"
+                  }
+                ],
+                "match": "any",
+                "type": "exclude"
+              }
+            }
+          ],
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "mssql",
+            "uid": "5JEN17I7k"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "always",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 11,
+            "w": 12,
+            "x": 12,
+            "y": 45
+          },
+          "id": 11,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": false
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "mssql",
+                "uid": "5JEN17I7k"
+              },
+              "editorMode": "code",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT DISTINCT DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00')) [Date of Analysis]\r\n      ,[H]\r\n      ,[reportNum]\r\n      ,[partName]\r\nFROM [PMDA-Litmus].[dbo].[RecJomesa_SedimentTest]\r\n\r\nWHERE [partName] in ($PartName)\r\nAND DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))\r\n      BETWEEN \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeFrom()) \r\n            AND \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeTo())\r\nAND [reportNum] in ($ReportNum)\r\n\r\nORDER BY\r\n      DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))",
+              "refId": "A",
+              "sql": {
+                "columns": [
+                  {
+                    "parameters": [],
+                    "type": "function"
+                  }
+                ],
+                "groupBy": [
+                  {
+                    "property": {
+                      "type": "string"
+                    },
+                    "type": "groupBy"
+                  }
+                ],
+                "limit": 50
+              }
+            }
+          ],
+          "title": "H (200 - 400)",
+          "transformations": [
+            {
+              "id": "filterByValue",
+              "options": {
+                "filters": [
+                  {
+                    "config": {
+                      "id": "equal",
+                      "options": {
+                        "value": "GME T4 Stator"
+                      }
+                    },
+                    "fieldName": "partName"
+                  }
+                ],
+                "match": "any",
+                "type": "exclude"
+              }
+            }
+          ],
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "mssql",
+            "uid": "5JEN17I7k"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "custom": {
+                "align": "center",
+                "cellOptions": {
+                  "type": "color-text"
+                },
+                "inspect": false
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "text"
+                  }
+                ]
+              }
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Date of Analysis"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 136
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Test No."
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 100
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Record Time"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 183
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Largest Metallic Width (um)"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 217
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Largest Fiber Length (um)"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 195
+                  },
+                  {
+                    "id": "thresholds",
+                    "value": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "green"
+                        },
+                        {
+                          "color": "red",
+                          "value": 4000
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Largest Metallic Length (um)"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 212
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Part Name"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 97
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 11,
+            "w": 24,
+            "x": 0,
+            "y": 56
+          },
+          "id": 36,
+          "options": {
+            "footer": {
+              "countRows": false,
+              "fields": "",
+              "reducer": [
+                "sum"
+              ],
+              "show": false
+            },
+            "showHeader": true,
+            "sortBy": []
+          },
+          "pluginVersion": "9.4.7",
+          "targets": [
+            {
+              "datasource": {
+                "type": "mssql",
+                "uid": "5JEN17I7k"
+              },
+              "editorMode": "code",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT CONVERT(VARCHAR(20),DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00')),110) [Date of Analysis]\r\n      ,[partName] [Part Name]\r\n      ,[reportNum] [Test No.]\r\n      ,[met_len] [Largest Metallic Length (um)]\r\n      ,[met_width] [Largest Metallic Width (um)]\r\n      ,[nonMet_len] [Largest Non-Metallic Length (um)]\r\n      ,[nonMet_wid] [Largest Non-Metallic Width (um)]\r\n      ,[fiber_len] [Largest Fiber Length (um)]\r\n      ,[total_fibers] [Total Length of Fibers (mm)]\r\nFROM [PMDA-Litmus].[dbo].[RecJomesa_SedimentTest]\r\n\r\nWHERE [partName] in ($PartName)\r\nAND DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))\r\n      BETWEEN \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeFrom()) \r\n            AND \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeTo())\r\nAND [reportNum] in ($ReportNum)\r\n\r\nORDER BY\r\n      DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))",
+              "refId": "A",
+              "sql": {
+                "columns": [
+                  {
+                    "parameters": [],
+                    "type": "function"
+                  }
+                ],
+                "groupBy": [
+                  {
+                    "property": {
+                      "type": "string"
+                    },
+                    "type": "groupBy"
+                  }
+                ],
+                "limit": 50
+              }
+            }
+          ],
+          "title": "Fiber and Particle Analysis",
+          "transformations": [
+            {
+              "id": "filterByValue",
+              "options": {
+                "filters": [
+                  {
+                    "config": {
+                      "id": "equal",
+                      "options": {
+                        "value": "GME T4 Stator"
+                      }
+                    },
+                    "fieldName": "Part Name"
+                  }
+                ],
+                "match": "any",
+                "type": "exclude"
+              }
+            }
+          ],
+          "type": "table"
+        },
+        {
+          "datasource": {
+            "type": "mssql",
+            "uid": "5JEN17I7k"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "always",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 11,
+            "w": 12,
+            "x": 0,
+            "y": 67
+          },
+          "id": 37,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "mssql",
+                "uid": "5JEN17I7k"
+              },
+              "editorMode": "code",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT DISTINCT DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))\r\n      ,[met_len] [Length (um)]\r\n      ,[partName]\r\nFROM [PMDA-Litmus].[dbo].[RecJomesa_SedimentTest]\r\n\r\nWHERE [partName] in ($PartName)\r\nAND DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))\r\n      BETWEEN \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeFrom()) \r\n            AND \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeTo())\r\nAND [reportNum] in ($ReportNum)\r\n\r\nORDER BY\r\n      DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))",
+              "refId": "A",
+              "sql": {
+                "columns": [
+                  {
+                    "parameters": [],
+                    "type": "function"
+                  }
+                ],
+                "groupBy": [
+                  {
+                    "property": {
+                      "type": "string"
+                    },
+                    "type": "groupBy"
+                  }
+                ],
+                "limit": 50
+              }
+            }
+          ],
+          "title": "Length of Largest Metallic Particle (um)",
+          "transformations": [
+            {
+              "id": "filterByValue",
+              "options": {
+                "filters": [
+                  {
+                    "config": {
+                      "id": "equal",
+                      "options": {
+                        "value": "GME T4 Stator"
+                      }
+                    },
+                    "fieldName": "partName"
+                  }
+                ],
+                "match": "any",
+                "type": "exclude"
+              }
+            }
+          ],
+          "transparent": true,
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "mssql",
+            "uid": "5JEN17I7k"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "fixedColor": "blue",
+                "mode": "fixed"
+              },
+              "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "always",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 11,
+            "w": 12,
+            "x": 12,
+            "y": 67
+          },
+          "id": 38,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "mssql",
+                "uid": "5JEN17I7k"
+              },
+              "editorMode": "code",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT DISTINCT DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))\r\n      ,[met_width] [Width (um)]\r\n      ,[partName]\r\nFROM [PMDA-Litmus].[dbo].[RecJomesa_SedimentTest]\r\n\r\nWHERE [partName] in ($PartName)\r\nAND DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))\r\n      BETWEEN \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeFrom()) \r\n            AND \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeTo())\r\nAND [reportNum] in ($ReportNum)\r\n\r\nORDER BY\r\n      DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))",
+              "refId": "A",
+              "sql": {
+                "columns": [
+                  {
+                    "parameters": [],
+                    "type": "function"
+                  }
+                ],
+                "groupBy": [
+                  {
+                    "property": {
+                      "type": "string"
+                    },
+                    "type": "groupBy"
+                  }
+                ],
+                "limit": 50
+              }
+            }
+          ],
+          "title": "Width of Largest Metallic Particle (um)",
+          "transformations": [
+            {
+              "id": "filterByValue",
+              "options": {
+                "filters": [
+                  {
+                    "config": {
+                      "id": "equal",
+                      "options": {
+                        "value": "GME T4 Stator"
+                      }
+                    },
+                    "fieldName": "partName"
+                  }
+                ],
+                "match": "any",
+                "type": "exclude"
+              }
+            }
+          ],
+          "transparent": true,
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "mssql",
+            "uid": "5JEN17I7k"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "always",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 11,
+            "w": 12,
+            "x": 0,
+            "y": 78
+          },
+          "id": 41,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "mssql",
+                "uid": "5JEN17I7k"
+              },
+              "editorMode": "code",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT DISTINCT DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))\r\n      ,[nonMet_len] [Length (um)]\r\n      ,[partName]\r\nFROM [PMDA-Litmus].[dbo].[RecJomesa_SedimentTest]\r\n\r\nWHERE [partName] in ($PartName)\r\nAND DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))\r\n      BETWEEN \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeFrom()) \r\n            AND \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeTo())\r\nAND [reportNum] in ($ReportNum)\r\n\r\nORDER BY\r\n      DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))",
+              "refId": "A",
+              "sql": {
+                "columns": [
+                  {
+                    "parameters": [],
+                    "type": "function"
+                  }
+                ],
+                "groupBy": [
+                  {
+                    "property": {
+                      "type": "string"
+                    },
+                    "type": "groupBy"
+                  }
+                ],
+                "limit": 50
+              }
+            }
+          ],
+          "title": "Length of Largest Non-Metallic Particle (um)",
+          "transformations": [
+            {
+              "id": "filterByValue",
+              "options": {
+                "filters": [
+                  {
+                    "config": {
+                      "id": "equal",
+                      "options": {
+                        "value": "GME T4 Stator"
+                      }
+                    },
+                    "fieldName": "partName"
+                  }
+                ],
+                "match": "any",
+                "type": "exclude"
+              }
+            }
+          ],
+          "transparent": true,
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "mssql",
+            "uid": "5JEN17I7k"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "fixedColor": "blue",
+                "mode": "fixed"
+              },
+              "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "always",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 11,
+            "w": 12,
+            "x": 12,
+            "y": 78
+          },
+          "id": 40,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "mssql",
+                "uid": "5JEN17I7k"
+              },
+              "editorMode": "code",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT DISTINCT DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))\r\n      ,[nonMet_wid] [Width (um)]\r\n      ,[partName]\r\nFROM [PMDA-Litmus].[dbo].[RecJomesa_SedimentTest]\r\n\r\nWHERE [partName] in ($PartName)\r\nAND DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))\r\n      BETWEEN \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeFrom()) \r\n            AND \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeTo())\r\nAND [reportNum] in ($ReportNum)\r\n\r\nORDER BY\r\n      DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))",
+              "refId": "A",
+              "sql": {
+                "columns": [
+                  {
+                    "parameters": [],
+                    "type": "function"
+                  }
+                ],
+                "groupBy": [
+                  {
+                    "property": {
+                      "type": "string"
+                    },
+                    "type": "groupBy"
+                  }
+                ],
+                "limit": 50
+              }
+            }
+          ],
+          "title": "Width of Largest Non-Metallic Particle (um)",
+          "transformations": [
+            {
+              "id": "filterByValue",
+              "options": {
+                "filters": [
+                  {
+                    "config": {
+                      "id": "equal",
+                      "options": {
+                        "value": "GME T4 Stator"
+                      }
+                    },
+                    "fieldName": "partName"
+                  }
+                ],
+                "match": "any",
+                "type": "exclude"
+              }
+            }
+          ],
+          "transparent": true,
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "mssql",
+            "uid": "5JEN17I7k"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "always",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "normal"
+                },
+                "thresholdsStyle": {
+                  "mode": "dashed+area"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 4000
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 11,
+            "w": 12,
+            "x": 0,
+            "y": 89
+          },
+          "id": 39,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "mssql",
+                "uid": "5JEN17I7k"
+              },
+              "editorMode": "code",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT DISTINCT DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))\r\n      ,[fiber_len] [Length (um)]\r\n      ,[partName]\r\nFROM [PMDA-Litmus].[dbo].[RecJomesa_SedimentTest]\r\n\r\nWHERE [partName] in ($PartName)\r\nAND DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))\r\n      BETWEEN \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeFrom()) \r\n            AND \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeTo())\r\nAND [reportNum] in ($ReportNum)\r\n\r\nORDER BY\r\n      DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))",
+              "refId": "A",
+              "sql": {
+                "columns": [
+                  {
+                    "parameters": [],
+                    "type": "function"
+                  }
+                ],
+                "groupBy": [
+                  {
+                    "property": {
+                      "type": "string"
+                    },
+                    "type": "groupBy"
+                  }
+                ],
+                "limit": 50
+              }
+            }
+          ],
+          "title": "Length of Largest Fiber (um)",
+          "transformations": [
+            {
+              "id": "filterByValue",
+              "options": {
+                "filters": [
+                  {
+                    "config": {
+                      "id": "equal",
+                      "options": {
+                        "value": "GME T4 Stator"
+                      }
+                    },
+                    "fieldName": "partName"
+                  }
+                ],
+                "match": "any",
+                "type": "exclude"
+              }
+            }
+          ],
+          "transparent": true,
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "mssql",
+            "uid": "5JEN17I7k"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "fixedColor": "blue",
+                "mode": "fixed"
+              },
+              "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "always",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "normal"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 11,
+            "w": 12,
+            "x": 12,
+            "y": 89
+          },
+          "id": 42,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "mssql",
+                "uid": "5JEN17I7k"
+              },
+              "editorMode": "code",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT DISTINCT DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))\r\n      ,[total_fibers] [Total (mm)]\r\n      ,[partName]\r\nFROM [PMDA-Litmus].[dbo].[RecJomesa_SedimentTest]\r\n\r\nWHERE [partName] in ($PartName)\r\nAND DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))\r\n      BETWEEN \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeFrom()) \r\n            AND \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeTo())\r\nAND [reportNum] in ($ReportNum)\r\n\r\nORDER BY\r\n      DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))",
+              "refId": "A",
+              "sql": {
+                "columns": [
+                  {
+                    "parameters": [],
+                    "type": "function"
+                  }
+                ],
+                "groupBy": [
+                  {
+                    "property": {
+                      "type": "string"
+                    },
+                    "type": "groupBy"
+                  }
+                ],
+                "limit": 50
+              }
+            }
+          ],
+          "title": "Total Length of Fibers (mm)",
+          "transformations": [
+            {
+              "id": "filterByValue",
+              "options": {
+                "filters": [
+                  {
+                    "config": {
+                      "id": "equal",
+                      "options": {
+                        "value": "GME T4 Stator"
+                      }
+                    },
+                    "fieldName": "partName"
+                  }
+                ],
+                "match": "any",
+                "type": "exclude"
+              }
+            }
+          ],
+          "transparent": true,
+          "type": "timeseries"
+        }
+      ],
+      "repeat": "PartName",
+      "repeatDirection": "h",
+      "title": "$PartName",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 22
+      },
+      "id": 29,
+      "panels": [
+        {
+          "datasource": {
+            "type": "mssql",
+            "uid": "5JEN17I7k"
+          },
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "fixedColor": "#111217",
+                "mode": "fixed"
+              },
+              "custom": {
+                "fillOpacity": 100,
+                "lineWidth": 0,
+                "spanNulls": false
+              },
+              "mappings": [
+                {
+                  "options": {
+                    "FAIL": {
+                      "color": "semi-dark-red",
+                      "index": 1,
+                      "text": "FAIL"
+                    },
+                    "PASS": {
+                      "color": "semi-dark-green",
+                      "index": 0,
+                      "text": "PASS"
+                    }
+                  },
+                  "type": "value"
+                }
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  }
+                ]
+              }
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Test No."
+                },
+                "properties": [
+                  {
+                    "id": "custom.fillOpacity",
+                    "value": 80
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 3,
+            "w": 24,
+            "x": 0,
+            "y": 17
+          },
+          "id": 88,
+          "options": {
+            "alignValue": "center",
+            "legend": {
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": false
+            },
+            "mergeValues": true,
+            "rowHeight": 1,
+            "showValue": "auto",
+            "tooltip": {
+              "mode": "none",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "9.4.7",
+          "targets": [
+            {
+              "datasource": {
+                "type": "mssql",
+                "uid": "5JEN17I7k"
+              },
+              "editorMode": "code",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))\r\n      ,[result] [Results]\r\nFROM [PMDA-Litmus].[dbo].[RecJomesa_SedimentTest]\r\n\r\nWHERE DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))\r\n      BETWEEN \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeFrom()) \r\n            AND \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeTo())\r\nAND [partName] in ('$gme')\r\nAND [reportNum] in ($ReportNum)\r\n\r\nORDER BY\r\n      DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))",
+              "refId": "A",
+              "sql": {
+                "columns": [
+                  {
+                    "parameters": [],
+                    "type": "function"
+                  }
+                ],
+                "groupBy": [
+                  {
+                    "property": {
+                      "type": "string"
+                    },
+                    "type": "groupBy"
+                  }
+                ],
+                "limit": 50
+              }
+            }
+          ],
+          "title": "GME T4 Stator Report Results",
+          "transformations": [
+            {
+              "id": "filterByValue",
+              "options": {
+                "filters": [
+                  {
+                    "config": {
+                      "id": "equal",
+                      "options": {
+                        "value": "10R140 Body"
+                      }
+                    },
+                    "fieldName": "Part"
+                  },
+                  {
+                    "config": {
+                      "id": "equal",
+                      "options": {
+                        "value": "10R140 Slide"
+                      }
+                    },
+                    "fieldName": "Part"
+                  },
+                  {
+                    "config": {
+                      "id": "equal",
+                      "options": {
+                        "value": "10R140 Rotor"
+                      }
+                    },
+                    "fieldName": "Part"
+                  },
+                  {
+                    "config": {
+                      "id": "equal",
+                      "options": {
+                        "value": "10R140 Gear"
+                      }
+                    },
+                    "fieldName": "Part"
+                  },
+                  {
+                    "config": {
+                      "id": "equal",
+                      "options": {
+                        "value": "10R140 Gear Nitride"
+                      }
+                    },
+                    "fieldName": "Part"
+                  }
+                ],
+                "match": "any",
+                "type": "exclude"
+              }
+            }
+          ],
+          "transparent": true,
+          "type": "state-timeline"
+        },
+        {
+          "datasource": {
+            "type": "mssql",
+            "uid": "5JEN17I7k"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "align": "center",
+                "cellOptions": {
+                  "type": "color-text"
+                },
+                "filterable": true,
+                "inspect": false
+              },
+              "mappings": [
+                {
+                  "options": {
+                    "FAIL": {
+                      "color": "semi-dark-red",
+                      "index": 1
+                    },
+                    "PASS": {
+                      "color": "semi-dark-green",
+                      "index": 0
+                    }
+                  },
+                  "type": "value"
+                }
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "text"
+                  }
+                ]
+              }
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Date of Analysis"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 177
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "K"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 49
+                  },
+                  {
+                    "id": "thresholds",
+                    "value": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "green"
+                        },
+                        {
+                          "color": "red",
+                          "value": 1
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "J"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 45
+                  },
+                  {
+                    "id": "thresholds",
+                    "value": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "green"
+                        },
+                        {
+                          "color": "red",
+                          "value": 1
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "I"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 45
+                  },
+                  {
+                    "id": "thresholds",
+                    "value": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "green"
+                        },
+                        {
+                          "color": "red",
+                          "value": 2
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "H"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 54
+                  },
+                  {
+                    "id": "thresholds",
+                    "value": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "green"
+                        },
+                        {
+                          "color": "red",
+                          "value": 2
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Test No."
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 154
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Part Name"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 196
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Sample Location"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 139
+                  },
+                  {
+                    "id": "noValue",
+                    "value": "N/A"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Record Time"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 219
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Total Weight (mg)"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 248
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Weight Per Part (mg)"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 262
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Upload Time"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 166
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Number of Components"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 213
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Components on Filter"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 188
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Weight Per Part (mg)"
+                },
+                "properties": [
+                  {
+                    "id": "thresholds",
+                    "value": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "green"
+                        },
+                        {
+                          "color": "red",
+                          "value": 0.5001
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "id": "decimals",
+                    "value": 3
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Out Of Control"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 246
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 11,
+            "w": 24,
+            "x": 0,
+            "y": 20
+          },
+          "id": 30,
+          "options": {
+            "footer": {
+              "countRows": false,
+              "fields": [
+                "K",
+                "I",
+                "J",
+                "H"
+              ],
+              "reducer": [
+                "count"
+              ],
+              "show": false
+            },
+            "showHeader": true,
+            "sortBy": []
+          },
+          "pluginVersion": "9.4.7",
+          "targets": [
+            {
+              "datasource": {
+                "type": "mssql",
+                "uid": "5JEN17I7k"
+              },
+              "editorMode": "code",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00')) [Date of Analysis]\r\n      ,[reportNum] [Test No.]\r\n      ,[partName] [Part Name]\r\n      ,[K] \r\n      ,[J]\r\n      ,[I]\r\n      ,[H]\r\n      ,[weight] [Total Weight (mg)]\r\n      ,[partWeight] [Weight Per Part (mg)]\r\n      ,REPLACE([reaction],'~|',', ') [Out Of Control]\r\n      ,[result] [Test Result]\r\nFROM [PMDA-Litmus].[dbo].[RecJomesa_SedimentTest]\r\n\r\nWHERE DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00')) \r\n      BETWEEN \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeFrom()) \r\n            AND \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeTo()) \r\nAND [reportNum] in ($ReportNum)\r\n\r\nORDER BY\r\n      DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))",
+              "refId": "A",
+              "sql": {
+                "columns": [
+                  {
+                    "parameters": [],
+                    "type": "function"
+                  }
+                ],
+                "groupBy": [
+                  {
+                    "property": {
+                      "type": "string"
+                    },
+                    "type": "groupBy"
+                  }
+                ],
+                "limit": 50
+              }
+            }
+          ],
+          "title": "Microscopic Analysis",
+          "transformations": [
+            {
+              "id": "filterByValue",
+              "options": {
+                "filters": [
+                  {
+                    "config": {
+                      "id": "equal",
+                      "options": {
+                        "value": "10R140 Body"
+                      }
+                    },
+                    "fieldName": "Part Name"
+                  },
+                  {
+                    "config": {
+                      "id": "equal",
+                      "options": {
+                        "value": "10R140 Slide"
+                      }
+                    },
+                    "fieldName": "Part Name"
+                  },
+                  {
+                    "config": {
+                      "id": "equal",
+                      "options": {
+                        "value": "10R140 Rotor"
+                      }
+                    },
+                    "fieldName": "Part Name"
+                  }
+                ],
+                "match": "any",
+                "type": "exclude"
+              }
+            },
+            {
+              "id": "filterByValue",
+              "options": {
+                "filters": [
+                  {
+                    "config": {
+                      "id": "equal",
+                      "options": {
+                        "value": "GME T4 Stator"
+                      }
+                    },
+                    "fieldName": "Part Name"
+                  }
+                ],
+                "match": "any",
+                "type": "include"
+              }
+            }
+          ],
+          "type": "table"
+        },
+        {
+          "datasource": {
+            "type": "mssql",
+            "uid": "5JEN17I7k"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineStyle": {
+                  "fill": "solid"
+                },
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "always",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "dashed+area"
+                }
+              },
+              "decimals": 0,
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 1
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 11,
+            "w": 12,
+            "x": 0,
+            "y": 31
+          },
+          "id": 32,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": false
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "mssql",
+                "uid": "5JEN17I7k"
+              },
+              "editorMode": "code",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT DISTINCT DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00')) [Date of Analysis]\r\n      ,[K]\r\n      ,[reportNum]\r\n      ,[partName]\r\nFROM [PMDA-Litmus].[dbo].[RecJomesa_SedimentTest]\r\n\r\nWHERE [partName] in ($PartName)\r\nAND DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))\r\n      BETWEEN \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeFrom()) \r\n            AND \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeTo())\r\nAND [reportNum] in ($ReportNum)\r\n\r\nORDER BY\r\n      DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))",
+              "refId": "A",
+              "sql": {
+                "columns": [
+                  {
+                    "parameters": [],
+                    "type": "function"
+                  }
+                ],
+                "groupBy": [
+                  {
+                    "property": {
+                      "type": "string"
+                    },
+                    "type": "groupBy"
+                  }
+                ],
+                "limit": 50
+              }
+            }
+          ],
+          "title": "K (> 1000)",
+          "transformations": [
+            {
+              "id": "filterByValue",
+              "options": {
+                "filters": [
+                  {
+                    "config": {
+                      "id": "equal",
+                      "options": {
+                        "value": "GME T4 Stator"
+                      }
+                    },
+                    "fieldName": "partName"
+                  }
+                ],
+                "match": "any",
+                "type": "include"
+              }
+            }
+          ],
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "mssql",
+            "uid": "5JEN17I7k"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "always",
+                "spanNulls": true,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "dashed+area"
+                }
+              },
+              "decimals": 0,
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 1
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 11,
+            "w": 12,
+            "x": 12,
+            "y": 31
+          },
+          "id": 33,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": false
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "mssql",
+                "uid": "5JEN17I7k"
+              },
+              "editorMode": "code",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT DISTINCT DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00')) [Date of Analysis]\r\n      ,[J]\r\n      ,[reportNum]\r\n      ,[partName]\r\nFROM [PMDA-Litmus].[dbo].[RecJomesa_SedimentTest]\r\n\r\nWHERE [partName] in ($PartName)\r\nAND DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))\r\n      BETWEEN \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeFrom()) \r\n            AND \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeTo())\r\nAND [reportNum] in ($ReportNum)\r\n\r\nORDER BY\r\n      DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))",
+              "refId": "A",
+              "sql": {
+                "columns": [
+                  {
+                    "parameters": [],
+                    "type": "function"
+                  }
+                ],
+                "groupBy": [
+                  {
+                    "property": {
+                      "type": "string"
+                    },
+                    "type": "groupBy"
+                  }
+                ],
+                "limit": 50
+              }
+            }
+          ],
+          "title": "J (600 - 1000)",
+          "transformations": [
+            {
+              "id": "filterByValue",
+              "options": {
+                "filters": [
+                  {
+                    "config": {
+                      "id": "equal",
+                      "options": {
+                        "value": "GME T4 Stator"
+                      }
+                    },
+                    "fieldName": "partName"
+                  }
+                ],
+                "match": "any",
+                "type": "include"
+              }
+            }
+          ],
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "mssql",
+            "uid": "5JEN17I7k"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineStyle": {
+                  "fill": "solid"
+                },
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "always",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "dashed+area"
+                }
+              },
+              "decimals": 0,
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 1.0001
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 11,
+            "w": 12,
+            "x": 0,
+            "y": 42
+          },
+          "id": 34,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": false
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "mssql",
+                "uid": "5JEN17I7k"
+              },
+              "editorMode": "code",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT DISTINCT DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00')) [Date of Analysis]\r\n      ,[I]\r\n      ,[reportNum]\r\n      ,[partName]\r\nFROM [PMDA-Litmus].[dbo].[RecJomesa_SedimentTest]\r\n\r\nWHERE [partName] in ($PartName)\r\nAND DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))\r\n      BETWEEN \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeFrom()) \r\n            AND \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeTo())\r\nAND [reportNum] in ($ReportNum)\r\n\r\nORDER BY\r\n      DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))",
+              "refId": "A",
+              "sql": {
+                "columns": [
+                  {
+                    "parameters": [],
+                    "type": "function"
+                  }
+                ],
+                "groupBy": [
+                  {
+                    "property": {
+                      "type": "string"
+                    },
+                    "type": "groupBy"
+                  }
+                ],
+                "limit": 50
+              }
+            }
+          ],
+          "title": "I (400 - 600)",
+          "transformations": [
+            {
+              "id": "filterByValue",
+              "options": {
+                "filters": [
+                  {
+                    "config": {
+                      "id": "equal",
+                      "options": {
+                        "value": "GME T4 Stator"
+                      }
+                    },
+                    "fieldName": "partName"
+                  }
+                ],
+                "match": "any",
+                "type": "include"
+              }
+            }
+          ],
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "mssql",
+            "uid": "5JEN17I7k"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "always",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "dashed+area"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 1.0001
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 11,
+            "w": 12,
+            "x": 12,
+            "y": 42
+          },
+          "id": 35,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": false
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "mssql",
+                "uid": "5JEN17I7k"
+              },
+              "editorMode": "code",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT DISTINCT DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00')) [Date of Analysis]\r\n      ,[H]\r\n      ,[reportNum]\r\n      ,[partName]\r\nFROM [PMDA-Litmus].[dbo].[RecJomesa_SedimentTest]\r\n\r\nWHERE [partName] in ($PartName)\r\nAND DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))\r\n      BETWEEN \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeFrom()) \r\n            AND \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeTo())\r\nAND [reportNum] in ($ReportNum)\r\n\r\nORDER BY\r\n      DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))",
+              "refId": "A",
+              "sql": {
+                "columns": [
+                  {
+                    "parameters": [],
+                    "type": "function"
+                  }
+                ],
+                "groupBy": [
+                  {
+                    "property": {
+                      "type": "string"
+                    },
+                    "type": "groupBy"
+                  }
+                ],
+                "limit": 50
+              }
+            }
+          ],
+          "title": "H (200 - 400)",
+          "transformations": [
+            {
+              "id": "filterByValue",
+              "options": {
+                "filters": [
+                  {
+                    "config": {
+                      "id": "equal",
+                      "options": {
+                        "value": "GME T4 Stator"
+                      }
+                    },
+                    "fieldName": "partName"
+                  }
+                ],
+                "match": "any",
+                "type": "include"
+              }
+            }
+          ],
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "mssql",
+            "uid": "5JEN17I7k"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "custom": {
+                "align": "center",
+                "cellOptions": {
+                  "type": "color-text"
+                },
+                "inspect": false
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "text"
+                  }
+                ]
+              }
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Date of Analysis"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 164
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Test No."
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 100
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Record Time"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 183
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Largest Metallic Width (um)"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 217
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Largest Fiber Length (um)"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 195
+                  },
+                  {
+                    "id": "thresholds",
+                    "value": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "green"
+                        },
+                        {
+                          "color": "red",
+                          "value": 4000
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Largest Metallic Length (um)"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 212
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Part Name"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 136
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 11,
+            "w": 24,
+            "x": 0,
+            "y": 53
+          },
+          "id": 47,
+          "options": {
+            "footer": {
+              "countRows": false,
+              "fields": "",
+              "reducer": [
+                "sum"
+              ],
+              "show": false
+            },
+            "showHeader": true,
+            "sortBy": []
+          },
+          "pluginVersion": "9.4.7",
+          "targets": [
+            {
+              "datasource": {
+                "type": "mssql",
+                "uid": "5JEN17I7k"
+              },
+              "editorMode": "code",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT CONVERT(VARCHAR(20),DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00')),110) [Date of Analysis]\r\n      ,[partName] [Part Name]\r\n      ,[reportNum] [Test No.]\r\n      ,[met_len] [Largest Metallic Length (um)]\r\n      ,[met_width] [Largest Metallic Width (um)]\r\n      ,[nonMet_len] [Largest Non-Metallic Length (um)]\r\n      ,[nonMet_wid] [Largest Non-Metallic Width (um)]\r\n      ,[fiber_len] [Largest Fiber Length (um)]\r\n      ,[total_fibers] [Total Length of Fibers (mm)]\r\nFROM [PMDA-Litmus].[dbo].[RecJomesa_SedimentTest]\r\n\r\nWHERE [partName] in ($PartName)\r\nAND DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))\r\n      BETWEEN \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeFrom()) \r\n            AND \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeTo())\r\nAND [reportNum] in ($ReportNum)\r\n\r\nORDER BY\r\n      DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))",
+              "refId": "A",
+              "sql": {
+                "columns": [
+                  {
+                    "parameters": [],
+                    "type": "function"
+                  }
+                ],
+                "groupBy": [
+                  {
+                    "property": {
+                      "type": "string"
+                    },
+                    "type": "groupBy"
+                  }
+                ],
+                "limit": 50
+              }
+            }
+          ],
+          "title": "Fiber Analysis",
+          "transformations": [
+            {
+              "id": "filterByValue",
+              "options": {
+                "filters": [
+                  {
+                    "config": {
+                      "id": "equal",
+                      "options": {
+                        "value": "GME T4 Stator"
+                      }
+                    },
+                    "fieldName": "Part Name"
+                  }
+                ],
+                "match": "any",
+                "type": "include"
+              }
+            }
+          ],
+          "type": "table"
+        },
+        {
+          "datasource": {
+            "type": "mssql",
+            "uid": "5JEN17I7k"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "always",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 11,
+            "w": 12,
+            "x": 0,
+            "y": 64
+          },
+          "id": 48,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "mssql",
+                "uid": "5JEN17I7k"
+              },
+              "editorMode": "code",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT DISTINCT DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))\r\n      ,[met_len] [Length (um)]\r\n      ,[partName]\r\nFROM [PMDA-Litmus].[dbo].[RecJomesa_SedimentTest]\r\n\r\nWHERE [partName] in ($PartName)\r\nAND DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))\r\n      BETWEEN \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeFrom()) \r\n            AND \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeTo())\r\nAND [reportNum] in ($ReportNum)\r\n\r\nORDER BY\r\n      DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))",
+              "refId": "A",
+              "sql": {
+                "columns": [
+                  {
+                    "parameters": [],
+                    "type": "function"
+                  }
+                ],
+                "groupBy": [
+                  {
+                    "property": {
+                      "type": "string"
+                    },
+                    "type": "groupBy"
+                  }
+                ],
+                "limit": 50
+              }
+            }
+          ],
+          "title": "Length of Largest Metallic Particle (um)",
+          "transformations": [
+            {
+              "id": "filterByValue",
+              "options": {
+                "filters": [
+                  {
+                    "config": {
+                      "id": "equal",
+                      "options": {
+                        "value": "GME T4 Stator"
+                      }
+                    },
+                    "fieldName": "partName"
+                  }
+                ],
+                "match": "any",
+                "type": "include"
+              }
+            }
+          ],
+          "transparent": true,
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "mssql",
+            "uid": "5JEN17I7k"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "fixedColor": "blue",
+                "mode": "fixed"
+              },
+              "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "always",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 11,
+            "w": 12,
+            "x": 12,
+            "y": 64
+          },
+          "id": 49,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "mssql",
+                "uid": "5JEN17I7k"
+              },
+              "editorMode": "code",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT DISTINCT DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))\r\n      ,[met_width] [Width (um)]\r\n      ,[partName]\r\nFROM [PMDA-Litmus].[dbo].[RecJomesa_SedimentTest]\r\n\r\nWHERE [partName] in ($PartName)\r\nAND DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))\r\n      BETWEEN \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeFrom()) \r\n            AND \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeTo())\r\nAND [reportNum] in ($ReportNum)\r\n\r\nORDER BY\r\n      DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))",
+              "refId": "A",
+              "sql": {
+                "columns": [
+                  {
+                    "parameters": [],
+                    "type": "function"
+                  }
+                ],
+                "groupBy": [
+                  {
+                    "property": {
+                      "type": "string"
+                    },
+                    "type": "groupBy"
+                  }
+                ],
+                "limit": 50
+              }
+            }
+          ],
+          "title": "Width of Largest Metallic Particle (um)",
+          "transformations": [
+            {
+              "id": "filterByValue",
+              "options": {
+                "filters": [
+                  {
+                    "config": {
+                      "id": "equal",
+                      "options": {
+                        "value": "GME T4 Stator"
+                      }
+                    },
+                    "fieldName": "partName"
+                  }
+                ],
+                "match": "any",
+                "type": "include"
+              }
+            }
+          ],
+          "transparent": true,
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "mssql",
+            "uid": "5JEN17I7k"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "always",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 11,
+            "w": 12,
+            "x": 0,
+            "y": 75
+          },
+          "id": 50,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "mssql",
+                "uid": "5JEN17I7k"
+              },
+              "editorMode": "code",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT DISTINCT DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))\r\n      ,[nonMet_len] [Length (um)]\r\n      ,[partName]\r\nFROM [PMDA-Litmus].[dbo].[RecJomesa_SedimentTest]\r\n\r\nWHERE [partName] in ($PartName)\r\nAND DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))\r\n      BETWEEN \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeFrom()) \r\n            AND \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeTo())\r\nAND [reportNum] in ($ReportNum)\r\n\r\nORDER BY\r\n      DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))",
+              "refId": "A",
+              "sql": {
+                "columns": [
+                  {
+                    "parameters": [],
+                    "type": "function"
+                  }
+                ],
+                "groupBy": [
+                  {
+                    "property": {
+                      "type": "string"
+                    },
+                    "type": "groupBy"
+                  }
+                ],
+                "limit": 50
+              }
+            }
+          ],
+          "title": "Length of Largest Non-Metallic Particle (um)",
+          "transformations": [
+            {
+              "id": "filterByValue",
+              "options": {
+                "filters": [
+                  {
+                    "config": {
+                      "id": "equal",
+                      "options": {
+                        "value": "GME T4 Stator"
+                      }
+                    },
+                    "fieldName": "partName"
+                  }
+                ],
+                "match": "any",
+                "type": "include"
+              }
+            }
+          ],
+          "transparent": true,
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "mssql",
+            "uid": "5JEN17I7k"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "fixedColor": "blue",
+                "mode": "fixed"
+              },
+              "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "always",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 11,
+            "w": 12,
+            "x": 12,
+            "y": 75
+          },
+          "id": 51,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "mssql",
+                "uid": "5JEN17I7k"
+              },
+              "editorMode": "code",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT DISTINCT DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))\r\n      ,[nonMet_wid] [Width (um)]\r\n      ,[partName]\r\nFROM [PMDA-Litmus].[dbo].[RecJomesa_SedimentTest]\r\n\r\nWHERE [partName] in ($PartName)\r\nAND DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))\r\n      BETWEEN \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeFrom()) \r\n            AND \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeTo())\r\nAND [reportNum] in ($ReportNum)\r\n\r\nORDER BY\r\n      DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))",
+              "refId": "A",
+              "sql": {
+                "columns": [
+                  {
+                    "parameters": [],
+                    "type": "function"
+                  }
+                ],
+                "groupBy": [
+                  {
+                    "property": {
+                      "type": "string"
+                    },
+                    "type": "groupBy"
+                  }
+                ],
+                "limit": 50
+              }
+            }
+          ],
+          "title": "Width of Largest Non-Metallic Particle (um)",
+          "transformations": [
+            {
+              "id": "filterByValue",
+              "options": {
+                "filters": [
+                  {
+                    "config": {
+                      "id": "equal",
+                      "options": {
+                        "value": "GME T4 Stator"
+                      }
+                    },
+                    "fieldName": "partName"
+                  }
+                ],
+                "match": "any",
+                "type": "include"
+              }
+            }
+          ],
+          "transparent": true,
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "mssql",
+            "uid": "5JEN17I7k"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "always",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "normal"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 11,
+            "w": 12,
+            "x": 0,
+            "y": 86
+          },
+          "id": 52,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "mssql",
+                "uid": "5JEN17I7k"
+              },
+              "editorMode": "code",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT DISTINCT DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))\r\n      ,[fiber_len] [Length (um)]\r\n      ,[partName]\r\nFROM [PMDA-Litmus].[dbo].[RecJomesa_SedimentTest]\r\n\r\nWHERE [partName] in ($PartName)\r\nAND DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))\r\n      BETWEEN \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeFrom()) \r\n            AND \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeTo())\r\nAND [reportNum] in ($ReportNum)\r\n\r\nORDER BY\r\n      DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))",
+              "refId": "A",
+              "sql": {
+                "columns": [
+                  {
+                    "parameters": [],
+                    "type": "function"
+                  }
+                ],
+                "groupBy": [
+                  {
+                    "property": {
+                      "type": "string"
+                    },
+                    "type": "groupBy"
+                  }
+                ],
+                "limit": 50
+              }
+            }
+          ],
+          "title": "Length of Largest Fiber (um)",
+          "transformations": [
+            {
+              "id": "filterByValue",
+              "options": {
+                "filters": [
+                  {
+                    "config": {
+                      "id": "equal",
+                      "options": {
+                        "value": "GME T4 Stator"
+                      }
+                    },
+                    "fieldName": "partName"
+                  }
+                ],
+                "match": "any",
+                "type": "include"
+              }
+            }
+          ],
+          "transparent": true,
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "mssql",
+            "uid": "5JEN17I7k"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "fixedColor": "blue",
+                "mode": "fixed"
+              },
+              "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "always",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "normal"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 11,
+            "w": 12,
+            "x": 12,
+            "y": 86
+          },
+          "id": 53,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "mssql",
+                "uid": "5JEN17I7k"
+              },
+              "editorMode": "code",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT DISTINCT DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))\r\n      ,[total_fibers] [Total (mm)]\r\n      ,[partName]\r\nFROM [PMDA-Litmus].[dbo].[RecJomesa_SedimentTest]\r\n\r\nWHERE [partName] in ($PartName)\r\nAND DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))\r\n      BETWEEN \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeFrom()) \r\n            AND \r\n            DATEADD(second, DATEDIFF(second,GETUTCDATE(),Getdate()),$__timeTo())\r\nAND [reportNum] in ($ReportNum)\r\n\r\nORDER BY\r\n      DATEADD(second, CONVERT(bigint, [dateOfAnalysis]) / 1000, CONVERT(datetime, '1-1-1970  05:00:00'))",
+              "refId": "A",
+              "sql": {
+                "columns": [
+                  {
+                    "parameters": [],
+                    "type": "function"
+                  }
+                ],
+                "groupBy": [
+                  {
+                    "property": {
+                      "type": "string"
+                    },
+                    "type": "groupBy"
+                  }
+                ],
+                "limit": 50
+              }
+            }
+          ],
+          "title": "Total Length of Fibers (mm)",
+          "transformations": [
+            {
+              "id": "filterByValue",
+              "options": {
+                "filters": [
+                  {
+                    "config": {
+                      "id": "equal",
+                      "options": {
+                        "value": "GME T4 Stator"
+                      }
+                    },
+                    "fieldName": "partName"
+                  }
+                ],
+                "match": "any",
+                "type": "include"
+              }
+            }
+          ],
+          "transparent": true,
+          "type": "timeseries"
+        }
+      ],
+      "repeat": "gme",
+      "repeatDirection": "h",
+      "title": "GME T4 Stator",
+      "type": "row"
+    }
+  ],
+  "refresh": "",
+  "revision": 1,
+  "schemaVersion": 38,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "description": "Filter applies to Overall Table ONLY",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Select Part",
+        "multi": true,
+        "name": "AllParts",
+        "options": [
+          {
+            "selected": true,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "selected": false,
+            "text": "ZF Body",
+            "value": "ZF Body"
+          },
+          {
+            "selected": false,
+            "text": "ZF Inner",
+            "value": "ZF Inner"
+          },
+          {
+            "selected": false,
+            "text": "ZF Outer",
+            "value": "ZF Outer"
+          },
+          {
+            "selected": false,
+            "text": "GME T4 Stator",
+            "value": "GME T4 Stator"
+          }
+        ],
+        "query": "ZF Body,ZF Inner,ZF Outer,GME T4 Stator",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "description": "Filter Applies to ZF Data Rows Only. Select which of the ZF components you want to see",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Select ZF Component",
+        "multi": true,
+        "name": "PartName",
+        "options": [
+          {
+            "selected": true,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "selected": false,
+            "text": "ZF Body",
+            "value": "ZF Body"
+          },
+          {
+            "selected": false,
+            "text": "ZF Inner",
+            "value": "ZF Inner"
+          },
+          {
+            "selected": false,
+            "text": "ZF Outer",
+            "value": "ZF Outer"
+          }
+        ],
+        "query": "ZF Body,ZF Inner,ZF Outer",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "hide": 2,
+        "name": "gme",
+        "query": "GME T4 Stator",
+        "skipUrlSync": false,
+        "type": "constant"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "mssql",
+          "uid": "5JEN17I7k"
+        },
+        "definition": "SELECT Distinct [reportNum]\nFROM [PMDA-Litmus].[dbo].[RecJomesa_SedimentTest]",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Report Number",
+        "multi": true,
+        "name": "ReportNum",
+        "options": [],
+        "query": "SELECT Distinct [reportNum]\nFROM [PMDA-Litmus].[dbo].[RecJomesa_SedimentTest]",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-30d",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Jomesa Sediment Tests",
+  "uid": "5NIQmsu4z",
+  "version": 127,
+  "weekStart": ""
+}
