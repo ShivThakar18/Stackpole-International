@@ -12,10 +12,7 @@ There are a number of Python files used in this project:
 - Settings.py - holds file paths and folder locations that are globally used on all files
 - Pictures.py - saved pages in a new PDF that include pictures from the original report when a new file is added to the folder
 - One File per Part Group (ZF.py, 10R140.py, GME.py, etc.) - searches for files in the part group folder and parses data from pdf reports
-
-### Jomesa 5.2 Update (July 25th, 2023)
-PDF files were not being handled correctly on Node-Red both the python program and flow were reworked in Jomesa 5.2. All part group files were updated to remove ***copy(report, LE_dir)*** which will not copy the pdf file to the Litmus directory. Jomesa5_Pictures.py was updated to read a text file ***LOG.txt***, which gets updated when a test fails. After reading the file, it will remove duplicate lines, whitespace, and '\x00'. The text file holds a partial path for the pdf, the python program looks for the correct file using the parameters and extracts the pages that contain pictures, usually all but the first page. This new PDF is saved in a new folder. 
-
+  
 ### Main 
 Imported The following functions and variables: 
 - Jomesa5_10R140.py: search10R140 , get10R140Data
@@ -37,6 +34,9 @@ These files contain specific 'search' and 'get' functions dependent on the group
 
 ### Pictures 
 When a file with PIC_DIR+"**\\*_fullreport.pdf" appears in the pictures directory (this happens when Node-Red moves a pdf into this folder when Specs have been validated). Depending on the part group, certain pages are extracted and saved into the PIC_DIR.
+
+#### Pictures - Jomesa 5.2 Update (July 25th, 2023)
+PDF files were not being handled correctly on Node-Red both the python program and flow were reworked in Jomesa 5.2. All part group files were updated to remove ***copy(report, LE_dir)*** which will not copy the pdf file to the Litmus directory. Jomesa5_Pictures.py was updated to read a text file ***LOG.txt***, which gets updated when a test fails. After reading the file, it will remove duplicate lines, whitespace, and '\x00'. The text file holds a partial path for the pdf, the python program looks for the correct file using the parameters and extracts the pages that contain pictures, usually all but the first page. This new PDF is saved in a new folder. 
 
 ## Jomesa 5 JSON (Node-Red)
 When a new data file (created by Python) and a copy of the report arrives in the LE_DIR. Node-Red picks up the text file and parses the file with all the data and saves it to flow variables. Once saved, the specs are checked depending on the part and returns the passed and failed specs. The flow will send the data to a SQL server and can be viewed on Grafana. If failed, an email notification is sent out to the Quality Manager and Quality Engineer.
