@@ -199,14 +199,10 @@ def search10R140Gear():
 
     for p in PARTS:     # iterate through all parts
         
-        f = glob(DIR_10R140Gear+p+"\\"+YEAR+"\\**\\*.pdf") # get the files using glob operation
+        files = glob(DIR_10R140Gear+p+"\\"+YEAR+"\\**\\*.pdf") # get the files using glob operation
 
-        try:
-            latest = max(f,key= path.getmtime)          # save the latest file from each part
-            filesList.append(latest)                      # append to file list   [Body, Slide, Rotor]
-        except ValueError:                                # if there is no files in directory, a value error is raised, 
-                                                          # except this error, pass
-            pass
+    sorted_list = sorted(filesList,key=path.getmtime)               # sort list by time modified ; ascending
+    filesList = sorted_list[len(sorted_list)-10:]                   # get the last 10 files
 
     ARCHIVE_LIST = open(ARCHIVE_FILE,'r')       # open current year archive list for reading
     archived = ARCHIVE_LIST.read().splitlines()                             # data extraction using read().splitlines() (remove \n from ends)
@@ -217,7 +213,6 @@ def search10R140Gear():
     for f in filesList:
         for a in archived:
             if(f == a):                                     # latest files == an archived file
-                print("MSG: File Already Exists")  
                 remove_list.append(f)                         # remove from filesList
                 break
 
@@ -248,8 +243,6 @@ def findAll():
 
     return files
 
-
-get10R140GearData(DIR_10R140Gear + "10R140 Gear Nitride\\2023\\2023 Straight From Washer\\ST23-0492 - Pass.pdf")
 
 """ FIND ALL HISTORIC REPORTS 
 files = findAll()

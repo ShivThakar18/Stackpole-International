@@ -13,7 +13,7 @@ DIRECTORY = "N:\\Quality\\Metlab\\Met Lab Reports\\Sediment Tests\\Jomesa result
 LE_DIR = "L:\\ShivDataOutput\\Jomesa\\"
 
 #* Local Archive Folder - archive of all data files
-LOCALDATA_ARCHIVE = "N:\\Quality\\Jomesa Python\\Jomesa 5 Vault\\Jomesa Backup\\"
+LOCALDATA_ARCHIVE = "C:\\Users\\vrerecich\\Desktop\\Jomesa 5.0\\Jomesa Data\\"
             #? "C:\\Users\\Administrator\\Documents\\Jomesa Data Archive\\"
 
 #* Picture Directory - saves reaction limit pictures
@@ -24,5 +24,5 @@ TODAY = date.today()        # get data today
 YEAR = TODAY.strftime("%Y") # current year for metlab folder
 
 #* Archive File Location
-ARCHIVE_FILE = "N:\\Quality\\Jomesa Python\\Jomesa 5 Vault\\Jomesa Archive File\\"
+ARCHIVE_FILE = "C:\\Users\\vrerecich\\Desktop\\Jomesa 5.0\\" + YEAR+" Archive\\"
 

@@ -153,20 +153,18 @@ def searchGME():
 
     filesList = [] 
 
-    f = glob(DIR_GME+"\\"+YEAR+"\\*.pdf")
+    files = glob(DIR_GME+"\\"+YEAR+"\\*.pdf")                   # find all files in directory
 
-    try:
-        latest = max(f,key=path.getmtime)
-        filesList.append(latest)
-    except ValueError:
-        pass
+    sorted_list = sorted(files,key=path.getmtime)               # sort list by time modified ; ascending
 
-    ARCHIVE_LIST = open(ARCHIVE_FILE,'r')
+    filesList = sorted_list[len(sorted_list)-10:]               # get the last 10 files
+    
+    ARCHIVE_LIST = open(ARCHIVE_FILE,'r')                       # open ARCHIVE FILE
     archived = ARCHIVE_LIST.read().splitlines()
     ARCHIVE_LIST.close()
 
     remove_list = []
-    for f in filesList:
+    for f in filesList:                                         # verify all files were parsed, saved, published
         for a in archived:
             if(f == a):
                 remove_list.append(f)
@@ -174,13 +172,13 @@ def searchGME():
     
     for r in remove_list:
         if(r in filesList):
-            filesList.remove(r)
+            filesList.remove(r)                                 # remove existing files
     
     if(len(filesList) == 0):
         return []
 
     print("MSG: New File Found - "+ str(filesList))
-    return filesList
+    return filesList                                            # return filesList
 #? ------------------------------------------------ Find All GME Files ------------------------------------------------ #
 def findAll():
     files = []

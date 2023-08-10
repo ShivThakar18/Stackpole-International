@@ -38,10 +38,10 @@ def savePictures(report):
 
     pages = []                                                      # holds all the pages that need to be saved
 
-    removePage = [0]
+    removePage = 0
 
     for i in range(pdf.numPages):                                   # iterate through all pages in PdfFileReader object
-        if(i in removePage):                                        # if number from removePage list in i, then skip
+        if(i == removePage):                                        # if number from removePage list in i, then skip
             continue
 
         pages.append(i)                                             # add page to pages list
@@ -55,7 +55,6 @@ def savePictures(report):
         pdfWriter.write(f)                                          # write file
         print("Pictures Saved to PDF Saved")
 
-    #remove(report)                                                  # remove the full report from path
 #? ------------------------------------------------- Extract Pictures ------------------------------------------------- #
 def extractPictures(): 
     files = glob(PIC_DIR + "**\\*_fullreport.pdf")              # search for files that have "_fullreport.pdf" at the end
@@ -67,7 +66,7 @@ def readLog():
     LOG_FILE = PIC_DIR+"LOG.txt"                                    # log file holds a list of reports where the pictures need to be saved
                                                                     # reports that have failed or crossed the reaction limit
 
-    FILE = open(LOG_FILE,'r')
+    FILE = open(LOG_FILE,'r')                     
     log_data = FILE.read().splitlines()
     FILE.close()
 
@@ -79,13 +78,13 @@ def readLog():
 
     for i in range(len(log_data)):
         report_num = log_data[i].split("\\")[-1]
-        #print(JOMESA_DIR + l[0:l.rfind("\\")+1])
         for f in list(glob(JOMESA_DIR +  log_data[i][0: log_data[i].rfind("\\")+1]+"*.pdf")):
             if(report_num in f):
                 log_data[i] = f
     
     if(len(log_data) > 0):
         for l in log_data:
+            print("ACTIVE: Saving pictures for "+l)
             savePictures(l)
 
     FILE = open(LOG_FILE,'w')

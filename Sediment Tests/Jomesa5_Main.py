@@ -42,7 +42,7 @@ from Jomesa5_ZF import searchZF, getZFData
 from Jomesa5_GME import searchGME, getGMEData
 from Jomesa5_10R140Gears import search10R140Gear, get10R140GearData
 from Jomesa5_Settings import ORIG_DIR                       #? import variable from Jomesa5_Settings.py
-from Jomesa5_Pictures import extractPictures,readLog                 #? import functions from Jomesa_Pictures.py
+from Jomesa5_Pictures import readLog                 #? import functions from Jomesa_Pictures.py
 #! ---------------------------------------------- Define Global Variables --------------------------------------------- #
 PRINT_FLAG = 0
 #! -------------------------------------------------------------------------------------------------------------------- #

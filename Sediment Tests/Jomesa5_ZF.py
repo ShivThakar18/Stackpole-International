@@ -149,14 +149,14 @@ def searchZF():
 
     for P in PARTS:
 
-        f = glob(DIR_ZF+P+"\\"+YEAR+"\\*.pdf")
-        
-        try:
-            latest = max(f,key=path.getmtime)
-            filesList.append(latest)
-        except ValueError:
-            pass
+        files = glob(DIR_ZF+P+"\\"+YEAR+"\\*.pdf")
+        filesList.extend(files)
+
     
+    sorted_list = sorted(filesList,key=path.getmtime)               # sort list by time modified ; ascending
+    filesList = sorted_list[len(sorted_list)-10:]                   # get the last 10 files
+
+
     ARCHIVE_LIST = open(ARCHIVE_FILE, 'r')
     archived = ARCHIVE_LIST.read().splitlines()
     ARCHIVE_LIST.close()

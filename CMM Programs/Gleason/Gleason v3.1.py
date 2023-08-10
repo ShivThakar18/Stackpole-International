@@ -31,9 +31,12 @@ def csv2xlsx(file):
     data_new.index.values[6] = 'Max functional Circular Tooth Thickness'                    # Row 27 of CSV, Row 7 of XLSX
     data_new.index.values[7] = 'PD Nicks'                                                   # Row 43 of CSV, Row 8 of XLSX
 
-    date = data_new.iloc['Date'][0].replace("/","_")
-    time = data_new.iloc['Time'][0].replace(":","_")
-    partNum = data_new.iloc['Part Number'][0]
+    date = data_new.loc['Date'][0].replace("/","_")
+    time = data_new.loc['Time'][0].replace(":","_")
+    partNum = str(data_new.loc['Part Number'][0])
+    print(date)
+    print(time)
+    print(partNum)
 
     XLSX_DIR = SCRAP_PATH + "\\data.xlsx"        # save file path
 
@@ -48,13 +51,15 @@ def csv2xlsx(file):
     worksheet.set_column(0,0,53,index_format)       # formatting columns
     worksheet.set_column(1,1,25,data_format)
 
-    copy(XLSX_DIR,ARCHIVE)
-    rename(ARCHIVE+"\\data.xlsx",ARCHIVE+"\\Gleason_"+partNum+"_"+date+"_"+time+".xlsx")
-
     writer.save() # save file
     sleep(2)
     startfile(XLSX_DIR, "print") # print to default printer
     sleep(5)
+
+    copy(XLSX_DIR,ARCHIVE)
+    rename(ARCHIVE+"\\data.xlsx",ARCHIVE+"\\Gleason_"+partNum+"_"+date+"_"+time+".xlsx")
+
+    
 #! --------------------------------------------------- Function Call -------------------------------------------------- #
 while(True):
 
