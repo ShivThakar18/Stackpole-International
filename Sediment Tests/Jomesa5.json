@@ -29,14 +29,12 @@
             "e0790188ce8ed145",
             "8ee6f4fcb9a62ac0",
             "e1f1cfc078ef7628",
-            "ad28bddee7143b4a",
-            "b20ead1ceef1dbb5",
-            "ab9bd41f690a5a78"
+            "ad28bddee7143b4a"
         ],
         "x": 34,
-        "y": 14,
-        "w": 1052,
-        "h": 292,
+        "y": 19,
+        "w": 972,
+        "h": 282,
         "info": "This group is the startup sequence for the flow\n\nThis is where the text file with the email message and data will be extracted from the folder and the filename will be saved as a flow variable\n\nThis is also where the last flow.email and flow.data get reset and cleared"
     },
     {
@@ -53,17 +51,28 @@
         },
         "nodes": [
             "3bd354bf6fde0a8c",
-            "c694bb98e43ba553",
             "7362256baae046d7",
             "74cc681ba396071e",
-            "f39d79a41406433f",
-            "5ce3a7eae6884efb",
-            "d6128f9c22a2fdba"
+            "0124139883d1ff55",
+            "b92aad2d0c96c51a",
+            "4560f575b40d3fe7",
+            "8bd23b75c4db0f33",
+            "a2a2bb26ea89ad16",
+            "721e2943b9ae333e",
+            "baccbcc99cb6401a",
+            "1642bc3cde5c147e",
+            "ea10129e96b02c79",
+            "7055dc29164ea1d6",
+            "2fd1e7b130708b45",
+            "3803375fdbc6f8a4",
+            "173afec26c8401c5",
+            "55fe8ec4f169a6a9",
+            "fd228bff2f8c004d"
         ],
-        "x": 3254,
-        "y": 494,
-        "w": 832,
-        "h": 187
+        "x": 3574,
+        "y": 739,
+        "w": 1152,
+        "h": 382
     },
     {
         "id": "29e81cdb7824f270",
@@ -84,21 +93,28 @@
             "874541026c738320",
             "87f6d54a02c85e57",
             "803142b71f17ad41",
-            "c35895435742d365",
             "ce26beabda1549a7",
             "62a3c8d02737a30f",
-            "a6046a35fb022ad4",
-            "d158d9ae00fd0145",
-            "a34fa0c82a787120",
-            "96a2037cab89bec4",
-            "9a71b476084c8d1e",
-            "b732c62f767cb07b",
-            "edea15cc78009b95"
+            "44b6b1355343ed16",
+            "e90cc595dfccf1c0",
+            "09c4bb80d7c866f9",
+            "e70f48b5c8e7bc65",
+            "a1f6fa318ff0d48d",
+            "2116c3a5d172e613",
+            "caac7fef9c5fc838",
+            "ad965f6263484241",
+            "1cd8fbe14713c22f",
+            "dda2977d18121e27",
+            "c69bf46401072842",
+            "4140e3aa491d8010",
+            "c5b0e4524815f9a8",
+            "11ae54b7f236e9cb",
+            "90a93f69eca59b80"
         ],
-        "x": 2934,
-        "y": 59,
-        "w": 1392,
-        "h": 342
+        "x": 34,
+        "y": 739,
+        "w": 1812,
+        "h": 282
     },
     {
         "id": "fda705b472ca9152",
@@ -115,15 +131,13 @@
         "nodes": [
             "23bed88a08754614",
             "704b4b9a9eeb632f",
-            "aed8326e583eb95e",
-            "bb022f79a52ab9bd",
             "61c3448a13a22691",
             "f817a26c1544e8b0"
         ],
-        "x": 514,
-        "y": 794,
+        "x": 1874,
+        "y": 1014,
         "w": 852,
-        "h": 147
+        "h": 92
     },
     {
         "id": "4620efd84ef6704a",
@@ -142,21 +156,14 @@
             "0d9d43c82e5fbe89",
             "0bc4bcad21a144d4",
             "df5d5f05d4bf4ab7",
-            "19fbcf7f5755dee9",
-            "9d65f37d3f9ca919",
-            "686e66926bd9328a",
             "3d86ad0d182834b8",
             "f40815f478b4f0fb",
-            "2ec848e40c55cef0",
-            "b8f0d8c65ab33195",
-            "404f7d0b7fae9f80",
-            "a3b3b87d47bf4d8c",
-            "9257cdfeb34d0869"
+            "2ec848e40c55cef0"
         ],
-        "x": 2174,
+        "x": 2154,
         "y": 419,
-        "w": 1052,
-        "h": 342
+        "w": 772,
+        "h": 202
     },
     {
         "id": "152094e3fb79aab8",
@@ -211,26 +218,49 @@
             "e7cf363f94d08f24",
             "3e6aaa9196819e8c",
             "c0c01ed632b14b97",
-            "2adad4d42cb933dc",
-            "60cb7d3b4f107d4e",
             "5c2fb5e25c1c5bd6",
             "eca333b1852557db",
             "1c4f992fc1c8fdec",
             "1691142b32de0d05",
-            "552e4f0ff055aec4",
-            "321f7051ab2cd2cd",
-            "8e8bca3709058c0a",
-            "360ff2d45d2290c8",
             "32b46a700415c58b",
-            "a73dd1c61b5fc712",
-            "f033922a65b63604",
-            "b697ace66e016d72",
-            "19e37a2f69de3e13"
+            "a73dd1c61b5fc712"
         ],
         "x": 34,
-        "y": 339,
-        "w": 2112,
-        "h": 422
+        "y": 334,
+        "w": 2092,
+        "h": 367
+    },
+    {
+        "id": "b9aaf86eecaf3ef9",
+        "type": "group",
+        "z": "447205f9c52006b9",
+        "name": "",
+        "style": {
+            "stroke": "#000000",
+            "fill": "#ffefbf",
+            "fill-opacity": "0.75",
+            "label": true
+        },
+        "nodes": [
+            "94887d7715c79fb1",
+            "dfba2c4af411aebb",
+            "59d500f35c71e636",
+            "0a64551384c67360",
+            "f149230fbe4fcfd6",
+            "dd7409a1d478f234",
+            "11ad7e52d26a0a70",
+            "794f28266ddce6a5",
+            "899e53178a8d8a48",
+            "716ef35c068e931c",
+            "185a1a5c95cd707c",
+            "6cdd1853cb114791",
+            "3f87d84c800a9bad",
+            "c63646e1041cc372"
+        ],
+        "x": 1874,
+        "y": 759,
+        "w": 1672,
+        "h": 227
     },
     {
         "id": "86540153f952f639",
@@ -340,35 +370,18 @@
         "z": "447205f9c52006b9",
         "g": "d3e4db5647dfdd51",
         "name": "configure email",
-        "func": "var body = flow.get(\"email_body\");\nvar pdf = flow.get(\"pdf_files\");    \nvar measured = flow.get(\"reaction_values\");\nvar reaction = flow.get(\"out_of_reaction\");\nvar part = flow.get(\"partName\");\nvar report = flow.get(\"reportNum\");\n\n//Set 10R140 -------------------------------------------------------------------\nif(part === \"10R140 Body\"){\n    var limits = flow.get(\"body_reaction\");\n}else if(part === \"10R140 Slide\"){\n    var limits = flow.get(\"slide_reaction\");\n}else if(part === \"10R140 Rotor\"){\n    var limits = flow.get(\"rotor_reaction\");\n\n//Set ZF -----------------------------------------------------------------------\n}else if(part === 'ZF Body'){\n    var limits = flow.get(\"ctrl_ZF\");\n}else if(part === 'ZF Outer'){\n    var limits = flow.get(\"ctrl_ZF\");\n}else if(part === 'ZF Inner'){\n    var limits = flow.get(\"ctrl_ZF\");\n//Set GME ----------------------------------------------------------------------\n}else if(part === 'GME T4 Stator'){\n    var limits = flow.get(\"ctrl_GME\");\n}\n\n\n//Sender --------------------------------------------------------\nmsg.from = ['PM-A Quality <notification-noreply@stackpole.com>'];\n\n//Receiver ------------------------------------------------------\nmsg.to = ['sthakar@stackpole.com']//,flow.get(\"QE\"),'fbaguma@stackpole.com','gmartin2@stackpole.com','akhan@stackpole.com','skumar@stackpole.com'];\n//msg.to = ['jcfung@stackpole.com']\n\n//Subject -------------------------------------------------------\n\nif(part.includes('10R140') === true){\n    msg.topic = \"Reaction Limit Exceeded - Sediment Test #\"+report+\" for \"+part; // subject\n    var r = \"Reaction Limit\";\n}else{\n    msg.topic = \"Failed Sediment Test - \"+report+\" for \"+part; // subject\n    var r = \"Control Limit\";\n}\n\n//Attachments ---------------------------------------------------   to be implemented\nmsg.attachments = [\n    \n    {filename:msg.pdf_name, path:msg.filepath+ msg.pdf_name}\n    \n    ];\n\n//Body ----------------------------------------------------------\nif(part.includes('10R140') === true){\n    body = \"The reaction limit has been exceeded for \"+part+\" (Report Number: \"+report+\")\\n\\nThe following categories are out of the reaction limit:\\n\\n\";\n}else{\n    body = \"Sediment Test #\"+report+\" has failed for \"+part+\". The following categories are out of the control limits:\\n\\n\";\n}\n\nvar units = \"\" ; \n\nfor(let i = 0; i < reaction.length; i++){\n    \n    /*\n     * THIS MAY NEED TO CHANGE, SINCE DIFFERENT PARTS MAY HAVE MORE OR LESS THAN THIS\n     * THIS IMPLEMENTATION IS ONLY FOR 10R140 COMPONENTS [BODY,SLIDE,ROTOR]\n     */\n    \n    if(reaction[i] === \"JK\" || reaction[i] === \"Weight/Part\"){\n        x = limits[0];\n        units = \"\";\n\n        if(reaction[i] === \"Weight/Part\"){\n            x = x - 0.0001;\n            units = \"mg\";\n        }\n        \n    }else if(reaction[i] === \"HI\" || reaction[i] === \"Largest Fiber\"){\n        x = limits[1];\n        units = \"\";\n\n    }else if(reaction[i] === \"FG\" || reaction[i] === \"K\"){\n        x = limits[2];\n        units = \"\";\n\n    }else if(reaction[i] === \"CE\" || reaction [i] === \"J\"){\n        x = limits[3];\n        units = \"\";\n\n    }else if(reaction[i] === \"I\"){\n        x = limits[4]\n        units = \"\";\n\n    }else if(reaction[i] === \"H\"){\n        x = limits[5];\n        units = \"\";\n    }\n    \n    body = body + reaction[i]+\" = \"+measured[i]+\" \"+units+\" [\"+r+\" = \"+x+\" \"+units+\"]\\n\";\n    \n    \n}\nFORDLINK = \"http://pmdadashboard/d/tmVF-1XVz/ford-sediment-tests-10r140-components?orgId=1&from=now-90d&to=now&var-PartName=\"+part.replace(\" \",\"%20\")+\"&var-ReportNum=\"+report+\"&var-Location=All&var-body=10R140%20Body&var-slide=10R140%20Slide&var-rotor=10R140%20Rotor&var-gear=10R140%20Gear&var-nitride=10R140%20Gear%20Nitride\";\nZFLINK = \"http://pmdadashboard/d/5NIQmsu4z/jomesa-sediment-tests?orgId=1&from=now-7d&to=now&var-ZFComponent=All&var-PartName=\"+part.replaceAll(\" \",\"%20\")+\"&var-gme=GME%20T4%20Stator&var-ReportNum=\"+report;\nGMELINK = \"http://pmdadashboard/d/5NIQmsu4z/jomesa-sediment-tests?orgId=1&from=now-7d&to=now&var-ZFComponent=All&var-PartName=All&var-gme=GME%20T4%20Stator&var-ReportNum=\"+report;\n\nif(part.includes('10R140') === true){\n    link =FORDLINK;\n}else if(part === 'GME T4 Stator'){\n    link = GMELINK;\n}else{\n    link = ZFLINK;\n}\n\nbody = body + \"\\nSediment Test Dashboard: \"+link+\"\\n\\nNote: Data may take up to 15 minutes to appear on the dashboard.\\n\\nPictures Saved To:\\nN:\\\\Quality\\\\Metlab\\\\Met Lab Reports\\\\Sediment Tests\\\\Jomesa results\\\\Reaction Limit Sediment Tests Pictures\\\\\"+part+\"\\\\\"+report+\"_Pictures\\n\\n\";\n\nmsg.payload = body;\nmsg.reaction = reaction;\nreturn msg;\n\n",
+        "func": "var body = flow.get(\"email_body\");\nvar pdf = flow.get(\"pdf_files\");    \nvar measured = flow.get(\"reaction_values\");\nvar reaction = flow.get(\"out_of_reaction\");\nvar part = flow.get(\"partName\");\nvar report = flow.get(\"reportNum\");\n\n//Set 10R140 -------------------------------------------------------------------\nif(part === \"10R140 Body\"){\n    var limits = flow.get(\"body_reaction\");\n}else if(part === \"10R140 Slide\"){\n    var limits = flow.get(\"slide_reaction\");\n}else if(part === \"10R140 Rotor\"){\n    var limits = flow.get(\"rotor_reaction\");\n\n//Set ZF -----------------------------------------------------------------------\n}else if(part === 'ZF Body'){\n    var limits = flow.get(\"ctrl_ZF\");\n}else if(part === 'ZF Outer'){\n    var limits = flow.get(\"ctrl_ZF\");\n}else if(part === 'ZF Inner'){\n    var limits = flow.get(\"ctrl_ZF\");\n//Set GME ----------------------------------------------------------------------\n}else if(part === 'GME T4 Stator'){\n    var limits = flow.get(\"ctrl_GME\");\n}\n\n\n//Sender --------------------------------------------------------\nmsg.from = ['PM-A Quality <notification-noreply@stackpole.com>'];\n\n//Receiver ------------------------------------------------------\nmsg.to = ['sthakar@stackpole.com']//,flow.get(\"QE\"),'fbaguma@stackpole.com','gmartin2@stackpole.com','akhan@stackpole.com','skumar@stackpole.com'];\n//msg.to = ['jcfung@stackpole.com']\n\n//Subject -------------------------------------------------------\n\nif(part.includes('10R140') === true){\n    msg.topic = \"Reaction Limit Exceeded - Sediment Test #\"+report+\" for \"+part; // subject\n    var r = \"Reaction Limit\";\n}else{\n    msg.topic = \"Failed Sediment Test - \"+report+\" for \"+part; // subject\n    var r = \"Control Limit\";\n}\n\n//Attachments ---------------------------------------------------   to be implemented\nmsg.attachments = [\n    \n    {filename:msg.pdf_name, path:msg.filepath+ msg.pdf_name}\n    \n    ];\n\n//Body ----------------------------------------------------------\nif(part.includes('10R140') === true){\n    body = \"The reaction limit has been exceeded for \"+part+\" (Report Number: \"+report+\")\\n\\nThe following categories are out of the reaction limit:\\n\\n\";\n}else{\n    body = \"Sediment Test #\"+report+\" has failed for \"+part+\". The following categories are out of the control limits:\\n\\n\";\n}\n\nvar units = \"\" ; \n\nfor(let i = 0; i < reaction.length; i++){\n    \n    /*\n     * THIS MAY NEED TO CHANGE, SINCE DIFFERENT PARTS MAY HAVE MORE OR LESS THAN THIS\n     * THIS IMPLEMENTATION IS ONLY FOR 10R140 COMPONENTS [BODY,SLIDE,ROTOR]\n     */\n    \n    if(reaction[i] === \"JK\" || reaction[i] === \"Weight/Part\"){\n        x = limits[0];\n        units = \"\";\n\n        if(reaction[i] === \"Weight/Part\"){\n            x = x - 0.0001;\n            units = \"mg\";\n        }\n        \n    }else if(reaction[i] === \"HI\" || reaction[i] === \"Largest Fiber\"){\n        x = limits[1];\n        units = \"\";\n\n    }else if(reaction[i] === \"FG\" || reaction[i] === \"K\"){\n        x = limits[2];\n        units = \"\";\n\n    }else if(reaction[i] === \"CE\" || reaction [i] === \"J\"){\n        x = limits[3];\n        units = \"\";\n\n    }else if(reaction[i] === \"I\"){\n        x = limits[4]\n        units = \"\";\n\n    }else if(reaction[i] === \"H\"){\n        x = limits[5];\n        units = \"\";\n    }\n    \n    if(units != \"\"){\n        body = body + reaction[i]+\" = \"+measured[i]+\" \"+units+\" [\"+r+\" = \"+x+\" \"+units+\"]\\n\";\n    }else{\n        body = body + reaction[i]+\" = \"+measured[i]+\" [\"+r+\" = \"+x+\"]\\n\";\n    }\n    \n}\nFORDLINK = \"http://pmdadashboard/d/tmVF-1XVz/ford-sediment-tests-10r140-components?orgId=1&from=now-90d&to=now&var-PartName=\"+part.replaceAll(\" \",\"%20\")+\"&var-ReportNum=\"+report+\"&var-Location=All&var-body=10R140%20Body&var-slide=10R140%20Slide&var-rotor=10R140%20Rotor&var-gear=10R140%20Gear&var-nitride=10R140%20Gear%20Nitride\";\nZFLINK = \"http://pmdadashboard/d/5NIQmsu4z/jomesa-sediment-tests?orgId=1&from=now-7d&to=now&var-ZFComponent=All&var-PartName=\"+part.replaceAll(\" \",\"%20\")+\"&var-gme=GME%20T4%20Stator&var-ReportNum=\"+report;\nGMELINK = \"http://pmdadashboard/d/5NIQmsu4z/jomesa-sediment-tests?orgId=1&from=now-7d&to=now&var-ZFComponent=All&var-PartName=All&var-gme=GME%20T4%20Stator&var-ReportNum=\"+report;\n\nif(part.includes('10R140') === true){\n    link = FORDLINK;\n}else if(part === 'GME T4 Stator'){\n    link = GMELINK;\n}else{\n    link = ZFLINK;\n}\n\nbody = body + \"\\nSediment Test Dashboard: \"+link+\"\\n\\nNote: Data may take up to 15 minutes to appear on the dashboard.\\n\\nPictures Saved To:\\nN:\\\\Quality\\\\Metlab\\\\Met Lab Reports\\\\Sediment Tests\\\\Jomesa results\\\\Reaction Limit Sediment Tests Pictures\\\\\"+part+\"\\\\\"+report+\"_Pictures\\n\\n\";\n\nmsg.payload = body;\nmsg.reaction = reaction;\nreturn msg;\n\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 3800,
-        "y": 600,
+        "x": 4300,
+        "y": 860,
         "wires": [
             [
                 "7362256baae046d7",
                 "74cc681ba396071e"
-            ]
-        ]
-    },
-    {
-        "id": "c694bb98e43ba553",
-        "type": "link in",
-        "z": "447205f9c52006b9",
-        "g": "d3e4db5647dfdd51",
-        "name": "in_sendEmail",
-        "links": [
-            "19fbcf7f5755dee9"
-        ],
-        "x": 3300,
-        "y": 540,
-        "wires": [
-            [
-                "f39d79a41406433f"
             ]
         ]
     },
@@ -384,13 +397,11 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 3160,
-        "y": 160,
+        "x": 220,
+        "y": 800,
         "wires": [
             [
-                "87f6d54a02c85e57",
-                "7e1b7ef539b7bb48",
-                "9a71b476084c8d1e"
+                "44b6b1355343ed16"
             ]
         ]
     },
@@ -405,8 +416,8 @@
             "5c2fb5e25c1c5bd6",
             "b8f0d8c65ab33195"
         ],
-        "x": 3020,
-        "y": 160,
+        "x": 80,
+        "y": 800,
         "wires": [
             [
                 "7e1d0a0fb1e9dcc5"
@@ -454,9 +465,9 @@
                 "vt": "str"
             }
         ],
-        "repeat": "1800",
+        "repeat": "3600",
         "crontab": "",
-        "once": true,
+        "once": false,
         "onceDelay": 0.1,
         "topic": "",
         "payload": "",
@@ -484,38 +495,12 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 3590,
-        "y": 160,
+        "x": 1110,
+        "y": 860,
         "wires": [
             [
                 "874541026c738320",
-                "c35895435742d365",
-                "803142b71f17ad41"
-            ]
-        ]
-    },
-    {
-        "id": "686e66926bd9328a",
-        "type": "switch",
-        "z": "447205f9c52006b9",
-        "g": "4620efd84ef6704a",
-        "name": "if out_of_reaction not empty",
-        "property": "out_of_reaction",
-        "propertyType": "flow",
-        "rules": [
-            {
-                "t": "nempty"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 1,
-        "x": 2800,
-        "y": 540,
-        "wires": [
-            [
-                "19fbcf7f5755dee9",
-                "404f7d0b7fae9f80"
+                "90a93f69eca59b80"
             ]
         ]
     },
@@ -551,8 +536,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 3990,
-        "y": 640,
+        "x": 4490,
+        "y": 900,
         "wires": []
     },
     {
@@ -564,7 +549,7 @@
         "links": [
             "8d96daaa8bcd8c9e"
         ],
-        "x": 2220,
+        "x": 2200,
         "y": 540,
         "wires": [
             [
@@ -584,40 +569,13 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2520,
+        "x": 2500,
         "y": 500,
         "wires": [
             [
-                "686e66926bd9328a",
                 "0bc4bcad21a144d4"
             ]
         ]
-    },
-    {
-        "id": "9d65f37d3f9ca919",
-        "type": "comment",
-        "z": "447205f9c52006b9",
-        "g": "4620efd84ef6704a",
-        "name": "if not empty, there are some specs out of reaction, notification must be sent",
-        "info": "",
-        "x": 2940,
-        "y": 460,
-        "wires": []
-    },
-    {
-        "id": "19fbcf7f5755dee9",
-        "type": "link out",
-        "z": "447205f9c52006b9",
-        "g": "4620efd84ef6704a",
-        "name": "out_SpecValidation",
-        "mode": "link",
-        "links": [
-            "c694bb98e43ba553",
-            "f817a26c1544e8b0"
-        ],
-        "x": 3000,
-        "y": 540,
-        "wires": []
     },
     {
         "id": "0bc4bcad21a144d4",
@@ -630,8 +588,8 @@
             "da778d0b71964aa6",
             "720bfaf3c6b83afa"
         ],
-        "x": 2720,
-        "y": 500,
+        "x": 2680,
+        "y": 540,
         "wires": []
     },
     {
@@ -641,8 +599,8 @@
         "g": "4620efd84ef6704a",
         "name": "go to FinalDataObj",
         "info": "",
-        "x": 2850,
-        "y": 500,
+        "x": 2810,
+        "y": 540,
         "wires": []
     },
     {
@@ -663,8 +621,8 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 880,
-        "y": 840,
+        "x": 2240,
+        "y": 1060,
         "wires": [
             []
         ]
@@ -679,30 +637,12 @@
         "pathType": "str",
         "filename": "delete",
         "filenameType": "flow",
-        "x": 700,
-        "y": 840,
+        "x": 2060,
+        "y": 1060,
         "wires": [
             [
                 "23bed88a08754614"
             ]
-        ]
-    },
-    {
-        "id": "bb022f79a52ab9bd",
-        "type": "function",
-        "z": "447205f9c52006b9",
-        "g": "fda705b472ca9152",
-        "name": "do nothing",
-        "func": "\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 790,
-        "y": 900,
-        "wires": [
-            []
         ]
     },
     {
@@ -712,8 +652,8 @@
         "g": "fda705b472ca9152",
         "name": "remove text file from /data/ShivDataOutput/Jomesa",
         "info": "",
-        "x": 1150,
-        "y": 840,
+        "x": 2510,
+        "y": 1060,
         "wires": []
     },
     {
@@ -724,8 +664,8 @@
         "name": "To MSSQL Integration via topic \"Send_To_MSSQL.>\"",
         "natc": "b74ec520e8d02a85",
         "topicname": "",
-        "x": 4100,
-        "y": 160,
+        "x": 1620,
+        "y": 880,
         "wires": []
     },
     {
@@ -742,8 +682,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 3410,
-        "y": 240,
+        "x": 930,
+        "y": 900,
         "wires": []
     },
     {
@@ -752,18 +692,17 @@
         "z": "447205f9c52006b9",
         "g": "4620efd84ef6704a",
         "name": "Check Pass/Fail Report",
-        "func": "var result = \"\";\nvar ctrl = msg.ctrl;\nvar measured = msg.measured;\nvar out_ctrl = msg.out_ctrl;\nvar ctrl_values = [];\n\n\nfor(let i = 0; i < measured.length; i++){\n    if(measured[i] < ctrl[i] || isNaN(measured[i])){\n        delete out_ctrl[i];\n    }else{\n        ctrl_values.push(measured[i]);\n    }\n}\n\nout_ctrl = out_ctrl.filter(function(element){\n    return element !== undefined;\n});\n\nif(ctrl_values.length > 0){\n    result = \"FAIL\";\n}else{\n    result = \"PASS\";\n}\n\nflow.set(\"out_of_reaction\",out_ctrl);              // save to flow variable\nflow.set(\"reaction_values\",ctrl_values);        // save out of reaction values for email notification\nflow.set(\"result\",result);\nmsg.payload = result;\nreturn msg;",
+        "func": "var result = \"\";\nvar ctrl = msg.ctrl;\nvar measured = msg.measured;\nvar out_ctrl = msg.out_ctrl;\nvar ctrl_values = [];\n\nfor(let i = 0; i < measured.length; i++){\n    if(measured[i] < ctrl[i] || isNaN(measured[i])){\n        delete out_ctrl[i];\n    }else{\n        ctrl_values.push(measured[i]);\n    }\n}\n\nif(ctrl_values.length > 0){\n    result = \"FAIL\";\n}else{\n    result = \"PASS\";\n}\n\nout_ctrl = out_ctrl.filter(function(element){\n    return element !== undefined;                   // remove undefined values\n});\n\nflow.set(\"out_of_reaction\",out_ctrl);              // save to flow variable\nflow.set(\"reaction_values\",ctrl_values);        // save out of reaction values for email notification\nflow.set(\"result\",result);\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2530,
+        "x": 2510,
         "y": 580,
         "wires": [
             [
-                "686e66926bd9328a",
-                "b8f0d8c65ab33195"
+                "0bc4bcad21a144d4"
             ]
         ]
     },
@@ -795,7 +734,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 3,
-        "x": 2310,
+        "x": 2290,
         "y": 540,
         "wires": [
             [
@@ -816,22 +755,8 @@
         "g": "4620efd84ef6704a",
         "name": "specific for 10R140 components",
         "info": "",
-        "x": 2530,
+        "x": 2510,
         "y": 460,
-        "wires": []
-    },
-    {
-        "id": "b8f0d8c65ab33195",
-        "type": "link out",
-        "z": "447205f9c52006b9",
-        "g": "4620efd84ef6704a",
-        "name": "out_specValidation",
-        "mode": "link",
-        "links": [
-            "da778d0b71964aa6"
-        ],
-        "x": 2720,
-        "y": 580,
         "wires": []
     },
     {
@@ -841,8 +766,7 @@
         "g": "5c5d043f856bb4d8",
         "name": "",
         "scope": [
-            "86540153f952f639",
-            "af0da7a50fe51b8a"
+            "86540153f952f639"
         ],
         "uncaught": false,
         "x": 770,
@@ -868,9 +792,7 @@
         "x": 910,
         "y": 60,
         "wires": [
-            [
-                "ab9bd41f690a5a78"
-            ]
+            []
         ]
     },
     {
@@ -879,13 +801,13 @@
         "z": "447205f9c52006b9",
         "g": "29e81cdb7824f270",
         "name": "write to log",
-        "filename": "/data/ShivDataOutput/Jomesa Log/Jomesa_Log.txt",
+        "filename": "/data/ShivDataOutput/Jomesa Log/ObjLog.txt",
         "appendNewline": true,
         "createDir": true,
         "overwriteFile": "false",
         "encoding": "none",
-        "x": 3970,
-        "y": 120,
+        "x": 1090,
+        "y": 780,
         "wires": [
             []
         ]
@@ -929,8 +851,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 150,
-        "y": 480,
+        "x": 270,
+        "y": 520,
         "wires": [
             [
                 "41b1a15f69a39a63"
@@ -949,8 +871,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1150,
-        "y": 500,
+        "x": 1130,
+        "y": 460,
         "wires": [
             [
                 "ae830e4f56a1ddae"
@@ -967,7 +889,7 @@
             "bcf1a922381d0267"
         ],
         "x": 80,
-        "y": 420,
+        "y": 460,
         "wires": [
             [
                 "c0c01ed632b14b97"
@@ -1002,8 +924,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 3,
-        "x": 640,
-        "y": 560,
+        "x": 620,
+        "y": 520,
         "wires": [
             [
                 "3c20f2ed5c9c5b81",
@@ -1046,8 +968,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1610,
-        "y": 460,
+        "x": 1590,
+        "y": 420,
         "wires": [
             [
                 "95e36d9bb52ba14a"
@@ -1081,8 +1003,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1610,
-        "y": 500,
+        "x": 1590,
+        "y": 460,
         "wires": [
             [
                 "95e36d9bb52ba14a"
@@ -1116,8 +1038,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1610,
-        "y": 540,
+        "x": 1590,
+        "y": 500,
         "wires": [
             [
                 "95e36d9bb52ba14a"
@@ -1136,8 +1058,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1870,
-        "y": 500,
+        "x": 1850,
+        "y": 460,
         "wires": [
             [
                 "8d96daaa8bcd8c9e"
@@ -1154,8 +1076,8 @@
         "links": [
             "1ee17dc2391de76c"
         ],
-        "x": 2100,
-        "y": 580,
+        "x": 2080,
+        "y": 540,
         "wires": []
     },
     {
@@ -1170,11 +1092,11 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 310,
-        "y": 480,
+        "x": 430,
+        "y": 520,
         "wires": [
             [
-                "f033922a65b63604"
+                "1a88d7c4b651590e"
             ]
         ]
     },
@@ -1190,8 +1112,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 860,
-        "y": 580,
+        "x": 840,
+        "y": 540,
         "wires": [
             [
                 "293470f827897582"
@@ -1226,8 +1148,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 3,
-        "x": 1400,
-        "y": 500,
+        "x": 1380,
+        "y": 460,
         "wires": [
             [
                 "792ebb43bc5ec7e6"
@@ -1250,7 +1172,7 @@
             {
                 "t": "set",
                 "p": "QE",
-                "pt": "msg",
+                "pt": "flow",
                 "to": "kservos@stackpole.com",
                 "tot": "str"
             }
@@ -1260,8 +1182,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 890,
-        "y": 420,
+        "x": 870,
+        "y": 380,
         "wires": [
             []
         ]
@@ -1276,7 +1198,7 @@
             {
                 "t": "set",
                 "p": "QE",
-                "pt": "msg",
+                "pt": "flow",
                 "to": "vavery@stackpole.com",
                 "tot": "str"
             }
@@ -1286,8 +1208,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 880,
-        "y": 540,
+        "x": 860,
+        "y": 500,
         "wires": [
             []
         ]
@@ -1312,8 +1234,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1570,
-        "y": 580,
+        "x": 1550,
+        "y": 540,
         "wires": [
             [
                 "1b3f74f7a5e3ae5b"
@@ -1332,8 +1254,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1890,
-        "y": 580,
+        "x": 1870,
+        "y": 540,
         "wires": [
             [
                 "8d96daaa8bcd8c9e"
@@ -1350,7 +1272,7 @@
             {
                 "t": "set",
                 "p": "QE",
-                "pt": "msg",
+                "pt": "flow",
                 "to": "vavery@stackpole.com",
                 "tot": "str"
             }
@@ -1360,8 +1282,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 880,
-        "y": 700,
+        "x": 860,
+        "y": 660,
         "wires": [
             []
         ]
@@ -1378,8 +1300,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 860,
-        "y": 660,
+        "x": 840,
+        "y": 620,
         "wires": [
             [
                 "3e6aaa9196819e8c"
@@ -1398,8 +1320,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1880,
-        "y": 660,
+        "x": 1860,
+        "y": 620,
         "wires": [
             [
                 "8d96daaa8bcd8c9e"
@@ -1426,8 +1348,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1580,
-        "y": 660,
+        "x": 1560,
+        "y": 620,
         "wires": [
             [
                 "e7cf363f94d08f24"
@@ -1446,67 +1368,12 @@
         "sendError": false,
         "encoding": "none",
         "allProps": false,
-        "x": 240,
-        "y": 420,
+        "x": 220,
+        "y": 460,
         "wires": [
             [
                 "2b7ef198c36965e8",
                 "32b46a700415c58b"
-            ]
-        ]
-    },
-    {
-        "id": "2adad4d42cb933dc",
-        "type": "switch",
-        "z": "447205f9c52006b9",
-        "g": "6f521e616a23443f",
-        "name": "",
-        "property": "FLAG",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "0",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "1",
-                "vt": "num"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 470,
-        "y": 560,
-        "wires": [
-            [
-                "1a88d7c4b651590e"
-            ],
-            [
-                "60cb7d3b4f107d4e"
-            ]
-        ]
-    },
-    {
-        "id": "60cb7d3b4f107d4e",
-        "type": "function",
-        "z": "447205f9c52006b9",
-        "g": "6f521e616a23443f",
-        "name": "existing report number",
-        "func": "msg.payload = \"Duplicate\";\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 180,
-        "y": 680,
-        "wires": [
-            [
-                "321f7051ab2cd2cd",
-                "8e8bca3709058c0a"
             ]
         ]
     },
@@ -1520,8 +1387,8 @@
         "links": [
             "da778d0b71964aa6"
         ],
-        "x": 1320,
-        "y": 420,
+        "x": 1300,
+        "y": 380,
         "wires": []
     },
     {
@@ -1531,8 +1398,8 @@
         "g": "6f521e616a23443f",
         "name": "Gears get sent staright to DB; spec validation not required",
         "info": "",
-        "x": 1570,
-        "y": 420,
+        "x": 1550,
+        "y": 380,
         "wires": []
     },
     {
@@ -1556,8 +1423,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 910,
-        "y": 460,
+        "x": 890,
+        "y": 420,
         "wires": [
             [
                 "1691142b32de0d05"
@@ -1579,59 +1446,13 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1170,
-        "y": 420,
+        "x": 1150,
+        "y": 380,
         "wires": [
             [
                 "5c2fb5e25c1c5bd6"
             ]
         ]
-    },
-    {
-        "id": "552e4f0ff055aec4",
-        "type": "comment",
-        "z": "447205f9c52006b9",
-        "g": "6f521e616a23443f",
-        "name": "handling duplicate reports",
-        "info": "",
-        "x": 190,
-        "y": 720,
-        "wires": []
-    },
-    {
-        "id": "321f7051ab2cd2cd",
-        "type": "fs-ops-delete",
-        "z": "447205f9c52006b9",
-        "g": "6f521e616a23443f",
-        "name": "delete text file",
-        "path": "/data/ShivDataOutput/Jomesa/",
-        "pathType": "str",
-        "filename": "delete",
-        "filenameType": "flow",
-        "x": 420,
-        "y": 680,
-        "wires": [
-            [
-                "360ff2d45d2290c8"
-            ]
-        ]
-    },
-    {
-        "id": "8e8bca3709058c0a",
-        "type": "debug",
-        "z": "447205f9c52006b9",
-        "g": "6f521e616a23443f",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 410,
-        "y": 720,
-        "wires": []
     },
     {
         "id": "62a3c8d02737a30f",
@@ -1642,8 +1463,8 @@
         "name": "",
         "natc": "b74ec520e8d02a85",
         "topicname": "Send_To_MSSQL.>",
-        "x": 3110,
-        "y": 100,
+        "x": 1450,
+        "y": 980,
         "wires": [
             [
                 "ce26beabda1549a7"
@@ -1665,26 +1486,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 3390,
-        "y": 100,
-        "wires": []
-    },
-    {
-        "id": "c35895435742d365",
-        "type": "debug",
-        "z": "447205f9c52006b9",
-        "g": "29e81cdb7824f270",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 3990,
-        "y": 220,
+        "x": 1630,
+        "y": 980,
         "wires": []
     },
     {
@@ -1694,54 +1497,16 @@
         "g": "fda705b472ca9152",
         "name": "",
         "links": [
-            "eacd32c20ea4b645",
-            "976d2ecdc0ea018b",
-            "19fbcf7f5755dee9",
-            "32b46a700415c58b"
+            "32b46a700415c58b",
+            "a1f6fa318ff0d48d"
         ],
-        "x": 560,
-        "y": 840,
+        "x": 1920,
+        "y": 1060,
         "wires": [
             [
                 "704b4b9a9eeb632f"
             ]
         ]
-    },
-    {
-        "id": "aed8326e583eb95e",
-        "type": "catch",
-        "z": "447205f9c52006b9",
-        "g": "fda705b472ca9152",
-        "name": "catch fs-ops error",
-        "scope": [
-            "704b4b9a9eeb632f",
-            "185c8573a46f1835",
-            "321f7051ab2cd2cd",
-            "2448f71a586d4cc1",
-            "5458709a7401e5fa"
-        ],
-        "uncaught": false,
-        "x": 620,
-        "y": 900,
-        "wires": [
-            [
-                "bb022f79a52ab9bd"
-            ]
-        ]
-    },
-    {
-        "id": "360ff2d45d2290c8",
-        "type": "link out",
-        "z": "447205f9c52006b9",
-        "g": "6f521e616a23443f",
-        "name": "",
-        "mode": "link",
-        "links": [
-            "83dc02a19903b103"
-        ],
-        "x": 560,
-        "y": 680,
-        "wires": []
     },
     {
         "id": "32b46a700415c58b",
@@ -1754,8 +1519,8 @@
             "10bc37c6d6e48b33",
             "f817a26c1544e8b0"
         ],
-        "x": 380,
-        "y": 420,
+        "x": 360,
+        "y": 460,
         "wires": []
     },
     {
@@ -1765,77 +1530,9 @@
         "g": "6f521e616a23443f",
         "name": "delete file after saving saving it as payload",
         "info": "",
-        "x": 500,
+        "x": 220,
         "y": 380,
         "wires": []
-    },
-    {
-        "id": "b697ace66e016d72",
-        "type": "MSSQL",
-        "z": "447205f9c52006b9",
-        "g": "6f521e616a23443f",
-        "mssqlCN": "c5739068.38b51",
-        "name": "GET",
-        "outField": "payload",
-        "returnType": 0,
-        "throwErrors": "0",
-        "query": "",
-        "modeOpt": "queryMode",
-        "modeOptType": "query",
-        "queryOpt": "query",
-        "queryOptType": "msg",
-        "paramsOpt": "queryParams",
-        "paramsOptType": "msg",
-        "rows": "rows",
-        "rowsType": "msg",
-        "params": [],
-        "x": 650,
-        "y": 480,
-        "wires": [
-            [
-                "19e37a2f69de3e13"
-            ]
-        ]
-    },
-    {
-        "id": "f033922a65b63604",
-        "type": "template",
-        "z": "447205f9c52006b9",
-        "g": "6f521e616a23443f",
-        "name": "get reportNumbers",
-        "field": "query",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "SELECT distinct reportNum \nFROM [PMDA-Litmus].[dbo].[RecJomesa_SedimentTest]",
-        "output": "str",
-        "x": 490,
-        "y": 480,
-        "wires": [
-            [
-                "b697ace66e016d72"
-            ]
-        ]
-    },
-    {
-        "id": "19e37a2f69de3e13",
-        "type": "function",
-        "z": "447205f9c52006b9",
-        "g": "6f521e616a23443f",
-        "name": "verify if the report has been saved",
-        "func": "var reportNumbers = msg.payload;\nvar currentReport = flow.get(\"reportNum\");\nvar FLAG = 0; \n\nfor(let i = 0; i < reportNumbers.length; i++){\n    if(reportNumbers[i].reportNum === currentReport){\n        FLAG = 1; \n        break;\n    }\n}\n\nmsg.FLAG = FLAG;\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 240,
-        "y": 560,
-        "wires": [
-            [
-                "2adad4d42cb933dc"
-            ]
-        ]
     },
     {
         "id": "0756b7f50689630a",
@@ -1917,100 +1614,150 @@
         "tls": false,
         "name": "",
         "dname": "",
-        "x": 3990,
-        "y": 560,
+        "x": 4490,
+        "y": 860,
         "wires": []
     },
     {
-        "id": "a6046a35fb022ad4",
+        "id": "e90cc595dfccf1c0",
+        "type": "MSSQL",
+        "z": "447205f9c52006b9",
+        "g": "29e81cdb7824f270",
+        "mssqlCN": "c5739068.38b51",
+        "name": "GET",
+        "outField": "payload",
+        "returnType": 0,
+        "throwErrors": "0",
+        "query": "",
+        "modeOpt": "queryMode",
+        "modeOptType": "query",
+        "queryOpt": "query",
+        "queryOptType": "msg",
+        "paramsOpt": "queryParams",
+        "paramsOptType": "msg",
+        "rows": "rows",
+        "rowsType": "msg",
+        "params": [],
+        "x": 590,
+        "y": 800,
+        "wires": [
+            [
+                "09c4bb80d7c866f9"
+            ]
+        ]
+    },
+    {
+        "id": "44b6b1355343ed16",
+        "type": "template",
+        "z": "447205f9c52006b9",
+        "g": "29e81cdb7824f270",
+        "name": "get reportNumbers",
+        "field": "query",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "SELECT distinct reportNum \nFROM [PMDA-Litmus].[dbo].[RecJomesa_SedimentTest]",
+        "output": "str",
+        "x": 430,
+        "y": 800,
+        "wires": [
+            [
+                "e90cc595dfccf1c0"
+            ]
+        ]
+    },
+    {
+        "id": "e70f48b5c8e7bc65",
+        "type": "switch",
+        "z": "447205f9c52006b9",
+        "g": "29e81cdb7824f270",
+        "name": "",
+        "property": "FLAG",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 730,
+        "y": 860,
+        "wires": [
+            [
+                "87f6d54a02c85e57",
+                "c69bf46401072842",
+                "7e1b7ef539b7bb48",
+                "11ae54b7f236e9cb"
+            ],
+            [
+                "c5b0e4524815f9a8"
+            ]
+        ]
+    },
+    {
+        "id": "09c4bb80d7c866f9",
         "type": "function",
         "z": "447205f9c52006b9",
         "g": "29e81cdb7824f270",
-        "name": "configure email",
-        "func": "var pdf = flow.get(\"pdf_files\");\nvar part = flow.get(\"partName\");\nvar report = flow.get(\"reportNum\");\n\n//Sender --------------------------------------------------------\nmsg.from = ['PM-A Quality <notification-noreply@stackpole.com>'];\n\n//Receiver ------------------------------------------------------\nmsg.to = ['sthakar@stackpole.com']\n\n//Subject -------------------------------------------------------\nmsg.topic = \"New Sediment Test #\"+report+\" for \"+part; // subject\n\n\n//Attachments ---------------------------------------------------   to be implemented\nmsg.attachments = [\n    \n    {filename:msg.pdf_name, path:msg.filepath+ msg.pdf_name}\n    \n    ];\n\n//Body ----------------------------------------------------------\nFORDLINK = \"http://pmdadashboard/d/tmVF-1XVz/ford-sediment-tests-10r140-components?orgId=1&from=now-90d&to=now&var-PartName=\"+part.replace(\" \",\"%20\")+\"&var-ReportNum=\"+report+\"&var-Location=All&var-body=10R140%20Body&var-slide=10R140%20Slide&var-rotor=10R140%20Rotor&var-gear=10R140%20Gear&var-nitride=10R140%20Gear%20Nitride\";\nZFLINK =\"http://pmdadashboard/d/5NIQmsu4z/jomesa-sediment-tests?orgId=1&from=now-7d&to=now&var-ZFComponent=All&var-PartName=\"+part.replaceAll(\" \",\"%20\")+\"&var-gme=GME%20T4%20Stator&var-ReportNum=\"+report;\nGMELINK = \"http://pmdadashboard/d/5NIQmsu4z/jomesa-sediment-tests?orgId=1&from=now-7d&to=now&var-ZFComponent=All&var-PartName=All&var-gme=GME%20T4%20Stator&var-ReportNum=\"+report;\nif(part.includes('10R140') === true){\n    link =FORDLINK;\n}else if(part === 'GME T4 Stator'){\n    link = GMELINK;\n}else{\n    link = ZFLINK;\n}\n\nbody = \"New Test Uploaded\\n\\nSediment Test Dashboard: \"+link+\"\\n\\nNote: Data may take up to 15 minutes to appear on the dashboard.\\n\\nPictures Saved To:\\nN:\\\\Quality\\\\Metlab\\\\Met Lab Reports\\\\Sediment Tests\\\\Jomesa results\\\\Reaction Limit Sediment Tests Pictures\\\\\"+part+\"\\\\\"+report+\"_Pictures\\n\\n\";\n\nmsg.payload = body;\nreturn msg;\n\n",
+        "name": "verify if the report has been saved",
+        "func": "var reportNumbers = msg.payload;\nvar currentReport = flow.get(\"reportNum\");\nvar FLAG = 0; \n\nfor(let i = 0; i < reportNumbers.length; i++){\n    if(reportNumbers[i].reportNum === currentReport){\n        FLAG = 1; \n        break;\n    }\n}\n\nmsg.FLAG = FLAG;\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 3420,
-        "y": 360,
+        "x": 500,
+        "y": 860,
         "wires": [
             [
-                "d158d9ae00fd0145"
+                "e70f48b5c8e7bc65"
             ]
         ]
     },
     {
-        "id": "d158d9ae00fd0145",
-        "type": "e-mail",
+        "id": "a1f6fa318ff0d48d",
+        "type": "link out",
         "z": "447205f9c52006b9",
         "g": "29e81cdb7824f270",
-        "server": "smtp01.stackpole.com",
-        "port": "25",
-        "secure": false,
-        "tls": false,
         "name": "",
-        "dname": "",
-        "x": 3610,
-        "y": 360,
+        "mode": "link",
+        "links": [
+            "f817a26c1544e8b0"
+        ],
+        "x": 1080,
+        "y": 940,
         "wires": []
     },
     {
-        "id": "a34fa0c82a787120",
-        "type": "comment",
+        "id": "2116c3a5d172e613",
+        "type": "Datahub Subscribe",
         "z": "447205f9c52006b9",
         "g": "29e81cdb7824f270",
-        "name": "notify dev when new report is saved",
-        "info": "",
-        "x": 3820,
-        "y": 360,
-        "wires": []
-    },
-    {
-        "id": "404f7d0b7fae9f80",
-        "type": "function",
-        "z": "447205f9c52006b9",
-        "g": "4620efd84ef6704a",
-        "name": "write to log",
-        "func": "var part = flow.get(\"partName\");\nvar report = flow.get(\"reportNum\");\nvar loc = flow.get(\"location\");\nvar date = new Date;\nvar year = date.getFullYear().toString();\n\nif(part.includes('10R140')){\n    msg.payload = \"10R140 Components\\\\\"+part+\"\\\\\"+year+\"\\\\\"+year+\" \"+loc+\"\\\\\"+report;\n}else if(part.includes('ZF')){\n    msg.payload = \"ZF\\\\\"+part.toUpperCase()+\"\\\\\"+year+\"\\\\\"+report;\n}else if(part === 'GME T4 Stator'){\n    msg.payload = \"GME T4 Stator\\\\\"+year+\"\\\\\"+report;\n}\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 2730,
-        "y": 660,
-        "wires": [
-            [
-                "a3b3b87d47bf4d8c"
-            ]
-        ]
-    },
-    {
-        "id": "a3b3b87d47bf4d8c",
-        "type": "file",
-        "z": "447205f9c52006b9",
-        "g": "4620efd84ef6704a",
         "name": "",
-        "filename": "/data/Jomesa_SedimentTest/LOG.txt",
-        "appendNewline": true,
-        "createDir": true,
-        "overwriteFile": "false",
-        "encoding": "none",
-        "x": 2970,
-        "y": 660,
+        "natc": "b74ec520e8d02a85",
+        "topicname": "Send_To_MSSQL.Jomesa_TXT.>",
+        "x": 1490,
+        "y": 940,
         "wires": [
             [
-                "9257cdfeb34d0869"
+                "caac7fef9c5fc838"
             ]
         ]
     },
     {
-        "id": "9257cdfeb34d0869",
+        "id": "caac7fef9c5fc838",
         "type": "debug",
         "z": "447205f9c52006b9",
-        "g": "4620efd84ef6704a",
+        "g": "29e81cdb7824f270",
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -2020,76 +1767,97 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 3110,
-        "y": 720,
+        "x": 1730,
+        "y": 940,
         "wires": []
     },
     {
-        "id": "b20ead1ceef1dbb5",
-        "type": "link in",
+        "id": "ad965f6263484241",
+        "type": "complete",
         "z": "447205f9c52006b9",
-        "g": "5c5d043f856bb4d8",
-        "name": "",
-        "links": [
-            "ab9bd41f690a5a78"
-        ],
-        "x": 140,
-        "y": 260,
-        "wires": [
-            [
-                "e166aa090e237780",
-                "fa500cb657a3cc27",
-                "8ee6f4fcb9a62ac0",
-                "86540153f952f639"
-            ]
-        ]
-    },
-    {
-        "id": "ab9bd41f690a5a78",
-        "type": "link out",
-        "z": "447205f9c52006b9",
-        "g": "5c5d043f856bb4d8",
-        "name": "out_startup",
-        "mode": "link",
-        "links": [
-            "b20ead1ceef1dbb5"
-        ],
-        "x": 1040,
-        "y": 60,
-        "wires": []
-    },
-    {
-        "id": "96a2037cab89bec4",
-        "type": "inject",
-        "z": "447205f9c52006b9",
-        "d": true,
         "g": "29e81cdb7824f270",
-        "name": "Manually input missing FinalDataObj",
-        "props": [
-            {
-                "p": "FinalDataObj",
-                "v": "{\"timestamp\":1689953234703,\"dateOfAnalysis\":1689811200000,\"loc\":\"Straight From Washer\",\"reportNum\":\"ST23-0492\",\"partName\":\"10R140 Gear Nitride\",\"JK\":1.9,\"HI\":0,\"FG\":0,\"CE\":0,\"FI\":459.4,\"DE\":4744.5,\"K\":0,\"J\":0,\"I\":0,\"H\":0,\"weight\":1.2,\"occ\":0.61,\"met_len\":373,\"met_width\":39,\"nonMet_len\":1487,\"nonMet_wid\":259,\"fiber_len\":1358,\"total_fibers\":26.1,\"ctrl\":\"\",\"reaction\":\"\",\"result\":\"PASS\",\"numOfComponents\":4,\"partWeight\":0.3}",
-                "vt": "json"
-            }
+        "name": "",
+        "scope": [
+            "874541026c738320"
         ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 3120,
-        "y": 220,
+        "uncaught": false,
+        "x": 130,
+        "y": 980,
         "wires": [
             [
-                "7e1b7ef539b7bb48"
+                "1cd8fbe14713c22f"
             ]
         ]
     },
     {
-        "id": "5ce3a7eae6884efb",
+        "id": "1cd8fbe14713c22f",
+        "type": "delay",
+        "z": "447205f9c52006b9",
+        "g": "29e81cdb7824f270",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 300,
+        "y": 980,
+        "wires": [
+            [
+                "dda2977d18121e27"
+            ]
+        ]
+    },
+    {
+        "id": "dda2977d18121e27",
+        "type": "function",
+        "z": "447205f9c52006b9",
+        "g": "29e81cdb7824f270",
+        "name": "do nothing",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 980,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "94887d7715c79fb1",
+        "type": "function",
+        "z": "447205f9c52006b9",
+        "g": "b9aaf86eecaf3ef9",
+        "name": "find pdf",
+        "func": "var folder = '/data/Jomesa_Results_Folder/';\n\nvar partName =flow.get('partName');\nvar date = new Date;\nvar year = date.getFullYear().toString();\nvar reportnum = flow.get('reportNum');\nvar loc = flow.get('location');\nvar path = folder;\n\nif(partName.includes('10R140')){\n    path = path+\"10R140 Components/\"+partName+\"/\"+year+\"/\"+year+\" \"+loc+\"/\";\n}else if(partName.includes('ZF')){\n    path = path+\"ZF/\"+partName.toUpperCase()+\"/\"+year+\"/\";\n}else if(partName.includes('GME')){\n    path = path+\"GME T4 Stator/\"+year+\"/\";\n}\n\nmsg.filter = reportnum+\"*.pdf\";\n\nmsg.filepath = path;\n\nflow.set(\"counter\",0);\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2040,
+        "y": 820,
+        "wires": [
+            [
+                "dfba2c4af411aebb"
+            ]
+        ]
+    },
+    {
+        "id": "dfba2c4af411aebb",
         "type": "fs-ops-dir",
         "z": "447205f9c52006b9",
-        "g": "d3e4db5647dfdd51",
+        "g": "b9aaf86eecaf3ef9",
         "name": "search directory",
         "path": "filepath",
         "pathType": "msg",
@@ -2097,112 +1865,692 @@
         "filterType": "msg",
         "dir": "payload",
         "dirType": "msg",
-        "x": 3580,
-        "y": 540,
+        "x": 2220,
+        "y": 820,
         "wires": [
             [
-                "d6128f9c22a2fdba"
+                "59d500f35c71e636"
             ]
         ]
     },
     {
-        "id": "f39d79a41406433f",
+        "id": "59d500f35c71e636",
+        "type": "switch",
+        "z": "447205f9c52006b9",
+        "g": "b9aaf86eecaf3ef9",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "empty"
+            },
+            {
+                "t": "nempty"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 2290,
+        "y": 900,
+        "wires": [
+            [
+                "0a64551384c67360"
+            ],
+            [
+                "716ef35c068e931c"
+            ]
+        ]
+    },
+    {
+        "id": "0a64551384c67360",
         "type": "function",
         "z": "447205f9c52006b9",
-        "g": "d3e4db5647dfdd51",
+        "g": "b9aaf86eecaf3ef9",
         "name": "find pdf",
-        "func": "var folder = '/data/Jomesa_Results_Folder/';\n\nvar partName =flow.get('partName');\nvar date = new Date;\nvar year = date.getFullYear().toString();\nvar reportnum = flow.get(\"reportNum\");\nvar loc = flow.get('location');\nvar path = folder;\n\nif(partName.includes('10R140')){\n    path = path+\"10R140 Components/\"+partName+\"/\"+year+\"/\"+year+\" \"+loc+\"/\";\n}else if(partName.includes('ZF')){\n    path = path+\"ZF/\"+partName.toUpperCase()+\"/\"+year+\"/\";\n}else if(partName.includes('GME')){\n    path = path+\"GME T4 Stator/\"+partName.toUpperCase()+\"/\"+year+\"/\";\n}\n\nmsg.filter = reportnum+\"*.pdf\";\n\nmsg.filepath = path;\n\n\n\nreturn msg;",
+        "func": "var path = msg.filepath; \nvar reportNum = flow.get('reportNum');\nvar counter = flow.get(\"counter\");\n\nvar number = '';\n\n// First Search For File If there is a Space in middle ex. ST 23-0510.pdf\nif(counter === 0){\n    var split_number = reportNum.split(\"T\");\n    number = split_number[0] + \"T \" + split_number[1];\n    msg.payload = number;\n\n// If ST is not capitalized in the file name\n}else if(counter === 1){\n    number = reportNum.toUpperCase();\n    msg.payload = number;\n\n// Try both\n}else if(counter === 2){\n    number = reportNum.toUpperCase();\n    var split_number = number.split(\"T\");\n    number = split_number[0] + \"T \" + split_number[1];\n    msg.payload = number;\n    \n}\ncounter = counter + 1;\nflow.set(\"counter\",counter);\n\nmsg.filter = number + \"*.pdf\";\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 3400,
-        "y": 540,
+        "x": 2440,
+        "y": 860,
         "wires": [
             [
-                "5ce3a7eae6884efb"
+                "f149230fbe4fcfd6"
             ]
         ]
     },
     {
-        "id": "d6128f9c22a2fdba",
+        "id": "f149230fbe4fcfd6",
+        "type": "fs-ops-dir",
+        "z": "447205f9c52006b9",
+        "g": "b9aaf86eecaf3ef9",
+        "name": "search directory",
+        "path": "filepath",
+        "pathType": "msg",
+        "filter": "filter",
+        "filterType": "msg",
+        "dir": "payload",
+        "dirType": "msg",
+        "x": 2600,
+        "y": 860,
+        "wires": [
+            [
+                "dd7409a1d478f234"
+            ]
+        ]
+    },
+    {
+        "id": "dd7409a1d478f234",
+        "type": "switch",
+        "z": "447205f9c52006b9",
+        "g": "b9aaf86eecaf3ef9",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "empty"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 2770,
+        "y": 860,
+        "wires": [
+            [
+                "11ad7e52d26a0a70"
+            ],
+            [
+                "794f28266ddce6a5"
+            ]
+        ]
+    },
+    {
+        "id": "11ad7e52d26a0a70",
+        "type": "switch",
+        "z": "447205f9c52006b9",
+        "g": "b9aaf86eecaf3ef9",
+        "name": "",
+        "property": "counter",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "lte",
+                "v": "3",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 2910,
+        "y": 800,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "794f28266ddce6a5",
         "type": "function",
         "z": "447205f9c52006b9",
-        "g": "d3e4db5647dfdd51",
+        "g": "b9aaf86eecaf3ef9",
         "name": "set msg.pdf_name to payload",
+        "func": "msg.pdf_name = msg.payload[0];\nmsg.new_name =flow.get('reportNum') + '.pdf'\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 3150,
+        "y": 860,
+        "wires": [
+            [
+                "899e53178a8d8a48"
+            ]
+        ]
+    },
+    {
+        "id": "899e53178a8d8a48",
+        "type": "fs-ops-move",
+        "z": "447205f9c52006b9",
+        "g": "b9aaf86eecaf3ef9",
+        "name": "File Rename",
+        "sourcePath": "filepath",
+        "sourcePathType": "msg",
+        "sourceFilename": "pdf_name",
+        "sourceFilenameType": "msg",
+        "destPath": "filepath",
+        "destPathType": "msg",
+        "destFilename": "new_name",
+        "destFilenameType": "msg",
+        "link": false,
+        "x": 3370,
+        "y": 860,
+        "wires": [
+            [
+                "c63646e1041cc372"
+            ]
+        ]
+    },
+    {
+        "id": "716ef35c068e931c",
+        "type": "function",
+        "z": "447205f9c52006b9",
+        "g": "b9aaf86eecaf3ef9",
+        "name": "set pdf_name",
         "func": "msg.pdf_name = msg.payload[0];\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 3530,
-        "y": 600,
+        "x": 2460,
+        "y": 940,
         "wires": [
+            [
+                "6cdd1853cb114791",
+                "3f87d84c800a9bad"
+            ]
+        ]
+    },
+    {
+        "id": "c69bf46401072842",
+        "type": "link out",
+        "z": "447205f9c52006b9",
+        "g": "29e81cdb7824f270",
+        "name": "",
+        "mode": "link",
+        "links": [
+            "185a1a5c95cd707c"
+        ],
+        "x": 860,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "185a1a5c95cd707c",
+        "type": "link in",
+        "z": "447205f9c52006b9",
+        "g": "b9aaf86eecaf3ef9",
+        "name": "",
+        "links": [
+            "6d9180901553d8e6",
+            "c69bf46401072842"
+        ],
+        "x": 1920,
+        "y": 820,
+        "wires": [
+            [
+                "94887d7715c79fb1"
+            ]
+        ]
+    },
+    {
+        "id": "0124139883d1ff55",
+        "type": "link in",
+        "z": "447205f9c52006b9",
+        "g": "d3e4db5647dfdd51",
+        "name": "",
+        "links": [
+            "6cdd1853cb114791"
+        ],
+        "x": 3620,
+        "y": 940,
+        "wires": [
+            [
+                "1642bc3cde5c147e",
+                "ea10129e96b02c79",
+                "b92aad2d0c96c51a"
+            ]
+        ]
+    },
+    {
+        "id": "b92aad2d0c96c51a",
+        "type": "function",
+        "z": "447205f9c52006b9",
+        "g": "d3e4db5647dfdd51",
+        "name": "configure email",
+        "func": "var pdf = msg.pdf_name;\nvar filepath = '/data/Jomesa_Results_Folder/';\nvar part = flow.get(\"partName\");\nvar report = flow.get(\"reportNum\");\n\n//Sender --------------------------------------------------------\nmsg.from = ['PM-A Quality <notification-noreply@stackpole.com>'];\n\n//Receiver ------------------------------------------------------\nmsg.to = ['sthakar@stackpole.com']\n\n//Subject -------------------------------------------------------\nmsg.topic = \"New Sediment Test #\"+report+\" for \"+part; // subject\n\n\n//Attachments ---------------------------------------------------   to be implemented\nif(pdf != ''){\nmsg.attachments = [\n    \n    {filename:pdf, path:msg.filepath+pdf}\n    \n    ]; \n}\n//Body ----------------------------------------------------------\nFORDLINK = \"http://pmdadashboard/d/tmVF-1XVz/ford-sediment-tests-10r140-components?orgId=1&from=now-90d&to=now&var-PartName=\"+part.replace(\" \",\"%20\")+\"&var-ReportNum=\"+report+\"&var-Location=All&var-body=10R140%20Body&var-slide=10R140%20Slide&var-rotor=10R140%20Rotor&var-gear=10R140%20Gear&var-nitride=10R140%20Gear%20Nitride\";\nZFLINK =\"http://pmdadashboard/d/5NIQmsu4z/jomesa-sediment-tests?orgId=1&from=now-7d&to=now&var-ZFComponent=All&var-PartName=\"+part.replaceAll(\" \",\"%20\")+\"&var-gme=GME%20T4%20Stator&var-ReportNum=\"+report;\nGMELINK = \"http://pmdadashboard/d/5NIQmsu4z/jomesa-sediment-tests?orgId=1&from=now-7d&to=now&var-ZFComponent=All&var-PartName=All&var-gme=GME%20T4%20Stator&var-ReportNum=\"+report;\n\nif(part.includes('10R140') === true){\n    link =FORDLINK;\n}else if(part === 'GME T4 Stator'){\n    link = GMELINK;\n}else{\n    link = ZFLINK;\n}\n\nbody = \"New Test Uploaded\\n\\nSediment Test Dashboard: \"+link+\"\\n\\nNote: Data may take up to 15 minutes to appear on the dashboard.\\n\\nPictures Saved To:\\nN:\\\\Quality\\\\Metlab\\\\Met Lab Reports\\\\Sediment Tests\\\\Jomesa results\\\\Reaction Limit Sediment Tests Pictures\\\\\"+part+\"\\\\\"+report+\"_Pictures\\n\\n\";\n\nmsg.payload = body;\n\nreturn msg;\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 3780,
+        "y": 1040,
+        "wires": [
+            [
+                "a2a2bb26ea89ad16",
+                "4560f575b40d3fe7"
+            ]
+        ]
+    },
+    {
+        "id": "721e2943b9ae333e",
+        "type": "fs-ops-copy",
+        "z": "447205f9c52006b9",
+        "g": "d3e4db5647dfdd51",
+        "name": "",
+        "sourcePath": "filepath",
+        "sourcePathType": "msg",
+        "sourceFilename": "pdf_name",
+        "sourceFilenameType": "msg",
+        "destPath": "/data/Base64Encoder",
+        "destPathType": "str",
+        "destFilename": "pdf_name",
+        "destFilenameType": "msg",
+        "link": false,
+        "overwrite": false,
+        "x": 3760,
+        "y": 1080,
+        "wires": [
+            [
+                "baccbcc99cb6401a"
+            ]
+        ]
+    },
+    {
+        "id": "baccbcc99cb6401a",
+        "type": "debug",
+        "z": "447205f9c52006b9",
+        "g": "d3e4db5647dfdd51",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 3990,
+        "y": 1080,
+        "wires": []
+    },
+    {
+        "id": "a2a2bb26ea89ad16",
+        "type": "e-mail",
+        "z": "447205f9c52006b9",
+        "g": "d3e4db5647dfdd51",
+        "server": "smtp01.stackpole.com",
+        "port": "25",
+        "secure": false,
+        "tls": false,
+        "name": "",
+        "dname": "",
+        "x": 3990,
+        "y": 1040,
+        "wires": []
+    },
+    {
+        "id": "4560f575b40d3fe7",
+        "type": "change",
+        "z": "447205f9c52006b9",
+        "g": "d3e4db5647dfdd51",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "email sent",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 4020,
+        "y": 1000,
+        "wires": [
+            [
+                "8bd23b75c4db0f33"
+            ]
+        ]
+    },
+    {
+        "id": "8bd23b75c4db0f33",
+        "type": "debug",
+        "z": "447205f9c52006b9",
+        "g": "d3e4db5647dfdd51",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 4210,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "6cdd1853cb114791",
+        "type": "link out",
+        "z": "447205f9c52006b9",
+        "g": "b9aaf86eecaf3ef9",
+        "name": "",
+        "mode": "link",
+        "links": [
+            "0124139883d1ff55",
+            "c8dbf92cc0563993"
+        ],
+        "x": 3500,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "1642bc3cde5c147e",
+        "type": "switch",
+        "z": "447205f9c52006b9",
+        "g": "d3e4db5647dfdd51",
+        "name": "if result is fail",
+        "property": "result",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "FAIL",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 3770,
+        "y": 820,
+        "wires": [
+            [
+                "7055dc29164ea1d6",
+                "fd228bff2f8c004d"
+            ]
+        ]
+    },
+    {
+        "id": "ea10129e96b02c79",
+        "type": "switch",
+        "z": "447205f9c52006b9",
+        "g": "d3e4db5647dfdd51",
+        "name": "if out_of_reaction not empty",
+        "property": "out_of_reaction",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "nempty"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 3820,
+        "y": 860,
+        "wires": [
+            [
+                "7055dc29164ea1d6",
+                "fd228bff2f8c004d"
+            ]
+        ]
+    },
+    {
+        "id": "7055dc29164ea1d6",
+        "type": "function",
+        "z": "447205f9c52006b9",
+        "g": "d3e4db5647dfdd51",
+        "name": "write to log",
+        "func": "var part = flow.get(\"partName\");\nvar report = flow.get(\"reportNum\");\nvar loc = flow.get(\"location\");\nvar date = new Date;\nvar year = date.getFullYear().toString();\n\nif(part.includes('10R140')){\n    msg.payload = \"10R140 Components\\\\\"+part+\"\\\\\"+year+\"\\\\\"+year+\" \"+loc+\"\\\\\"+report;\n}else if(part.includes('ZF')){\n    msg.payload = \"ZF\\\\\"+part.toUpperCase()+\"\\\\\"+year+\"\\\\\"+report;\n}else if(part === 'GME T4 Stator'){\n    msg.payload = \"GME T4 Stator\\\\\"+year+\"\\\\\"+report;\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 4070,
+        "y": 820,
+        "wires": [
+            [
+                "2fd1e7b130708b45"
+            ]
+        ]
+    },
+    {
+        "id": "2fd1e7b130708b45",
+        "type": "file",
+        "z": "447205f9c52006b9",
+        "g": "d3e4db5647dfdd51",
+        "name": "",
+        "filename": "/data/Jomesa_SedimentTest/LOG.txt",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 4370,
+        "y": 820,
+        "wires": [
+            [
+                "3803375fdbc6f8a4"
+            ]
+        ]
+    },
+    {
+        "id": "3803375fdbc6f8a4",
+        "type": "debug",
+        "z": "447205f9c52006b9",
+        "g": "d3e4db5647dfdd51",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 4610,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "4140e3aa491d8010",
+        "type": "debug",
+        "z": "447205f9c52006b9",
+        "g": "29e81cdb7824f270",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1130,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "c5b0e4524815f9a8",
+        "type": "change",
+        "z": "447205f9c52006b9",
+        "g": "29e81cdb7824f270",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Exists",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 920,
+        "y": 940,
+        "wires": [
+            [
+                "4140e3aa491d8010",
+                "a1f6fa318ff0d48d"
+            ]
+        ]
+    },
+    {
+        "id": "173afec26c8401c5",
+        "type": "comment",
+        "z": "447205f9c52006b9",
+        "g": "d3e4db5647dfdd51",
+        "name": "Out of Reaction / Failed Report Notification",
+        "info": "",
+        "x": 4140,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "55fe8ec4f169a6a9",
+        "type": "comment",
+        "z": "447205f9c52006b9",
+        "g": "d3e4db5647dfdd51",
+        "name": "New Report Upload Notification",
+        "info": "",
+        "x": 4130,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "3f87d84c800a9bad",
+        "type": "debug",
+        "z": "447205f9c52006b9",
+        "g": "b9aaf86eecaf3ef9",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "pdf_name",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2700,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "c63646e1041cc372",
+        "type": "change",
+        "z": "447205f9c52006b9",
+        "g": "b9aaf86eecaf3ef9",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "pdf_name",
+                "pt": "msg",
+                "to": "new_name",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 3290,
+        "y": 900,
+        "wires": [
+            [
+                "6cdd1853cb114791"
+            ]
+        ]
+    },
+    {
+        "id": "fd228bff2f8c004d",
+        "type": "switch",
+        "z": "447205f9c52006b9",
+        "g": "d3e4db5647dfdd51",
+        "name": "check if gear",
+        "property": "partName",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "Gear",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 4070,
+        "y": 860,
+        "wires": [
+            [],
             [
                 "3bd354bf6fde0a8c"
             ]
         ]
     },
     {
-        "id": "9a71b476084c8d1e",
-        "type": "function",
+        "id": "11ae54b7f236e9cb",
+        "type": "change",
         "z": "447205f9c52006b9",
         "g": "29e81cdb7824f270",
-        "name": "find pdf",
-        "func": "var folder = '/data/Jomesa_Results_Folder/';\n\nvar partName =flow.get('partName')||'10R140 Body';\nvar date = new Date;\nvar year = date.getFullYear().toString();\nvar reportnum = flow.get(\"reportNum\")||'ST23-0482';\nvar loc = flow.get('location')||'Point of Ship';\nvar path = folder;\n\nif(partName.includes('10R140')){\n    path = path+\"10R140 Components/\"+partName+\"/\"+year+\"/\"+year+\" \"+loc+\"/\";\n}else if(partName.includes('ZF')){\n    path = path+\"ZF/\"+partName.toUpperCase()+\"/\"+year+\"/\";\n}else if(partName.includes('GME')){\n    path = path+\"GME T4 Stator/\"+partName.toUpperCase()+\"/\"+year+\"/\";\n}\n\nmsg.filter = reportnum+\"*.pdf\";\n\nmsg.filepath = path;\n\n\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 3400,
-        "y": 300,
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "FinalDataObj",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 920,
+        "y": 780,
         "wires": [
             [
-                "b732c62f767cb07b"
+                "803142b71f17ad41"
             ]
         ]
     },
     {
-        "id": "b732c62f767cb07b",
-        "type": "fs-ops-dir",
+        "id": "90a93f69eca59b80",
+        "type": "file",
         "z": "447205f9c52006b9",
         "g": "29e81cdb7824f270",
-        "name": "search directory",
-        "path": "filepath",
-        "pathType": "msg",
-        "filter": "filter",
-        "filterType": "msg",
-        "dir": "payload",
-        "dirType": "msg",
-        "x": 3560,
-        "y": 300,
+        "name": "",
+        "filename": "/data/ShivDataOutput/Jomesa Log/Jomesa_Log.txt",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 1610,
+        "y": 840,
         "wires": [
-            [
-                "edea15cc78009b95"
-            ]
-        ]
-    },
-    {
-        "id": "edea15cc78009b95",
-        "type": "function",
-        "z": "447205f9c52006b9",
-        "g": "29e81cdb7824f270",
-        "name": "set msg.pdf_name to payload",
-        "func": "msg.pdf_name = msg.payload[0];\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 3810,
-        "y": 300,
-        "wires": [
-            [
-                "a6046a35fb022ad4"
-            ]
+            []
         ]
     },
     {
