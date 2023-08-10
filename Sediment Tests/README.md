@@ -54,3 +54,7 @@ There are two visualization dashboards being used. The first is specifically use
 
 ![image](https://github.com/ShivThakar18/Stackpole-International/assets/94186009/4a9fff4b-f56a-49cd-981c-2c7884b53505)
 
+### Grafana Dashboard - PDF Viewer
+By selecting a report number in the global variables (i.e. Filters), the PDF report will be displayed for that report number, and the data from that report
+![image](https://github.com/ShivThakar18/Stackpole-International/assets/94186009/982200f8-3392-460a-82db-af30e61aaea4)
+
