@@ -32,6 +32,9 @@ Using an infinite loop, the program checks each Part Group by calling the specif
 
 These files contain specific 'search' and 'get' functions dependent on the group because the information that must be extracted from the Sediment Test is different.
 
+#### Part Group Files - Jomesa 5.3 Update (August 10th, 2023)
+In Revision 5.2, the program searches for only the latest file. In Revision 5.3, the program checks the last 10 files and verifies if the files have already been saved. If any file from the last 10 files is not in the last, continue with parsing and sending to the database.
+
 ### Pictures 
 When a file with PIC_DIR+"**\\*_fullreport.pdf" appears in the pictures directory (this happens when Node-Red moves a pdf into this folder when Specs have been validated). Depending on the part group, certain pages are extracted and saved into the PIC_DIR.
 
