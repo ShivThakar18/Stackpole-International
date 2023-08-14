@@ -31,9 +31,10 @@ def csv2xlsx(file):
     data_new.index.values[6] = 'Max functional Circular Tooth Thickness'                    # Row 27 of CSV, Row 7 of XLSX
     data_new.index.values[7] = 'PD Nicks'                                                   # Row 43 of CSV, Row 8 of XLSX
 
-    date = data_new.loc['Date'][0].replace("/","_")
-    time = data_new.loc['Time'][0].replace(":","_")
-    partNum = str(data_new.loc['Part Number'][0])
+    date = data_new.loc['Date'][0].replace("/","_")         #get date from csv (replace all the / with _)
+    time = data_new.loc['Time'][0].replace(":","_")         #get time from csv (replace all the : with _)
+    partNum = str(data_new.loc['Part Number'][0])           #get partnumber
+    
     print(date)
     print(time)
     print(partNum)
@@ -57,13 +58,11 @@ def csv2xlsx(file):
     sleep(5)
 
     copy(XLSX_DIR,ARCHIVE)
-    rename(ARCHIVE+"\\data.xlsx",ARCHIVE+"\\Gleason_"+partNum+"_"+date+"_"+time+".xlsx")
-
-    
+    rename(ARCHIVE+"\\data.xlsx",ARCHIVE+"\\Gleason_"+partNum+"_"+date+"_"+time+".xlsx") 
 #! --------------------------------------------------- Function Call -------------------------------------------------- #
 while(True):
 
-    files = glob(DEFAULT_PATH + '\\*.csv')
+    files = glob(DEFAULT_PATH + '\\*.csv')            # glob - looks for files with the search criteria
     if(len(files) > 0):
         new = max(files, key= path.getmtime)          # get the newest file
         csv2xlsx(new)                                                           
