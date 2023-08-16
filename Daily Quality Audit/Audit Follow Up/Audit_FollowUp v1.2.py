@@ -151,8 +151,8 @@ def parseFile(FILE):
         
 
     write_excel(data)                                               # call write excel
-    """ txt = open(FILE_LOC + "FollowUp.txt",'w')                       # rewrite as blank file
-    txt.close() """
+    txt = open(FILE_LOC + "FollowUp.txt",'w')                       # rewrite as blank file
+    txt.close()
 # ?------------------------------------------------ Write Excel File ------------------------------------------------- #
 def write_excel(data):
     global DATA_FOLDER, XLSX_FILE
@@ -213,7 +213,7 @@ while(True):
         print("# --- Parsing File")
         parseFile(file)                                            # call parsefile function
         print("# --- Update Complete")
-        sleep(10)
+        sleep(5)
         break                                                      # if excel file was done and saved
     except:                     
         print("# ---" + str(Exception))
