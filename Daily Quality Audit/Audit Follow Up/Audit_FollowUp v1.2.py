@@ -41,7 +41,6 @@ def parseFile(FILE):
     for m in m_data:
         if("{" not in m):
             m_data.remove(m)
-            print("removed "+m)
         m_data[i] = m.strip()
         i = i + 1
 
@@ -64,7 +63,6 @@ def parseFile(FILE):
 
         i = 0
         for t in temp:
-            print(i,t)
             i = i + 1
 
         # ORDER : Date, Shift, Report #, Section, QT, Category, Description, Further Details ,Action, Follow Up, Person
@@ -167,7 +165,6 @@ def write_excel(data):
         except PermissionError:
             print("# --- Permission Error: Waiting for file to be accessible")
             continue                                                                  # keep trying to open workbook until available
-    print(read_template.columns)
     for d in data:      # iterate through data list (list of lists)
         read_template.at[next_row,'Unnamed: 0'] = d[0]                          # Date
         read_template.at[next_row,'Unnamed: 1'] = d[1]                          # Shift
