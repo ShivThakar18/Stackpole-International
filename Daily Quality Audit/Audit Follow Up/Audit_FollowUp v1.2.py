@@ -67,7 +67,7 @@ def parseFile(FILE):
             print(i,t)
             i = i + 1
 
-        # ORDER : Date, Shift, Report #, Section, QT, Category, Description, Action, Follow Up, Person
+        # ORDER : Date, Shift, Report #, Section, QT, Category, Description, Further Details ,Action, Follow Up, Person
         if("Specific Requests" in temp[1] or "Critical Calls" in temp[1]):  # if the section is SR or CC
             date = temp[3].split(":")[1]
             date_time = datetime.fromtimestamp(float(date)/1000)
@@ -89,6 +89,14 @@ def parseFile(FILE):
             actual.append(temp[4].split(":")[1][1:-1])          # Quality Tech
             actual.append(temp[7].split(":")[1][1:-1])          # Category
             actual.append(temp[5].split(":")[1][1:-1])          # Description
+
+            #Requested by ---- . Further Details
+
+            request = temp[6].split(":")[1][1:-1]
+            details = temp[8].split(":")[1][1:-1]
+
+            actual.append("Requested by "+request+ ". " + details[0].upper() + details[1:]+".")
+
             actual.append(temp[9].split(":")[1][1:-1])          # Action Comments
             actual.append(temp[11].split(":")[1][1:-1])         # Comments
             actual.append(temp[12].split(":")[1][1:-1])         # Person
@@ -134,6 +142,7 @@ def parseFile(FILE):
                 process_format = process_format.replace("]","")         # replace ] with blank
                 process_format = process_format.replace(" ", "",1)      # replace the first space with blank
                 actual.append(machine + " - "+ process_format + " - " + part)        # Description
+            actual.append("")
             actual.append(temp[10 + x].split(":")[1][1:-1])          # Action
             actual.append(temp[13 + x].split(":")[1][1:-1])         # Comments
             actual.append(temp[14 + x].split(":")[1][1:-1])         # Person
@@ -142,8 +151,8 @@ def parseFile(FILE):
         
 
     write_excel(data)                                               # call write excel
-    txt = open(FILE_LOC + "FollowUp.txt",'w')                       # rewrite as blank file
-    txt.close()
+    """ txt = open(FILE_LOC + "FollowUp.txt",'w')                       # rewrite as blank file
+    txt.close() """
 # ?------------------------------------------------ Write Excel File ------------------------------------------------- #
 def write_excel(data):
     global DATA_FOLDER, XLSX_FILE
@@ -167,10 +176,11 @@ def write_excel(data):
         read_template.at[next_row,'Unnamed: 4'] = d[4]                          # Quality Tech
         read_template.at[next_row,'Unnamed: 5'] = d[5]                          # Category
         read_template.at[next_row,'Daily Quality Audit Follow Up List'] = d[6]  # Description/Process
-        read_template.at[next_row,'Unnamed: 7'] = d[7]                          # Action Taken
-        read_template.at[next_row,'Unnamed: 8'] = d[8]                          # Follow Up Comments
-        read_template.at[next_row,'Unnamed: 9'] = d[9]                          # Person
-        read_template.at[next_row,'Unnamed: 11'] = 'N'                          # Completed? 
+        read_template.at[next_row,'Unnamed: 7'] = d[7]
+        read_template.at[next_row,'Unnamed: 8'] = d[7]                          # Action Taken
+        read_template.at[next_row,'Unnamed: 9'] = d[8]                          # Follow Up Comments
+        read_template.at[next_row,'Unnamed: 10'] = d[9]                          # Person
+        read_template.at[next_row,'Unnamed: 12'] = 'N'                          # Completed? 
         next_row = next_row + 1                                                 # increment row, to write on next row
     
     df_columns = read_template.shape[1]                                         # get columns                                                                               
