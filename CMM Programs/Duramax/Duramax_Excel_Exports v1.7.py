@@ -18,23 +18,23 @@ import win32com.client
 # !------------------------------------------------------------------------------------------------------------------- #
 # !                                              Define Global Variables                                               #
 # !------------------------------------------------------------------------------------------------------------------- #
-DEFAULT_PATH = "C:\\Job\\Python\\Duramax_Excel_Export_v2.0\\"               # default path
+""" DEFAULT_PATH = "C:\\Job\\Python\\Duramax_Excel_Export_v2.0\\"               # default path
 config_file = open(DEFAULT_PATH + "DURAMAX_FILEPATHS.txt",'r')              # directory configuration 
-dir = config_file.read().splitlines()                                       # save txt file lines in list
+dir = config_file.read().splitlines()                                       # save txt file lines in list """
 
 #ZEISS_PATH = dir[1]                                                         # Zeiss File
-ZEISS_PATH = "C:\\Program Files (x86)\\Zeiss\\GearNT\\Reporting\\"
+""" ZEISS_PATH = "C:\\Program Files (x86)\\Zeiss\\GearNT\\Reporting\\"
 QCCALC_PATH = dir[3]                                                        # QC-Calc Location (Archived Data)
 TEMPLATE_PATH = DEFAULT_PATH + "Templates\\"                                # Template locations
 
-ARCHIVE_PATH = DEFAULT_PATH+ "Archived Excel Exports\\"                     # Archived Path
+ARCHIVE_PATH = DEFAULT_PATH+ "Archived Excel Exports\\"                     # Archived Path """
 
 
-""" DEFAULT_PATH = "C:\\Users\\vrerecich\\Desktop\\Duramax_Files\\"
-ZEISS_PATH = DEFAULT_PATH + "Dropbox\\"
-QCCALC_PATH = DEFAULT_PATH + "Dropbox\\"
+DEFAULT_PATH = "C:\\Users\\vrerecich\\Desktop\\Duramax_Files\\"
+ZEISS_PATH = DEFAULT_PATH + "D\\"
+QCCALC_PATH = DEFAULT_PATH + "D\\"
 TEMPLATE_PATH = DEFAULT_PATH + "Templates\\"
-ARCHIVE_PATH = DEFAULT_PATH + "Excel_Export\\" """
+ARCHIVE_PATH = DEFAULT_PATH + "Excel_Export\\"
 
 printFlag = 0                                                               # While loop print flag
 # !------------------------------------------------------------------------------------------------------------------- #
@@ -44,7 +44,7 @@ printFlag = 0                                                               # Wh
 def reportGenerator(source_file, template_file): #* Awesome Gear Pro function 
     global printFlag
 
-    SOURCE = read_table(source_file, sep='\t')
+    SOURCE = read_table(source_file, sep='\t')          # source file = chr file
     PARTNB = SOURCE.get("partnb")[1]
     PROGRAM_NAME = SOURCE.get("planid")[1]
 
@@ -86,7 +86,6 @@ def reportGenerator(source_file, template_file): #* Awesome Gear Pro function
                                 ("Status", str)])
     dim_list = []
     out_of_tolerance_list=[]
-
 
     if('7371' in source_file and NUM_OF_ROW != 50):
         NUM_OF_ROW = 50
@@ -150,27 +149,24 @@ def reportGenerator(source_file, template_file): #* Awesome Gear Pro function
         text5 = 'This part is NOT OK'
     worksheet1.write(len(result) + 5, 0, text5)
     worksheet1.set_row(len(result) + 5, cell_format=format2)
-    #writer.save()
     writer.close()
 
     # Print the result from the absolute path
-    #startfile(path.abspath(saved_file_name+".xlsx"), "print") #prints file to default printer 
+    startfile(path.abspath(saved_file_name+".xlsx"), "print") #prints file to default printer 
     
-    win32 = win32com.client.Dispatch('Excel.Application')
-    win32.visible = True
-    wb = win32.Workbooks.Open(path.abspath(saved_file_name+".xlsx"))
-    ws = wb.Worksheets([1])
-    ws.printout()
-    wb.Close(False)
-    win32.Quit()
+    """ excel = win32com.client.Dispatch('Excel.Application')
+    excel.visible = True
+    workbook = excel.Workbooks.Open(path.abspath(saved_file_name+".xlsx"))
+    worksheet = workbook.Worksheets([1])
+    worksheet.printout() """
     
-    sleep(10) # sleep for 10 seconds
+    sleep(20) # sleep for 10 seconds
     print("REPORT PRINTED - "+saved_file_name+".xlsx")
 
     sleep(5)
 
     try: 
-        move(path.abspath(saved_file_name+".xlsx"),ARCHIVE_PATH ) #move saved file to ARCHIVE_PATH
+        move(path.abspath(saved_file_name+".xlsx"),ARCHIVE_PATH) #move saved file to ARCHIVE_PATH
                         #? C:/Users/Public/Documents/Zeiss/ArchivedReports/
                         #? + path.basename(saved_file_name) + ".xlsx"
 
@@ -181,8 +177,6 @@ def reportGenerator(source_file, template_file): #* Awesome Gear Pro function
     print("REPORT ARCHIVED TO ArchivedReports Folder")
 
     printFlag = 0
-    return
-
     return
 # ?--------------------------------------------------- Set Process --------------------------------------------------- #
 def setTemplate(name): #* sets the process from basename
@@ -198,6 +192,8 @@ def setTemplate(name): #* sets the process from basename
         p[0] = '35.4686'
     elif('35.7371' in name):
         p[0] = '35.7371'
+    elif('35.1742.7327' in name):
+        p[0] = '35.1742.7327'
 
     if('Compact' in name):                                  # depending on the basename passed set the process
         p[1] = 'Compact'
@@ -211,7 +207,8 @@ def setTemplate(name): #* sets the process from basename
         p[1] = 'Grinding'
     elif('NCR' in name):
         p[1] = 'NCR'
-
+    elif('FINAL' in name):
+        p[1] = 'Grinding'
     return p
 # ?-------------------------------------------------- Get Chr Files -------------------------------------------------- #
 def getFiles(): #* will save the template file location and the chr file
@@ -271,17 +268,15 @@ def getFiles(): #* will save the template file location and the chr file
     cache_file = open(DEFAULT_PATH+"cache.txt","w")                         # open cache file for writing
     cache_file.write(latest_file)                                           # write the newest file to the cache
     cache_file.close()                                                      # close the file
-
-    return
 # !------------------------------------------------------------------------------------------------------------------- #
 # !                                                   Function Call                                                    #
 # !------------------------------------------------------------------------------------------------------------------- #
-while(True):
+""" while(True):
     if(printFlag == 0):
         print("Waiting for chr files...")       
-        printFlag = 1
+        printFlag = 1 """
 
-    getFiles()                                  # call getFiles() function
+getFiles()                                  # call getFiles() function
 
 
     

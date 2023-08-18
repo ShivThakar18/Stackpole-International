@@ -174,10 +174,10 @@ def write_excel(data):
         read_template.at[next_row,'Unnamed: 5'] = d[5]                          # Category
         read_template.at[next_row,'Daily Quality Audit Follow Up List'] = d[6]  # Description/Process
         read_template.at[next_row,'Unnamed: 7'] = d[7]
-        read_template.at[next_row,'Unnamed: 8'] = d[7]                          # Action Taken
-        read_template.at[next_row,'Unnamed: 9'] = d[8]                          # Follow Up Comments
-        read_template.at[next_row,'Unnamed: 10'] = d[9]                          # Person
-        read_template.at[next_row,'Unnamed: 12'] = 'N'                          # Completed? 
+        read_template.at[next_row,'Unnamed: 8'] = d[8]                          # Action Taken
+        read_template.at[next_row,'Unnamed: 9'] = d[9]                          # Follow Up Comments
+        read_template.at[next_row,'Unnamed: 10'] = d[10]                          # Person
+        read_template.at[next_row,'Unnamed: 12'] = "N"                          # Completed? 
         next_row = next_row + 1                                                 # increment row, to write on next row
     
     df_columns = read_template.shape[1]                                         # get columns                                                                               
